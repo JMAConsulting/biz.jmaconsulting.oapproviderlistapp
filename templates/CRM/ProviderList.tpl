@@ -111,7 +111,7 @@ CRM.$(function($) {
     var hasHidden = $('div.employer-row').hasClass("hiddenElement");
     if (hasHidden) {
       var row = $('#employer div.hiddenElement:first');
-      $('div.hiddenElement:first, #employer').fadeIn("slow").removeClass('hiddenElement');
+      $('#employer > div.hiddenElement:first, #employer').fadeIn("slow").removeClass('hiddenElement');
       hasHidden = $('div.employer-row').hasClass("hiddenElement");
     }
     $('#add-another-employer').toggle(hasHidden);
@@ -127,7 +127,7 @@ CRM.$(function($) {
     row.addClass('hiddenElement').fadeOut("slow");
   });
 
-  $('.remove_employer').on('click', function(e) {
+  $('.remove_employer_item').on('click', function(e) {
     e.preventDefault();
     var row = $(this).closest('div.employer-row');
     $('#add-another-employer').show();
