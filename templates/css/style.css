@@ -1,3 +1,21 @@
-.education-field > input, .education-field > label {
-  display: block;
+.education-field > input, .education-field > label, .education-field > textarea {
+  display: block !important;
+}
+
+.education-field > textarea {
+  margin: 0px 412px 0px 0px;
+  width: 653px;
+  height: 177px;
+}
+
+#editrow-custom_7 > div.edit-value > table.form-layout-compressed {
+  width: 700px !important;
+}
+
+#editrow-custom_8 > div.label, #editrow-custom_9 > div.label, #editrow-custom_10 > div.label, #editrow-custom_11 > div.label {
+  margin-right: 50px;
+}
+
+li {
+  list-style-type: circle !important;
 }

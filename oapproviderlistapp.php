@@ -1,10 +1,19 @@
 <?php
-define('OAPPROVIDERLIST', 15);
+define('OAPPROVIDERLIST', 14);
 
 // Education Custom Group
-define('EDUCATION', 'custom_13');
-define('DEGREE', 'custom_14');
-define('YEAR', 'custom_15');
+define('EDUCATION', 'custom_28');
+define('DEGREE', 'custom_29');
+define('YEAR', 'custom_30');
+
+// Employment History
+define('ORG', 'custom_32');
+define('TITLE', 'custom_33');
+define('DATES', 'custom_34');
+define('TASKS', 'custom_35');
+define('TOTAL_HOURS', 'custom_36');
+define('SUPER_HOURS', 'custom_37');
+define('SUPER_CONTACT', 'custom_38');
 
 require_once 'oapproviderlistapp.civix.php';
 
@@ -127,7 +136,8 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
 
     // Get fields for custom groups.
     $customGroups = [
-      "Experience",
+      "Post_Secondary_Education",
+      "Employment_History",
     ];
     foreach ($customGroups as $group) {
       $result = civicrm_api3('CustomField', 'get', [
@@ -147,6 +157,14 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
     $form->assign('educationField', 'field_' . EDUCATION);
     $form->assign('degreeField', 'field_' . DEGREE);
     $form->assign('yearField', 'field_' . YEAR);
+
+    $form->assign('orgField', 'field_' . ORG);
+    $form->assign('titleField', 'field_' . TITLE);
+    $form->assign('datesField', 'field_' . DATES);
+    $form->assign('tasksField', 'field_' . TASKS);
+    $form->assign('hoursField', 'field_' . TOTAL_HOURS);
+    $form->assign('superHoursField', 'field_' . SUPER_HOURS);
+    $form->assign('superContactField', 'field_' . SUPER_CONTACT);
   }
 }
 
