@@ -35,22 +35,24 @@
 </div>
 <div id="employer">
 {section name='i' start=1 loop=6}
-    {assign var='rowNumber' value=$smarty.section.i.index}
-    <div id="add-employer-item-row-{$rowNumber}" class="employer-row hiddenElement">
+    {assign var='rowEmployerNumber' value=$smarty.section.i.index}
+    <div id="add-employer-item-row-{$rowEmployerNumber}" class="employer-row hiddenElement">
       <fieldset><legend></legend></fieldset>
       <div class="content-description">Please provide information on your employment history to demonstrate that you meet the experience requirements. Please focus on your most recent employment history. The Provide$
-      <div class="crm-section education-field" style="float:left;padding-right:20px">{$form.$orgField.0.label} {$form.$orgField.0.html}</div>
-      <div class="crm-section education-field" style="float:left;padding-right:20px">{$form.$titleField.0.label} {$form.$titleField.0.html}</div>
-      <div class="crm-section education-field" style="float:left">{$form.$datesField.0.label} {$form.$datesField.0.html}</div>
+      <div class="crm-section education-field" style="float:left;padding-right:20px">{$form.$orgField.$rowEmployerNumber.label} {$form.$orgField.$rowEmployerNumber.html}</div>
+      <div class="crm-section education-field" style="float:left;padding-right:20px">{$form.$titleField.$rowEmployerNumber.label} {$form.$titleField.$rowEmployerNumber.html}</div>
+      <div class="crm-section education-field" style="float:left">{$form.$datesField.$rowEmployerNumber.label} {$form.$datesField.$rowEmployerNumber.html}</div>
       <div class="clear"></div>
-      <div class="crm-section education-field">{$form.$tasksField.0.label} {$form.$tasksField.0.html}</div>
+      <div class="crm-section education-field">{$form.$tasksField.$rowEmployerNumber.label} {$form.$tasksField.$rowEmployerNumber.html}</div>
       <div class="clear"></div>
-      <div class="crm-section education-field" style="float:left;padding-right:20px">{$form.$hoursField.0.label} {$form.$hoursField.0.html}</div>
-      <div class="crm-section education-field" style="float:left;padding-right:20px">{$form.$superHoursField.0.label} {$form.$superHoursField.0.html}</div>
+      <div class="crm-section education-field" style="float:left;padding-right:20px">{$form.$hoursField.$rowEmployerNumber.label} {$form.$hoursField.$rowEmployerNumber.html}</div>
+      <div class="crm-section education-field" style="float:left;padding-right:20px">{$form.$superHoursField.$rowEmployerNumber.label} {$form.$superHoursField.$rowEmployerNumber.html}</div>
       <div class="clear"></div>
-      <div class="crm-section education-field">{$form.$superContactField.0.label} {$form.$superContactField.0.html}</div>
+      <div class="crm-section education-field">{$form.$superContactField.$rowEmployerNumber.label} {$form.$superContactField.$rowEmployerNumber.html}</div>
       <span><a href=# class="remove_employer_item crm-hover-button" title='Remove Employer'><i class="crm-i fa-times"></i></a></span>
       <div class="clear"></div>
+    </div>
+{/section}
 </div>
 <span id="add-another-item" class="crm-hover-button" style="font-weight:bold;padding:10px;"><a href=#>{ts}ADD ANOTHER DEGREE{/ts}</a></span>
 <span id="add-another-employer" class="crm-hover-button" style="font-weight:bold;padding:10px;"><a href=#>{ts}ADD ANOTHER EMPLOYER{/ts}</a></span>
