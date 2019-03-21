@@ -38,7 +38,6 @@
     {assign var='rowEmployerNumber' value=$smarty.section.i.index}
     <div id="add-employer-item-row-{$rowEmployerNumber}" class="employer-row hiddenElement">
       <fieldset><legend></legend></fieldset>
-      <div class="content-description">Please provide information on your employment history to demonstrate that you meet the experience requirements. Please focus on your most recent employment history. The Provider List may contact your references for further information.</div><br/>
       <div class="crm-section education-field" style="float:left;padding-right:20px">{$form.$orgField.$rowEmployerNumber.label} {$form.$orgField.$rowEmployerNumber.html}</div>
       <div class="crm-section education-field" style="float:left;padding-right:20px">{$form.$titleField.$rowEmployerNumber.label} {$form.$titleField.$rowEmployerNumber.html}</div>
       <div class="crm-section education-field" style="float:left">{$form.$datesField.$rowEmployerNumber.label} {$form.$datesField.$rowEmployerNumber.html}</div>
