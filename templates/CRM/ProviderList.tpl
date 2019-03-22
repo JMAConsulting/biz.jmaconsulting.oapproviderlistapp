@@ -140,7 +140,7 @@ CRM.$(function($) {
     $('input[id^="' + org + '"]', row).val('');
     $('input[id^="' + title + '"]', row).val('');
     $('input[id^="' + dates + '"]', row).val('');
-    $('input[id^="' + tasks + '"]', row).text('');
+    $('input[id^="' + tasks + '"]', row).val("");
     $('input[id^="' + hours + '"]', row).val('');
     $('input[id^="' + superHours + '"]', row).val('');
     $('input[id^="' + superContact + '"]', row).text('');

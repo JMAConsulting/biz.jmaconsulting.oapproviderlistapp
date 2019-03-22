@@ -15,6 +15,9 @@ define('TOTAL_HOURS', 'custom_36');
 define('SUPER_HOURS', 'custom_37');
 define('SUPER_CONTACT', 'custom_38');
 
+// Signature
+define('SIGNATURE', 'custom_39');
+
 require_once 'oapproviderlistapp.civix.php';
 
 /**
@@ -152,7 +155,7 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
             $submittedValues[$group][] = $rowNumber;
           }
           $form->add(strtolower($value['html_type']), $name, ts($value['label']), NULL);
-          if (strpos($value['label'], 'Year Completed') !== false) {
+          if (in_array($value['label'], ["Year Completed", "Total number of hours", "Number of hours that involved supervisory duties"])) {
             $form->addRule($name, ts($value['label'] . ' must be a number.'), 'numeric');
           }
         }
@@ -170,6 +173,23 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
     $form->assign('hoursField', 'field_' . TOTAL_HOURS);
     $form->assign('superHoursField', 'field_' . SUPER_HOURS);
     $form->assign('superContactField', 'field_' . SUPER_CONTACT);
+  }
+}
+
+/**
+ * Implements hook_civicrm_validateForm().
+ *
+ * @param string $formName
+ * @param array $fields
+ * @param array $files
+ * @param CRM_Core_Form $form
+ * @param array $errors
+ */
+function oapproviderlistapp_civicrm_validateForm($formName, &$fields, &$files, &$form, &$errors) {
+  foreach ($fields[SIGNATURE] as $key => $val) {
+    if (empty($val)) {
+      $errors[SIGNATURE] = ts('Your consent is required for all statements');
+    }
   }
 }
 
