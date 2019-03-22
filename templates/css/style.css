@@ -19,3 +19,16 @@
 li {
   list-style-type: circle !important;
 }
+
+table th, table td {
+  background-color: #fff !important;
+}
+
+*, p {
+    font-family: "Gill Sans", Helvetica, sans-serif !important;
+}
+
+#editrow-custom_12 > div.edit-value > table.form-layout-compressed td, #editrow-custom_39 > div.edit-value > table.form-layout-compressed td {
+  font-size: 1.2em !important;
+  padding-bottom: 5px;
+}

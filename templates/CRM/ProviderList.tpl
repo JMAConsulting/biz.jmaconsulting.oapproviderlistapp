@@ -86,13 +86,20 @@ CRM.$(function($) {
   $('#editrow-custom_9').insertAfter($('input[name="custom_7[2]"]').parent('td'));
   $('#editrow-custom_10').insertAfter($('input[name="custom_7[3]"]').parent('td'));
   $('#editrow-custom_11').insertAfter($('input[name="custom_7[4]"]').parent('td'));
-  //var submittedRows = $.parseJSON('{/literal}{$childSubmitted}{literal}');
+  var submittedRows = $.parseJSON('{/literal}{$customSubmitted}{literal}');
 
   // after form rule validation when page reloads then show only those line-item which were chosen and hide others
-  //$.each(submittedRows, function(e, num) {
-  //  isSubmitted = true;
-  //  $('#add-education-item-row-' + num).removeClass('hiddenElement');
-  //});
+  $.each(submittedRows, function(e, num) {
+    isSubmitted = true;
+    $.each(num, function(idx, val) {
+      if (e == "Post_Secondary_Education") {
+        $('#add-education-item-row-' + val).removeClass('hiddenElement');
+      }
+      else if (e == "Employment_History") {
+        $('#add-employer-item-row-' + val).removeClass('hiddenElement');
+      }
+    });
+  });
 
   $('#add-another-item').on('click', function(e) {
     e.preventDefault();
@@ -133,10 +140,10 @@ CRM.$(function($) {
     $('input[id^="' + org + '"]', row).val('');
     $('input[id^="' + title + '"]', row).val('');
     $('input[id^="' + dates + '"]', row).val('');
-    $('input[id^="' + tasks + '"]', row).val('');
+    $('input[id^="' + tasks + '"]', row).text('');
     $('input[id^="' + hours + '"]', row).val('');
     $('input[id^="' + superHours + '"]', row).val('');
-    $('input[id^="' + superContact + '"]', row).val('');
+    $('input[id^="' + superContact + '"]', row).text('');
     row.addClass('hiddenElement').fadeOut("slow");
   });
 

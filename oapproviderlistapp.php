@@ -133,6 +133,7 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
       'template' => 'CRM/ProviderList.tpl',
     ));
     CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'templates/css/style.css');
+    $submittedValues = [];
 
     // Get fields for custom groups.
     $customGroups = [
@@ -147,6 +148,9 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
       for ($rowNumber = 0; $rowNumber <= 5; $rowNumber++) {
         foreach ($result as $field => $value) {
           $name = sprintf("%s[%d]", "field_custom_" . $value['id'], $rowNumber);
+          if (!empty($_POST["field_custom_" . $value['id']]) && !empty($_POST["field_custom_" . $value['id']][$rowNumber])) {
+            $submittedValues[$group][] = $rowNumber;
+          }
           $form->add(strtolower($value['html_type']), $name, ts($value['label']), NULL);
           if (strpos($value['label'], 'Year Completed') !== false) {
             $form->addRule($name, ts($value['label'] . ' must be a number.'), 'numeric');
@@ -154,6 +158,7 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
         }
       }
     }
+    $form->assign('customSubmitted', json_encode($submittedValues));
     $form->assign('educationField', 'field_' . EDUCATION);
     $form->assign('degreeField', 'field_' . DEGREE);
     $form->assign('yearField', 'field_' . YEAR);
