@@ -125,6 +125,16 @@ function oapproviderlistapp_civicrm_alterSettingsFolders(&$metaDataFolders = NUL
   _oapproviderlistapp_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
 
+function oapproviderlistapp_civicrm_pageRun(&$page) {
+  if (get_class($page) == "CRM_Profile_Page_Dynamic" && ($page->getVar('_gid') == OAPPROVIDERLIST)) {
+    CRM_Core_Resources::singleton()->addScript(
+      "CRM.$(function($) {
+        $('div.action-link a').hide();
+      });"
+    );
+  }
+}
+
 /**
  * Implementation of hook_civicrm_buildForm
  *
@@ -212,6 +222,9 @@ function oapproviderlistapp_civicrm_postProcess($formName, &$form) {
           $customValues[$customField . '_-' . $key] = $val;
         }
       }
+    }
+    if (empty($customValues)) {
+      return;
     }
     CRM_Core_BAO_CustomValueTable::postProcess($customValues,
       'civicrm_contact',
