@@ -10,7 +10,7 @@
 {literal}
 <script type="text/javascript">
 CRM.$(function($) {
-  CRM.buildCustomData('{$customDataType}', '{$customDataSubType}');
+  CRM.buildCustomData('{$customDataType}', 'Provider');
   $('.crm-profile legend').hide();
 });
 </script>
