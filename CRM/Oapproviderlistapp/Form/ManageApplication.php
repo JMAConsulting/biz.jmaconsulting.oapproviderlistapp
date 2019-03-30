@@ -25,7 +25,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
 
     $tabs = $form->get('tabHeader');
     if (!$tabs || empty($_GET['reset'])) {
-      $tabs = self::process($form);
+      $tabs = self::getTabs($form);
       $form->set('tabHeader', $tabs);
     }
     $form->assign_by_ref('tabHeader', $tabs);
@@ -39,7 +39,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     return $tabs;
   }
 
-  public function process(&$form) {
+  public function getTabs(&$form) {
     $tabs = [];
     $profileNames = [
       'individual' => [
