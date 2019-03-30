@@ -50,7 +50,8 @@
 <script type="text/javascript">
 CRM.$(function($) {
   $('.crm-profile legend').hide();
-  $('#add-another-item').on('click', function() {
+  $('#add-another-item').on('click', function(e) {
+    e.preventDefault();
     if ($('[id^="organization_name-"]').hasClass("hiddenElement")) {
       $('.hiddenElement:first').removeClass('hiddenElement');
     }

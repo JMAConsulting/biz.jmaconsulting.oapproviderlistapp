@@ -1,5 +1,5 @@
 fieldset:not(.fieldgroup) {
-  background-color: none !important;
+  background-color: #fff !important;
 }
 
 .crm-container table {
