@@ -1,5 +1,5 @@
 fieldset:not(.fieldgroup) {
-  background-color: #fff !important;
+  background-color: transparent !important;
 }
 
 .crm-container table {
@@ -7,7 +7,7 @@ fieldset:not(.fieldgroup) {
 }
 
 tr {
-  border-bottom: 1px solid #e6e4df;
+  border-bottom: 0px;;
 }
 
 #editrow-custom_8 > div.label, #editrow-custom_9 > div.label, #editrow-custom_10 > div.label, #editrow-custom_11 > div.label,
