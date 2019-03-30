@@ -25,7 +25,7 @@ tr {
   margin-right: 50px;
 }
 
-#editrow-custom_7 > div.label {
+#editrow-custom_7 > div.label, #editrow-custom_12 > div.label {
   padding-right: 10px;
 }
 
