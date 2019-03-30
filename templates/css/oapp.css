@@ -1,3 +1,13 @@
+* {
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #4d4d69;
+}
+
+.description-text {
+  font-size: 13px;
+  padding-top: 15px;
+}
+
 fieldset:not(.fieldgroup) {
   background-color: transparent !important;
 }
