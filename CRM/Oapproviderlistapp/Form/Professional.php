@@ -19,7 +19,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
 
   public function postProcess() {
     $values = $this->exportValues();
-    $contactID = $form->get('contactID');
+    $contactID = $this->get('contactID');
     if (!empty($values['_qf_Professional_submit_done'])) {
       $this->sendDraft($values);
     }
