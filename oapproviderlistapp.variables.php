@@ -19,11 +19,11 @@ define('SUPER_CONTACT', 'custom_38');
 // Signature
 define('SIGNATURE', 'custom_39');
 
-define('OAP_INDIVIDUAL', 99);
-define('OAP_PHONEADDRESS', 132);
-define('OAP_PROFESSIONAL', 132);
-define('OAP_EXPERIENCE', 132);
-define('OAP_SECTORCHECK', 132);
-define('OAP_INSURANCE', 132);
-define('OAP_DOCUMENTATION', 132);
+define('OAP_INDIVIDUAL', 16);
+define('OAP_PHONEADDRESS', 17);
+define('OAP_PROFESSIONAL', 18);
+define('OAP_EXPERIENCE', 19);
+define('OAP_SECTORCHECK', 20);
+define('OAP_INSURANCE', 21);
+define('OAP_DOCUMENTATION', 21);
 define('OAP_SIGNATURE', 132);

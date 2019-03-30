@@ -179,6 +179,9 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
  * @param array $errors
  */
 function oapproviderlistapp_civicrm_validateForm($formName, &$fields, &$files, &$form, &$errors) {
+  if ($form->getVar('_gid') != OAPPROVIDERLIST) {
+    return;
+  }
   foreach ($fields[SIGNATURE] as $key => $val) {
     if (empty($val)) {
       $errors[SIGNATURE] = ts('Your consent is required for all statements');
