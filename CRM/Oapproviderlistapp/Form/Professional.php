@@ -13,7 +13,6 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
 
     $this->assign('customDataType', 'Individual');
     $this->assign('customDataSubType', 'Provider');
-    $this->assign('groupID', OAP_PROFESSIONAL_CGID);
 
     parent::buildQuickForm();
   }

@@ -12,7 +12,6 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
     $this->buildCustom(OAP_EXPERIENCE, 'experience');
     $this->assign('customDataType', 'Individual');
     $this->assign('customDataSubType', 'Provider');
-    $this->assign('groupID', OAP_EXPERIENCE_CGID);
     parent::buildQuickForm();
   }
 

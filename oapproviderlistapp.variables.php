@@ -27,5 +27,3 @@ define('OAP_SECTORCHECK', 20);
 define('OAP_INSURANCE', 21);
 define('OAP_DOCUMENTATION', 22);
 define('OAP_SIGNATURE', 23);
-define('OAP_PROFESSIONAL_CGID', 12);
-define('OAP_EXPERIENCE_CGID', 10);

@@ -1,3 +1,4 @@
+{assign var="groupID" value="10"}
 <div class="crm-public-form-item crm-section professional">
   {include file="CRM/UF/Form/Block.tpl" fields=$experience}
 </div>
