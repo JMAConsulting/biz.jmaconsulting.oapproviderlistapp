@@ -35,7 +35,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
     }
 
     if (!empty($values['_qf_Professional_submit'])) {
-      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application"));
+      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "cid=" . $this->_contactID));
     }
     else {
       CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/application",

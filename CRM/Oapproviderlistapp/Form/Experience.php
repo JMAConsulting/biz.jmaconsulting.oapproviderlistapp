@@ -8,7 +8,9 @@ use CRM_Oapproviderlistapp_ExtensionUtil as E;
  * @see https://wiki.civicrm.org/confluence/display/CRMDOC/QuickForm+Reference
  */
 class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form_ManageApplication {
+  public $_contactID;
   public function buildQuickForm() {
+    $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
     $this->buildCustom(OAP_EXPERIENCE, 'experience');
     $this->assign('customDataType', 'Individual');
     $this->assign('customDataSubType', 'Provider');
@@ -27,11 +29,13 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
     }
 
     if (!empty($values['_qf_Experience_submit'])) {
-      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/professional"));
+      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application",
+        "selectChild=professional&cid=" . $this->_contactID
+      ));
     }
     else {
       CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/application",
-        "selectChild=sectorcheck"
+        "selectChild=sectorcheck&cid=" . $this->_contactID
       ));
     }
   }
