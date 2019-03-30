@@ -15,7 +15,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
 
   public function preProcess() {
     CRM_Utils_System::setTitle(ts('OAP PROVIDER LIST APPLICATION FORM'));
-    $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
+    $this->set('contactID', CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE));
     self::build($this);
   }
 

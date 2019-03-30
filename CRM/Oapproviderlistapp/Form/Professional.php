@@ -8,13 +8,8 @@ use CRM_Oapproviderlistapp_ExtensionUtil as E;
  * @see https://wiki.civicrm.org/confluence/display/CRMDOC/QuickForm+Reference
  */
 class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Form_ManageApplication {
-  public function preProcess() {
-    parent::preProcess();
-    $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
-  }
   public function buildQuickForm() {
     $this->buildCustom(OAP_PROFESSIONAL, 'professional');
-    $this->add('hidden', 'contact_id', $this->_contactID);
 
     $this->assign('customDataType', 'Individual');
     $this->assign('customDataSubType', 'Provider');
@@ -24,7 +19,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
 
   public function postProcess() {
     $values = $this->exportValues();
-    $contactID = $values['contact_id'];
+    $contactID = $form->get('contactID');
     if (!empty($values['_qf_Professional_submit_done'])) {
       $this->sendDraft($values);
     }
