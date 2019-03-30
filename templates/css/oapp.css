@@ -15,6 +15,10 @@ tr {
   margin-right: 50px;
 }
 
+#editrow-custom_7 > div.label {
+  padding-right: 10px;
+}
+
 #editrow-custom_8, #editrow-custom_40 {
   display: inline-flex;
 }
@@ -30,7 +34,6 @@ tr {
 #editrow-custom_11, #editrow-custom_43 {
   display: inline-flex;
 }
-
 
 #editrow-custom_8, #editrow-custom_9, #editrow-custom_10, #editrow-custom_11 {
   width: 250px;
