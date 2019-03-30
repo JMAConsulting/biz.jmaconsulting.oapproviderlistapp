@@ -82,7 +82,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         'valid' => NULL,
         'active' => TRUE,
       ];
-      $tabs[$class]['qfKey'] = $qfKey ? "&qfKey={$qfKey}" : NULL;
+      $tabs[$name]['qfKey'] = $qfKey ? "&qfKey={$qfKey}" : NULL;
 
     }
     return $tabs;
