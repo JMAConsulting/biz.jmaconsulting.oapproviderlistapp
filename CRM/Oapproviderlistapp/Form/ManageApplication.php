@@ -29,6 +29,8 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       $form->set('tabHeader', $tabs);
     }
     $form->assign_by_ref('tabHeader', $tabs);
+    CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
+    CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'templates/css/oapp.css');
     CRM_Core_Resources::singleton()
       ->addScriptFile('civicrm', 'templates/CRM/common/TabHeader.js', 1, 'html-header')
       ->addSetting(array(
