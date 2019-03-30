@@ -9,3 +9,7 @@ fieldset:not(.fieldgroup) {
 tr {
   border-bottom: 1px solid #e6e4df;
 }
+
+#editrow-custom_8 > div.label, #editrow-custom_9 > div.label, #editrow-custom_10 > div.label, #editrow-custom_11 > div.label {
+  margin-right: 50px;
+}

@@ -1,4 +1,4 @@
-<table style="border: 1px solid black;">
+<table>
   <tr>
     <td colspan="2">
       <p>
