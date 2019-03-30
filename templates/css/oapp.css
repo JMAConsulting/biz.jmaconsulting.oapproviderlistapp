@@ -1,0 +1,11 @@
+fieldset:not(.fieldgroup) {
+  background-color: none !important;
+}
+
+.crm-container table {
+  border: none;
+}
+
+tr {
+  border-bottom: 1px solid #e6e4df;
+}
