@@ -10,6 +10,7 @@ use CRM_Oapproviderlistapp_ExtensionUtil as E;
 class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Form_ManageApplication {
   public function buildQuickForm() {
     $this->buildCustom(OAP_PROFESSIONAL, 'professional');
+    $this->add('hidden', 'contact_id', $this->_contactID);
 
     $this->assign('customDataType', 'Individual');
     $this->assign('customDataSubType', 'Provider');
@@ -19,16 +20,17 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
 
   public function postProcess() {
     $values = $this->exportValues();
+    $contactID = $values['contact_id'];
     if (!empty($values['_qf_Professional_submit_done'])) {
       $this->sendDraft($values);
     }
-    $params = array_merge($values, ['contact_id' => $this->_contactID]);
+    $params = array_merge($values, ['contact_id' => $contactID]);
     $fields = [];
     CRM_Contact_BAO_Contact::createProfileContact($params, $fields);
 
-    $customValues = CRM_Core_BAO_CustomField::postProcess($params, $this->_contactID, 'Individual');
+    $customValues = CRM_Core_BAO_CustomField::postProcess($params, $contactID, 'Individual');
     if (!empty($customValues) && is_array($customValues)) {
-      CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_contact', $this->_contactID);
+      CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_contact', $contactID);
     }
 
     if (!empty($values['_qf_Professional_submit'])) {
@@ -36,7 +38,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
     }
     else {
       CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/application",
-        "selectChild=experience"
+        "selectChild=experience&cid=" . $contactID
       ));
     }
   }

@@ -15,13 +15,13 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
 
   public function preProcess() {
     CRM_Utils_System::setTitle(ts('OAP PROVIDER LIST APPLICATION FORM'));
+    $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
     self::build($this);
   }
 
   public static function build(&$form) {
     $form->assign('selectedChild', CRM_Utils_Request::retrieve('selectedChild', 'Alphanumeric', $form));
     $selectChild = CRM_Utils_Request::retrieve('selectChild', 'String', $form, FALSE, NULL, 'GET') ?: 'individual';
-    $form->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $form, FALSE);
 
     $tabs = $form->get('tabHeader');
     if (!$tabs || empty($_GET['reset'])) {
