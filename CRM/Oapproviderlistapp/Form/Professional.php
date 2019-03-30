@@ -19,6 +19,9 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
 
   public function postProcess() {
     $values = $this->exportValues();
+    if (!empty($values['_qf_Professional_submit_done'])) {
+      $this->sendDraft($values);
+    }
     $params = array_merge($values, ['contact_id' => $this->_contactID]);
     $fields = [];
     CRM_Contact_BAO_Contact::createProfileContact($params, $fields);

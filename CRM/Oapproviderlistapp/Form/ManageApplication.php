@@ -43,6 +43,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
 
   public function getTabs(&$form) {
     $tabs = [];
+    $qfKey = $form->get('qfKey');
     $profileNames = [
       'individual' => [
         'title' => ts('Individual Information'),
@@ -81,6 +82,8 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         'valid' => NULL,
         'active' => TRUE,
       ];
+      $tabs[$class]['qfKey'] = $qfKey ? "&qfKey={$qfKey}" : NULL;
+
     }
     return $tabs;
   }
@@ -101,6 +104,12 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       'spacing' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
       'isDefault' => TRUE,
     );
+    $buttons[] = array(
+      'type' => 'submit',
+      'name' => ts('Send Draft'),
+      'spacing' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+      'subName' => 'done',
+    );
 
     $this->addButtons($buttons);
 
@@ -111,6 +120,30 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
   public function postProcess() {
     $values = $this->exportValues();
     parent::postProcess();
+  }
+
+  public function sendDraft($params) {
+    $contact_params = array(array('contact_id', '=', $params['contact_id'], 0, 0));
+    list($contact, $_) = CRM_Contact_BAO_Query::apiQuery($contact_params);
+    $messageTemplates = new CRM_Core_DAO_MessageTemplate();
+    $messageTemplates->id = 68;
+    $messageTemplates->find(TRUE);
+    $body_subject = $messageTemplates->msg_subject;
+    $body_text    = str_replace('{url}', $params['url'], $messageTemplates->msg_text);
+    $body_html    = str_replace('{url}', $params['url'], $messageTemplates->msg_html);
+
+    $mailParams = array(
+      'groupName' => 'Send Draft',
+      'from' => "<info@oapproviderlist.ca>",
+      'toName' =>  $contact['display_name'],
+      'toEmail' => $contact['email'],
+      'subject' => $body_subject,
+      'messageTemplateID' => $messageTemplates->id,
+      'html' => $body_html,
+      'text' => $body_text,
+    );
+    CRM_Utils_Mail::send($mailParams);
+    CRM_Utils_System::redirect(CRM_Utils_System::url(''));
   }
 
   public function buildCustom($id, $name, $viewOnly = FALSE) {

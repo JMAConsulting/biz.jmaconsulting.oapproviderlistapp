@@ -1,5 +1,5 @@
 {assign var="groupID" value="10"}
-<div class="crm-public-form-item crm-section professional">
+<div class="crm-public-form-item crm-section experience">
   {include file="CRM/UF/Form/Block.tpl" fields=$experience}
 </div>
 <div id="customData"></div>

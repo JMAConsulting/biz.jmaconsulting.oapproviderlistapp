@@ -24,6 +24,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
 
   public function postProcess() {
     $values = $this->exportValues();
+
     $fields = [];
     $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields);
     civicrm_api3('Contact', 'create', [
@@ -57,6 +58,14 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           'contact_id_b' => $id,
         ]);
       }
+    }
+
+    if (!empty($values['_qf_Individual_submit_done'])) {
+      $values['contact_id'] = $contactID;
+      $values['url'] = CRM_Utils_System::url("civicrm/application",
+        "cid=" . $contactID
+      );
+      $this->sendDraft($values);
     }
 
     parent::postProcess();
