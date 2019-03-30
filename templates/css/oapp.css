@@ -10,6 +10,38 @@ tr {
   border-bottom: 1px solid #e6e4df;
 }
 
-#editrow-custom_8 > div.label, #editrow-custom_9 > div.label, #editrow-custom_10 > div.label, #editrow-custom_11 > div.label {
+#editrow-custom_8 > div.label, #editrow-custom_9 > div.label, #editrow-custom_10 > div.label, #editrow-custom_11 > div.label,
+#editrow-custom_40 > div.label, #editrow-custom_41 > div.label, #editrow-custom_42 > div.label, #editrow-custom_43 > div.label {
   margin-right: 50px;
+}
+
+#editrow-custom_8, #editrow-custom_40 {
+  display: inline-flex;
+}
+
+#editrow-custom_9, #editrow-custom_41 {
+  display: inline-flex;
+}
+
+#editrow-custom_10, #editrow-custom_42 {
+  display: inline-flex;
+}
+
+#editrow-custom_11, #editrow-custom_43 {
+  display: inline-flex;
+}
+
+
+#editrow-custom_8, #editrow-custom_9, #editrow-custom_10, #editrow-custom_11 {
+  width: 250px;
+}
+
+#editrow-custom_40, #editrow-custom_41, #editrow-custom_42, #editrow-custom_43 {
+  float: right;
+  width: 300px;
+  padding-left: 30px;
+}
+
+.crm-container .professional .content {
+  margin-left: 0% !important;
 }
