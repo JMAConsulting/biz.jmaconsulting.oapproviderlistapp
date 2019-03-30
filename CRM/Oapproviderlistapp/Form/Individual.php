@@ -25,12 +25,10 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
   public function postProcess() {
     $values = $this->exportValues();
 
-    $fields = [];
-    $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields);
-    civicrm_api3('Contact', 'create', [
-      'id' => $contactID,
-      'is_deleted' => TRUE,
-    ]);
+    $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
+    $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, NULL, NULL, OAP_INDIVIDUAL);
+    $fields = CRM_Core_BAO_UFGroup::getFields(OAP_PHONEADDRESS, FALSE, CRM_Core_Action::VIEW);
+    $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $contactID, NULL, OAP_PHONEADDRESS);
 
     $organizationNames = [];
     foreach ($values['organization_name'] as $key => $name) {
@@ -47,9 +45,8 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           'contact_type' => 'Organization',
         ])['id'];
       }
-      $organizationNames[$key] = $id;
       if ($key == 1) {
-        civicrm_api3('Contact', 'create', ['current_employer' => $id]);
+        civicrm_api3('Contact', 'create', ['id' => $contactID, 'current_employer' => $id]);
       }
       else {
         civicrm_api3('Relationship', 'create', [
@@ -59,6 +56,11 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         ]);
       }
     }
+
+    civicrm_api3('Contact', 'create', [
+      'id' => $contactID,
+      'is_deleted' => TRUE,
+    ]);
 
     if (!empty($values['_qf_Individual_submit_done'])) {
       $values['contact_id'] = $contactID;
