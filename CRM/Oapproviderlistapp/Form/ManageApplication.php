@@ -15,7 +15,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
 
   public function preProcess() {
     CRM_Utils_System::setTitle(ts('OAP PROVIDER LIST APPLICATION FORM'));
-    $this->set('contactID', CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE));
+    $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
     self::build($this);
   }
 
@@ -51,27 +51,27 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       ],
       'professional' => [
         'title' => ts('Professional credential(s)'),
-        'url' => CRM_Utils_System::url('civicrm/professional'),
+        'url' => CRM_Utils_System::url('civicrm/professional', 'cid=' . $form->_contactID),
       ],
       'experience' => [
         'title' => ts('Experience'),
-        'url' => CRM_Utils_System::url('civicrm/experience'),
+        'url' => CRM_Utils_System::url('civicrm/experience', 'cid=' . $form->_contactID),
       ],
       'sectorcheck' => [
         'title' => ts('Vulnerable Sector Check'),
-        'url' => CRM_Utils_System::url('civicrm/sectorcheck'),
+        'url' => CRM_Utils_System::url('civicrm/sectorcheck', 'cid=' . $form->_contactID),
       ],
       'insurance' => [
         'title' => ts('Professional Liability Insurance'),
-        'url' => CRM_Utils_System::url('civicrm/insurance'),
+        'url' => CRM_Utils_System::url('civicrm/insurance', 'cid=' . $form->_contactID),
       ],
       'documentation' => [
         'title' => ts('Documentation Checklist'),
-        'url' => CRM_Utils_System::url('civicrm/documentation'),
+        'url' => CRM_Utils_System::url('civicrm/documentation', 'cid=' . $form->_contactID),
       ],
       'signature' => [
         'title' => ts('Signature'),
-        'url' => CRM_Utils_System::url('civicrm/signature'),
+        'url' => CRM_Utils_System::url('civicrm/signature', 'cid=' . $form->_contactID),
       ],
     ];
     foreach ($profileNames as $name => $info) {
