@@ -10,7 +10,7 @@ require_once __DIR__ . '/../../../oapproviderlistapp.variables.php';
  */
 class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
   protected $_first = FALSE;
-  public $_contactID;
+  public $_contactID = NULL;
   public $_last = FALSE;
 
   public function preProcess() {
