@@ -77,7 +77,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
             'phone' => CRM_Utils_Array::value($key, $values['phone']),
           ];
           $addressID = civicrm_api3('Address', 'create', $addressParams)['id'];
-          civicm_api3('Address', 'create', array_merge($addressParams, ['contact_id' => $contactID, 'master_id' => $addressID]));
+          civicrm_api3('Address', 'create', array_merge($addressParams, ['contact_id' => $contactID, 'master_id' => $addressID]));
         }
         //CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $this->_contactID, 'employer_id' , $id);
         $relationshipID = civicrm_api3('Relationship', 'create', [
