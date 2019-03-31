@@ -14,10 +14,13 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
   public function buildQuickForm() {
     CRM_Utils_System::setTitle(ts('Individual Information'));
     $this->buildCustom(OAP_INDIVIDUAL, 'individual');
-    $this->buildCustom(OAP_PHONEADDRESS, 'phoneaddress');
 
     for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
-      $this->add('text', "organization_name[$rowNumber]", ts('Primary Employer Organization Name'), ['size' => 2, 'class' => 'big']);
+      $this->add('text', "organization_name[$rowNumber]", ts('Primary Employer Organization Name'), ['class' => 'big']);
+      $this->add('text', "work_address[$rowNumber]", ts('Work Address'), ['size' => 45, 'maxlength' => 96, 'class' => 'huge']);
+      $this->add('text', "phone[$rowNumber]", ts('Phone Number'), ['size' => 20, 'maxlength' => 32, 'class' => 'medium']);
+      $this->add('text', "city[$rowNumber]", ts('City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
+      $this->add('text', "email[$rowNumber]", ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium']);
     }
     parent::buildQuickForm();
   }
@@ -43,10 +46,22 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         $id = civicrm_api3('Contact', 'create', [
           'organization_name' => $name,
           'contact_type' => 'Organization',
+          'email' => CRM_Utils_Array::value($key, $values['email']),
+          'is_deleted' => TRUE,
         ])['id'];
       }
+      if (!empty($values['work_address'][$key])) {
+        civicm_api3('Address', 'create', [
+          'contact_id' => $id,
+          'location_type_id' => 2,
+          'is_primary' => TRUE,
+          'street_address' => $values['work_address'][$key],
+          'city' => CRM_Utils_Array::value($key, $values['city']),
+          'phone' => CRM_Utils_Array::value($key, $values['phone']),
+        ]);
+      }
       if ($key == 1) {
-        civicrm_api3('Contact', 'create', ['id' => $contactID, 'current_employer' => $id]);
+        civicrm_api3('Contact', 'create', ['id' => $contactID, 'employer_id' => $id]);
       }
       else {
         civicrm_api3('Relationship', 'create', [

@@ -9,7 +9,7 @@
     </td>
   </tr>
   <tr>
-    <td width="48%">
+    <td width="55%">
       <div class="crm-public-form-item crm-section individual" colspan="2">
         {include file="CRM/UF/Form/Block.tpl" fields=$individual}
       </div>
@@ -18,24 +18,32 @@
       <table>
         <tr>
           <td>
-            <div>
+            <div class="crm-public-form-item crm-section">
             {section name='i' start=1 loop=5}
             {assign var='rowNumber' value=$smarty.section.i.index}
-            <dt id="organization_name-{$rowNumber}" class="{if $rowNumber neq 1}hiddenElement{/if} crm-section line-item">
-              <div class="label">{$form.organization_name.$rowNumber.label}</div>&nbsp;&nbsp;&nbsp;&nbsp;{$form.organization_name.$rowNumber.html}
-            </dt>
+            <div id="organization_name-{$rowNumber}" class="{if $rowNumber neq 1}hiddenElement{/if} {cycle values="odd-row,even-row"} crm-section form-item">
+              <br/>
+              <div class="label">{$form.organization_name.$rowNumber.label}</div>
+              <div class="content">
+                {$form.organization_name.$rowNumber.html}
+              </div>
+              <div class="clear"></div><br/>
+              <div class="label">{$form.work_address.$rowNumber.label}</div>
+              <div class="content">{$form.work_address.$rowNumber.html}</div>
+              <div class="clear"></div><br/>
+              <div class="label">{$form.phone.$rowNumber.label}</div>
+              <div class="content">{$form.phone.$rowNumber.html}</div>
+              <div class="clear"></div><br/>
+              <div class="label">{$form.email.$rowNumber.label}</div>
+              <div class="content">{$form.email.$rowNumber.html}</div>
+              <div class="clear"></div>
+              <br/>
+            </div>
             {/section}
           </div>
             <br/>
             <br/>
             <span id="add-another-item" class="crm-hover-button"><a href=#>{ts}Add another employer{/ts}</a></span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="crm-public-form-item crm-section phoneaddress">
-              {include file="CRM/UF/Form/Block.tpl" fields=$phoneaddress}
-            </div>
           </td>
         </tr>
       </table>
@@ -50,6 +58,7 @@
 <script type="text/javascript">
 CRM.$(function($) {
   $('.crm-profile legend').hide();
+  $('#editrow-last_name').insertAfter('#editrow-first_name');
   $('#add-another-item').on('click', function(e) {
     e.preventDefault();
     if ($('[id^="organization_name-"]').hasClass("hiddenElement")) {
