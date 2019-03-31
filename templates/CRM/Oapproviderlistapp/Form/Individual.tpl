@@ -47,6 +47,8 @@
                 <div class="label">{$form.custom_49.label}</div>
                 <div class="content">{$form.custom_49.html}</div>
                 <div class="clear"></div>
+              {else}
+                <div><a href=# class="remove_item crm-hover-button" style="float:right;"><b>{ts}Hide{/ts}</b></a></div>
               {/if}
               <br/>
             </div>
@@ -76,6 +78,11 @@ CRM.$(function($) {
     if ($('[id^="organization_name-"]').hasClass("hiddenElement")) {
       $('.hiddenElement:first').removeClass('hiddenElement');
     }
+  });
+  $('.remove_item').on('click', function(e) {
+    e.preventDefault();
+    var row = $(this).closest('[id^="organization_name-"]');
+    row.addClass('hiddenElement');
   });
 });
 </script>

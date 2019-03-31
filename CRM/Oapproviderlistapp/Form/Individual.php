@@ -40,7 +40,8 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
     $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, NULL, NULL, OAP_INDIVIDUAL);
 
-    $organizationNames = $customParams = [];
+    $customParams = [];
+    $email = NULL;
     $mapping = [
       'custom_53' => 'organization_name',
       'custom_54' => 'work_address',
@@ -57,25 +58,28 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           'organization_name' => $name,
           'options' => ['limit' => 1],
         ]));
+        $email = CRM_Utils_Array::value($key, $values['email']);
         if (!$id) {
           $id = civicrm_api3('Contact', 'create', [
             'organization_name' => $name,
             'contact_type' => 'Organization',
-            'email' => CRM_Utils_Array::value($key, $values['email']),
+            'email' => $email,
             'is_deleted' => TRUE,
           ])['id'];
         }
         if (!empty($values['work_address'][$key])) {
-          civicm_api3('Address', 'create', [
+          $addressParams = [
             'contact_id' => $id,
             'location_type_id' => 2,
             'is_primary' => TRUE,
             'street_address' => $values['work_address'][$key],
             'city' => CRM_Utils_Array::value($key, $values['city']),
             'phone' => CRM_Utils_Array::value($key, $values['phone']),
-          ]);
+          ];
+          $addressID = civicm_api3('Address', 'create', $addressParams)['id'];
+          civicm_api3('Address', 'create', array_merge($addressParams, ['contact_id' => $contactID, 'master_id' => $addressID]));
         }
-        CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $this->_contactID, 'employer_id' , $id);
+        //CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $this->_contactID, 'employer_id' , $id);
         $relationshipID = civicrm_api3('Relationship', 'create', [
           'relationship_type_id' => 5,
           'contact_id_a' => $contactID,
@@ -85,6 +89,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         if (!empty($customValues) && is_array($customValues)) {
           CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_relationship', $relationshipID);
         }
+
       }
       else {
         foreach ($mapping as $cfName => $fieldName) {
@@ -104,6 +109,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     civicrm_api3('Contact', 'create', [
       'id' => $contactID,
       'is_deleted' => TRUE,
+      'email' => $email,
     ]);
 
     if (!empty($values['_qf_Individual_submit_done'])) {
