@@ -1,4 +1,11 @@
-<div class="content description-text">To join the Provider List, you must be a Board Certified Behavior Analyst in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario.</div>
+<div class="content description-text">
+  {crmScope extensionKey='biz.jmaconsulting.oapproviderlist'}
+  {ts}
+  <p>To join the Provider List, you must be a Board Certified Behavior Analyst in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario.
+  </p>
+  {/ts}
+  {/crmScope}
+  </div>
 {assign var="groupID" value="12"}
 <div class="crm-public-form-item crm-section professional">
   {include file="CRM/UF/Form/Block.tpl" fields=$professional}
