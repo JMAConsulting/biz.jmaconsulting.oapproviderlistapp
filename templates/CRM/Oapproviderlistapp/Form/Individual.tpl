@@ -41,9 +41,17 @@
               <div class="label">{$form.phone.$rowNumber.label}</div>
               <div class="content">{$form.phone.$rowNumber.html}</div>
               <div class="clear"></div><br/>
+              <div class="label">{$form.city.$rowNumber.label}</div>
+              <div class="content">{$form.city.$rowNumber.html}</div>
+              <div class="clear"></div><br/>
               <div class="label">{$form.email.$rowNumber.label}</div>
               <div class="content">{$form.email.$rowNumber.html}</div>
               <div class="clear"></div>
+              {if $rowNumber eq 1}
+                <div class="label">{$form.proof_of_emp.$rowNumber.label}</div>
+                <div class="content">{$form.proof_of_emp.$rowNumber.html}</div>
+                <div class="clear"></div>
+              {/if}
               <br/>
             </div>
             {/section}
