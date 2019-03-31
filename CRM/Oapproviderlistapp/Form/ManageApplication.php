@@ -50,7 +50,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         'url' => CRM_Utils_System::url('civicrm/individual'),
       ],
       'professional' => [
-        'title' => ts('Professional credential(s)'),
+        'title' => ts('Professional Credential(s)'),
         'url' => CRM_Utils_System::url('civicrm/professional', 'cid=' . $form->_contactID),
       ],
       'experience' => [
@@ -65,10 +65,12 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         'title' => ts('Professional Liability Insurance'),
         'url' => CRM_Utils_System::url('civicrm/insurance', 'cid=' . $form->_contactID),
       ],
+      /**
       'documentation' => [
         'title' => ts('Documentation Checklist'),
         'url' => CRM_Utils_System::url('civicrm/documentation', 'cid=' . $form->_contactID),
       ],
+      */
       'signature' => [
         'title' => ts('Signature'),
         'url' => CRM_Utils_System::url('civicrm/signature', 'cid=' . $form->_contactID),
@@ -106,7 +108,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     );
     $buttons[] = array(
       'type' => 'submit',
-      'name' => ts('Send Draft'),
+      'name' => ts('Save Draft'),
       'spacing' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
       'subName' => 'done',
     );

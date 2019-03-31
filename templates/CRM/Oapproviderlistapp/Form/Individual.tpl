@@ -58,7 +58,6 @@
 <script type="text/javascript">
 CRM.$(function($) {
   $('.crm-profile legend').hide();
-  $('#editrow-last_name').insertAfter('#editrow-first_name');
   $('#add-another-item').on('click', function(e) {
     e.preventDefault();
     if ($('[id^="organization_name-"]').hasClass("hiddenElement")) {

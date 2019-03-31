@@ -25,7 +25,7 @@ class CRM_Oapproviderlistapp_Form_Insurance extends CRM_Oapproviderlistapp_Form_
     }
     else {
       CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/application",
-        "selectChild=documentation&cid=" . $this->_contactID
+        "selectChild=signature&cid=" . $this->_contactID
       ));
     }
   }
