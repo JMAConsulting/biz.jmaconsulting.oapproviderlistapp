@@ -1,0 +1,96 @@
+#: ./CRM/Oapproviderlistapp/Form/Individual.php ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Individual Information"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Primary Employer Organization Name"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Work Address"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Phone Number"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "City/Town"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Email Address"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "OAP PROVIDER LIST APPLICATION FORM"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Professional Credential(s)"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Experience"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Vulnerable Sector Check"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Professional Liability Insurance"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Signature"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Previous"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Submit"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Next"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Save Draft"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Some of the profile fields cannot be configured for this page."
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Signature.php
+msgid "Thank you for submitting your application to the OAP Provider List"
+msgstr ""
+
+#: ./oapproviderlistapp.php
+msgid "%1"
+msgstr ""
+
+#: ./oapproviderlistapp.php
+msgid "%1 must be a number."
+msgstr ""
+
+#: ./oapproviderlistapp.php
+msgid "Your consent is required for all statements"
+msgstr ""
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Add another employer"
+msgstr ""
+
+#: ./templates/CRM/ProviderList.tpl
+msgid "ADD ANOTHER DEGREE"
+msgstr ""
+
+#: ./templates/CRM/ProviderList.tpl
+msgid "ADD ANOTHER EMPLOYER"
+msgstr ""
+

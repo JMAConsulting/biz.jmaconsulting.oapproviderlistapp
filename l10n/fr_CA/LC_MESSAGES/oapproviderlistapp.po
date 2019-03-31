@@ -1,0 +1,96 @@
+#: ./CRM/Oapproviderlistapp/Form/Individual.php ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Individual Information"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Primary Employer Organization Name"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Work Address"
+msgstr "Adress de travail"
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Phone Number"
+msgstr "Numéro de téléphone"
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "City/Town"
+msgstr "Ville"
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Email Address"
+msgstr "Adresse courriel"
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "OAP PROVIDER LIST APPLICATION FORM"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Professional Credential(s)"
+msgstr "Titres de compétence professionnels"
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Experience"
+msgstr "Expérience"
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Vulnerable Sector Check"
+msgstr "Contrôle du secteur vulnérable"
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Professional Liability Insurance"
+msgstr "Assurance responsabilité professionnelle"
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Signature"
+msgstr "Signature"
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Previous"
+msgstr "Précédent"
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Submit"
+msgstr "Soumettre"
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Next"
+msgstr "Suivant"
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Save Draft"
+msgstr "Enregistrer le brouillon"
+
+#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Some of the profile fields cannot be configured for this page."
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Signature.php
+msgid "Thank you for submitting your application to the OAP Provider List"
+msgstr "Merci d'avoir soumis votre candidature à la liste des fournisseurs du POA"
+
+#: ./oapproviderlistapp.php
+msgid "%1"
+msgstr "%1"
+
+#: ./oapproviderlistapp.php
+msgid "%1 must be a number."
+msgstr "%1 doit être un nombre."
+
+#: ./oapproviderlistapp.php
+msgid "Your consent is required for all statements"
+msgstr "Votre consentement est requis pour toutes les déclarations"
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Add another employer"
+msgstr "Ajouter un autre employeur"
+
+#: ./templates/CRM/ProviderList.tpl
+msgid "ADD ANOTHER DEGREE"
+msgstr ""
+
+#: ./templates/CRM/ProviderList.tpl
+msgid "Add another employer"
+msgstr "Ajouter un autre employeur"
+

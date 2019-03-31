@@ -54,7 +54,7 @@
 {/section}
 </div>
 <span id="add-another-item" class="crm-hover-button" style="font-weight:bold;padding:10px;"><a href=#>{ts}ADD ANOTHER DEGREE{/ts}</a></span>
-<span id="add-another-employer" class="crm-hover-button" style="font-weight:bold;padding:10px;"><a href=#>{ts}ADD ANOTHER EMPLOYER{/ts}</a></span>
+<span id="add-another-employer" class="crm-hover-button" style="font-weight:bold;padding:10px;"><a href=#>{ts}Add Another Employer{/ts}</a></span>
 
 {literal}
 <script type="text/javascript">
