@@ -14,7 +14,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
   public $_last = FALSE;
 
   public function preProcess() {
-    CRM_Utils_System::setTitle(ts('OAP PROVIDER LIST APPLICATION FORM'));
+    CRM_Utils_System::setTitle(E::ts('OAP PROVIDER LIST APPLICATION FORM'));
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
     self::build($this);
   }
@@ -50,33 +50,33 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     }
     $profileNames = [
       'individual' => [
-        'title' => ts('Individual Information'),
+        'title' => E::ts('Individual Information'),
         'url' => CRM_Utils_System::url('civicrm/individual', $query),
       ],
       'professional' => [
-        'title' => ts('Professional Credential(s)'),
+        'title' => E::ts('Professional Credential(s)'),
         'url' => CRM_Utils_System::url('civicrm/professional', $query),
       ],
       'experience' => [
-        'title' => ts('Experience'),
+        'title' => E::ts('Experience'),
         'url' => CRM_Utils_System::url('civicrm/experience', $query),
       ],
       'sectorcheck' => [
-        'title' => ts('Vulnerable Sector Check'),
+        'title' => E::ts('Vulnerable Sector Check'),
         'url' => CRM_Utils_System::url('civicrm/sectorcheck', $query),
       ],
       'insurance' => [
-        'title' => ts('Professional Liability Insurance'),
+        'title' => E::ts('Professional Liability Insurance'),
         'url' => CRM_Utils_System::url('civicrm/insurance', $query),
       ],
       /**
       'documentation' => [
-        'title' => ts('Documentation Checklist'),
+        'title' => E::ts('Documentation Checklist'),
         'url' => CRM_Utils_System::url('civicrm/documentation', 'cid=' . $form->_contactID),
       ],
       */
       'signature' => [
-        'title' => ts('Signature'),
+        'title' => E::ts('Signature'),
         'url' => CRM_Utils_System::url('civicrm/signature', $query),
       ],
     ];
@@ -100,19 +100,19 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     if (!$this->_first) {
       $buttons[] = array(
         'type' => 'submit',
-        'name' => ts('Previous'),
+        'name' => E::ts('Previous'),
         'spacing' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
       );
     }
     $buttons[] = array(
       'type' => 'upload',
-      'name' => $this->_last ? ts('Submit') : ts('Next'),
+      'name' => $this->_last ? E::ts('Submit') : E::ts('Next'),
       'spacing' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
       'isDefault' => TRUE,
     );
     $buttons[] = array(
       'type' => 'submit',
-      'name' => ts('Save Draft'),
+      'name' => E::ts('Save Draft'),
       'spacing' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
       'subName' => 'done',
     );
