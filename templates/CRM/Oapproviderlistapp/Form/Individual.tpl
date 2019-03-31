@@ -48,8 +48,8 @@
               <div class="content">{$form.email.$rowNumber.html}</div>
               <div class="clear"></div>
               {if $rowNumber eq 1}
-                <div class="label">{$form.proof_of_emp.$rowNumber.label}</div>
-                <div class="content">{$form.proof_of_emp.$rowNumber.html}</div>
+                <div class="label">{$form.custom_49.label}</div>
+                <div class="content">{$form.custom_49.html}</div>
                 <div class="clear"></div>
               {/if}
               <br/>
