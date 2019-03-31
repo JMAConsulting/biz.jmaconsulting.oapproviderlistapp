@@ -183,11 +183,13 @@ function oapproviderlistapp_civicrm_validateForm($formName, &$fields, &$files, &
   if ($form->getVar('_gid') != OAPPROVIDERLIST) {
     return;
   }
+  /** Joe commented this out since the Signature tab fields are no longer there and he didn't want to require translation for the error msg
   foreach ($fields[SIGNATURE] as $key => $val) {
     if (empty($val)) {
       $errors[SIGNATURE] = E::ts('Your consent is required for all statements');
     }
   }
+  */
 }
 
 /**
