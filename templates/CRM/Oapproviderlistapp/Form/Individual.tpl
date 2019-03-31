@@ -24,12 +24,12 @@
             {assign var='rowNumber' value=$smarty.section.i.index}
             <div id="organization_name-{$rowNumber}" class="{if $rowNumber neq 1}hiddenElement{/if} {cycle values="odd-row,even-row"} crm-section form-item">
               <br/>
+              <div class="content description">{ts}(if self-employed, write &#8220;self-employed&#8221; here){/ts}</div>
               <div class="label">{$form.organization_name.$rowNumber.label}</div>
               <div class="content">
                 {$form.organization_name.$rowNumber.html}
               </div>
               <div class="clear"></div><br/>
-              <div class="content description">{ts}(if self-employed, write &#8220;self-employed&#8221; here){/ts}</div>
               <div class="label">{$form.work_address.$rowNumber.label}</div>
               <div class="content">{$form.work_address.$rowNumber.html}</div>
               <div class="clear"></div><br/>
