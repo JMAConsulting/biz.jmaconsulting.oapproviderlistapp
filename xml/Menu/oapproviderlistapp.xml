@@ -4,48 +4,48 @@
     <path>civicrm/application</path>
     <page_callback>CRM_Oapproviderlistapp_Form_ManageApplication</page_callback>
     <title>ManageApplication</title>
-    <is_public>1</is_public>
+    <is_public>true</is_public>
   </item>
   <item>
     <path>civicrm/individual</path>
     <page_callback>CRM_Oapproviderlistapp_Form_Individual</page_callback>
     <title>Individual</title>
-    <is_public>1</is_public>
+    <is_public>true</is_public>
   </item>
   <item>
     <path>civicrm/professional</path>
     <page_callback>CRM_Oapproviderlistapp_Form_Professional</page_callback>
     <title>Professional</title>
-    <is_public>1</is_public>
+    <is_public>true</is_public>
   </item>
   <item>
     <path>civicrm/experience</path>
     <page_callback>CRM_Oapproviderlistapp_Form_Experience</page_callback>
     <title>Experience</title>
-    <is_public>1</is_public>
+    <is_public>true</is_public>
   </item>
   <item>
     <path>civicrm/sectorcheck</path>
     <page_callback>CRM_Oapproviderlistapp_Form_SectorCheck</page_callback>
     <title>SectorCheck</title>
-    <is_public>1</is_public>
+    <is_public>true</is_public>
   </item>
   <item>
     <path>civicrm/insurance</path>
     <page_callback>CRM_Oapproviderlistapp_Form_Insurance</page_callback>
     <title>Insurance</title>
-    <is_public>1</is_public>
+    <is_public>true</is_public>
   </item>
   <item>
     <path>civicrm/documentation</path>
     <page_callback>CRM_Oapproviderlistapp_Form_Documentation</page_callback>
     <title>Documentation</title>
-    <is_public>1</is_public>
+    <is_public>true</is_public>
   </item>
   <item>
     <path>civicrm/signature</path>
     <page_callback>CRM_Oapproviderlistapp_Form_Signature</page_callback>
     <title>Signature</title>
-    <is_public>1</is_public>
+    <is_public>true</is_public>
   </item>
 </menu>
