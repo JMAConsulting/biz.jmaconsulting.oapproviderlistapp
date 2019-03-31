@@ -29,6 +29,27 @@ tr {
   padding-right: 10px;
 }
 
+#editrow-first_name, #editrow-last_name {
+  display: inline-flex;
+}
+
+#editrow-first_name .label, #editrow-last_name .label {
+  float:none;
+  display: block;
+  width: 100px;
+}
+
+#editrow-first_name .content, #editrow-last_name .content {
+  display: block;
+  margin-left: 0% !important
+}
+
+@media only screen and (min-width: 1339px) {
+  #editrow-last_name {
+    padding-left: 10px;
+  }
+}
+
 #editrow-custom_8, #editrow-custom_40 {
   display: inline-flex;
 }
@@ -57,4 +78,16 @@ tr {
 
 .crm-container .professional .content {
   margin-left: 0% !important;
+}
+
+.crm-section {
+  clear: both !important;
+}
+
+@media only screen and (min-width: 400px) and (max-width: 1247px) {
+  #editrow-custom_40, #editrow-custom_41, #editrow-custom_42, #editrow-custom_43 {
+    float: none;
+    width: 300px;
+    padding-left: 0px;
+  }
 }
