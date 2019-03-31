@@ -5,7 +5,7 @@
       {ts}
       <p>Please read this form carefully to make sure that you meet the requirements to join the Ontario Autism Program (OAP) Provider List.
       </p>
-      
+
       <p>Please provide information on your primary current employer(s) through which you will be clinically supervising Ontario Autism Program behavioural services.
       </p>
 
@@ -48,6 +48,7 @@
               <div class="content">{$form.email.$rowNumber.html}</div>
               <div class="clear"></div>
               {if $rowNumber eq 1}
+                <br/>
                 <div class="label">{$form.custom_49.label}</div>
                 <div class="content">{$form.custom_49.html}</div>
                 <div class="clear"></div>
