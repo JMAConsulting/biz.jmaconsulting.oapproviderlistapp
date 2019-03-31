@@ -24,16 +24,15 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
 
   public function postProcess() {
     $values = $this->exportValues();
-    if (empty($this->_contactID)) {
-      return;
-    }
-    $params = array_merge($values, ['contact_id' => $this->_contactID]);
-    $fields = [];
-    CRM_Contact_BAO_Contact::createProfileContact($params, $fields);
+    if (!empty($this->_contactID)) {
+      $params = array_merge($values, ['contact_id' => $this->_contactID]);
+      $fields = [];
+      CRM_Contact_BAO_Contact::createProfileContact($params, $fields);
 
-    $customValues = CRM_Core_BAO_CustomField::postProcess($params, $this->_contactID, 'Individual');
-    if (!empty($customValues) && is_array($customValues)) {
-      CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_contact', $this->_contactID);
+      $customValues = CRM_Core_BAO_CustomField::postProcess($params, $this->_contactID, 'Individual');
+      if (!empty($customValues) && is_array($customValues)) {
+        CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_contact', $this->_contactID);
+      }
     }
 
     if (!empty($values['_qf_Experience_submit'])) {

@@ -34,58 +34,56 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
 
   public function postProcess() {
     $values = $this->exportValues();
-    if (empty($this->_contactID)) {
-      return;
-    }
+    if (!empty($this->_contactID)) {
+      $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
+      $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, NULL, NULL, OAP_INDIVIDUAL);
+      $fields = CRM_Core_BAO_UFGroup::getFields(OAP_PHONEADDRESS, FALSE, CRM_Core_Action::VIEW);
+      $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $contactID, NULL, OAP_PHONEADDRESS);
 
-    $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
-    $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, NULL, NULL, OAP_INDIVIDUAL);
-    $fields = CRM_Core_BAO_UFGroup::getFields(OAP_PHONEADDRESS, FALSE, CRM_Core_Action::VIEW);
-    $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $contactID, NULL, OAP_PHONEADDRESS);
-
-    $organizationNames = [];
-    foreach ($values['organization_name'] as $key => $name) {
-      if (!$name) {
-        continue;
-      }
-      $id = CRM_Utils_Array::value('id', civicrm_api3('Contact', 'get', [
-        'organization_name' => $name,
-        'options' => ['limit' => 1],
-      ]));
-      if (!$id) {
-        $id = civicrm_api3('Contact', 'create', [
+      $organizationNames = [];
+      foreach ($values['organization_name'] as $key => $name) {
+        if (!$name) {
+          continue;
+        }
+        $id = CRM_Utils_Array::value('id', civicrm_api3('Contact', 'get', [
           'organization_name' => $name,
-          'contact_type' => 'Organization',
-          'email' => CRM_Utils_Array::value($key, $values['email']),
-          'is_deleted' => TRUE,
-        ])['id'];
+          'options' => ['limit' => 1],
+        ]));
+        if (!$id) {
+          $id = civicrm_api3('Contact', 'create', [
+            'organization_name' => $name,
+            'contact_type' => 'Organization',
+            'email' => CRM_Utils_Array::value($key, $values['email']),
+            'is_deleted' => TRUE,
+          ])['id'];
+        }
+        if (!empty($values['work_address'][$key])) {
+          civicm_api3('Address', 'create', [
+            'contact_id' => $id,
+            'location_type_id' => 2,
+            'is_primary' => TRUE,
+            'street_address' => $values['work_address'][$key],
+            'city' => CRM_Utils_Array::value($key, $values['city']),
+            'phone' => CRM_Utils_Array::value($key, $values['phone']),
+          ]);
+        }
+        if ($key == 1) {
+          civicrm_api3('Contact', 'create', ['id' => $contactID, 'employer_id' => $id]);
+        }
+        else {
+          civicrm_api3('Relationship', 'create', [
+            'relationship_type_id' => 5,
+            'contact_id_a' => $contactID,
+            'contact_id_b' => $id,
+          ]);
+        }
       }
-      if (!empty($values['work_address'][$key])) {
-        civicm_api3('Address', 'create', [
-          'contact_id' => $id,
-          'location_type_id' => 2,
-          'is_primary' => TRUE,
-          'street_address' => $values['work_address'][$key],
-          'city' => CRM_Utils_Array::value($key, $values['city']),
-          'phone' => CRM_Utils_Array::value($key, $values['phone']),
-        ]);
-      }
-      if ($key == 1) {
-        civicrm_api3('Contact', 'create', ['id' => $contactID, 'employer_id' => $id]);
-      }
-      else {
-        civicrm_api3('Relationship', 'create', [
-          'relationship_type_id' => 5,
-          'contact_id_a' => $contactID,
-          'contact_id_b' => $id,
-        ]);
-      }
-    }
 
-    civicrm_api3('Contact', 'create', [
-      'id' => $contactID,
-      'is_deleted' => TRUE,
-    ]);
+      civicrm_api3('Contact', 'create', [
+        'id' => $contactID,
+        'is_deleted' => TRUE,
+      ]);
+    }
 
     if (!empty($values['_qf_Individual_submit_done'])) {
       $values['contact_id'] = $contactID;
