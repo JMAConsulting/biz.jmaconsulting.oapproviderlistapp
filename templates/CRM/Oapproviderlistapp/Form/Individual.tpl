@@ -1,7 +1,7 @@
 <table>
   <tr>
     <td colspan="2">
-      {crmScope extensionKey='biz.jmaconsulting.oapproviderlist'}
+      {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
       {ts}
       <p>Please read this form carefully to make sure that you meet the requirements to join the Ontario Autism Program (OAP) Provider List.
       </p>
@@ -58,7 +58,7 @@
           </div>
             <br/>
             <br/>
-            {crmScope extensionKey='biz.jmaconsulting.oapproviderlist'}
+            {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
             <span id="add-another-item" class="crm-hover-button"><a href=#>{ts}Add another employer{/ts}</a></span>
             {/ts}
           </td>
