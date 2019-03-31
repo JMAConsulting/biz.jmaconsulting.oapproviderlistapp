@@ -147,9 +147,9 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
           if (!empty($_POST["field_custom_" . $value['id']]) && !empty($_POST["field_custom_" . $value['id']][$rowNumber])) {
             $submittedValues[$group][] = $rowNumber;
           }
-          $form->add(strtolower($value['html_type']), $name, ts($value['label']), NULL);
+          $form->add(strtolower($value['html_type']), $name, ts("%1", [1 => $value['label']]), NULL);
           if (in_array($value['label'], ["Year Completed", "Total number of hours", "Number of hours that involved supervisory duties"])) {
-            $form->addRule($name, ts($value['label'] . ' must be a number.'), 'numeric');
+            $form->addRule($name, ts('%1 must be a number.', [1 => $value['label']]), 'numeric');
           }
         }
       }
