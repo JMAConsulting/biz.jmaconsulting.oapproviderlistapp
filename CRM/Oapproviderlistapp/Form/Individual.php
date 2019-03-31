@@ -19,15 +19,15 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
   }
 
   public function buildQuickForm() {
-    CRM_Utils_System::setTitle(ts('Individual Information'));
+    CRM_Utils_System::setTitle(E::ts('Individual Information'));
     $this->buildCustom(OAP_INDIVIDUAL, 'individual', 496233);
 
     for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
-      $this->add('text', "organization_name[$rowNumber]", ts('Primary Employer Organization Name'), ['class' => 'big']);
-      $this->add('text', "work_address[$rowNumber]", ts('Work Address'), ['size' => 45, 'maxlength' => 96, 'class' => 'huge']);
-      $this->add('text', "phone[$rowNumber]", ts('Phone Number'), ['size' => 20, 'maxlength' => 32, 'class' => 'medium']);
-      $this->add('text', "city[$rowNumber]", ts('City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
-      $this->add('text', "email[$rowNumber]", ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium']);
+      $this->add('text', "organization_name[$rowNumber]", E::ts('Primary Employer Organization Name'), ['class' => 'big']);
+      $this->add('text', "work_address[$rowNumber]", E::ts('Work Address'), ['size' => 45, 'maxlength' => 96, 'class' => 'huge']);
+      $this->add('text', "phone[$rowNumber]", E::ts('Phone Number'), ['size' => 20, 'maxlength' => 32, 'class' => 'medium']);
+      $this->add('text', "city[$rowNumber]", E::ts('City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
+      $this->add('text', "email[$rowNumber]", E::ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium']);
       if ($rowNumber == 1) {
         CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, FALSE);
       }
