@@ -75,7 +75,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
             'phone' => CRM_Utils_Array::value($key, $values['phone']),
           ]);
         }
-        civicrm_api3('Contact', 'create', ['id' => $contactID, 'employer_id' => $id]);
+        CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $this->_contactID, 'employer_id' , $id);
         $relationshipID = civicrm_api3('Relationship', 'create', [
           'relationship_type_id' => 5,
           'contact_id_a' => $contactID,
