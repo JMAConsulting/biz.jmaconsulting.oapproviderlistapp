@@ -74,7 +74,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
             'is_primary' => TRUE,
             'street_address' => $values['work_address'][$key],
             'city' => CRM_Utils_Array::value($key, $values['city']),
-            'phone' => CRM_Utils_Array::value($key, $values['phone']),
+//            'phone' => CRM_Utils_Array::value($key, $values['phone']),
           ];
           $addressID = civicrm_api3('Address', 'create', $addressParams)['id'];
           civicrm_api3('Address', 'create', array_merge($addressParams, ['contact_id' => $contactID, 'master_id' => $addressID]));
