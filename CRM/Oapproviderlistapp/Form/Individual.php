@@ -85,15 +85,17 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           'contact_id_a' => $contactID,
           'contact_id_b' => $id,
         ])['id'];
+        /**
         $customValues = CRM_Core_BAO_CustomField::postProcess($values, $relationshipID, 'Relationships');
         if (!empty($customValues) && is_array($customValues)) {
           CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_relationship', $relationshipID);
         }
+        */
 
       }
       else {
         foreach ($mapping as $cfName => $fieldName) {
-          if ($values[$fieldName][$key]) {
+          if (!empty($values[$fieldName][$key])) {
             $customParams["$cfName" . '_-' . $key] = $values[$fieldName][$key];
           }
         }
