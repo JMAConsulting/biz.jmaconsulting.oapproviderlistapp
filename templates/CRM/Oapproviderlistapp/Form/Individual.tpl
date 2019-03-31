@@ -61,7 +61,7 @@
             <br/>
             {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
             <span id="add-another-item" class="crm-hover-button"><a href=#>{ts}Add another employer{/ts}</a></span>
-            {/ts}
+            {/crmScope}
           </td>
         </tr>
       </table>
