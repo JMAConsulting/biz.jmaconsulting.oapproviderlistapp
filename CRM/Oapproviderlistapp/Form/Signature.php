@@ -35,7 +35,7 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
       CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "selectChild=insurance&cid=" . $this->_contactID));
     }
     else {
-      CRM_Core_Session::setStatus("", ts('Thank you for submitting your application to the OAP Provider List'), "success");
+      CRM_Core_Session::setStatus("", E::ts('Thank you for submitting your application to the OAP Provider List'), "success");
       CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url(''));
     }
   }
