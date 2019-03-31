@@ -12,7 +12,7 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
   public $_contactID;
   public function buildQuickForm() {
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
-    $this->buildCustom(OAP_SIGNATURE, 'signature');
+    $this->buildCustom(OAP_SIGNATURE, 'signature', FALSE, TRUE);
 
     parent::buildQuickForm();
   }

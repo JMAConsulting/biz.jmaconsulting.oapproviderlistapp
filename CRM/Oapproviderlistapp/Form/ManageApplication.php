@@ -148,7 +148,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     CRM_Utils_System::redirect(CRM_Utils_System::url(''));
   }
 
-  public function buildCustom($id, $name, $viewOnly = FALSE) {
+  public function buildCustom($id, $name, $viewOnly = FALSE, $ignoreContact = FALSE) {
     if ($id) {
       $button = substr($this->controller->getButtonName(), -4);
       $cid = CRM_Utils_Request::retrieve('cid', 'Positive', $this);
@@ -161,7 +161,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         'participant_fee_amount' => 1,
         'participant_fee_level' => 1,
       );
-      if ($contactID) {
+      if ($contactID && !$ignoreContact) {
         //FIX CRM-9653
         if (is_array($id)) {
           $fields = array();
