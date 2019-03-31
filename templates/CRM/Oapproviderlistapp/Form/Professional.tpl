@@ -9,6 +9,11 @@
 <div class="crm-public-form-item crm-section professional">
   {include file="CRM/UF/Form/Block.tpl" fields=$professional}
 </div>
+<div class="content description-text">
+<p>
+{ts}Please note any other relevant credentials you have achieved and the date you obtained them.{/ts}
+</p>
+</div>
 <div id="customData"></div>
 {include file="CRM/common/customData.tpl"}
 
