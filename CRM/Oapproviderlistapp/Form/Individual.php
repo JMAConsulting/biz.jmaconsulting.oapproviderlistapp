@@ -11,9 +11,16 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
 
   protected $_first = TRUE;
 
+  public function setDefaultValues() {
+    $defaults = [];
+    $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE);
+    CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactID, $fields, $defaults, TRUE);
+    return $defaults;
+  }
+
   public function buildQuickForm() {
     CRM_Utils_System::setTitle(ts('Individual Information'));
-    $this->buildCustom(OAP_INDIVIDUAL, 'individual');
+    $this->buildCustom(OAP_INDIVIDUAL, 'individual', 496233);
 
     for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
       $this->add('text', "organization_name[$rowNumber]", ts('Primary Employer Organization Name'), ['class' => 'big']);
@@ -27,6 +34,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
 
   public function postProcess() {
     $values = $this->exportValues();
+    if (empty($this->_contactID)) {
+      return;
+    }
 
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
     $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, NULL, NULL, OAP_INDIVIDUAL);

@@ -19,6 +19,9 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
 
   public function postProcess() {
     $values = $this->exportValues();
+    if (empty($this->_contactID)) {
+      return;
+    }
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_SIGNATURE, FALSE, CRM_Core_Action::VIEW);
     $activityID = civicrm_api3('Activity', 'create', [
       'source_contact_id' => $this->_contactID,

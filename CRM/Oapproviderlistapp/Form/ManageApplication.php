@@ -44,26 +44,30 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
   public function getTabs(&$form) {
     $tabs = [];
     $qfKey = $form->get('qfKey');
+    $query = 'reset=1';
+    if (!empty($form->_contactID)) {
+      $query .= '&cid=' . $form->_contactID;
+    }
     $profileNames = [
       'individual' => [
         'title' => ts('Individual Information'),
-        'url' => CRM_Utils_System::url('civicrm/individual'),
+        'url' => CRM_Utils_System::url('civicrm/individual', $query),
       ],
       'professional' => [
         'title' => ts('Professional Credential(s)'),
-        'url' => CRM_Utils_System::url('civicrm/professional', 'cid=' . $form->_contactID),
+        'url' => CRM_Utils_System::url('civicrm/professional', $query),
       ],
       'experience' => [
         'title' => ts('Experience'),
-        'url' => CRM_Utils_System::url('civicrm/experience', 'cid=' . $form->_contactID),
+        'url' => CRM_Utils_System::url('civicrm/experience', $query),
       ],
       'sectorcheck' => [
         'title' => ts('Vulnerable Sector Check'),
-        'url' => CRM_Utils_System::url('civicrm/sectorcheck', 'cid=' . $form->_contactID),
+        'url' => CRM_Utils_System::url('civicrm/sectorcheck', $query),
       ],
       'insurance' => [
         'title' => ts('Professional Liability Insurance'),
-        'url' => CRM_Utils_System::url('civicrm/insurance', 'cid=' . $form->_contactID),
+        'url' => CRM_Utils_System::url('civicrm/insurance', $query),
       ],
       /**
       'documentation' => [
@@ -73,7 +77,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       */
       'signature' => [
         'title' => ts('Signature'),
-        'url' => CRM_Utils_System::url('civicrm/signature', 'cid=' . $form->_contactID),
+        'url' => CRM_Utils_System::url('civicrm/signature', $query),
       ],
     ];
     foreach ($profileNames as $name => $info) {
