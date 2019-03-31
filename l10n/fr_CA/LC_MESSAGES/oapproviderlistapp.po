@@ -107,7 +107,7 @@ msgid "Add another employer"
 msgstr "Ajouter un autre employeur"
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid "To join the Provider List, you must be a Board Certified Behavior Analyst in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario."
+msgid "To join the Provider List, you must be a Board Certified Behavior Analyst® in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario."
 msgstr "Pour vous inscrire sur la Liste des fournisseurs, vous devez être un(e) analyste du comportement certifié(e) en règle ou un(e) psychologue agréé(e) ou un(e) associé(e) en psychologie en règle inscrit(e) auprès de l'Ordre des psychologues de l'Ontario."
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl

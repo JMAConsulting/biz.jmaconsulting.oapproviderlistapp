@@ -78,10 +78,6 @@ msgstr ""
 msgid "%1 must be a number."
 msgstr ""
 
-#: ./oapproviderlistapp.php
-msgid "Your consent is required for all statements"
-msgstr ""
-
 #: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Please read this form carefully to make sure that you meet the requirements to join the Ontario Autism Program (OAP) Provider List."
 msgstr ""
@@ -107,7 +103,7 @@ msgid "Add another employer"
 msgstr ""
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid "To join the Provider List, you must be a Board Certified Behavior Analyst in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario."
+msgid "To join the Provider List, you must be a Board Certified Behavior Analyst® in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario."
 msgstr ""
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
