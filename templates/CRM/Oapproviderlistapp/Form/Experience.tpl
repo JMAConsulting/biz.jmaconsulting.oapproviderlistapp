@@ -2,8 +2,8 @@
 <div class="crm-public-form-item crm-section experience">
   {include file="CRM/UF/Form/Block.tpl" fields=$experience}
 </div>
-<div id="customData"></div>
-{include file="CRM/common/customData.tpl"}
+<div id="customData1"></div>
+{include file="customData.tpl"}
 
 <div class="crm-submit-buttons">
   {include file="CRM/common/formButtons.tpl" location="bottom"}
@@ -11,7 +11,7 @@
 {literal}
 <script type="text/javascript">
 CRM.$(function($) {
-  CRM.buildCustomData('Individual', 'Provider');
+  CRM.buildCustomData('Individual', 'Provider', 1);
   $('.crm-profile legend').hide();
 });
 </script>
