@@ -83,7 +83,39 @@ msgid "Your consent is required for all statements"
 msgstr ""
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Please read this form carefully to make sure that you meet the requirements to join the Ontario Autism Program (OAP) Provider List."
+msgstr ""
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Please provide information on your primary current employer(s) through which you will be clinically supervising Ontario Autism Program behavioural services."
+msgstr ""
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "You must provide a proof of employment letter for each employer listed below. This letter must be on the organization’s letterhead and include the role and credentials of the person signing. You do not need to submit proof of self-employment."
+msgstr ""
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "(if self-employed, write &#8220;self-employed&#8221; here)"
+msgstr ""
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Hide"
+msgstr ""
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Add another employer"
+msgstr ""
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+msgid "To join the Provider List, you must be a Board Certified Behavior Analyst in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario."
+msgstr ""
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+msgid "If you are a psychologist or psychological associate with ABA expertise, you are eligible to join the OAP Provider List. You do not need to obtain a BCBA® or BCBA-D™, however, you will need to have your ABA expertise confirmed by a BCBA-D™. Upon receiving your application package, the Provider List administrator will contact you with more information about the equivalency process for confirming ABA expertise."
+msgstr ""
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+msgid "Please note any other relevant credentials you have achieved and the date you obtained them."
 msgstr ""
 
 #: ./templates/CRM/ProviderList.tpl
@@ -91,6 +123,6 @@ msgid "ADD ANOTHER DEGREE"
 msgstr ""
 
 #: ./templates/CRM/ProviderList.tpl
-msgid "ADD ANOTHER EMPLOYER"
+msgid "Add Another Employer"
 msgstr ""
 

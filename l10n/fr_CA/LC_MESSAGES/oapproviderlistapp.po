@@ -1,14 +1,14 @@
 #: ./CRM/Oapproviderlistapp/Form/Individual.php ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Individual Information"
-msgstr ""
+msgstr "Renseignements sur la personne"
 
 #: ./CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Primary Employer Organization Name"
-msgstr ""
+msgstr "Nom de l’organisation de l’employeur principal"
 
 #: ./CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Work Address"
-msgstr "Adress de travail"
+msgstr "Adresse du lieu de travail"
 
 #: ./CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Phone Number"
@@ -16,7 +16,7 @@ msgstr "Numéro de téléphone"
 
 #: ./CRM/Oapproviderlistapp/Form/Individual.php
 msgid "City/Town"
-msgstr "Ville"
+msgstr "Ville/village"
 
 #: ./CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Email Address"
@@ -24,11 +24,11 @@ msgstr "Adresse courriel"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "OAP PROVIDER LIST APPLICATION FORM"
-msgstr ""
+msgstr "FORMULAIRE DE DEMANDE D’INSCRIPTION SUR LA LISTE DES FOURNISSEURS DU POSA"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Professional Credential(s)"
-msgstr "Titres de compétence professionnels"
+msgstr "Titre(s) de compétence professionnel(s)"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Experience"
@@ -36,11 +36,11 @@ msgstr "Expérience"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Vulnerable Sector Check"
-msgstr "Contrôle du secteur vulnérable"
+msgstr "Vérification de l’aptitude à travailler auprès de personnes vulnérables auprès de la police"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Professional Liability Insurance"
-msgstr "Assurance responsabilité professionnelle"
+msgstr "Assurance responsabilité civile professionnelle"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Signature"
@@ -64,33 +64,65 @@ msgstr "Enregistrer le brouillon"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Some of the profile fields cannot be configured for this page."
-msgstr ""
+msgstr "Certains champs de profil ne peuvent pas être configurés pour cette page."
 
 #: ./CRM/Oapproviderlistapp/Form/Signature.php
 msgid "Thank you for submitting your application to the OAP Provider List"
-msgstr "Merci d'avoir soumis votre candidature à la liste des fournisseurs du POA"
+msgstr "Merci d'avoir soumis votre demand d'inscription sur la liste des fournisseurs du POSA"
 
 #: ./oapproviderlistapp.php
 msgid "%1"
-msgstr "%1"
+msgstr ""
 
 #: ./oapproviderlistapp.php
 msgid "%1 must be a number."
-msgstr "%1 doit être un nombre."
+msgstr "% 1 doit être un nombre."
 
 #: ./oapproviderlistapp.php
 msgid "Your consent is required for all statements"
 msgstr "Votre consentement est requis pour toutes les déclarations"
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Please read this form carefully to make sure that you meet the requirements to join the Ontario Autism Program (OAP) Provider List."
+msgstr "Veuillez lire attentivement le présent formulaire pour vous assurer que vous répondez aux critères d’admissibilité de l’inscription sur la Liste des fournisseurs du Programme ontarien des services en matière d'autisme (POSA)."
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Please provide information on your primary current employer(s) through which you will be clinically supervising Ontario Autism Program behavioural services."
+msgstr "Veuillez fournir les renseignements sur votre ou vos employeurs principaux actuels par l'intermédiaire desquels vous superviserez sur le plan clinique les services comportementaux du Programme ontarien des services en matière d’autisme."
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "You must provide a proof of employment letter for each employer listed below. This letter must be on the organization’s letterhead and include the role and credentials of the person signing. You do not need to submit proof of self-employment."
+msgstr "Vous devez fournir une lettre d’attestation d’emploi pour chacun des employeurs énumérés ci-dessous. Cette lettre doit être rédigée sur le papier à en-tête de l’organisation et indiquer le rôle et les titres de compétence de la personne qui la signe. Vous n'avez pas besoin de soumettre une preuve de travail indépendant."
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "(if self-employed, write &#8220;self-employed&#8221; here)"
+msgstr "(si vous êtes travailleur autonome, écrivez &laquo; travailleur autonome &raquo; ici)"
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Hide"
+msgstr "Masquer"
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Add another employer"
 msgstr "Ajouter un autre employeur"
 
-#: ./templates/CRM/ProviderList.tpl
-msgid "ADD ANOTHER DEGREE"
-msgstr ""
+#: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+msgid "To join the Provider List, you must be a Board Certified Behavior Analyst in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario."
+msgstr "Pour vous inscrire sur la Liste des fournisseurs, vous devez être un(e) analyste du comportement certifié(e) en règle ou un(e) psychologue agréé(e) ou un(e) associé(e) en psychologie en règle inscrit(e) auprès de l'Ordre des psychologues de l'Ontario."
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+msgid "If you are a psychologist or psychological associate with ABA expertise, you are eligible to join the OAP Provider List. You do not need to obtain a BCBA® or BCBA-D™, however, you will need to have your ABA expertise confirmed by a BCBA-D™. Upon receiving your application package, the Provider List administrator will contact you with more information about the equivalency process for confirming ABA expertise."
+msgstr "Si vous êtes un(e) psychologue ou un(e) associé(e) en psychologie qui possède des compétences en ACA, vous êtes admissible à l’inscription sur la Liste des fournisseurs du POSA. Vous n’avez pas besoin d’obtenir le titre de BCBA ou de BCBA-D. Cependant, vous devrez faire confirmer vos compétences en ACA par un BCBA-D. Sur réception de votre dossier de candidature, l’administrateur de la Liste des fournisseurs communiquera avec vous pour vous fournir de plus amples informations sur le processus d’équivalence pour la confirmation des compétences en ACA."
+
+#: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+msgid "Please note any other relevant credentials you have achieved and the date you obtained them."
+msgstr "Veuillez indiquer tout autre titre de compétence pertinent que vous avez obtenu et la date à laquelle vous l'avez obtenu."
 
 #: ./templates/CRM/ProviderList.tpl
-msgid "Add another employer"
+msgid "ADD ANOTHER DEGREE"
+msgstr "AJOUTER UN AUTRE DEGRÉ"
+
+#: ./templates/CRM/ProviderList.tpl
+msgid "Add Another Employer"
 msgstr "Ajouter un autre employeur"
 
