@@ -2,6 +2,7 @@
 
 require_once 'oapproviderlistapp.civix.php';
 require_once 'oapproviderlistapp.variables.php';
+use CRM_Oapproviderlistapp_ExtensionUtil as E;
 
 /**
  * Implementation of hook_civicrm_config
@@ -147,9 +148,9 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
           if (!empty($_POST["field_custom_" . $value['id']]) && !empty($_POST["field_custom_" . $value['id']][$rowNumber])) {
             $submittedValues[$group][] = $rowNumber;
           }
-          $form->add(strtolower($value['html_type']), $name, ts("%1", [1 => $value['label']]), NULL);
+          $form->add(strtolower($value['html_type']), $name, E::ts("%1", [1 => $value['label']]), NULL);
           if (in_array($value['label'], ["Year Completed", "Total number of hours", "Number of hours that involved supervisory duties"])) {
-            $form->addRule($name, ts('%1 must be a number.', [1 => $value['label']]), 'numeric');
+            $form->addRule($name, E::ts('%1 must be a number.', [1 => $value['label']]), 'numeric');
           }
         }
       }
@@ -184,7 +185,7 @@ function oapproviderlistapp_civicrm_validateForm($formName, &$fields, &$files, &
   }
   foreach ($fields[SIGNATURE] as $key => $val) {
     if (empty($val)) {
-      $errors[SIGNATURE] = ts('Your consent is required for all statements');
+      $errors[SIGNATURE] = E::ts('Your consent is required for all statements');
     }
   }
 }
