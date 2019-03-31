@@ -20,12 +20,20 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
   public function postProcess() {
     $values = $this->exportValues();
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_SIGNATURE, FALSE, CRM_Core_Action::VIEW);
-    CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $this->_contactID, NULL, OAP_SIGNATURE);
+    $activityID = civicrm_api3('Activity', 'create', [
+      'source_contact_id' => $this->_contactID,
+      'activity_type_id' => "Provider List Application Submission",
+      'subject' => 'Provider List Application Submission',
+      'activity_status_id' => 'Completed',
+      'target_id' => $this->_contactID,
+    ])['id'];
+    CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $activityID, NULL, OAP_SIGNATURE);
     if (!empty($values['_qf_Signature_submit'])) {
-      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "selectChild=documentation&cid=" . $this->_contactID));
+      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "selectChild=insurance&cid=" . $this->_contactID));
     }
     else {
-      CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm"));
+      CRM_Core_Session::setStatus("", ts('Thank you for submitting your application to the OAP Provider List'), "success");
+      CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url(''));
     }
   }
 

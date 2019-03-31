@@ -1,4 +1,4 @@
-<div class="crm-public-form-item crm-section professional">
+<div class="crm-public-form-item crm-section signature">
   {include file="CRM/UF/Form/Block.tpl" fields=$signature}
 </div>
 <div class="crm-submit-buttons">
