@@ -133,7 +133,9 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     $messageTemplates->find(TRUE);
     $body_subject = $messageTemplates->msg_subject;
     $body_text    = str_replace('{date}', date('D, M j, Y \a\t g:ia'), str_replace('{url}', $params['url'], $messageTemplates->msg_text));
-    $body_html    = str_replace('{date}', date('D, M j, Y \a\t g:ia'), str_replace('{url}', $params['url'], $messageTemplates->msg_html));
+    $body_html    = "{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}" . str_replace('{date}', date('D, M j, Y \a\t g:ia'), str_replace('{url}', $params['url'], $messageTemplates->msg_html)) . "{/crmScope}";
+    $body_html = CRM_Core_Smarty::singleton()->fetch("string:{$body_html}");
+    $body_text = CRM_Core_Smarty::singleton()->fetch("string:{$body_text}");
 
     $mailParams = array(
       'groupName' => 'Send Draft',
