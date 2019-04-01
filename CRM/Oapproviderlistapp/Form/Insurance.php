@@ -23,11 +23,12 @@ class CRM_Oapproviderlistapp_Form_Insurance extends CRM_Oapproviderlistapp_Form_
   public function postProcess() {
     parent::postProcess();
     $values = $this->controller->exportValues($this->_name);
+    
     if (!empty($this->_contactID)) {
       $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INSURANCE, FALSE, CRM_Core_Action::VIEW);
       CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $this->_contactID, NULL, OAP_INSURANCE);
     }
-    if (!empty($values['_qf_Insurance_submit'])) {
+    if (CRM_Utils_Array::value('_qf_Insurance_submit', $this->exportValues())) {
       CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "selectChild=experience&cid=" . $this->_contactID));
     }
     else {

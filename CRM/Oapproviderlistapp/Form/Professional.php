@@ -80,7 +80,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
       $fields = [];
       CRM_Contact_BAO_Contact::createProfileContact($params, $fields);
 
-      if (!empty($values['_qf_Professional_submit'])) {
+      if (CRM_Utils_Array::value('_qf_Professional_submit', $this->exportValues())) {
         $sql = sprintf("DELETE FROM %s WHERE entity_id = %d ", OAP_OTHER_PRO, $this->_contactID);
         //CRM_Core_DAO::executeQuery($sql);
       }
@@ -90,14 +90,14 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
       }
     }
 
-    if (!empty($values['_qf_Professional_submit_done'])) {
+    if (CRM_Utils_Array::value('_qf_Professional_submit_done', $this->exportValues())) {
       $values['contact_id'] = $this->_contactID;
       $values['url'] = CRM_Utils_System::url("civicrm/application",
         "selectChild=professional&cid=" . $this->_contactID, TRUE
       );
       $this->sendDraft($values);
     }
-    elseif (!empty($values['_qf_Professional_submit'])) {
+    elseif (CRM_Utils_Array::value('_qf_Professional_submit', $this->exportValues())) {
       CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "reset=1&cid=" . $this->_contactID));
     }
     else {

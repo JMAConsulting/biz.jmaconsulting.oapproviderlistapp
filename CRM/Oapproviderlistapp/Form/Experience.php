@@ -63,7 +63,7 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
       $fields = [];
       CRM_Contact_BAO_Contact::createProfileContact($params, $fields);
 
-      if (!empty($values['_qf_Experience_submit'])) {
+      if (CRM_Utils_Array::value('_qf_Experience_submit', $this->exportValues())) {
         //$sql = sprintf("DELETE FROM %s WHERE entity_id = %d ", OAP_EMP_HIS, $this->_contactID);
         CRM_Core_DAO::executeQuery($sql);
       }
@@ -73,14 +73,14 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
       }
     }
 
-    if (!empty($values['_qf_Experience_submit_done'])) {
+    if (CRM_Utils_Array::value('_qf_Experience_submit_done', $this->exportValues())) {
       $values['contact_id'] = $this->_contactID;
       $values['url'] = CRM_Utils_System::url("civicrm/application",
         "selectChild=experience&cid=" . $this->_contactID, TRUE
       );
       $this->sendDraft($values);
     }
-    if (!empty($values['_qf_Experience_submit'])) {
+    if (CRM_Utils_Array::value('_qf_Experience_submit', $this->exportValues())) {
       CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application",
         "selectChild=professional&cid=" . $this->_contactID
       ));
