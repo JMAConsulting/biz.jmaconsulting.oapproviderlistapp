@@ -26,8 +26,8 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
   }
 
   public function postProcess() {
-    $values = $this->_submitValues;
-
+    parent::postProcess();
+    $values = array_merge($this->_submitValues, $this->_submitFiles);
     if (!empty($this->_contactID)) {
       $params = array_merge($values, ['contact_id' => $this->_contactID]);
       $fields = [];
@@ -35,7 +35,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
 
       if (!empty($values['_qf_Professional_submit'])) {
         $sql = sprintf("DELETE FROM %s WHERE entity_id = %d ", OAP_OTHER_PRO, $this->_contactID);
-        CRM_Core_DAO::executeQuery($sql);
+        //CRM_Core_DAO::executeQuery($sql);
       }
       $customValues = CRM_Core_BAO_CustomField::postProcess($params, $this->_contactID, 'Individual');
       if (!empty($customValues) && is_array($customValues)) {
@@ -51,11 +51,11 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
       $this->sendDraft($values);
     }
     elseif (!empty($values['_qf_Professional_submit'])) {
-      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "cid=" . $this->_contactID));
+      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "reset=1&cid=" . $this->_contactID));
     }
     else {
       CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/application",
-        "selectChild=experience&cid=" . $this->_contactID
+        "reset=1&selectChild=experience&cid=" . $this->_contactID
       ));
     }
   }
