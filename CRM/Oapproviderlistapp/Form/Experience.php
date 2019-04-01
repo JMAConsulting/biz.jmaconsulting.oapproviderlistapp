@@ -29,7 +29,27 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
     $errors = [];
     foreach ($fields['custom_12'] as $key => $value) {
       if (empty($value)) {
-        $errors['custom_12'] = E::ts('Experience check list is a required field.');
+        $errors['custom_12'] = E::ts('Each option of Experience check list is a required field.');
+      }
+    }
+
+    // Validation for custom groups.
+    $cg = [
+      "custom_32_-",
+      "custom_33_-",
+      "custom_47_-",
+      "custom_48_-",
+      "custom_35_-",
+      "custom_36_-",
+      "custom_37_-",
+      "custom_38_-",
+    ];
+    $count = $fields['hidden_custom_group_count'][10];
+    for ($i = 1; $i <= $count; $i++) {
+      foreach ($cg as $field) {
+        if (empty($fields[$field.$i])) {
+          $errors['_qf_default'] = E::ts('All fields in Employment History are required.');
+        }
       }
     }
     return $errors;
