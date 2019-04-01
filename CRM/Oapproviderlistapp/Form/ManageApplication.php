@@ -144,8 +144,8 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       'toEmail' => $contact['email'],
       'subject' => $body_subject,
       'messageTemplateID' => $messageTemplates->id,
-      'html' => ts($body_html),
-      'text' => ts($body_text),
+      'html' => $body_html,
+      'text' => $body_text,
     );
     CRM_Utils_Mail::send($mailParams);
     CRM_Utils_System::redirect('https://oapproviderlist.ca');
