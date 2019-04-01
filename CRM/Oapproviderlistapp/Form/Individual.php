@@ -43,7 +43,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
 
   public function postProcess() {
     parent::postProcess();
-    $values = $this->_submitValues;
+    $values = $this->controller->exportValues($this->_name);
     $email = $phone = NULL;
 
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
