@@ -1,3 +1,11 @@
+#: ./CRM/Oapproviderlistapp/Form/Experience.php
+msgid "Each option of Experience check list is a required field."
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Experience.php
+msgid "All fields in Employment History are required."
+msgstr ""
+
 #: ./CRM/Oapproviderlistapp/Form/Individual.php ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Individual Information"
 msgstr ""
@@ -20,6 +28,10 @@ msgstr ""
 
 #: ./CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Email Address"
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "At least one Current Employer is required."
 msgstr ""
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
@@ -66,6 +78,26 @@ msgstr ""
 msgid "Some of the profile fields cannot be configured for this page."
 msgstr ""
 
+#: ./CRM/Oapproviderlistapp/Form/Professional.php
+msgid "At least one credential must be selected."
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Certification Date for this credential."
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Certification Number for this credential."
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Registration Date for this credential."
+msgstr ""
+
+#: ./CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Registration Number for this credential."
+msgstr ""
+
 #: ./CRM/Oapproviderlistapp/Form/Signature.php
 msgid "Thank you for submitting your application to the OAP Provider List"
 msgstr ""
@@ -107,7 +139,7 @@ msgid "To join the Provider List, you must be a Board Certified Behavior Analyst
 msgstr ""
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid "If you are a psychologist or psychological associate with ABA expertise, you are eligible to join the OAP Provider List. You do not need to obtain a BCBA® or BCBA-D™, however, you will need to have your ABA expertise confirmed by a BCBA-D™. Upon receiving your application package, the Provider List administrator will contact you with more information about the equivalency process for confirming ABA expertise."
+msgid "If you are a psychologist or psychological associate with Applied Behaviour Analysis (ABA) expertise, you are eligible to join the OAP Provider List. You do not need to obtain a BCBA® or BCBA-D™, however, you will need to have your ABA expertise confirmed by a BCBA-D™. Upon receiving your application package, the Provider List administrator will contact you with more information about the equivalency process for confirming ABA expertise."
 msgstr ""
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl

@@ -2,6 +2,42 @@
 msgid "Individual Information"
 msgstr "Renseignements sur la personne"
 
+#: ./CRM/Oapproviderlistapp/Form/Experience.php
+msgid "Each option of Experience check list is a required field."
+msgstr "Chaque option de la liste de vérification de l’expérience est un champ obligatoire."
+
+#: ./CRM/Oapproviderlistapp/Form/Experience.php
+msgid "All fields in Employment History are required."
+msgstr "Tous les champs de l'antécédents d'emploi sont obligatoires"
+
+#: ./CRM/Oapproviderlistapp/Form/Individual.php
+msgid "At least one Current Employer is required."
+msgstr "Au moins un employeur actuel est exigé."
+
+#: ./CRM/Oapproviderlistapp/Form/Professional.php
+msgid "At least one credential must be selected."
+msgstr "Au moins une qualification doit être sélectionnée."
+
+#: ./CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Certification Date for this credential."
+msgstr "Veuillez indiquer une date de certification pour cette qualification."
+
+#: ./CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Certification Number for this credential."
+msgstr "Veuillez indiquer un numéro de certificat pour cette qualification."
+
+#: ./CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Registration Date for this credential."
+msgstr "Veuillez indiquer une date d'inscription pour cette qualification"
+
+#: ./CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Registration Number for this credential."
+msgstr "Veuillez indiquer un numéro d'inscription pour cette qualification."
+
+#: ./oapproviderlistapp.php
+msgid "Your consent is required for all statements"
+msgstr ""
+
 #: ./CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Primary Employer Organization Name"
 msgstr "Nom de l’organisation de l’employeur principal"
@@ -28,7 +64,7 @@ msgstr "FORMULAIRE DE DEMANDE D’INSCRIPTION SUR LA LISTE DES FOURNISSEURS DU P
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Professional Credential(s)"
-msgstr "Titre(s) de compétence professionnel(s)"
+msgstr "Qualifications professionnel(s)"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Experience"
@@ -68,7 +104,7 @@ msgstr "Certains champs de profil ne peuvent pas être configurés pour cette pa
 
 #: ./CRM/Oapproviderlistapp/Form/Signature.php
 msgid "Thank you for submitting your application to the OAP Provider List"
-msgstr "Merci d'avoir soumis votre demand d'inscription sur la liste des fournisseurs du POSA"
+msgstr "Merci d'avoir envoyé votre demand d'inscription à la liste des fournisseurs du POSA"
 
 #: ./oapproviderlistapp.php
 msgid "%1"
@@ -76,11 +112,7 @@ msgstr ""
 
 #: ./oapproviderlistapp.php
 msgid "%1 must be a number."
-msgstr "% 1 doit être un nombre."
-
-#: ./oapproviderlistapp.php
-msgid "Your consent is required for all statements"
-msgstr "Votre consentement est requis pour toutes les déclarations"
+msgstr "%1 doit être un chiffre."
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Please read this form carefully to make sure that you meet the requirements to join the Ontario Autism Program (OAP) Provider List."
