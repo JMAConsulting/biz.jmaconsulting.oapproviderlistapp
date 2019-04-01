@@ -1,4 +1,4 @@
-* {
+body, p, span, div {
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif !important;
   color: #4d4d69;
   font-size: 13px !important;
@@ -90,7 +90,7 @@ h1 {
 
 .crm-container .professional .content {
   margin-left: 0% !important;
-}
+} 
 
 .crm-section {
   clear: both !important;
@@ -103,3 +103,5 @@ h1 {
     padding-left: 0px;
   }
 }
+
+
