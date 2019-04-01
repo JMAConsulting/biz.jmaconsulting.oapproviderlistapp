@@ -108,11 +108,11 @@ msgstr "Ajouter un autre employeur"
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
 msgid "To join the Provider List, you must be a Board Certified Behavior Analyst® in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario."
-msgstr "Pour vous inscrire sur la Liste des fournisseurs, vous devez être un(e) analyste du comportement certifié(e) en règle ou un(e) psychologue agréé(e) ou un(e) associé(e) en psychologie en règle inscrit(e) auprès de l'Ordre des psychologues de l'Ontario."
+msgstr "Pour vous inscrire sur la Liste des fournisseurs, vous devez être un(e) analyste du comportement certifié(e)&#x1F16B; en règle ou un(e) psychologue agréé(e) ou un(e) associé(e) en psychologie en règle inscrit(e) auprès de l'Ordre des psychologues de l'Ontario."
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
 msgid "If you are a psychologist or psychological associate with ABA expertise, you are eligible to join the OAP Provider List. You do not need to obtain a BCBA® or BCBA-D™, however, you will need to have your ABA expertise confirmed by a BCBA-D™. Upon receiving your application package, the Provider List administrator will contact you with more information about the equivalency process for confirming ABA expertise."
-msgstr "Si vous êtes un(e) psychologue ou un(e) associé(e) en psychologie qui possède des compétences en ACA, vous êtes admissible à l’inscription sur la Liste des fournisseurs du POSA. Vous n’avez pas besoin d’obtenir le titre de BCBA ou de BCBA-D. Cependant, vous devrez faire confirmer vos compétences en ACA par un BCBA-D. Sur réception de votre dossier de candidature, l’administrateur de la Liste des fournisseurs communiquera avec vous pour vous fournir de plus amples informations sur le processus d’équivalence pour la confirmation des compétences en ACA."
+msgstr "Si vous êtes un(e) psychologue ou un(e) associé(e) en psychologie qui possède des compétences en ACA, vous êtes admissible à l’inscription sur la Liste des fournisseurs du POSA. Vous n’avez pas besoin d’obtenir le titre de BCBA&#x1F16B; ou de BCBA-D&#x1F16A;. Cependant, vous devrez faire confirmer vos compétences en ACA par un BCBA-D&#x1F16A;. Sur réception de votre dossier de candidature, l’administrateur de la Liste des fournisseurs communiquera avec vous pour vous fournir de plus amples informations sur le processus d’équivalence pour la confirmation des compétences en ACA."
 
 #: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
 msgid "Please note any other relevant credentials you have achieved and the date you obtained them."
