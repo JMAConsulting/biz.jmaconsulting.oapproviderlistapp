@@ -30,6 +30,10 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
       ])['id'];
       // TODO return error
       //CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $activityID, NULL, OAP_SIGNATURE);
+      civicrm_api3('Contact', 'create', [
+        'id' => $this->_contactID,
+        'is_deleted' => FALSE,
+      ]);
     }
     if (!empty($values['_qf_Signature_submit'])) {
       CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "selectChild=insurance&cid=" . $this->_contactID));

@@ -37,11 +37,30 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
 
   public function postProcess() {
     $values = $this->exportValues();
+    $email = $phone = NULL;
+
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
     $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, NULL, NULL, OAP_INDIVIDUAL);
 
+    if (!empty($values['email'][1])) {
+      civicrm_api3('Email', 'create', [
+        'contact_id' => $contactID,
+        'email' => $values['email'][1],
+        'location_type_id' => "Work",
+        'is_primary' => TRUE,
+      ]);
+    }
+
+    if (!empty($values['phone'][1])) {
+      civicrm_api3('Phone', 'create', [
+        'contact_id' => $contactID,
+        'phone' => $values['phone'][1],
+        'location_type_id' => "Work",
+        'is_primary' => TRUE,
+      ]);
+    }
+
     $customParams = [];
-    $email = NULL;
     $mapping = [
       'custom_53' => 'organization_name',
       'custom_54' => 'work_address',
@@ -58,40 +77,45 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           'organization_name' => $name,
           'options' => ['limit' => 1],
         ]));
-        $email = CRM_Utils_Array::value($key, $values['email']);
         if (!$id) {
           $id = civicrm_api3('Contact', 'create', [
             'organization_name' => $name,
             'contact_type' => 'Organization',
-            'email' => $email,
-            'is_deleted' => TRUE,
+            'email' => $values['email'][$key],
           ])['id'];
         }
         if (!empty($values['work_address'][$key])) {
           $addressParams = [
             'contact_id' => $id,
-            'location_type_id' => 2,
+            'location_type_id' => 'Work',
             'is_primary' => TRUE,
             'street_address' => $values['work_address'][$key],
             'city' => CRM_Utils_Array::value($key, $values['city']),
-//            'phone' => CRM_Utils_Array::value($key, $values['phone']),
           ];
+          if (!empty($values['phone'][$key])) {
+            civicrm_api3('Phone', 'create', [
+              'contact_id' => $id,
+              'phone' => $values['phone'][$key],
+              'location_type_id' => "Work",
+              'is_primary' => TRUE,
+            ]);
+          }
+
           $addressID = civicrm_api3('Address', 'create', $addressParams)['id'];
-          civicrm_api3('Address', 'create', array_merge($addressParams, ['contact_id' => $contactID, 'master_id' => $addressID]));
+          $address = civicrm_api3('Address', 'create', array_merge($addressParams, ['contact_id' => $contactID]));
         }
-        //CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $this->_contactID, 'employer_id' , $id);
-        $relationshipID = civicrm_api3('Relationship', 'create', [
+        $relationship = civicrm_api3('Relationship', 'create', [
           'relationship_type_id' => 5,
           'contact_id_a' => $contactID,
           'contact_id_b' => $id,
-        ])['id'];
+        ]);
+        CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $contactID, 'employer_id' , $id);
         /**
         $customValues = CRM_Core_BAO_CustomField::postProcess($values, $relationshipID, 'Relationships');
         if (!empty($customValues) && is_array($customValues)) {
           CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_relationship', $relationshipID);
         }
         */
-
       }
       else {
         foreach ($mapping as $cfName => $fieldName) {
@@ -101,6 +125,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         }
       }
     }
+
     if (!empty($customParams)) {
       $customValues = CRM_Core_BAO_CustomField::postProcess($customParams, $this->_contactID, 'Individual');
       if (!empty($customValues) && is_array($customValues)) {
@@ -111,7 +136,6 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     civicrm_api3('Contact', 'create', [
       'id' => $contactID,
       'is_deleted' => TRUE,
-      'email' => $email,
     ]);
 
     if (!empty($values['_qf_Individual_submit_done'])) {
