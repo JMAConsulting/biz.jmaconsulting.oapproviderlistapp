@@ -52,18 +52,18 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
           break;
           case 3:
             if (empty($fields['custom_10'])) {
-              $errors['custom_10'] = E::ts("Please provide Certification Date for this credential.");
+              $errors['custom_10'] = E::ts("Please provide Registration Date for this credential.");
             }
             if (empty($fields['custom_42'])) {
-              $errors['custom_42'] = E::ts("Please provide Certification Number for this credential.");
+              $errors['custom_42'] = E::ts("Please provide Registration Number for this credential.");
             }
           break;
           case 4:
             if (empty($fields['custom_11'])) {
-              $errors['custom_11'] = E::ts("Please provide Certification Date for this credential.");
+              $errors['custom_11'] = E::ts("Please provide Registration Date for this credential.");
             }
             if (empty($fields['custom_43'])) {
-              $errors['custom_43'] = E::ts("Please provide Certification Number for this credential.");
+              $errors['custom_43'] = E::ts("Please provide Registration Number for this credential.");
             }
           break;
         }
