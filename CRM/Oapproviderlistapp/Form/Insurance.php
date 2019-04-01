@@ -21,7 +21,8 @@ class CRM_Oapproviderlistapp_Form_Insurance extends CRM_Oapproviderlistapp_Form_
   }
 
   public function postProcess() {
-    $values = $this->_submitValues;
+    parent::postProcess();
+    $values = array_merge($this->_submitValues, $this->_submitFiles);
     if (!empty($this->_contactID)) {
       $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INSURANCE, FALSE, CRM_Core_Action::VIEW);
       CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $this->_contactID, NULL, OAP_INSURANCE);

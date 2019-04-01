@@ -24,14 +24,15 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
   }
 
   public function postProcess() {
-    $values = $this->_submitValues;
+    parent::postProcess();
+    $values = array_merge($this->_submitValues, $this->_submitFiles);
     if (!empty($this->_contactID)) {
       $params = array_merge($values, ['contact_id' => $this->_contactID]);
       $fields = [];
       CRM_Contact_BAO_Contact::createProfileContact($params, $fields);
 
       if (!empty($values['_qf_Experience_submit'])) {
-        $sql = sprintf("DELETE FROM %s WHERE entity_id = %d ", OAP_EMP_HIS, $this->_contactID);
+        //$sql = sprintf("DELETE FROM %s WHERE entity_id = %d ", OAP_EMP_HIS, $this->_contactID);
         CRM_Core_DAO::executeQuery($sql);
       }
       $customValues = CRM_Core_BAO_CustomField::postProcess($params, $this->_contactID, 'Individual');

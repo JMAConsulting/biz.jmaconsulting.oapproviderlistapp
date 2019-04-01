@@ -42,6 +42,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
   }
 
   public function postProcess() {
+    parent::postProcess();
     $values = $this->_submitValues;
     $email = $phone = NULL;
 
@@ -152,7 +153,6 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       $this->sendDraft($values);
     }
 
-    parent::postProcess();
     CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/application",
       "selectChild=professional&cid=" . $contactID
     ));
