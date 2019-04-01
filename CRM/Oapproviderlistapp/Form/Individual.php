@@ -38,7 +38,17 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, FALSE);
       }
     }
+
+    $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Individual', 'formRule'), $this);
     parent::buildQuickForm();
+  }
+
+  public function formRule($fields, $files, $self) {
+    $errors = [];
+    if (empty($fields["organization_name"][1])) {
+      $errors['organization_name[1]'] = E::ts("At least one Current Employer is required.");
+    }
+    return $errors;
   }
 
   public function postProcess() {
