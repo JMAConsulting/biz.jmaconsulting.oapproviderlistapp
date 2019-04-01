@@ -126,3 +126,15 @@ msgstr "AJOUTER UN AUTRE DEGRÉ"
 msgid "Add Another Employer"
 msgstr "Ajouter un autre employeur"
 
+#: Message templates
+msgid "An application to the OAP Provider List containing this email was saved in a draft form on"
+msgstr "Une application de la liste des fournisseurs OAP contenant cet e-mail a été enregistrée dans un brouillon sous"
+
+#: Message templates
+msgid "You can review and continuing editing the application for seven days by clicking on"
+msgstr "Vous pouvez consulter et continuer à modifier l'application pendant sept jours en cliquant sur"
+
+#: Message templates
+msgid "If you did not submit this draft application, you can safely ignore this email"
+msgstr "Si vous n'avez pas soumis ce projet de candidature, vous pouvez ignorer cet email en toute sécurité"
+
