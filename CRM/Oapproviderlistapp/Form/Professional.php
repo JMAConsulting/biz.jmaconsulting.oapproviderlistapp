@@ -22,7 +22,54 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
     $this->assign('customDataSubType', 'Provider');
     $this->assign('entityID', $this->_contactID);
 
+    $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Professional', 'formRule'), $this);
     parent::buildQuickForm();
+  }
+
+  public function formRule($fields, $files, $self) {
+    $errors = [];
+    if (count(array_filter($fields["custom_7"])) == 0) {
+      $errors['custom_7'] = E::ts("At least one credential must be selected.");
+    }
+    foreach ($fields['custom_7'] as $key => $val) {
+      if (!empty($val)) {
+        switch ($key) {
+          case 1:
+            if (empty($fields['custom_8'])) {
+              $errors['custom_8'] = E::ts("Please provide Certification Date for this credential.");
+            }
+            if (empty($fields['custom_40'])) {
+              $errors['custom_40'] = E::ts("Please provide Certification Number for this credential.");
+            }
+          break;
+          case 2:
+            if (empty($fields['custom_9'])) {
+              $errors['custom_9'] = E::ts("Please provide Certification Date for this credential.");
+            }
+            if (empty($fields['custom_41'])) {
+              $errors['custom_41'] = E::ts("Please provide Certification Number for this credential.");
+            }
+          break;
+          case 3:
+            if (empty($fields['custom_10'])) {
+              $errors['custom_10'] = E::ts("Please provide Certification Date for this credential.");
+            }
+            if (empty($fields['custom_42'])) {
+              $errors['custom_42'] = E::ts("Please provide Certification Number for this credential.");
+            }
+          break;
+          case 4:
+            if (empty($fields['custom_11'])) {
+              $errors['custom_11'] = E::ts("Please provide Certification Date for this credential.");
+            }
+            if (empty($fields['custom_43'])) {
+              $errors['custom_43'] = E::ts("Please provide Certification Number for this credential.");
+            }
+          break;
+        }
+      }
+    }
+    return $errors;
   }
 
   public function postProcess() {
