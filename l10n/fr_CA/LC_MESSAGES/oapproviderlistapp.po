@@ -10,14 +10,6 @@ msgstr "Chaque option de la liste de vérification de l’expérience est un cha
 msgid "All fields in Employment History are required."
 msgstr "Tous les champs de l'antécédents d'emploi sont obligatoires"
 
-#: ./CRM/Oapproviderlistapp/Form/Individual.php
-msgid "At least one Current Employer is required."
-msgstr "Au moins un employeur actuel est exigé."
-
-#: ./CRM/Oapproviderlistapp/Form/Professional.php
-msgid "At least one credential must be selected."
-msgstr "Au moins une qualification doit être sélectionnée."
-
 #: ./CRM/Oapproviderlistapp/Form/Professional.php
 msgid "Please provide Certification Date for this credential."
 msgstr "Veuillez indiquer une date de certification pour cette qualification."
@@ -72,7 +64,7 @@ msgstr "Expérience"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Vulnerable Sector Check"
-msgstr "Vérification de l’aptitude à travailler auprès de personnes vulnérables auprès de la police"
+msgstr "Vérification relative aux personnes vulnérables"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Professional Liability Insurance"
@@ -186,4 +178,26 @@ msgstr "Il contiendra un lien sur lequel vous pouvez cliquer pour continuer à r
 msgid "An email on the Individual Information tab is required if you want to Save Draft."
 msgstr "Il faut ajouter un courriel sur l’onglet Renseignements personnels si vous voulez sauvegarder l’ébauche."
 
+msgid "Proof of Employment Letter"
+msgstr "Lettre de preuve d’emploi"
 
+msgid "At least one Current Employer is required."
+msgstr "Au moins un employeur actuel est exigé."
+
+msgid "This is a required field."
+msgstr "C’est un champ obligatoire."
+
+msgid "At least one credential must be selected."
+msgstr "Au moins une qualification doit être sélectionnée."
+
+msgid "Please provide a Certification Date for this credential."
+msgstr "Veuillez indiquer une date de certification pour cette qualification."
+
+msgid "Please provide a Certification Number for this credential."
+msgstr "Veuillez indiquer un numéro de certificat pour cette qualification."
+
+msgid "Please provide the Date Obtained for this other relevant credential."
+msgstr "Veuillez indiquer la date d’obtention pour cette autre qualification pertinente."
+
+msgid "(please type in your First Name and Last Name exactly as they appear on the first tab)"
+msgstr "(veuillez saisir votre prénom et votre nom exactement tels qu’ils apparaissent au premier onglet.)"
