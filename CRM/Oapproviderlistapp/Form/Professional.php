@@ -44,7 +44,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
     if (!empty($values['_qf_Professional_submit_done'])) {
       $values['contact_id'] = $this->_contactID;
       $values['url'] = CRM_Utils_System::url("civicrm/application",
-        "selectChild=professional&cid=" . $this->_contactID
+        "selectChild=professional&cid=" . $this->_contactID, TRUE
       );
       $this->sendDraft($values);
     }

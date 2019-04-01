@@ -133,8 +133,6 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     }
 
     if (!empty($customParams)) {
-      $sql = sprintf("DELETE FROM %s WHERE entity_id = %d ",OAP_OTHER_EMP, $contactID);
-      CRM_Core_DAO::executeQuery($sql);
       $customValues = CRM_Core_BAO_CustomField::postProcess($customParams, $contactID, 'Individual');
       if (!empty($customValues) && is_array($customValues)) {
         CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_contact', $contactID);
@@ -149,7 +147,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     if (!empty($values['_qf_Individual_submit_done'])) {
       $values['contact_id'] = $contactID;
       $values['url'] = CRM_Utils_System::url("civicrm/application",
-        "cid=" . $contactID
+        "cid=" . $contactID, TRUE
       );
       $this->sendDraft($values);
     }

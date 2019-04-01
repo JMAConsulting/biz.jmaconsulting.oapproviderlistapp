@@ -41,7 +41,7 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
     if (!empty($values['_qf_Experience_submit_done'])) {
       $values['contact_id'] = $this->_contactID;
       $values['url'] = CRM_Utils_System::url("civicrm/application",
-        "selectChild=experience&cid=" . $this->_contactID
+        "selectChild=experience&cid=" . $this->_contactID, TRUE
       );
       $this->sendDraft($values);
     }

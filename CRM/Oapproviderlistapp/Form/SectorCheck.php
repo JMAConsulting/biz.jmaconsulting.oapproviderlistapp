@@ -30,7 +30,7 @@ class CRM_Oapproviderlistapp_Form_SectorCheck extends CRM_Oapproviderlistapp_For
     if (!empty($values['_qf_SectorCheck_submit_done'])) {
       $values['contact_id'] = $this->_contactID;
       $values['url'] = CRM_Utils_System::url("civicrm/application",
-        "selectChild=sectorcheck&cid=" . $this->_contactID
+        "selectChild=sectorcheck&cid=" . $this->_contactID, TRUE
       );
       $this->sendDraft($values);
     }

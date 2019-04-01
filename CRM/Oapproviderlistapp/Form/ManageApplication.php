@@ -127,13 +127,13 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       return;
     }
     $contact_params = array(array('contact_id', '=', $params['contact_id'], 0, 0));
-    list($contact, $_) = CRM_Contact_BAO_Query::apiQuery($contact_params);
+    $contact = civicrm_api3('Contact', 'getsingle', ['id' => $params['contact_id']]);
     $messageTemplates = new CRM_Core_DAO_MessageTemplate();
     $messageTemplates->id = 68;
     $messageTemplates->find(TRUE);
     $body_subject = $messageTemplates->msg_subject;
-    $body_text    = str_replace('{url}', $params['url'], $messageTemplates->msg_text);
-    $body_html    = str_replace('{url}', $params['url'], $messageTemplates->msg_html);
+    $body_text    = str_replace('{date}', date('D, M j, Y \a\t g:ia'), str_replace('{url}', $params['url'], $messageTemplates->msg_text));
+    $body_html    = str_replace('{date}', date('D, M j, Y \a\t g:ia'), str_replace('{url}', $params['url'], $messageTemplates->msg_html));
 
     $mailParams = array(
       'groupName' => 'Send Draft',
@@ -146,7 +146,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       'text' => ts($body_text),
     );
     CRM_Utils_Mail::send($mailParams);
-    CRM_Utils_System::redirect(CRM_Utils_System::url(''));
+    CRM_Utils_System::redirect('https://oapproviderlist.ca');
   }
 
   public function buildCustom($id, $name, $viewOnly = FALSE, $ignoreContact = FALSE) {

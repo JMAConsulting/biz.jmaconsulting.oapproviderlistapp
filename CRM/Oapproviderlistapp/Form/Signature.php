@@ -38,7 +38,7 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
     if (!empty($values['_qf_Signature_submit_done'])) {
       $values['contact_id'] = $this->_contactID;
       $values['url'] = CRM_Utils_System::url("civicrm/application",
-        "selectChild=signature&cid=" . $this->_contactID
+        "selectChild=signature&cid=" . $this->_contactID, TRUE
       );
       $this->sendDraft($values);
     }
