@@ -60,7 +60,7 @@ msgstr "Suivant"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Save Draft"
-msgstr "Enregistrer le brouillon"
+msgstr "Sauvegarder l’ébauche"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Some of the profile fields cannot be configured for this page."
@@ -127,14 +127,31 @@ msgid "Add Another Employer"
 msgstr "Ajouter un autre employeur"
 
 #: Message templates
+msgid "Saved draft of OAP Provider List Application"
+msgstr "Sauvegarde de l’ébauche de la Demande d’inscription sur la liste des fournisseurs du POSA"
+
+#: Message templates
 msgid "An application to the OAP Provider List containing this email was saved in a draft form on"
-msgstr "Une application de la liste des fournisseurs OAP contenant cet e-mail a été enregistrée dans un brouillon sous"
+msgstr "Une Demande d’inscription sur la liste des fournisseurs du POSA contenant ce courriel a été sauvegardée sous forme d’ébauche le"
 
 #: Message templates
 msgid "You can review and continuing editing the application for seven days by clicking on"
-msgstr "Vous pouvez consulter et continuer à modifier l'application pendant sept jours en cliquant sur"
+msgstr "Vous pouvez examiner et continuer de réviser la demande pendant sept jours en cliquant sur"
 
 #: Message templates
 msgid "If you did not submit this draft application, you can safely ignore this email"
-msgstr "Si vous n'avez pas soumis ce projet de candidature, vous pouvez ignorer cet email en toute sécurité"
+msgstr "Si vous n’avez pas soumis cette ébauche de demande, vous pouvez ignorer ce courriel en toute sécurité"
+
+#: Save Draft Popup
+msgid "An email will be sent to"
+msgstr "Un courriel sera envoyé à"
+
+#: Save Draft Popup
+msgid "It will contain a link that you can click to continue to review this request within the next seven days."
+msgstr "Il contiendra un lien sur lequel vous pouvez cliquer pour continuer à réviser cette demande au cours des sept prochains jours."
+
+#: Save Draft Popup
+msgid "An email on the Individual Information tab is required if you want to Save Draft."
+msgstr "Il faut ajouter un courriel sur l’onglet Renseignements personnels si vous voulez sauvegarder l’ébauche."
+
 
