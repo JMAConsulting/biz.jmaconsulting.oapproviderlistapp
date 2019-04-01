@@ -88,11 +88,11 @@ msgstr "Précédent"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Submit"
-msgstr "Soumettre"
+msgstr "Envoyer"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Next"
-msgstr "Suivant"
+msgstr "Prochain"
 
 #: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Save Draft"
