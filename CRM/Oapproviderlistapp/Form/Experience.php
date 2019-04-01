@@ -20,7 +20,19 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
     $this->assign('customDataType', 'Individual');
     $this->assign('customDataSubType', 'Provider');
     $this->assign('entityID', $this->_contactID);
+
+    $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Experience', 'formRule'), $this);
     parent::buildQuickForm();
+  }
+
+  public function formRule($fields, $files, $self) {
+    $errors = [];
+    foreach ($fields['custom_12'] as $key => $value) {
+      if (empty($value)) {
+        $errors['custom_12'] = E::ts('Experience check list is a required field.');
+      }
+    }
+    return $errors;
   }
 
   public function postProcess() {
