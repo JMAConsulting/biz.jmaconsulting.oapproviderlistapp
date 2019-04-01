@@ -69,12 +69,6 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         'title' => E::ts('Professional Liability Insurance'),
         'url' => CRM_Utils_System::url('civicrm/insurance', $query),
       ],
-      /**
-      'documentation' => [
-        'title' => E::ts('Documentation Checklist'),
-        'url' => CRM_Utils_System::url('civicrm/documentation', 'cid=' . $form->_contactID),
-      ],
-      */
       'signature' => [
         'title' => E::ts('Signature'),
         'url' => CRM_Utils_System::url('civicrm/signature', $query),
@@ -145,8 +139,8 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       'toEmail' => $contact['email'],
       'subject' => $body_subject,
       'messageTemplateID' => $messageTemplates->id,
-      'html' => $body_html,
-      'text' => $body_text,
+      'html' => ts($body_html),
+      'text' => ts($body_text),
     );
     CRM_Utils_Mail::send($mailParams);
     CRM_Utils_System::redirect(CRM_Utils_System::url(''));

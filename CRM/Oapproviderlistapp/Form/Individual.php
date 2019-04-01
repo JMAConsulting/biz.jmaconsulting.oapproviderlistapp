@@ -127,9 +127,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     }
 
     if (!empty($customParams)) {
-      $customValues = CRM_Core_BAO_CustomField::postProcess($customParams, $this->_contactID, 'Individual');
+      $customValues = CRM_Core_BAO_CustomField::postProcess($customParams, $contactID, 'Individual');
       if (!empty($customValues) && is_array($customValues)) {
-        CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_contact', $this->_contactID);
+        CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_contact', $contactID);
       }
     }
 
