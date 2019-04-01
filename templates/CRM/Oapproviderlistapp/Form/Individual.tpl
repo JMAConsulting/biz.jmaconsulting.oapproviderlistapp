@@ -1,12 +1,12 @@
 {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
-<table>
+<table style="table-layout: fixed;width: 100%;">
   <tr>
     <td colspan="2">
-      <p>{ts}Please read this form carefully to make sure that you meet the requirements to join the Ontario Autism Program (OAP) Provider List.{/ts}</p>
+      <div class="crm-section content description-text"><p>{ts}Please read this form carefully to make sure that you meet the requirements to join the Ontario Autism Program (OAP) Provider List.{/ts}</p>
 
       <p>{ts}Please provide information on your primary current employer(s) through which you will be clinically supervising Ontario Autism Program behavioural services.{/ts}</p>
 
-      <p>{ts}You must provide a proof of employment letter for each employer listed below. This letter must be on the organization’s letterhead and include the role and credentials of the person signing. You do not need to submit proof of self-employment.{/ts}</p>
+      <p>{ts}You must provide a proof of employment letter for each employer listed below. This letter must be on the organization’s letterhead and include the role and credentials of the person signing. You do not need to submit proof of self-employment.{/ts}</p></div>
     </td>
   </tr>
   <tr>
@@ -16,7 +16,7 @@
       </div>
     </td>
     <td>
-      <table>
+      <table style="table-layout: fixed;width: 100%;">
         <tr>
           <td>
             <div class="crm-public-form-item crm-section">
