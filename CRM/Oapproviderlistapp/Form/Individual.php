@@ -159,7 +159,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       'is_deleted' => TRUE,
     ]);
 
-    if (!empty($values['_qf_Individual_submit_done'])) {
+    if (CRM_Utils_Array::value('_qf_Individual_submit_done', $this->exportValues())) {
       $values['contact_id'] = $contactID;
       $values['url'] = CRM_Utils_System::url("civicrm/application",
         "cid=" . $contactID, TRUE
