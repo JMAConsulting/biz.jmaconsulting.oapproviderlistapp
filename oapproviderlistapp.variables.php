@@ -27,3 +27,6 @@ define('OAP_SECTORCHECK', 20);
 define('OAP_INSURANCE', 21);
 define('OAP_DOCUMENTATION', 22);
 define('OAP_SIGNATURE', 23);
+define('OAP_OTHER_EMP', 'civicrm_value_other_employe_16');
+define('OAP_OTHER_PRO', 'civicrm_value_other_profess_12');
+define('OAP_EMP_HIS', 'civicrm_value_employment_hi_10');

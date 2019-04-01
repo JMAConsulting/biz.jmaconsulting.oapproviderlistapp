@@ -123,6 +123,9 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
   }
 
   public function sendDraft($params) {
+    if (empty($params['contact_id'])) {
+      return;
+    }
     $contact_params = array(array('contact_id', '=', $params['contact_id'], 0, 0));
     list($contact, $_) = CRM_Contact_BAO_Query::apiQuery($contact_params);
     $messageTemplates = new CRM_Core_DAO_MessageTemplate();

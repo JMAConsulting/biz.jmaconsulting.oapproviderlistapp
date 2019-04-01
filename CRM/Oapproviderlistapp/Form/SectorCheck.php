@@ -22,12 +22,19 @@ class CRM_Oapproviderlistapp_Form_SectorCheck extends CRM_Oapproviderlistapp_For
   }
 
   public function postProcess() {
-    $values = $this->exportValues();
+    $values = $this->_submitValues;
     if (!empty($this->_contactID)) {
       $fields = CRM_Core_BAO_UFGroup::getFields(OAP_SECTORCHECK, FALSE, CRM_Core_Action::VIEW);
       CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $this->_contactID, NULL, OAP_SECTORCHECK);
     }
-    if (!empty($values['_qf_SectorCheck_submit'])) {
+    if (!empty($values['_qf_SectorCheck_submit_done'])) {
+      $values['contact_id'] = $this->_contactID;
+      $values['url'] = CRM_Utils_System::url("civicrm/application",
+        "selectChild=sectorcheck&cid=" . $this->_contactID
+      );
+      $this->sendDraft($values);
+    }
+    elseif (!empty($values['_qf_SectorCheck_submit'])) {
       CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "selectChild=experience&cid=" . $this->_contactID));
     }
     else {

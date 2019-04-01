@@ -19,6 +19,7 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
     $this->buildCustom(OAP_EXPERIENCE, 'experience');
     $this->assign('customDataType', 'Individual');
     $this->assign('customDataSubType', 'Provider');
+    $this->assign('entityID', $this->_contactID);
     parent::buildQuickForm();
   }
 
@@ -29,12 +30,21 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
       $fields = [];
       CRM_Contact_BAO_Contact::createProfileContact($params, $fields);
 
+      $sql = sprintf("DELETE FROM %s WHERE entity_id = %d ", OAP_EMP_HIS, $this->_contactID);
+      CRM_Core_DAO::executeQuery($sql);
       $customValues = CRM_Core_BAO_CustomField::postProcess($params, $this->_contactID, 'Individual');
       if (!empty($customValues) && is_array($customValues)) {
         CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_contact', $this->_contactID);
       }
     }
 
+    if (!empty($values['_qf_Experience_submit_done'])) {
+      $values['contact_id'] = $this->_contactID;
+      $values['url'] = CRM_Utils_System::url("civicrm/application",
+        "selectChild=experience&cid=" . $this->_contactID
+      );
+      $this->sendDraft($values);
+    }
     if (!empty($values['_qf_Experience_submit'])) {
       CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application",
         "selectChild=professional&cid=" . $this->_contactID

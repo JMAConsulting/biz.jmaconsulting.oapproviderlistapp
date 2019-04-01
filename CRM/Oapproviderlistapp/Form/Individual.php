@@ -15,19 +15,25 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     $defaults = [];
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE);
     CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactID, $fields, $defaults, TRUE);
+
+    if (!empty($this->_contactID)) {
+      $contact = civicrm_api3('Contact', 'getsingle', ['id' => $this->_contactID]);
+      $defaults['email[1]'] = $contact['email'];
+      //$defaults = array_merge($defaults, $contact);
+    }
     return $defaults;
   }
 
   public function buildQuickForm() {
     CRM_Utils_System::setTitle(E::ts('Individual Information'));
-    $this->buildCustom(OAP_INDIVIDUAL, 'individual', 496233);
+    $this->buildCustom(OAP_INDIVIDUAL, 'individual', $this->_contactID);
 
     for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
       $this->add('text', "organization_name[$rowNumber]", E::ts('Primary Employer Organization Name'), ['class' => 'big']);
       $this->add('text', "work_address[$rowNumber]", E::ts('Work Address'), ['size' => 45, 'maxlength' => 96, 'class' => 'huge']);
       $this->add('text', "phone[$rowNumber]", E::ts('Phone Number'), ['size' => 20, 'maxlength' => 32, 'class' => 'medium']);
       $this->add('text', "city[$rowNumber]", E::ts('City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
-      $this->add('text', "email[$rowNumber]", E::ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium']);
+      $this->add('text', "email[$rowNumber]", E::ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
       if ($rowNumber == 1) {
         CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, FALSE);
       }
@@ -36,7 +42,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
   }
 
   public function postProcess() {
-    $values = $this->exportValues();
+    $values = $this->_submitValues;
     $email = $phone = NULL;
 
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
@@ -127,6 +133,8 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     }
 
     if (!empty($customParams)) {
+      $sql = sprintf("DELETE FROM %s WHERE entity_id = %d ",OAP_OTHER_EMP, $contactID);
+      CRM_Core_DAO::executeQuery($sql);
       $customValues = CRM_Core_BAO_CustomField::postProcess($customParams, $contactID, 'Individual');
       if (!empty($customValues) && is_array($customValues)) {
         CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_contact', $contactID);
