@@ -187,4 +187,30 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     }
   }
 
+  public function processEntityFile($fieldName, $fileInfo, $entityID) {
+    if (empty($fileInfo['name'])) {
+      return;
+    }
+    $customFieldId = str_replace('custom_', '', $fieldName);
+    list($tableName, $columnName, $groupID) = CRM_Core_BAO_CustomField::getTableColumnGroup($customFieldId);
+
+    $fileDAO = new CRM_Core_DAO_File();
+    $filename = pathinfo($fileInfo['name'], PATHINFO_BASENAME);
+    $fileDAO->uri = $filename;
+    $fileDAO->mime_type = $fileInfo['type'];
+    $fileDAO->upload_date = date('YmdHis');
+    $fileDAO->save();
+    $fileID = $fileDAO->id;
+
+    $ef = new CRM_Core_DAO_EntityFile();
+    $ef->entity_table = $tableName;
+    $ef->entity_id = $entityID;
+    $ef->file_id = $fileID;
+    $ef->save();
+
+    $sql = sprintf("INSERT IGNORE INTO %s(entity_id, %s) VALUES (%d, %d)", $tableName, $columnName, $entityID, $fileID);
+    CRM_Core_DAO::executeQuery($sql);
+  }
+
+
 }

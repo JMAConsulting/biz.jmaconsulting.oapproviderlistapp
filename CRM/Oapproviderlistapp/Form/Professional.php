@@ -69,7 +69,6 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
         }
       }
     }
-    return TRUE;
     return $errors;
   }
 

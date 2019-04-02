@@ -35,7 +35,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       $this->add('text', "city[$rowNumber]", E::ts('City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
       $this->add('text', "email[$rowNumber]", E::ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
       if ($rowNumber == 1) {
-        CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, TRUE);
+        CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 789, TRUE);
       }
     }
     $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Individual', 'formRule'), $this);
@@ -88,6 +88,10 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         continue;
       }
 
+      if (strpos(strtolower($name), 'self') !== false || strpos(strtolower($name), 'employ') !== false) {
+        $name = "Self employed by " . $values['last_name'] . "," . $values['first_name'];
+      }
+
       if ($key == 1) {
         $id = CRM_Utils_Array::value('id', civicrm_api3('Contact', 'get', [
           'organization_name' => $name,
@@ -120,18 +124,14 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           $addressID = civicrm_api3('Address', 'create', $addressParams)['id'];
           $address = civicrm_api3('Address', 'create', array_merge($addressParams, ['contact_id' => $contactID]));
         }
-        $relationship = civicrm_api3('Relationship', 'create', [
+        $relationshipID = civicrm_api3('Relationship', 'create', [
           'relationship_type_id' => 5,
           'contact_id_a' => $contactID,
           'contact_id_b' => $id,
-        ]);
+        ])['id'];
         CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $contactID, 'employer_id' , $id);
-        /**
-        $customValues = CRM_Core_BAO_CustomField::postProcess($values, $relationshipID, 'Relationships');
-        if (!empty($customValues) && is_array($customValues)) {
-          CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_relationship', $relationshipID);
-        }
-        */
+        $fieldName = 'custom_49';
+        $this->processEntityFile($fieldName, $values[$fieldName], $relationshipID);
       }
       else {
         foreach ($mapping as $cfName => $fieldName) {

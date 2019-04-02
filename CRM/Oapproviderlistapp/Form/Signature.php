@@ -35,6 +35,8 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
         'id' => $this->_contactID,
         'is_deleted' => FALSE,
       ]);
+      $fieldName = 'custom_58';
+      $this->processEntityFile($fieldName, $values[$fieldName], $activityID);
     }
     if (CRM_Utils_Array::value('_qf_Signature_submit_done', $this->exportValues())) {
       $this->sendDraft($this->_contactID, CRM_Utils_Array::value('qfKey', $this->exportValues()));
