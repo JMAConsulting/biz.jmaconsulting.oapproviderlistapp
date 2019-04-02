@@ -1,9 +1,15 @@
 <?xml version="1.0"?>
 <menu>
   <item>
-    <path>civicrm/application</path>
+    <path>civicrm/manage/application</path>
     <page_callback>CRM_Oapproviderlistapp_Form_ManageApplication</page_callback>
     <title>ManageApplication</title>
+    <is_public>true</is_public>
+  </item>
+  <item>
+    <path>civicrm/application</path>
+    <page_callback>CRM_Oapproviderlistapp_Form_Individual</page_callback>
+    <title>Individual</title>
     <is_public>true</is_public>
   </item>
   <item>

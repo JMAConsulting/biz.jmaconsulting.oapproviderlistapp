@@ -38,7 +38,6 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, TRUE);
       }
     }
-
     $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Individual', 'formRule'), $this);
     parent::buildQuickForm();
   }
@@ -87,10 +86,6 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     foreach ($values['organization_name'] as $key => $name) {
       if (!$name) {
         continue;
-      }
-
-      if (strpos(strtolower($name), 'self') !== false || strpos(strtolower($name), 'employ') !== false) {
-        $name = "Self employed by " . $values['last_name'] . "," . $values['first_name'];
       }
 
       if ($key == 1) {
@@ -159,17 +154,11 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       'is_deleted' => TRUE,
     ]);
 
-    if (CRM_Utils_Array::value('_qf_Individual_submit_done', $this->exportValues())) {
-      $values['contact_id'] = $contactID;
-      $values['url'] = CRM_Utils_System::url("civicrm/application",
-        "cid=" . $contactID, TRUE
-      );
-      $this->sendDraft($values);
+    if (!empty($values['_qf_Individual_submit_done'])) {
+      $this->sendDraft($contactID, CRM_Utils_Array::value('qfKey', $this->exportValues()));
     }
 
-    CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/application",
-      "selectChild=professional&cid=" . $contactID
-    ));
+    CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/professional", "&cid=" . $contactID));
   }
 
 }

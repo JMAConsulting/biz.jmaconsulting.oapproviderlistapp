@@ -69,6 +69,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
         }
       }
     }
+    return TRUE;
     return $errors;
   }
 
@@ -89,20 +90,15 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
         CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_contact', $this->_contactID);
       }
     }
-
     if (CRM_Utils_Array::value('_qf_Professional_submit_done', $this->exportValues())) {
-      $values['contact_id'] = $this->_contactID;
-      $values['url'] = CRM_Utils_System::url("civicrm/application",
-        "selectChild=professional&cid=" . $this->_contactID, TRUE
-      );
-      $this->sendDraft($values);
+      $this->sendDraft($this->_contactID, CRM_Utils_Array::value('qfKey', $this->exportValues()));
     }
     elseif (CRM_Utils_Array::value('_qf_Professional_submit', $this->exportValues())) {
-      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "reset=1&cid=" . $this->_contactID));
+      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/individual", "reset=1&cid=" . $this->_contactID));
     }
     else {
-      CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/application",
-        "reset=1&selectChild=experience&cid=" . $this->_contactID
+      CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/experience",
+        "reset=1&cid=" . $this->_contactID
       ));
     }
   }

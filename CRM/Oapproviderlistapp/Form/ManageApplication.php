@@ -16,76 +16,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
   public function preProcess() {
     CRM_Utils_System::setTitle(E::ts('OAP PROVIDER LIST APPLICATION FORM'));
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
-    self::build($this);
-  }
-
-  public static function build(&$form) {
-    $form->assign('selectedChild', CRM_Utils_Request::retrieve('selectedChild', 'Alphanumeric', $form));
-    $selectChild = CRM_Utils_Request::retrieve('selectChild', 'String', $form, FALSE, NULL, 'GET') ?: 'individual';
-
-    $tabs = $form->get('tabHeader');
-    if (!$tabs || empty($_GET['reset'])) {
-      $tabs = self::getTabs($form);
-      $form->set('tabHeader', $tabs);
-    }
-    $form->assign_by_ref('tabHeader', $tabs);
-    CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
-    CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'templates/css/oapp.css');
-    CRM_Core_Resources::singleton()
-      ->addScriptFile('civicrm', 'templates/CRM/common/TabHeader.js', 1, 'html-header')
-      ->addSetting(array(
-        'tabSettings' => array(
-          'active' => $selectChild,
-        ),
-      ));
-    return $tabs;
-  }
-
-  public function getTabs(&$form) {
-    $tabs = [];
-    $qfKey = $form->get('qfKey');
-    $query = 'reset=1';
-    if (!empty($form->_contactID)) {
-      $query .= '&cid=' . $form->_contactID;
-    }
-    $profileNames = [
-      'individual' => [
-        'title' => E::ts('Individual Information'),
-        'url' => CRM_Utils_System::url('civicrm/individual', $query),
-      ],
-      'professional' => [
-        'title' => E::ts('Professional Credential(s)'),
-        'url' => CRM_Utils_System::url('civicrm/professional', $query),
-      ],
-      'experience' => [
-        'title' => E::ts('Experience'),
-        'url' => CRM_Utils_System::url('civicrm/experience', $query),
-      ],
-      'sectorcheck' => [
-        'title' => E::ts('Vulnerable Sector Check'),
-        'url' => CRM_Utils_System::url('civicrm/sectorcheck', $query),
-      ],
-      'insurance' => [
-        'title' => E::ts('Professional Liability Insurance'),
-        'url' => CRM_Utils_System::url('civicrm/insurance', $query),
-      ],
-      'signature' => [
-        'title' => E::ts('Signature'),
-        'url' => CRM_Utils_System::url('civicrm/signature', $query),
-      ],
-    ];
-    foreach ($profileNames as $name => $info) {
-      $tabs[$name] = [
-        'title' => $info['title'],
-        'class' => 'livePage',
-        'link' =>  $info['url'],
-        'valid' => NULL,
-        'active' => TRUE,
-      ];
-      $tabs[$name]['qfKey'] = $qfKey ? "&qfKey={$qfKey}" : NULL;
-
-    }
-    return $tabs;
+    CRM_Oapproviderlistapp_Form_TabHeader::build($this, $this->_contactID);
   }
 
   public function buildQuickForm() {
@@ -122,18 +53,23 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     parent::postProcess();
   }
 
-  public function sendDraft($params) {
+  public function sendDraft($contactID, $qfKey = NULL) {
     if (empty($params['contact_id'])) {
       return;
     }
+    $qfKey = '';
+    if (!empty($params['qfKey'])) {
+      $qfKey = "&qfKey{$params['qfKey']}";
+    }
+    $url = CRM_Utils_System::url("civicrm/application", sprintf("cid=%d%s", $params['contact_id'], $qfKey), TRUE);
     $contact_params = array(array('contact_id', '=', $params['contact_id'], 0, 0));
     $contact = civicrm_api3('Contact', 'getsingle', ['id' => $params['contact_id']]);
     $messageTemplates = new CRM_Core_DAO_MessageTemplate();
     $messageTemplates->id = 68;
     $messageTemplates->find(TRUE);
     $body_subject = CRM_Core_Smarty::singleton()->fetch("string:$messageTemplates->msg_subject");
-    $body_text    = str_replace('{date}', date('D, M j, Y \a\t g:ia'), str_replace('{url}', $params['url'], $messageTemplates->msg_text));
-    $body_html    = "{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}" . str_replace('{date}', date('D, M j, Y \a\t g:ia'), str_replace('{url}', $params['url'], $messageTemplates->msg_html)) . "{/crmScope}";
+    $body_text    = str_replace('{date}', date('D, M j, Y \a\t g:ia'), str_replace('{url}', $url, $messageTemplates->msg_text));
+    $body_html    = "{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}" . str_replace('{date}', date('D, M j, Y \a\t g:ia'), str_replace('{url}', $url, $messageTemplates->msg_html)) . "{/crmScope}";
     $body_html = CRM_Core_Smarty::singleton()->fetch("string:{$body_html}");
     $body_text = CRM_Core_Smarty::singleton()->fetch("string:{$body_text}");
 
@@ -237,6 +173,17 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         $captcha->add($this);
         $this->assign('isCaptcha', TRUE);
       }
+    }
+  }
+
+  public function getTemplateFileName() {
+    if (empty($_GET['snippet'])) {
+      // hack lets suppress the form rendering for now
+      self::$_template->assign('isForm', FALSE);
+      return 'CRM/Oapproviderlistapp/Form/ManageApplication.tpl';
+    }
+    else {
+      return parent::getTemplateFileName();
     }
   }
 

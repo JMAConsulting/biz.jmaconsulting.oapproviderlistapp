@@ -37,14 +37,10 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
       ]);
     }
     if (CRM_Utils_Array::value('_qf_Signature_submit_done', $this->exportValues())) {
-      $values['contact_id'] = $this->_contactID;
-      $values['url'] = CRM_Utils_System::url("civicrm/application",
-        "selectChild=signature&cid=" . $this->_contactID, TRUE
-      );
-      $this->sendDraft($values);
+      $this->sendDraft($this->_contactID, CRM_Utils_Array::value('qfKey', $this->exportValues()));
     }
-    if (CRM_Utils_Array::value('_qf_Signature_submit', $this->exportValues())) {
-      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/application", "selectChild=insurance&cid=" . $this->_contactID));
+    elseif (CRM_Utils_Array::value('_qf_Signature_submit', $this->exportValues())) {
+      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/insurance", "cid=" . $this->_contactID));
     }
     else {
       CRM_Core_Session::setStatus("", E::ts('Thank you for submitting your application to the OAP Provider List'), "success");

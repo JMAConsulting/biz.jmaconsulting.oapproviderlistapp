@@ -1,7 +1,7 @@
 {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
 <div class="content description-text">
   <p>
-  {ts}To join the Provider List, you must be a Board Certified Behavior Analyst® in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario.{/ts}  
+  {ts}To join the Provider List, you must be a Board Certified Behavior Analyst® in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario.{/ts}
   </p>
   <p>
   {ts}If you are a psychologist or psychological associate with Applied Behaviour Analysis (ABA) expertise, you are eligible to join the OAP Provider List. You do not need to obtain a BCBA® or BCBA-D™, however, you will need to have your ABA expertise confirmed by a BCBA-D™. Upon receiving your application package, the Provider List administrator will contact you with more information about the equivalency process for confirming ABA expertise.{/ts}
@@ -47,6 +47,11 @@ CRM.$(function($) {
     $('#editrow-custom_42').insertAfter($('#editrow-custom_10'));
     $('#editrow-custom_43').insertAfter($('#editrow-custom_11'));
   }
+
+  $('#_qf_Professional_submit_done-bottom').on('click', function() {
+    var msg = {/literal}"{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}An email will be sent to you{/ts}. {ts}It will contain a link that you can click to continue to review this request within the next seven days.{/ts}{/crmScope}"{literal};
+    CRM.confirm({message: msg});
+  });
 });
 </script>
 {/literal}
