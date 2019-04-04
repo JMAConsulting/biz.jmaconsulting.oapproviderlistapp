@@ -50,7 +50,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       $this->add('text', "city[$rowNumber]", E::ts('City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
       $this->add('text', "email[$rowNumber]", E::ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
       if ($rowNumber == 1) {
-        CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, empty($this->_orgID));
+        CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, empty($this->_contactID));
       }
     }
     $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Individual', 'formRule'), $this);
