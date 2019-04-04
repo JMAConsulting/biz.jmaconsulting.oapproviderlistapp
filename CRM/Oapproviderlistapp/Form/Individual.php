@@ -79,7 +79,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
 
     $params = [
       'email' => CRM_Utils_Array::value(1, $values['email']),
-      'work_address' => CRM_Utils_Array::value(1, $values['work_address']),
+      'address' => CRM_Utils_Array::value(1, $values['work_address']),
       'phone' => CRM_Utils_Array::value(1, $values['phone']),
       'city' => CRM_Utils_Array::value(1, $values['city']),
     ];
