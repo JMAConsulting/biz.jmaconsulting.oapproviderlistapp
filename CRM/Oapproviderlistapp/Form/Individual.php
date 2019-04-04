@@ -50,7 +50,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       $this->add('text', "city[$rowNumber]", E::ts('City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
       $this->add('text', "email[$rowNumber]", E::ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
       if ($rowNumber == 1) {
-        CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, TRUE);
+        CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, empty($this->_orgID));
       }
     }
     $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Individual', 'formRule'), $this);
@@ -125,9 +125,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
             'contact_id_b' => $id,
           ])['id'];
           CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $contactID, 'employer_id' , $id);
+          $fieldName = 'custom_49';
+          $this->processEntityFile($fieldName, $values[$fieldName], $relationshipID);
         }
-        $fieldName = 'custom_49';
-        $this->processEntityFile($fieldName, $values[$fieldName], $relationshipID);
       }
       else {
         foreach ($mapping as $cfName => $fieldName) {
