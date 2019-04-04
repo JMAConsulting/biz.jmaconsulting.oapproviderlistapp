@@ -10,6 +10,7 @@ use CRM_Oapproviderlistapp_ExtensionUtil as E;
 class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form_ManageApplication {
 
   protected $_first = TRUE;
+  public $_orgID;
 
   public function setDefaultValues() {
     $defaults = [];
@@ -19,8 +20,22 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     if (!empty($this->_contactID)) {
       $contact = civicrm_api3('Contact', 'getsingle', ['id' => $this->_contactID]);
       $defaults['email[1]'] = $contact['email'];
-      //$defaults = array_merge($defaults, $contact);
+      $address = civicrm_api3('Address', 'get', ['contact_id' => $this->_contactID, 'sequential' => 1, 'is_primary' => TRUE])['values'];
+      $phone = civicrm_api3('Phone', 'get', ['contact_id' => $this->_contactID, 'sequential' => 1, 'is_primary' => TRUE])['values'];
+      if (!empty($address[0])) {
+        $defaults['work_address[1]'] = $address[0]['street_address'];
+        $defaults['city[1]'] = $address[0]['city'];
+      }
+      if (!empty($phone[0])) {
+        $defaults['phone[1]'] = $phone[0]['phone'];
+      }
+      $this->_orgID = CRM_Core_DAO::getFieldValue('CRM_Contact_DAO_Contact', $this->_contactID, 'employer_id');
+      if (!empty($this->_orgID)) {
+        $orgnaization = civicrm_api3('Contact', 'getsingle', ['id' => $this->_orgID]);
+        $defaults['organization_name[1]'] = $orgnaization['organization_name'];
+      }
     }
+
     return $defaults;
   }
 
@@ -54,27 +69,21 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     parent::postProcess();
     $values = $this->controller->exportValues($this->_name);
     $email = $phone = NULL;
+    $contactID = NULL;
+    if (!empty($this->_contactID)) {
+      $contactID = $this->_contactID;
+    }
 
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
-    $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, NULL, NULL, OAP_INDIVIDUAL);
+    $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $contactID, NULL, OAP_INDIVIDUAL);
 
-    if (!empty($values['email'][1])) {
-      civicrm_api3('Email', 'create', [
-        'contact_id' => $contactID,
-        'email' => $values['email'][1],
-        'location_type_id' => "Work",
-        'is_primary' => TRUE,
-      ]);
-    }
-
-    if (!empty($values['phone'][1])) {
-      civicrm_api3('Phone', 'create', [
-        'contact_id' => $contactID,
-        'phone' => $values['phone'][1],
-        'location_type_id' => "Work",
-        'is_primary' => TRUE,
-      ]);
-    }
+    $params = [
+      'email' => CRM_Utils_Array::value(1, $values['email']),
+      'work_address' => CRM_Utils_Array::value(1, $values['work_address']),
+      'phone' => CRM_Utils_Array::value(1, $values['phone']),
+      'city' => CRM_Utils_Array::value(1, $values['city']),
+    ];
+    $this->updateContactAddress($contactID, $params);
 
     $customParams = [];
     $mapping = [
@@ -93,43 +102,30 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       }
 
       if ($key == 1) {
-        $id = CRM_Utils_Array::value('id', civicrm_api3('Contact', 'get', [
-          'organization_name' => $name,
-          'options' => ['limit' => 1],
-        ]));
-        if (!$id) {
-          $id = civicrm_api3('Contact', 'create', [
+        if (!empty($this->_orgID)) {
+          $id = $this->_orgID;
+        }
+        else {
+          $id = CRM_Utils_Array::value('id', civicrm_api3('Contact', 'get', [
             'organization_name' => $name,
-            'contact_type' => 'Organization',
-            'email' => $values['email'][$key],
-          ])['id'];
+            'options' => ['limit' => 1],
+          ]));
         }
-        if (!empty($values['work_address'][$key])) {
-          $addressParams = [
-            'contact_id' => $id,
-            'location_type_id' => 'Work',
-            'is_primary' => TRUE,
-            'street_address' => $values['work_address'][$key],
-            'city' => CRM_Utils_Array::value($key, $values['city']),
-          ];
-          if (!empty($values['phone'][$key])) {
-            civicrm_api3('Phone', 'create', [
-              'contact_id' => $id,
-              'phone' => $values['phone'][$key],
-              'location_type_id' => "Work",
-              'is_primary' => TRUE,
-            ]);
-          }
-
-          $addressID = civicrm_api3('Address', 'create', $addressParams)['id'];
-          $address = civicrm_api3('Address', 'create', array_merge($addressParams, ['contact_id' => $contactID]));
-        }
-        $relationshipID = civicrm_api3('Relationship', 'create', [
-          'relationship_type_id' => 5,
-          'contact_id_a' => $contactID,
-          'contact_id_b' => $id,
+        $id = civicrm_api3('Contact', 'create', [
+          'id' => $id,
+          'organization_name' => $name,
+          'contact_type' => 'Organization',
         ])['id'];
-        CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $contactID, 'employer_id' , $id);
+        $this->updateContactAddress($id, $params);
+
+        if (empty($this->_orgID)) {
+          $relationshipID = civicrm_api3('Relationship', 'create', [
+            'relationship_type_id' => 5,
+            'contact_id_a' => $contactID,
+            'contact_id_b' => $id,
+          ])['id'];
+          CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $contactID, 'employer_id' , $id);
+        }
         $fieldName = 'custom_49';
         $this->processEntityFile($fieldName, $values[$fieldName], $relationshipID);
       }
@@ -149,10 +145,12 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       }
     }
 
-    civicrm_api3('Contact', 'create', [
-      'id' => $contactID,
-      'is_deleted' => TRUE,
-    ]);
+    if (empty($this->_contactID)) {
+      civicrm_api3('Contact', 'create', [
+        'id' => $contactID,
+        'is_deleted' => TRUE,
+      ]);
+    }
 
     if (!empty($values['_qf_Individual_submit_done'])) {
       $this->sendDraft($contactID, CRM_Utils_Array::value('qfKey', $this->exportValues()));

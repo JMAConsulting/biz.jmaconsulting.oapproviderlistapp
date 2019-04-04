@@ -29,8 +29,6 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
         'activity_status_id' => 'Completed',
         'target_id' => $this->_contactID,
       ])['id'];
-      // TODO return error
-      //CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $activityID, NULL, OAP_SIGNATURE);
       civicrm_api3('Contact', 'create', [
         'id' => $this->_contactID,
         'is_deleted' => FALSE,

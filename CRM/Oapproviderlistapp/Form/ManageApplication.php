@@ -212,5 +212,22 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     CRM_Core_DAO::executeQuery($sql);
   }
 
+  public function updateContactAddress($contactID, $params) {
+    foreach (['email', 'phone', 'address'] as $param) {
+      if (!empty($params[$param])) {
+        $id = civicrm_api3(ucwords($param), 'get', ['contact_id' => $contactID, 'is_primary' => TRUE, 'options' => ['limit' => 1]])['id'];
+        $apiParams = [
+          'id' => $id,
+          $param => $params[$param],
+          'location_type_id' => 'Work',
+          'is_primary' => TRUE,
+        ];
+        if ($param == 'address') {
+          $apiParams['city'] = $params['city'];
+        }
+        civicrm_api3(ucwords($param), 'create', $apiParams);
+      }
+    }
+  }
 
 }
