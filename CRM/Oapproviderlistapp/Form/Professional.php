@@ -27,6 +27,9 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
   }
 
   public function formRule($fields, $files, $self) {
+    if (!empty($fields['_qf_Professional_submit_done'])) {
+      return TRUE;
+    }
     $errors = [];
     if (count(array_filter($fields["custom_7"])) == 0) {
       $errors['custom_7'] = E::ts("At least one credential must be selected.");

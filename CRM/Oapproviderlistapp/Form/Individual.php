@@ -58,10 +58,20 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
   }
 
   public function formRule($fields, $files, $self) {
+    if (!empty($fields['_qf_Individual_submit_done'])) {
+      return TRUE;
+    }
     $errors = [];
     if (empty($fields["organization_name"][1])) {
       $errors['organization_name[1]'] = E::ts("At least one Current Employer is required.");
     }
+    if (empty($fields['first_name'])) {
+      $errors['first_name'] = E::ts("First name is required");
+    }
+    if (empty($fields['last_name'])) {
+      $errors['last_name'] = E::ts("Last name is required");
+    }
+
     return $errors;
   }
 
