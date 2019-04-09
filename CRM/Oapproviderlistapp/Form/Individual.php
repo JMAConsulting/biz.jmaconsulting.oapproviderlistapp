@@ -50,7 +50,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       $this->add('text', "city[$rowNumber]", E::ts('City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
       $this->add('text', "email[$rowNumber]", E::ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
       if ($rowNumber == 1) {
-        CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, empty($this->_contactID));
+        CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, FALSE);
       }
     }
 
@@ -87,7 +87,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       'city' => CRM_Utils_Array::value(1, $values['city']),
     ];
     if (empty($contactID) && !empty($params['email'])) {
-      $contact = civicrm_api3('contact', 'get', ['email' => $params['email'], 'sequential' => 1])['values'];
+      $contact = civicrm_api3('contact', 'get', ['email' => $params['email'], 'contact_sub_type' => 'Provider', 'sequential' => 1])['values'];
       if (!empty($contact)) {
         $contactID = $contact[0]['contact_id'];
       }
