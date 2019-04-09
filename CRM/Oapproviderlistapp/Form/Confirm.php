@@ -40,6 +40,9 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     $details = CRM_Core_BAO_CustomGroup::buildCustomDataView($this, $groupTree, FALSE, NULL, NULL, NULL, $this->_contactID);
     $otherEmplyeeInformation = [];
     foreach ($details[16] as $fieldID => $info) {
+      if (empty($info['fields'])) {
+        continue;
+      }
       foreach ($info['fields'] as $values) {
         $otherEmplyeeInformation[$fieldID][$info['field_title']] = $info['field_value'];
       }
@@ -49,6 +52,9 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     $details = CRM_Core_BAO_CustomGroup::buildCustomDataView($this, $groupTree, FALSE, NULL, NULL, NULL, $this->_contactID);
     $otherProfessional = [];
     foreach ($details[12] as $fieldID => $info) {
+      if (empty($info['fields'])) {
+        continue;
+      }
       foreach ($info['fields'] as $values) {
         $otherProfessional[$fieldID][$info['field_title']] = $info['field_value'];
       }
@@ -57,7 +63,10 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     $groupTree = CRM_Core_BAO_CustomGroup::getTree('Individual', NULL, $this->_contactID, 10, 'Provider');
     $details = CRM_Core_BAO_CustomGroup::buildCustomDataView($this, $groupTree, FALSE, NULL, NULL, NULL, $this->_contactID);
     $employers = [];
-    foreach ($details[12] as $fieldID => $info) {
+    foreach ($details[10] as $fieldID => $info) {
+      if (empty($info['fields'])) {
+        continue;
+      }
       foreach ($info['fields'] as $values) {
         $employers[$fieldID][$info['field_title']] = $info['field_value'];
       }

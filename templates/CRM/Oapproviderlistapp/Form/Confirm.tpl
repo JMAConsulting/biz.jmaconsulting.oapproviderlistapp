@@ -1,25 +1,24 @@
 {* HEADER *}
 
-<div class="crm-submit-buttons">
-{include file="CRM/common/formButtons.tpl" location="top"}
+<div class="crm-public-form-item crm-section professional">
+  {include file="CRM/UF/Form/Block.tpl" fields=$professional}
 </div>
 
-{* FIELD EXAMPLE: OPTION 1 (AUTOMATIC LAYOUT) *}
+<div class="crm-public-form-item crm-section professional">
+  {include file="CRM/UF/Form/Block.tpl" fields=$experience}
+</div>
 
-{foreach from=$elementNames item=elementName}
-  <div class="crm-section">
-    <div class="label">{$form.$elementName.label}</div>
-    <div class="content">{$form.$elementName.html}</div>
-    <div class="clear"></div>
-  </div>
-{/foreach}
+<div class="crm-public-form-item crm-section professional">
+  {include file="CRM/UF/Form/Block.tpl" fields=$sectorcheck}
+</div>
 
-{* FIELD EXAMPLE: OPTION 2 (MANUAL LAYOUT)
+<div class="crm-public-form-item crm-section professional">
+  {include file="CRM/UF/Form/Block.tpl" fields=$insurance}
+</div>
 
-  <div>
-    <span>{$form.favorite_color.label}</span>
-    <span>{$form.favorite_color.html}</span>
-  </div>
+<div class="crm-public-form-item crm-section professional">
+  {include file="CRM/UF/Form/Block.tpl" fields=$signature}
+</div>
 
 {* FOOTER *}
 <div class="crm-submit-buttons">
