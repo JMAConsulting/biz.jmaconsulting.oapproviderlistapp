@@ -29,7 +29,7 @@ class CRM_Oapproviderlistapp_Form_Insurance extends CRM_Oapproviderlistapp_Form_
       CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $this->_contactID, NULL, OAP_INSURANCE);
     }
     if (CRM_Utils_Array::value('_qf_Insurance_submit_done', $this->exportValues())) {
-      $this->sendDraft($this->_contactID, CRM_Utils_Array::value('qfKey', $this->exportValues()));
+      $this->sendDraft($this->_contactID);
     }
     elseif (CRM_Utils_Array::value('_qf_Insurance_submit', $this->exportValues())) {
       CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/experience", "selectChild=experience&cid=" . $this->_contactID));

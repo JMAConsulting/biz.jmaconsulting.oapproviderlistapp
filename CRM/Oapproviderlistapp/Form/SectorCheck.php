@@ -29,7 +29,7 @@ class CRM_Oapproviderlistapp_Form_SectorCheck extends CRM_Oapproviderlistapp_For
       CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $this->_contactID, NULL, OAP_SECTORCHECK);
     }
     if (CRM_Utils_Array::value('_qf_SectorCheck_submit_done', $this->exportValues())) {
-      $this->sendDraft($this->_contactID, CRM_Utils_Array::value('qfKey', $this->exportValues()));
+      $this->sendDraft($this->_contactID);
     }
     elseif (CRM_Utils_Array::value('_qf_SectorCheck_submit', $this->exportValues())) {
       CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/experience", "cid=" . $this->_contactID));
