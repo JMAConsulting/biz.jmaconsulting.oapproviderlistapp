@@ -114,8 +114,8 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       }
 
       if ($key == 1) {
-        if (!empty($this->_orgID)) {
-          $id = $this->_orgID;
+        if (!empty($orgID)) {
+          $id = $orgID;
         }
         else {
           $id = CRM_Utils_Array::value('id', civicrm_api3('Contact', 'get', [
