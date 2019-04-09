@@ -93,7 +93,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
       }
     }
     if (CRM_Utils_Array::value('_qf_Professional_submit_done', $this->exportValues())) {
-      $this->sendDraft($this->_contactID, CRM_Utils_Array::value('qfKey', $this->exportValues()));
+      $this->sendDraft($this->_contactID);
     }
     elseif (CRM_Utils_Array::value('_qf_Professional_submit', $this->exportValues())) {
       CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/individual", "reset=1&cid=" . $this->_contactID));

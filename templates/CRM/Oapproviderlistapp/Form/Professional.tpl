@@ -50,7 +50,7 @@ CRM.$(function($) {
 
   $('#_qf_Professional_submit_done-bottom').on('click', function() {
     var msg = {/literal}"{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}An email will be sent to you{/ts}. {ts}It will contain a link that you can click to continue to review this request within the next seven days.{/ts}{/crmScope}"{literal};
-    CRM.confirm({message: msg});
+    CRM.alert(msg);
   });
 });
 </script>

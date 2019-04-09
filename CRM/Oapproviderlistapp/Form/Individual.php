@@ -53,12 +53,16 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, empty($this->_contactID));
       }
     }
+
     $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Individual', 'formRule'), $this);
     parent::buildQuickForm();
   }
 
   public function formRule($fields, $files, $self) {
     if (!empty($fields['_qf_Individual_submit_done'])) {
+      if (empty($fields['email[1]'])) {
+        $errors['email[1]'] = E::ts("Email is a required field to send draft link.");
+      }
       return TRUE;
     }
     $errors = [];
@@ -75,25 +79,23 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     return $errors;
   }
 
-  public function postProcess() {
-    parent::postProcess();
-    $values = $this->controller->exportValues($this->_name);
-    $email = $phone = NULL;
-    $contactID = NULL;
-    if (!empty($this->_contactID)) {
-      $contactID = $this->_contactID;
-    }
-
-    $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
-    $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $contactID, NULL, OAP_INDIVIDUAL);
-
+  public static function submit($form, $values, $contactID, $orgID) {
     $params = [
       'email' => CRM_Utils_Array::value(1, $values['email']),
       'address' => CRM_Utils_Array::value(1, $values['work_address']),
       'phone' => CRM_Utils_Array::value(1, $values['phone']),
       'city' => CRM_Utils_Array::value(1, $values['city']),
     ];
-    $this->updateContactAddress($contactID, $params);
+    if (empty($contactID) && !empty($params['email'])) {
+      $contact = civicrm_api3('contact', 'get', ['email' => $params['email'], 'sequential' => 1])['values'];
+      if (!empty($contact)) {
+        $contactID = $contact[0]['contact_id'];
+      }
+    }
+    $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
+    $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $contactID, NULL, OAP_INDIVIDUAL);
+
+    $form->updateContactAddress($contactID, $params);
 
     $customParams = [];
     $mapping = [
@@ -126,9 +128,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           'organization_name' => $name,
           'contact_type' => 'Organization',
         ])['id'];
-        $this->updateContactAddress($id, $params);
+        $form->updateContactAddress($id, $params);
 
-        if (empty($this->_orgID)) {
+        if (empty($orgID)) {
           $relationshipID = civicrm_api3('Relationship', 'create', [
             'relationship_type_id' => 5,
             'contact_id_a' => $contactID,
@@ -136,7 +138,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           ])['id'];
           CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $contactID, 'employer_id' , $id);
           $fieldName = 'custom_49';
-          $this->processEntityFile($fieldName, $values[$fieldName], $relationshipID);
+          $form->processEntityFile($fieldName, $values[$fieldName], $relationshipID);
         }
       }
       else {
@@ -155,6 +157,14 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       }
     }
 
+    return $contactID;
+  }
+
+  public function postProcess() {
+    parent::postProcess();
+    $values = $this->controller->exportValues($this->_name);
+    $contactID = self::submit($this, $values, $this->_contactID, $this->_orgID);
+
     if (empty($this->_contactID)) {
       civicrm_api3('Contact', 'create', [
         'id' => $contactID,
@@ -162,8 +172,8 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       ]);
     }
 
-    if (!empty($values['_qf_Individual_submit_done'])) {
-      $this->sendDraft($contactID, CRM_Utils_Array::value('qfKey', $this->exportValues()));
+    if (!empty($this->exportValues()['_qf_Individual_submit_done'])) {
+      $this->sendDraft($contactID);
     }
 
     CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/professional", "&cid=" . $contactID));

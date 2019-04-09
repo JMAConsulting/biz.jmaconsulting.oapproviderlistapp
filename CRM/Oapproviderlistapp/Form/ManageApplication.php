@@ -54,16 +54,16 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
   }
 
   public function sendDraft($contactID, $qfKey = NULL) {
-    if (empty($params['contact_id'])) {
+    if (empty($contactID)) {
       return;
     }
     $qfKey = '';
-    if (!empty($params['qfKey'])) {
-      $qfKey = "&qfKey{$params['qfKey']}";
+    if (!empty($qfKey)) {
+      $qfKey = "&qfKey{$qfKey}";
     }
-    $url = CRM_Utils_System::url("civicrm/application", sprintf("cid=%d%s", $params['contact_id'], $qfKey), TRUE);
-    $contact_params = array(array('contact_id', '=', $params['contact_id'], 0, 0));
-    $contact = civicrm_api3('Contact', 'getsingle', ['id' => $params['contact_id']]);
+    $url = CRM_Utils_System::url("civicrm/application", sprintf("cid=%d%s", $contactID, $qfKey), TRUE);
+    $contact_params = array(array('contact_id', '=', $contactID, 0, 0));
+    $contact = civicrm_api3('Contact', 'getsingle', ['id' => $contactID]);
     $messageTemplates = new CRM_Core_DAO_MessageTemplate();
     $messageTemplates->id = 68;
     $messageTemplates->find(TRUE);
