@@ -41,7 +41,6 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
       "custom_32_-",
       "custom_33_-",
       "custom_47_-",
-      "custom_48_-",
       "custom_35_-",
       "custom_36_-",
       "custom_37_-",
