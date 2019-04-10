@@ -29,6 +29,9 @@
 <script type="text/javascript">
 CRM.$(function($) {
   $('.crm-profile legend').hide();
+  var fileValues = {/literal}"{$form.fileValues}"{literal}
+  console.log(fileValues);
+  console.log($('#editrow-custom_46 .content .crm-frozen-field').text());
 });
 </script>
 {/literal}
