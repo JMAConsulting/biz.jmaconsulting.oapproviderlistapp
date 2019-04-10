@@ -49,9 +49,10 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
         continue;
       }
       foreach ($info['fields'] as $values) {
-        $otherEmplyeeInformation[$fieldID][$info['field_title']] = $info['field_value'];
+        $otherEmplyeeInformation[$fieldID][$values['field_title']] = $values['field_value'];
       }
     }
+    $this->assign('otherEmplyeeInformation', $otherEmplyeeInformation);
 
     $groupTree = CRM_Core_BAO_CustomGroup::getTree('Individual', NULL, $this->_contactID, 12, 'Provider');
     $details = CRM_Core_BAO_CustomGroup::buildCustomDataView($this, $groupTree, FALSE, NULL, NULL, NULL, $this->_contactID);
@@ -61,9 +62,10 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
         continue;
       }
       foreach ($info['fields'] as $values) {
-        $otherProfessional[$fieldID][$info['field_title']] = $info['field_value'];
+        $otherProfessional[$fieldID][$values['field_title']] = $values['field_value'];
       }
     }
+    $this->assign('otherProfessional', $otherProfessional);
 
     $groupTree = CRM_Core_BAO_CustomGroup::getTree('Individual', NULL, $this->_contactID, 10, 'Provider');
     $details = CRM_Core_BAO_CustomGroup::buildCustomDataView($this, $groupTree, FALSE, NULL, NULL, NULL, $this->_contactID);
@@ -73,9 +75,10 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
         continue;
       }
       foreach ($info['fields'] as $values) {
-        $employers[$fieldID][$info['field_title']] = $info['field_value'];
+        $employers[$fieldID][$values['field_title']] = $values['field_value'];
       }
     }
+    $this->assign('employers', $employers);
 
     $this->buildCustom(OAP_PROFESSIONAL, 'professional', TRUE);
     $this->buildCustom(OAP_EXPERIENCE, 'experience', TRUE);
