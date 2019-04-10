@@ -29,8 +29,7 @@
 <script type="text/javascript">
 CRM.$(function($) {
   $('.crm-profile legend').hide();
-  var custom_46 = {/literal}'{$file_custom_46}'{literal};
-  $('#editrow-custom_46 .content .crm-frozen-field').val($('#editrow-custom_46 .content .crm-frozen-field').html(custom_46));
+  $('#editrow-custom_46 .content .crm-frozen-field').val(('#editrow-custom_46 .content .crm-frozen-field').html($('#editrow-custom_46 .content .crm-frozen-field').text()));
 });
 </script>
 {/literal}
