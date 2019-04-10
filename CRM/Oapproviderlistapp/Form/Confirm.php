@@ -10,9 +10,11 @@ require_once __DIR__ . '/../../../oapproviderlistapp.variables.php';
  */
 class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_ManageApplication {
   public $_contactID;
+  public $_mode;
   public function preProcess() {
     CRM_Utils_System::setTitle(E::ts('OAP PROVIDER LIST CONFIRMATION PAGE'));
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
+    $this->_mode = CRM_Utils_Request::retrieve('mode', 'Alphanumeric', $this, FALSE);
     CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
     CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'templates/css/oapp.css');
   }
@@ -129,7 +131,9 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
       'subName' => 'done',
     );
 
-    $this->addButtons($buttons);
+    if ($this->_mode != 'embedded') {
+      $this->addButtons($buttons);
+    }
   }
 
   public function postProcess() {

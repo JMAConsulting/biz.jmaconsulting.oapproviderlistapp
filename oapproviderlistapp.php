@@ -221,4 +221,40 @@ function oapproviderlistapp_civicrm_postProcess($formName, &$form) {
       'Individual'
     );
   }
+  elseif ($formName == "CRM_Contact_Form_Inline_CustomData") {
+    $oldStatus = NULL;
+    if (!empty($form->_submitValues['cid']) && CRM_Utils_Array::value('custom_60_2', $form->_submitValues)) {
+      $oldStatus = civicrm_api3('Contact', 'getvalue', ['return' => "custom_60", 'id' => $form->_submitValues['cid']]);
+      if (CRM_Utils_Array::value('custom_60_2', $form->_submitValues) == 'Approved') {
+        civicrm_api3('Membership', 'create', [
+          'membership_type_id' => "OAP Clinical Supervisor Provider",
+          'contact_id' => $form->_submitValues['cid'],
+          'start_date' => date('Ymd'),
+        ]);
+      }
+      elseif (CRM_Utils_Array::value('custom_60_2', $form->_submitValues) == 'Cancelled') {
+        $membershipID = civicrm_api3('Membership', 'get', [
+          'membership_type_id' => "OAP Clinical Supervisor Provider",
+          'contact_id' => $form->_submitValues['cid'],
+        ])['id'];
+        if ($membershipID) {
+          civicrm_api3('Membership', 'create', [
+            'id' => $membershipID,
+            'status_id' => 'Cancelled',
+          ]);
+        }
+      }
+      if ($oldStatus && CRM_Utils_Array::value('custom_60_2', $form->_submitValues) != $oldStatus) {
+        $activityID = civicrm_api3('Activity', 'create', [
+          'source_contact_id' => $form->_submitValues['cid'],
+          'activity_type_id' => "Provider Status Changed",
+          'subject' => sprintf("Application status changed from %s to %s", $oldStatus, CRM_Utils_Array::value('custom_60_2', $form->_submitValues)),
+          'activity_status_id' => 'Completed',
+          'details' => '<a href="https://oapproviderlist.ca/civicrm/application/confirm?cid=' . $form->_submitValues['cid'] . '&mode=embedded">View Applicant</a>',
+          'target_id' => $form->_submitValues['cid'],
+          'assignee_id' => 99184,
+        ])['id'];
+      }
+    }
+  }
 }
