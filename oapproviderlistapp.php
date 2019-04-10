@@ -244,7 +244,7 @@ function oapproviderlistapp_civicrm_postProcess($formName, &$form) {
           ]);
         }
       }
-      if ($oldStatus && CRM_Utils_Array::value('custom_60_2', $form->_submitValues) != $oldStatus) {
+      if ($oldStatus) {
         $activityID = civicrm_api3('Activity', 'create', [
           'source_contact_id' => $form->_submitValues['cid'],
           'activity_type_id' => "Provider Status Changed",
