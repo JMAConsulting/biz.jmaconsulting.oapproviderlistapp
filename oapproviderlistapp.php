@@ -248,9 +248,9 @@ function oapproviderlistapp_civicrm_postProcess($formName, &$form) {
         $activityID = civicrm_api3('Activity', 'create', [
           'source_contact_id' => $form->_submitValues['cid'],
           'activity_type_id' => "Provider Status Changed",
-          'subject' => sprintf("Application status changed from %s to %s", $oldStatus, CRM_Utils_Array::value('custom_60_2', $form->_submitValues)),
+          'subject' => sprintf("Application status changed to %s", $oldStatus),
           'activity_status_id' => 'Completed',
-          'details' => '<a href="https://oapproviderlist.ca/civicrm/application/confirm?cid=' . $form->_submitValues['cid'] . '&mode=embedded">View Applicant</a>',
+          'details' => '<a class="action-item crm-hover-button" href="https://oapproviderlist.ca/civicrm/application/confirm?cid=' . $form->_submitValues['cid'] . '&mode=embedded">View Applicant</a>',
           'target_id' => $form->_submitValues['cid'],
           'assignee_id' => 99184,
         ])['id'];
