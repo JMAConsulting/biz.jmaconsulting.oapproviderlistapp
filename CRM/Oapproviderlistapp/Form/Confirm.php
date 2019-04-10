@@ -10,6 +10,7 @@ require_once __DIR__ . '/../../../oapproviderlistapp.variables.php';
  */
 class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_ManageApplication {
   public $_contactID;
+  public $_values;
   public function preProcess() {
     CRM_Utils_System::setTitle(E::ts('OAP PROVIDER LIST CONFIRMATION PAGE'));
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
@@ -27,6 +28,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactID, $fields, $defaults, TRUE);
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_SIGNATURE, FALSE);
     CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactID, $fields, $defaults, TRUE);
+    $this->_values = $defaults;
     return $defaults;
   }
 
@@ -76,7 +78,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     $this->buildCustom(OAP_EXPERIENCE, 'experience', TRUE);
     $this->buildCustom(OAP_SECTORCHECK, 'sectorcheck', TRUE);
     $this->buildCustom(OAP_INSURANCE, 'insurance', TRUE);
-    $this->buildCustom(OAP_SIGNATURE, 'signature', TRUE);
+    $this->buildCustom(OAP_SIGNATURE, 'signature', TRUE, TRUE);
 
     parent::buildQuickForm();
   }
@@ -84,6 +86,10 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
   public function postProcess() {
     $values = $this->exportValues();
     parent::postProcess();
+  }
+
+  public function getTemplateFileName() {
+    return 'CRM/Oapproviderlistapp/Form/Confirm.tpl';
   }
 
 }

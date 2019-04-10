@@ -149,7 +149,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
             $field['data_type'] == 'File' || ($viewOnly && $field['name'] == 'image_URL')
           ) {
             // ignore file upload fields
-            continue;
+            //continue;
           }
           //make the field optional if primary participant
           //have been skip the additional participant.
@@ -162,6 +162,16 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
             $addCaptcha = TRUE;
           }
           list($prefixName, $index) = CRM_Utils_System::explode('-', $key, 2);
+          if ($viewOnly) {
+            $field['is_view'] = $viewOnly;
+            if ($field['data_type'] == 'File') {
+              $form->add('text', $field['name'], $field['title'], []);
+              if (!empty($form->_values[$field['name']])) {
+                $form->setDefaults($field['name'], CRM_Core_BAO_CustomField::displayValue($form->_values[$field['name']], $field['name'], $form->_contactID));
+              }
+              continue;
+            }
+          }
           CRM_Core_BAO_UFGroup::buildProfile($this, $field, CRM_Profile_Form::MODE_CREATE, $contactID, TRUE);
 
           $this->_fields[$key] = $field;
