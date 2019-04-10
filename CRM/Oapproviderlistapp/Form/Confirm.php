@@ -134,7 +134,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
 
   public function postProcess() {
     $values = $this->exportValues();
-    if (CRM_Utils_Array::value('_qf_Confirm_submit', $this->exportValues())) {
+    if (CRM_Utils_Array::value('_qf_Confirm_upload', $values)) {
       CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/signature", "reset=1&cid=" . $this->_contactID));
     }
     else {
