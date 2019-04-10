@@ -61,6 +61,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     if (!empty($qfKey)) {
       $qfKey = "&qfKey{$qfKey}";
     }
+    $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
     $url = CRM_Utils_System::url("civicrm/application", sprintf("cid=%d%s", $contactID, $qfKey), TRUE);
     $contact_params = array(array('contact_id', '=', $contactID, 0, 0));
     $contact = civicrm_api3('Contact', 'getsingle', ['id' => $contactID]);
@@ -93,7 +94,11 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       'assignee_id' => 99184,
       'details' => $body_html,
     ]);
-    CRM_Utils_System::redirect('https://oapproviderlist.ca/draft-saved-successfully');
+    $url = "https://oapproviderlist.ca/draft-saved-successfully";
+    if ($lang == 'fr') {
+      $url = "https://oapproviderlist.ca/fr/sauvegarde-de-lebauche-de-la-demande-dinscription-sur-la-liste-des-fournisseurs-du-posa";
+    }
+    CRM_Utils_System::redirect($url);
   }
 
   public function buildCustom($id, $name, $viewOnly = FALSE, $ignoreContact = FALSE) {
