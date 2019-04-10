@@ -29,7 +29,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactID, $fields, $defaults, TRUE);
     foreach (['custom_46', 'custom_57', 'custom_58'] as $name) {
       if (!empty($defaults[$name])) {
-        $defaults[$name] = htmlentities(CRM_Core_BAO_CustomField::displayValue($defaults[$name], $name, $this->_contactID));
+        $defaults[$name] = CRM_Core_BAO_CustomField::displayValue($defaults[$name], $name, $this->_contactID);
       }
     }
     return $defaults;
