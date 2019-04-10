@@ -13,6 +13,8 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
   public function preProcess() {
     CRM_Utils_System::setTitle(E::ts('OAP PROVIDER LIST CONFIRMATION PAGE'));
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
+    CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
+    CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'templates/css/oapp.css');
   }
 
   public function setDefaultValues() {
@@ -114,11 +116,47 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     $this->buildCustom(OAP_INSURANCE, 'insurance', TRUE);
     $this->buildCustom(OAP_SIGNATURE, 'signature', TRUE, TRUE);
 
-    parent::buildQuickForm();
+    $buttons[] = array(
+      'type' => 'upload',
+      'name' =>  E::ts('Previous'),
+      'spacing' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+      'isDefault' => TRUE,
+    );
+    $buttons[] = array(
+      'type' => 'submit',
+      'name' => E::ts('Confirm'),
+      'spacing' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+      'subName' => 'done',
+    );
+
+    $this->addButtons($buttons);
   }
 
   public function postProcess() {
     $values = $this->exportValues();
+    if (CRM_Utils_Array::value('_qf_Confirm_submit', $this->exportValues())) {
+      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/signature", "reset=1&cid=" . $this->_contactID));
+    }
+    else {
+      $activity = civicrm_api3('Activity', 'get', [
+        'source_contact_id' => $this->_contactID,
+        'activity_type_id' => "Provider List Application Submission",
+        'sequential' => 0,
+      ])['values'][0];
+      if (!empty($activity['id'])) {
+        civicrm_api3('Activity', 'create', [
+          'id' => $activity['id'],
+          'status_id' => 'Completed',
+        ]);
+      }
+      civicrm_api3('Contact', 'create', [
+        'id' => $this->_contactID,
+        'is_deleted' => FALSE,
+        'custom_60' => "Submitted",
+      ]);
+      CRM_Core_Session::setStatus("", E::ts('Thank you for submitting your application to the OAP Provider List'), "success");
+      CRM_Utils_System::redirect('https://oapproviderlist.ca');
+    }
     parent::postProcess();
   }
 
