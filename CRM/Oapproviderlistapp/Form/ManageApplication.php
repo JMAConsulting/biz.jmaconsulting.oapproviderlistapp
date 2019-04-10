@@ -165,9 +165,9 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
           if ($viewOnly) {
             $field['is_view'] = $viewOnly;
             if ($field['data_type'] == 'File') {
-              $form->add('text', $field['name'], $field['title'], []);
-              if (!empty($form->_values[$field['name']])) {
-                $form->setDefaults($field['name'], CRM_Core_BAO_CustomField::displayValue($form->_values[$field['name']], $field['name'], $form->_contactID));
+              $this->add('text', $field['name'], $field['title'], []);
+              if (!empty($this->_values[$field['name']])) {
+                $this->setDefaults($field['name'], CRM_Core_BAO_CustomField::displayValue($this->_values[$field['name']], $field['name'], $this->_contactID));
               }
               continue;
             }
