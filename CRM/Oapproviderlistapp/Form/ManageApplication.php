@@ -84,7 +84,16 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       'text' => $body_text,
     );
     CRM_Utils_Mail::send($mailParams);
-    CRM_Utils_System::redirect('https://oapproviderlist.ca');
+    civicrm_api3('Activity', 'create', [
+      'source_contact_id' => $contactID,
+      'activity_type_id' => "Draft Saved",
+      'subject' => 'Draft Saved',
+      'activity_status_id' => 'Completed',
+      'target_id' => $contactID,
+      'assignee_id' => 99184,
+      'details' => $body_html,
+    ]);
+    CRM_Utils_System::redirect('https://oapproviderlist.ca/draft-saved-successfully');
   }
 
   public function buildCustom($id, $name, $viewOnly = FALSE, $ignoreContact = FALSE) {

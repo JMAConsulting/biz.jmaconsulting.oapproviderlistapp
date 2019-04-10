@@ -28,6 +28,7 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
         'subject' => 'Provider List Application Submission',
         'activity_status_id' => 'Completed',
         'target_id' => $this->_contactID,
+        'assignee_id' => 99184,
       ])['id'];
       civicrm_api3('Contact', 'create', [
         'id' => $this->_contactID,
