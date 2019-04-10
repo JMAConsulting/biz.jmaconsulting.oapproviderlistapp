@@ -11,7 +11,6 @@
   <div class="content">{$employerName}</div>
   <br/>
 </div>
-<br/>
 <div class="crm-section form-item">
   <div class="label">
     <label for="address">{ts}Address{/ts}:</label>
@@ -19,7 +18,6 @@
   <div class="content">{$address}</div>
   <br/>
 </div>
-<br/>
 <div class="crm-section form-item">
   <div class="label">
     <label for="address">{ts}Work Phone{/ts}:</label>
@@ -34,7 +32,6 @@
   <div class="content">{$email}</div>
   <br/>
 </div>
-<br/>
 <div class="crm-public-form-item crm-section professional">
   {include file="CRM/UF/Form/Block.tpl" fields=$professional}
   {if $otherProfessional}
