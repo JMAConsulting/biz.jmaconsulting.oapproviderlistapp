@@ -1,10 +1,20 @@
 {* HEADER *}
 
+<div class="crm-summary-display_name">{$displayName}</div>
+<br/>
+<div class="crm-section form-item">
+  <div class="label">
+    <label for="employer">{ts}Employer{/ts}</label>
+  </div>
+  <div class="content">{$employerName}</div>
+  <div class="clear"></div>
+</div>
+<br/>
 <div class="crm-public-form-item crm-section professional">
   {include file="CRM/UF/Form/Block.tpl" fields=$professional}
   {if $otherProfessional}
-    <div class="crm-section form-item">
-    {ts}Other Professional Credentials{/ts}
+    <div>
+    {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}Other Professional Credentials{/ts}{/crmScope}
     {foreach from=$otherProfessional item=values}
       <div class="crm-section form-item">
       {foreach from=$values item=value key=label}
@@ -23,8 +33,8 @@
 <div class="crm-public-form-item crm-section experience">
   {include file="CRM/UF/Form/Block.tpl" fields=$experience}
   {if $employers}
-    <div class="crm-section form-item">
-    {ts}Employment History{/ts}
+    <div>
+    {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}Employment History{/ts}{/crmScope}
     {foreach from=$employers item=values}
       <div class="crm-section form-item">
       {foreach from=$values item=value key=label}

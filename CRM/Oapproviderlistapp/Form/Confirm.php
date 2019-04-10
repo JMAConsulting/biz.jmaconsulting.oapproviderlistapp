@@ -38,6 +38,11 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
 
   public function buildQuickForm() {
     $displayName = CRM_Contact_BAO_Contact::displayName($this->_contactID);
+    $this->assign('displayName', $displayName);
+    $employerID = CRM_Core_DAO::getFieldValue('CRM_Contact_BAO_Contact', $this->_contactID, 'employer_id');
+    if (!empty($employerID)) {
+      $this->assign('employerName', CRM_Contact_BAO_Contact::displayName($employerID));
+    }
     //$email = civicrm_api3('Email', 'getvalue', ['contact_id' => $this->_contactID, 'is_primary' => TRUE, 'return' => ['email']]);
     $address = civicrm_api3('Address', 'get', ['contact_id' => $this->_contactID, 'is_primary' => TRUE, 'sequential' => 1])['values'][0];
     $phone = civicrm_api3('Phone', 'get', ['contact_id' => $this->_contactID, 'is_primary' => TRUE, 'sequential' => 1])['values'][0];
@@ -49,6 +54,9 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
         continue;
       }
       foreach ($info['fields'] as $values) {
+        if (empty($values['field_value'])) {
+          continue;
+        }
         $otherEmplyeeInformation[$fieldID][$values['field_title']] = $values['field_value'];
       }
     }
@@ -62,6 +70,9 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
         continue;
       }
       foreach ($info['fields'] as $values) {
+        if (empty($values['field_value'])) {
+          continue;
+        }
         $otherProfessional[$fieldID][$values['field_title']] = $values['field_value'];
       }
     }
@@ -75,6 +86,9 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
         continue;
       }
       foreach ($info['fields'] as $values) {
+        if (empty($values['field_value'])) {
+          continue;
+        }
         $employers[$fieldID][$values['field_title']] = $values['field_value'];
       }
     }
