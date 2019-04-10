@@ -32,6 +32,13 @@
   <div class="content">{$email}</div>
   <br/>
 </div>
+<div class="crm-section form-item">
+  <div class="label">
+    <label for="proof_of_emp">{ts}Proof of Employment{/ts}:</label>
+  </div>
+  <div class="content">{$custom_49}</div>
+  <br/>
+</div>
 <div class="crm-public-form-item crm-section professional">
   {include file="CRM/UF/Form/Block.tpl" fields=$professional}
   {if $otherProfessional}

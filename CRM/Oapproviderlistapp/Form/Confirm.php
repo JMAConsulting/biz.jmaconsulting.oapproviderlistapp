@@ -43,6 +43,14 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     if (!empty($employerID)) {
       $this->assign('employerName', CRM_Contact_BAO_Contact::displayName($employerID));
     }
+    $relationship = civicrm_api3('Relationship', 'get', [
+      'relationship_type_id' => 5,
+      'contact_id_a' => $this->_contactID,
+      'contact_id_b' => $employerID,
+      'sequential' => 1,
+    ])['values'][0];
+    $this->assign('custom_49', CRM_Core_BAO_CustomField::displayValue($relationship['custom_49']['fid'], 'custom_49', $relationship['id']));
+
     $email = civicrm_api3('Email', 'getvalue', ['contact_id' => $this->_contactID, 'is_primary' => TRUE, 'return' => 'email']);
     $this->assign('email', $email);
 
