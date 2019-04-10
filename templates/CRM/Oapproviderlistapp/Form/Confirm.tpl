@@ -1,20 +1,38 @@
 {* HEADER *}
 
+<h1>
 <div class="crm-summary-display_name">{$displayName}</div>
+</h1>
 <br/>
 <div class="crm-section form-item">
   <div class="label">
-    <label for="employer">{ts}Employer{/ts}</label>
+    <label for="employer">{ts}Employer{/ts}:</label>
   </div>
   <div class="content">{$employerName}</div>
+  <div class="clear"></div>
+</div>
+<br/>
+<div class="crm-section form-item">
+  <div class="label">
+    <label for="address">{ts}Address{/ts}:</label>
+  </div>
+  <div class="content">{$address}</div>
+  <div class="clear"></div>
+</div>
+<br/>
+<div class="crm-section form-item">
+  <div class="label">
+    <label for="address">{ts}Work Phone{/ts}:</label>
+  </div>
+  <div class="content">{$phone}</div>
   <div class="clear"></div>
 </div>
 <br/>
 <div class="crm-public-form-item crm-section professional">
   {include file="CRM/UF/Form/Block.tpl" fields=$professional}
   {if $otherProfessional}
-    <div>
-    {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}Other Professional Credentials{/ts}{/crmScope}
+    <fieldset>
+    <legend>{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}Other Professional Credentials{/ts}{/crmScope}</legend>
     {foreach from=$otherProfessional item=values}
       <div class="crm-section form-item">
       {foreach from=$values item=value key=label}
@@ -26,15 +44,15 @@
       {/foreach}
       </div>
     {/foreach}
-    </div>
+    </fieldset>
   {/if}
 </div>
 
 <div class="crm-public-form-item crm-section experience">
   {include file="CRM/UF/Form/Block.tpl" fields=$experience}
   {if $employers}
-    <div>
-    {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}Employment History{/ts}{/crmScope}
+    <fieldset>
+    <legend>{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}Employment History{/ts}{/crmScope}</legend>
     {foreach from=$employers item=values}
       <div class="crm-section form-item">
       {foreach from=$values item=value key=label}
@@ -46,7 +64,7 @@
       {/foreach}
       </div>
     {/foreach}
-  </div>
+  </fieldset>
   {/if}
 </div>
 
