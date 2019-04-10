@@ -9,7 +9,7 @@
     <label for="employer">{ts}Employer{/ts}:</label>
   </div>
   <div class="content">{$employerName}</div>
-  <div class="clear"></div>
+  <br/>
 </div>
 <br/>
 <div class="crm-section form-item">
@@ -17,7 +17,7 @@
     <label for="address">{ts}Address{/ts}:</label>
   </div>
   <div class="content">{$address}</div>
-  <div class="clear"></div>
+  <br/>
 </div>
 <br/>
 <div class="crm-section form-item">
@@ -25,7 +25,14 @@
     <label for="address">{ts}Work Phone{/ts}:</label>
   </div>
   <div class="content">{$phone}</div>
-  <div class="clear"></div>
+  <br/>
+</div>
+<div class="crm-section form-item">
+  <div class="label">
+    <label for="email">{ts}Email Address{/ts}:</label>
+  </div>
+  <div class="content">{$email}</div>
+  <br/>
 </div>
 <br/>
 <div class="crm-public-form-item crm-section professional">
@@ -40,7 +47,7 @@
           <label>{$label}</label>
         </div>
         <div class="content">{$value}</div>
-        <div class="clear"></div>
+        <br/>
       {/foreach}
       </div>
     {/foreach}
@@ -60,7 +67,7 @@
           <label>{$label}</label>
         </div>
         <div class="content">{$value}</div>
-        <div class="clear"></div>
+        <br/>
       {/foreach}
       </div>
     {/foreach}

@@ -87,7 +87,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
         $sql = sprintf("DELETE FROM %s WHERE entity_id = %d ", OAP_OTHER_PRO, $this->_contactID);
         //CRM_Core_DAO::executeQuery($sql);
       }
-      $customValues = CRM_Core_BAO_CustomField::postProcess($params, $this->_contactID, 'Individual');
+      $customValues = CRM_Core_BAO_CustomField::postProcess($this->_submitValues, $this->_contactID, 'Individual');
       if (!empty($customValues) && is_array($customValues)) {
         CRM_Core_BAO_CustomValueTable::store($customValues, 'civicrm_contact', $this->_contactID);
       }

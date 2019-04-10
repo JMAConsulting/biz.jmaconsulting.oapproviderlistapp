@@ -43,9 +43,11 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     if (!empty($employerID)) {
       $this->assign('employerName', CRM_Contact_BAO_Contact::displayName($employerID));
     }
-    //$email = civicrm_api3('Email', 'getvalue', ['contact_id' => $this->_contactID, 'is_primary' => TRUE, 'return' => ['email']]);
+    $email = civicrm_api3('Email', 'getvalue', ['contact_id' => $this->_contactID, 'is_primary' => TRUE, 'return' => 'email']);
+    $this->assign('email', $email);
+
     $address = civicrm_api3('Address', 'get', ['contact_id' => $this->_contactID, 'is_primary' => TRUE, 'sequential' => 1])['values'][0];
-    $addressValue = sprintf("%s,<br/>%s", $address['street_address'], $address['city'])
+    $addressValue = sprintf("%s,<br/>%s", $address['street_address'], $address['city']);
     $this->assign('address', $addressValue);
     $phone = civicrm_api3('Phone', 'get', ['contact_id' => $this->_contactID, 'is_primary' => TRUE, 'sequential' => 1])['values'][0];
     $this->assign('phone', $phone['phone']);
