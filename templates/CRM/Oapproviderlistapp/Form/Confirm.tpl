@@ -28,7 +28,7 @@
 {literal}
 <script type="text/javascript">
 CRM.$(function($) {
-  $('.header-dark').hide();
+  $('.crm-profile legend').hide();
 });
 </script>
 {/literal}

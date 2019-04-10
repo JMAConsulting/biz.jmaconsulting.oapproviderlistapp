@@ -10,7 +10,6 @@ require_once __DIR__ . '/../../../oapproviderlistapp.variables.php';
  */
 class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_ManageApplication {
   public $_contactID;
-  public $_values;
   public function preProcess() {
     CRM_Utils_System::setTitle(E::ts('OAP PROVIDER LIST CONFIRMATION PAGE'));
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
@@ -28,7 +27,11 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactID, $fields, $defaults, TRUE);
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_SIGNATURE, FALSE);
     CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactID, $fields, $defaults, TRUE);
-    $this->_values = $defaults;
+    foreach (['custom_46', 'custom_57', 'custom_58'] as $name) {
+      if (!empty($defaults[$name])) {
+        $defaults[$name] = CRM_Core_BAO_CustomField::displayValue($defaults[$name], $field['name'], $this->_contactID);
+      }
+    }
     return $defaults;
   }
 
