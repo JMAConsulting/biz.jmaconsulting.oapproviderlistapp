@@ -30,10 +30,9 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     $fileValues = [];
     foreach (['custom_46', 'custom_57', 'custom_58'] as $name) {
       if (!empty($defaults[$name])) {
-        $fileValues[$name] = CRM_Core_BAO_CustomField::displayValue($defaults[$name], $name, $this->_contactID);
+        $this->assign("file_$name", CRM_Core_BAO_CustomField::displayValue($defaults[$name], $name, $this->_contactID));
       }
     }
-    $this->assign('fileValues', json_encode($fileValues));
     return $defaults;
   }
 
