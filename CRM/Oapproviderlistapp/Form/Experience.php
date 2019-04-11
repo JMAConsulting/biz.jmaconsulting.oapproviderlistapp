@@ -54,9 +54,9 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
           continue;
         }
         if (empty($fields[$fieldName])) {
-          $errors['_qf_default'] = E::ts('All fields in Employment History are required.');
+//          $errors['_qf_default'] = E::ts('All fields in Employment History are required.');
           CRM_Core_Session::setStatus("", E::ts('All fields in Employment History are required.'), "alert");
-        }
+      }
         elseif ((strstr($fieldName, 'custom_36') || strstr($fieldName, 'custom_37')) && !CRM_Utils_Rule::positiveInteger($fields[$fieldName])) {
           $errors[$fieldName] = E::ts('Please enter a integer value');
         }
