@@ -16,7 +16,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
     $this->_mode = CRM_Utils_Request::retrieve('mode', 'Alphanumeric', $this, FALSE);
     CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
-    CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'templates/css/oapp.css');
+    // CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'templates/css/oapp.css');
   }
 
   public function setDefaultValues() {

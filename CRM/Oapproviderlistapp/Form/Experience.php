@@ -49,8 +49,16 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
     $count = $fields['hidden_custom_group_count'][10];
     for ($i = 1; $i <= $count; $i++) {
       foreach ($cg as $field) {
-        if (empty($fields[$field.$i])) {
+        $fieldName = $field.$i;
+        if (!array_key_exists($fieldName, $fields)) {
+          continue;
+        }
+        if (empty($fields[$fieldName])) {
           $errors['_qf_default'] = E::ts('All fields in Employment History are required.');
+          CRM_Core_Session::setStatus("", E::ts('All fields in Employment History are required.'), "alert");
+        }
+        elseif ((strstr($fieldName, 'custom_36') || strstr($fieldName, 'custom_37')) && !CRM_Utils_Rule::positiveInteger($fields[$fieldName])) {
+          $errors[$fieldName] = E::ts('Please enter a integer value');
         }
       }
     }
