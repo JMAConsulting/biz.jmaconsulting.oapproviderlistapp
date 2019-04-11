@@ -223,16 +223,17 @@ function oapproviderlistapp_civicrm_postProcess($formName, &$form) {
   }
   elseif ($formName == "CRM_Contact_Form_Inline_CustomData") {
     $oldStatus = NULL;
-    if (!empty($form->_submitValues['cid']) && CRM_Utils_Array::value('custom_60_2', $form->_submitValues)) {
+    if (!empty($form->_submitValues['cid']) && count(preg_grep('/^custom_60_[\d]*/', array_keys($form->_submitValues))) > 0) {
       $oldStatus = civicrm_api3('Contact', 'getvalue', ['return' => "custom_60", 'id' => $form->_submitValues['cid']]);
-      if (CRM_Utils_Array::value('custom_60_2', $form->_submitValues) == 'Approved') {
+      $newStatus = reset(preg_grep('/^custom_60_[\d]*/', array_keys($form->_submitValues)));
+      if (CRM_Utils_Array::value($newStatus, $form->_submitValues) == 'Approved') {
         civicrm_api3('Membership', 'create', [
           'membership_type_id' => "OAP Clinical Supervisor Provider",
           'contact_id' => $form->_submitValues['cid'],
           'start_date' => date('Ymd'),
         ]);
       }
-      elseif (CRM_Utils_Array::value('custom_60_2', $form->_submitValues) == 'Cancelled') {
+      elseif (CRM_Utils_Array::value($newStatus, $form->_submitValues) == 'Cancelled') {
         $membershipID = civicrm_api3('Membership', 'get', [
           'membership_type_id' => "OAP Clinical Supervisor Provider",
           'contact_id' => $form->_submitValues['cid'],
