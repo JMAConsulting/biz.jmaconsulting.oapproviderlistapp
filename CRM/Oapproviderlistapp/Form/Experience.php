@@ -35,16 +35,22 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
         $errors['custom_12'] = E::ts('Each option of Experience check list is a required field.');
       }
     }
+    $keys = [];
+    foreach ($fields as $key => $value) {
+      if (strstr($key, 'custom_32_')) {
+        $keys[] = str_replace('custom_32_','', $key);
+      }
+    }
 
     // Validation for custom groups.
     $cg = [
-      "custom_32_-",
-      "custom_33_-",
-      "custom_47_-",
-      "custom_35_-",
-      "custom_36_-",
-      "custom_37_-",
-      "custom_38_-",
+      "custom_32_",
+      "custom_33_",
+      "custom_47_",
+      "custom_35_",
+      "custom_36_",
+      "custom_37_",
+      "custom_38_",
     ];
     $count = $fields['hidden_custom_group_count'][10];
     for ($i = 1; $i <= $count; $i++) {
