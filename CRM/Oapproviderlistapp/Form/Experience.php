@@ -55,18 +55,27 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
     $count = $fields['hidden_custom_group_count'][10];
     for ($i = 1; $i <= $count; $i++) {
       foreach ($cg as $field) {
-        $fieldName = $field.$i;
+        $part = $keys[$i-1];
+        $fieldName = $field.$part;
         if (!array_key_exists($fieldName, $fields)) {
           continue;
         }
         if (empty($fields[$fieldName])) {
-//          $errors['_qf_default'] = E::ts('All fields in Employment History are required.');
+          $errors['_qf_default'] = E::ts('All fields in Employment History are required.');
           CRM_Core_Session::setStatus("", E::ts('All fields in Employment History are required.'), "alert");
       }
         elseif ((strstr($fieldName, 'custom_36') || strstr($fieldName, 'custom_37')) && !CRM_Utils_Rule::positiveInteger($fields[$fieldName])) {
-          $errors[$fieldName] = E::ts('Please enter a integer value');
+          $name = strstr($fieldName, 'custom_37') ? E::ts('Approximate number of hours that involved supervisory duties') : E::ts('Total number of hours');
+          $errors['_qf_default'] = E::ts('Please enter a integer value for %1', [1 => $name]);
         }
       }
+    }
+    if (empty($errors) && !empty($_SESSION[$self->get('qfKey')])) {
+      $errors = $_SESSION[$self->get('qfKey')];
+      unset($_SESSION[$self->get('qfKey')]);
+    }
+    elseif (!empty($errors))) {
+      $_SESSION[$self->get('qfKey')] = $errors;
     }
     return $errors;
   }
