@@ -34,7 +34,7 @@ class CRM_Oapproviderlistapp_Form_TabHeader {
   public static function process(&$form, $cid) {
     $tabs = [
       'individual' => [
-        'title' => E::ts('Individual Information'),
+        'title' => E::ts('OAP Provider List Application'),
         'url' => NULL,
         'valid' => FALSE,
         'active' => FALSE,

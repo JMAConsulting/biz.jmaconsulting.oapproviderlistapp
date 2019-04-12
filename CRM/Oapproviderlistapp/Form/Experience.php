@@ -74,7 +74,7 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
       $errors = $_SESSION[$self->get('qfKey')];
       unset($_SESSION[$self->get('qfKey')]);
     }
-    elseif (!empty($errors))) {
+    elseif (!empty($errors)) {
       $_SESSION[$self->get('qfKey')] = $errors;
     }
     return $errors;
