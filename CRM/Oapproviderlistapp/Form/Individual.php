@@ -40,7 +40,6 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
   }
 
   public function buildQuickForm() {
-    CRM_Utils_System::setTitle(E::ts('Individual Information'));
     $this->buildCustom(OAP_INDIVIDUAL, 'individual', $this->_contactID);
 
     for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
