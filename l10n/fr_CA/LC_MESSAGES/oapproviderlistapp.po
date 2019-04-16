@@ -201,3 +201,18 @@ msgstr "Veuillez indiquer la date d’obtention pour cette autre qualification p
 
 msgid "(please type in your First Name and Last Name exactly as they appear on the first tab)"
 msgstr "(veuillez saisir votre prénom et votre nom exactement tels qu’ils apparaissent au premier onglet.)"
+
+msgid "Please get the correct url for the"
+msgstr "Cliquez"
+
+msgid "application form here."
+msgstr "ici pour présenter votre demande en ligne."
+
+msgid "Or"
+msgstr "Ou"
+
+msgid "download application form here."
+msgstr "téléchargez le formulaire de demande ici."
+
+msgid "If you download the application form, please email the completed form to"
+msgstr "Si vous téléchargez le formulaire de demande, veuillez le transmettre, une fois rempli, à l’adresse"
