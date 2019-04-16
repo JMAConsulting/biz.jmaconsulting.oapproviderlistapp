@@ -217,5 +217,5 @@ msgstr "téléchargez le formulaire de demande ici."
 msgid "If you download the application form, please email the completed form to"
 msgstr "Si vous téléchargez le formulaire de demande, veuillez le transmettre, une fois rempli, à l’adresse"
 
-msgid "download application form here."
-msgstr "ici pour présenter votre demande en ligne"
+msgid "here to apply online."
+msgstr "ici pour présenter votre demande en ligne."
