@@ -66,7 +66,7 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
       }
         elseif ((strstr($fieldName, 'custom_36') || strstr($fieldName, 'custom_37')) && !CRM_Utils_Rule::positiveInteger($fields[$fieldName])) {
           $name = strstr($fieldName, 'custom_37') ? E::ts('Approximate number of hours that involved supervisory duties') : E::ts('Total number of hours');
-          $errors['_qf_default'] = E::ts('Please enter a integer value for %1', [1 => $name]);
+          $errors['_qf_default'] = E::ts('Please enter a numeric value for "%1"', [1 => $name]);
         }
       }
     }

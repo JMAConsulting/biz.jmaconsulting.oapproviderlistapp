@@ -20,7 +20,8 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
   }
 
   public function buildQuickForm() {
-
+    $fileLink = (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'fr') ? '/sites/default/files/2019-04/v2%20OAP%20Registry%20Application%20French%20package.pdf' : '/sites/default/files/2019-04/v2%20OAP%20Registry%20Application%20package_0.pdf';
+    $this->assign('fileLink', $fileLink);
     $buttons = array();
     if (!$this->_first) {
       $buttons[] = array(
