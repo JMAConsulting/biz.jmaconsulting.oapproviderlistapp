@@ -71,10 +71,12 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
       }
     }
     if (empty($errors) && !empty($_SESSION[$self->get('qfKey')])) {
+      $errors = $_SESSION[$self->get('qfKey')];
       unset($_SESSION[$self->get('qfKey')]);
     }
     elseif (!empty($errors)) {
-      $_SESSION[$self->get('qfKey')] = $fields;
+      $_SESSION[$self->get('qfKey')] = $errors;
+      CRM_Core_BAO_Cache::setItem($fields, 'custom params', $self->get('qfKey'));
     }
     return $errors;
   }

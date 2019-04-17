@@ -39,8 +39,10 @@ class CRM_Oapproviderlistapp_Form_CustomDataByType extends CRM_Core_Form {
   public function setDefaultValues() {
     $defaults = array();
     CRM_Core_BAO_CustomGroup::setDefaults($this->_groupTree, $defaults, FALSE, FALSE, $this->get('action'));
-    if (!empty($_GET['qf']) && !empty($_SESSION[$_GET['qf']])) {
-      $defaults = array_merge($defaults, $_SESSION[$_GET['qf']]);
+    $values = CRM_Core_BAO_Cache::getItem("custom params", CRM_Utils_Array::value('qf', $_GET));
+    if (!empty($values)) {
+      $defaults = array_merge($defaults, $values);
+      CRM_Core_BAO_Cache::deleteGroup("custom params", CRM_Utils_Array::value('qf', $_GET));
     }
    return $defaults;
   }
@@ -52,5 +54,9 @@ class CRM_Oapproviderlistapp_Form_CustomDataByType extends CRM_Core_Form {
     $this->addElement('hidden', 'hidden_custom', 1);
     $this->addElement('hidden', "hidden_custom_group_count[{$this->_groupID}]", $this->_groupCount);
     CRM_Core_BAO_CustomGroup::buildQuickForm($this, $this->_groupTree);
+  }
+
+  public function getTemplateFileName() {
+    return 'CRM/Custom/Form/CustomDataByType.tpl';
   }
 }
