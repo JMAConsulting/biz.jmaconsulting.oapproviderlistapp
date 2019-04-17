@@ -39,6 +39,9 @@ class CRM_Oapproviderlistapp_Form_CustomDataByType extends CRM_Core_Form {
   public function setDefaultValues() {
     $defaults = array();
     CRM_Core_BAO_CustomGroup::setDefaults($this->_groupTree, $defaults, FALSE, FALSE, $this->get('action'));
+    if (!empty($_GET['qf']) && !empty($_SESSION[$_GET['qf']])) {
+      $defaults = array_merge($defaults, $_SESSION[$_GET['qf']]);
+    }
    return $defaults;
   }
 
