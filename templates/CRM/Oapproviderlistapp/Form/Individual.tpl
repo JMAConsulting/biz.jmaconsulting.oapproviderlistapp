@@ -39,7 +39,7 @@
               <div class="label">{$form.city.$rowNumber.label}  <span class="crm-marker" title="This field is required.">*</span></div>
               <div class="content">{$form.city.$rowNumber.html}</div>
               <div class="clear"></div><br/>
-              <div class="label">{$form.email.$rowNumber.label}  <span class="crm-marker" title="This field is required.">*</span></div>
+              <div class="label">{$form.email.$rowNumber.label}</div>
               <div class="content">{$form.email.$rowNumber.html}</div>
               <div class="clear"></div>
               {if $rowNumber eq 1}
