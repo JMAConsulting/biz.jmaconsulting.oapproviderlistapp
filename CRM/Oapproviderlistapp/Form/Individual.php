@@ -69,10 +69,22 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       $errors['organization_name[1]'] = E::ts("At least one Current Employer is required.");
     }
     if (empty($fields['first_name'])) {
-      $errors['first_name'] = E::ts("First name is required");
+      $errors['first_name'] = E::ts("First Name is required");
     }
     if (empty($fields['last_name'])) {
-      $errors['last_name'] = E::ts("Last name is required");
+      $errors['last_name'] = E::ts("Last Name is required");
+    }
+    if (empty($fields['email[1]'])) {
+      $errors['email[1]'] = E::ts("Email Address is required.");
+    }
+    if (empty($fields["work_address"][1])) {
+      $errors['work_address[1]'] = E::ts("Work Address is required.");
+    }
+    if (empty($fields["phone"][1])) {
+      $errors['phone[1]'] = E::ts("Phone Number is required.");
+    }
+    if (empty($fields["city"][1])) {
+      $errors['city[1]'] = E::ts("City/Town is required.");
     }
 
     return $errors;

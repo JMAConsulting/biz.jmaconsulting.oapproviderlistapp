@@ -219,3 +219,24 @@ msgstr "Si vous téléchargez le formulaire de demande, veuillez le transmettre,
 
 msgid "here to apply online."
 msgstr "ici pour présenter votre demande en ligne."
+
+msgid "First Name is required"
+msgstr "Prénom est un champ requis."
+
+msgid "Last Name is required"
+msgstr "Nom de famille est un champ requis."
+
+msgid "Email Address is required"
+msgstr "Adresse courriel est un champ requis."
+
+msgid "Email Address is a required field."
+msgstr "Adresse courriel est un champ requis."
+
+msgid "Work Address is required"
+msgstr "Adresse du lieu de travail est un champ requis."
+
+msgid "Phone Number is required"
+msgstr "Numéro de téléphone est un champ requis."
+
+msgid "City/Town is required"
+msgstr "Ville/village est un champ requis."
