@@ -70,4 +70,9 @@
     <access_arguments>profile create</access_arguments>
     <is_public>true</is_public>
   </item>
+  <item>
+   <path>civicrm/custom</path>
+   <page_callback>CRM_Oapproviderlistapp_Form_CustomDataByType</page_callback>
+   <is_public>true</is_public>
+ </item>
 </menu>

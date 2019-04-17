@@ -1,6 +1,6 @@
 <?php
 
-class CRM_Custom_Form_CustomDataByType extends CRM_Core_Form {
+class CRM_Oapproviderlistapp_Form_CustomDataByType extends CRM_Core_Form {
 
   /**
    * Preprocess function.
