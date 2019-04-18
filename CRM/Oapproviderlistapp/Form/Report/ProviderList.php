@@ -24,6 +24,47 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
     $this->joinPhoneFromContact();
     $this->joinEmailFromContact();
     $this->joinCountryFromAddress();
+    $match = "LEFT JOIN civicrm_value_proof_of_empl_13 value_proof_of_empl_13_civireport ON value_proof_of_empl_13_civireport.entity_id = .id";
+    $replace = " LEFT JOIN civicrm_relationship re ON re.contact_id_a = contact_civireport.id AND re.contact_id_b = contact_civireport.employer_id
+       LEFT JOIN civicrm_value_proof_of_empl_13 value_proof_of_empl_13_civireport ON value_proof_of_empl_13_civireport.entity_id = re.id
+     ";
+    $this->_from = str_replace($match, $replace, $this->_from);
+
+    $match = "LEFT JOIN civicrm_value_signature_14 value_signature_14_civireport ON value_signature_14_civireport.entity_id = .id";
+    $replace = "LEFT JOIN civicrm_activity_contact cac ON cac.contact_id = contact_civireport.id AND cac.record_type_id = 2
+    LEFT JOIN civicrm_activity ca ON ca.id = cac.activity_id AND ca.activity_type_id = 56
+    LEFT JOIN civicrm_value_signature_14 value_signature_14_civireport ON value_signature_14_civireport.entity_id = ca.id AND value_signature_14_civireport.entity_id IS NOT NULL
+    ";
+    $this->_from = str_replace($match, $replace, $this->_from);
+  }
+
+  public function postProcess() {
+
+    $this->beginPostProcess();
+
+    // get the acl clauses built before we assemble the query
+    $this->buildACLClause($this->_aliases['civicrm_contact']);
+
+    $sql = $this->buildQuery(TRUE);
+    $match = "LEFT JOIN civicrm_value_proof_of_empl_13 value_proof_of_empl_13_civireport ON value_proof_of_empl_13_civireport.entity_id = .id";
+    $replace = " LEFT JOIN civicrm_relationship re ON re.contact_id_a = contact_civireport.id AND re.contact_id_b = contact_civireport.employer_id
+       LEFT JOIN civicrm_value_proof_of_empl_13 value_proof_of_empl_13_civireport ON value_proof_of_empl_13_civireport.entity_id = re.id
+     ";
+    $sql = str_replace($match, $replace, $sql);
+
+    $match = "LEFT JOIN civicrm_value_signature_14 value_signature_14_civireport ON value_signature_14_civireport.entity_id = .id";
+    $replace = "LEFT JOIN civicrm_activity_contact cac ON cac.contact_id = contact_civireport.id AND cac.record_type_id = 2
+    LEFT JOIN civicrm_activity ca ON ca.id = cac.activity_id AND ca.activity_type_id = 56
+    LEFT JOIN civicrm_value_signature_14 value_signature_14_civireport ON value_signature_14_civireport.entity_id = ca.id AND value_signature_14_civireport.entity_id IS NOT NULL
+    ";
+    $sql = str_replace($match, $replace, $sql);
+
+    $rows = $graphRows = array();
+    $this->buildRows($sql, $rows);
+
+    $this->formatDisplay($rows);
+    $this->doTemplateAssignment($rows);
+    $this->endPostProcess($rows);
   }
 
   /**
