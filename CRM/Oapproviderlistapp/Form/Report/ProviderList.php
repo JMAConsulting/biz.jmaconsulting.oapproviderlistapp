@@ -49,7 +49,7 @@ SELECT cg.table_name, cg.title, cg.extends, cf.id as cf_id, cf.label,
        cf.column_name, cf.data_type, cf.html_type, cf.option_group_id, cf.time_format
 FROM   civicrm_custom_group cg
 INNER  JOIN civicrm_custom_field cf ON cg.id = cf.custom_group_id
-WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') OR (cg.extends = 'Activity' AND cg.extends_entity_column_value = 56) AND
+WHERE (cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') OR (cg.extends = 'Activity' AND cg.extends_entity_column_value = 56)) AND
       {$customGroupWhere}
       cg.is_active = 1 AND
       cf.is_active = 1 AND
