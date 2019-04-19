@@ -61,7 +61,7 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
     }
 
     $customFields = [];
-    $customFieldIds = $fileFields[];
+    $customFieldIds = $fileFields = [];
     foreach ($this->_params['fields'] as $fieldAlias => $value) {
       if ($fieldId = CRM_Core_BAO_CustomField::getKeyID($fieldAlias)) {
         $customFieldIds[$fieldAlias] = $fieldId;
