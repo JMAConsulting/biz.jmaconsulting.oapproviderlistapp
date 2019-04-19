@@ -113,7 +113,8 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       'custom_53' => 'organization_name',
       'custom_54' => 'work_address',
       'custom_55' => 'phone',
-      'custom_56' => 'city',
+      'custom_57' => 'city',
+      'custom_56' => 'email',
     ];
     foreach ($values['organization_name'] as $key => $name) {
       if (!$name) {
