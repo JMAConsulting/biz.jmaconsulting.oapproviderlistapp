@@ -99,7 +99,7 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
           if (array_key_exists($tableCol, $fileFields)) {
             $currentAttachmentInfo = CRM_Core_BAO_File::getEntityFile('*', $val);
             foreach ($currentAttachmentInfo as $fileKey => $fileValue) {
-              $rows[$rowNum][$tableCol] = CRM_Utils_System::url($fileValue['url']);
+              $rows[$rowNum][$tableCol] = ($this->_outputMode == 'csv') ? CRM_Utils_System::url($fileValue['url'], NULL, TRUE) : sprintf('<a href='%s'>%s</a>', CRM_Utils_System::url($fileValue['url'], NULL, TRUE), $fileValue['cleanName']); 
             }
           }
           else {
