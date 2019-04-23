@@ -1,0 +1,27 @@
+.icon-accepting-img{
+    background-image: url('../img/icon_accepting_24px.png');
+}
+.icon-not-accepting-img{
+    background-image: url('../img/icon_not_accepting_24px.png');
+}
+.icon-remote-travel-img{
+    background-image: url('../img/icon_remote_travel_24px.png');
+}
+.icon-supervision-img{
+    background-image: url('../img/icon_supervision_24px.png');
+}
+.icon-videoconferencing-img{
+    background-image: url('../img/icon_videoconferencing_24px.png');
+}
+.provider-icon{
+  width: 30px;
+  height: 23px;
+  display: inline-block;
+  cursor: default;
+  overflow: visible;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.provider-row tr{
+  border-bottom: 0px !important;
+}
