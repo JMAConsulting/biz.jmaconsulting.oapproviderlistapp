@@ -4,11 +4,11 @@
       <td>
         <h1>
           {$row.first_name} {$row.last_name}&nbsp;&nbsp;&nbsp;
-          <span class="provider-icon icon-accepting-img"></span>
-          <span class="provider-icon icon-not-accepting-img"></span>
-          <span class="provider-icon icon-remote-travel-img"></span>
-          <span class="provider-icon icon-supervision-img"></span>
-          <span class="provider-icon icon-videoconferencing-img"></span>
+          <span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>
+          <span class="provider-icon icon-not-accepting-img" title="Not accepting new clients"></span>
+          <span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>
+          <span class="provider-icon icon-supervision-img" title="Currently offers supervision"></span>
+          <span class="provider-icon icon-videoconferencing-img" title="Offers video conferencing services"></span>
         </h1>
       </td>
     </tr>
