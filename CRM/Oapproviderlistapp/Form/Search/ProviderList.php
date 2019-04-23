@@ -18,6 +18,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    */
   function buildForm(&$form) {
     CRM_Utils_System::setTitle(E::ts('Provider Search List'));
+    $form->assign('customDataType', 'Contact');
+    $form->assign('groupID', 19);
 
     $form->add('text',
       'first_name',
@@ -27,12 +29,6 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'last_name',
       E::ts('Last Name')
     );
-    $form->add('select', 'language', E::ts('Language'), CRM_Core_OptionGroup::values('language_10'));
-    $form->addYesNo('accepting_new_clients', ts('Accepting New Clients?'));
-    $form->addYesNo('offer_remote_services', ts('Offer remote services?'));
-    $form->addYesNo('travels_to_remote_areas', ts('Travels to remote areas?'));
-    $form->addYesNo('offers_supervision', ts('Offers supervision?'));
-    $form->add('select', 'region', E::ts('Region'), CRM_Core_OptionGroup::values('language_10'));
     $form->add('text',
       'city',
       E::ts('City')
@@ -45,12 +41,6 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $form->assign('elements', array(
       'first_name',
       'last_name',
-      'language',
-      'accepting_new_clients',
-      'offer_remote_services',
-      'travels_to_remote_areas',
-      'offers_supervision',
-      'region',
       'city'
     ));
   }
@@ -118,9 +108,10 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    */
   function select() {
     return "
-      contact_a.id           as contact_id,
+      contact_a.id as contact_id,
       contact_a.first_name,
-      contact_a.last_name
+      contact_a.last_name,
+      temp.*
     ";
   }
 
@@ -137,6 +128,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       LEFT JOIN civicrm_email           ON ( civicrm_email.contact_id = contact_a.id AND
                                              civicrm_email.is_primary = 1 )
       LEFT JOIN civicrm_state_province state_province ON state_province.id = address.state_province_id
+      LEFT JOIN civicrm_value_contact_gener_19 temp ON temp.entity_id = contact_a.id
     ";
   }
 
