@@ -71,9 +71,15 @@
     <is_public>true</is_public>
   </item>
   <item>
-   <path>civicrm/custom</path>
-   <page_callback>CRM_Oapproviderlistapp_Form_CustomDataByType</page_callback>
-   <access_arguments>access all custom data</access_arguments>
-   <is_public>true</is_public>
- </item>
+    <path>civicrm/custom</path>
+    <page_callback>CRM_Oapproviderlistapp_Form_CustomDataByType</page_callback>
+    <access_arguments>access all custom data</access_arguments>
+    <is_public>true</is_public>
+  </item>
+  <item>
+    <path>civicrm/provider/details</path>
+    <page_callback>CRM_Oapproviderlistapp_Page_Details</page_callback>
+    <title>Details</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
 </menu>

@@ -110,8 +110,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     return "
       contact_a.id as contact_id,
       contact_a.first_name,
-      contact_a.last_name,
-      temp.*
+      contact_a.last_name
     ";
   }
 
@@ -128,7 +127,6 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       LEFT JOIN civicrm_email           ON ( civicrm_email.contact_id = contact_a.id AND
                                              civicrm_email.is_primary = 1 )
       LEFT JOIN civicrm_state_province state_province ON state_province.id = address.state_province_id
-      LEFT JOIN civicrm_value_contact_gener_19 temp ON temp.entity_id = contact_a.id
     ";
   }
 

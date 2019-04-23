@@ -14,14 +14,14 @@
     </tr>
     <tr>
       <td>
-        <div class="label">Speaks:</div>
+        <div class="label"><i>Speaks:</i></div>
         <div class="content">English</div>
         <div class=clear></div>
       </td>
     </tr>
     <tr>
       <td>
-        <div class="label">Region:</div>
+        <div class="label"><i>Region:</i></div>
         <div class="content">English</div>
         <div class=clear></div>
       </td>
@@ -35,7 +35,7 @@
     </tr>
     <tr>
       <td>
-        <a class="nowrap bold crm-expand-row" title="{ts}view payments{/ts}" href="{crmURL p='civicrm/contact/view' q='reset=1&cid=202'}">
+        <a class="nowrap bold crm-expand-row" title="{ts}view details{/ts}" href="{crmURL p='civicrm/provider/details' q='reset=1&cid=19'}">
           Click here to view details
         </a>
       </td>
