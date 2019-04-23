@@ -67,6 +67,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'contact_id',
       'first_name',
       'last_name',
+      'postal_code',
       'accepting_new_clients__65',
       'offer_remote_services__66',
       'travels_to_remote_areas__67',
@@ -113,7 +114,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       contact_a.id as contact_id,
       contact_a.first_name,
       contact_a.last_name,
-      temp.*
+      temp.*,
+      address.postal_code
     ";
   }
 

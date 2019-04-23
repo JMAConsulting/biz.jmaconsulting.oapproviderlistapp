@@ -15,21 +15,21 @@
     <tr>
       <td>
         <div class="label"><i>Speaks:</i></div>
-        <div class="content">English</div>
+        <div class="content">{$row.language_64}</div>
         <div class=clear></div>
       </td>
     </tr>
     <tr>
       <td>
         <div class="label"><i>Region:</i></div>
-        <div class="content">English</div>
+        <div class="content">{$row.region_63}</div>
         <div class=clear></div>
       </td>
     </tr>
     <tr>
       <td>
         <div class="label">Postal Code:</div>
-        <div class="content">123121A</div>
+        <div class="content">{$row.postal_code}</div>
         <div class=clear></div>
       </td>
     </tr>

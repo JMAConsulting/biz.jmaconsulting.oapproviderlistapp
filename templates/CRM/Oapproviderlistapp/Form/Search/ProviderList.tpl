@@ -70,3 +70,23 @@
 </div>
 {/if}
 {crmScript file='js/crm.expandRow.js'}
+
+{literal}
+<script type="text/javascript">
+CRM.$(function($) {
+$('a#expand').click( function() {
+    if( $(this).attr('href') == '#expand') {
+      var message = {/literal}"{ts escape='js'}Collapse all tabs{/ts}"{literal};
+      $(this).attr('href', '#collapse');
+    }
+    else {
+      var message = {/literal}"{ts escape='js'}Expand all tabs{/ts}"{literal};
+      $('.crm-accordion-wrapper:not(.collapsed)').crmAccordionToggle();
+      $(this).attr('href', '#expand');
+    }
+    $(this).html(message);
+    return false;
+  });
+});
+</script>
+{/literal}
