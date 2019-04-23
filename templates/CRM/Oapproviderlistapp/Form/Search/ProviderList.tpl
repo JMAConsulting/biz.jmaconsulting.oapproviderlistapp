@@ -21,7 +21,7 @@
           {/foreach}
         </table>
         <div id="customData"></div>
-        {include file="CRM/common/customData.tpl"}
+        {include file="CRM/common/customDataBlock.tpl"}
         <div class="crm-submit-buttons">{include file="CRM/common/formButtons.tpl" location="bottom"}</div>
     </div><!-- /.crm-accordion-body -->
 </div><!-- /.crm-accordion-wrapper -->

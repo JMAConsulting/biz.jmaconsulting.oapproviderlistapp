@@ -34,10 +34,6 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       E::ts('City')
     );
 
-    /**
-     * if you are using the standard template, this array tells the template what elements
-     * are part of the search criteria
-     */
     $form->assign('elements', array(
       'first_name',
       'last_name',
@@ -71,6 +67,12 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'contact_id',
       'first_name',
       'last_name',
+      'accepting_new_clients__65',
+      'offer_remote_services__66',
+      'travels_to_remote_areas__67',
+      'offers_supervision__68',
+      'region_63',
+      'language_64',
     );
     return $columns;
   }
@@ -141,6 +143,33 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
   function where($includeContactIDs = FALSE) {
     $params = array();
     $where = "contact_a.contact_sub_type  = 'Provider'";
+    $customElements = [
+      'custom_65_-1' => 'accepting_new_clients__65',
+      'custom_66_-1' => 'offer_remote_services__66',
+      'custom_67_-1' => 'travels_to_remote_areas__67',
+      'custom_68_-1' => 'offers_supervision__68',
+      'custom_63_-1' => 'region_63',
+      'custom_64_-1' => 'language_64',
+      'first_name' => 'contact_a.first_name',
+      'last_name' => 'contact_a.last_name',
+      'city' => 'civicrm_address.city',
+    ];
+    $submittedValues = $_POST;
+    $clauses = [];
+    foreach ($_POST as $key => $value) {
+      if (array_key_exists($key, $customElements) && !empty($value)) {
+        if (in_array($key, ['custom_63_-1', 'custom_64_-1', 'first_name', 'last_name', 'city'])) {
+          $clauses[] = "$customElements[$key] LIKE '%$value%'";
+        }
+        else {
+          $clauses[] = sprintf("%s = %d", $customElements[$key], $value);
+        }
+      }
+    }
+
+    if (!empty($clauses)) {
+      $where .= ' AND ' . implode(' AND ', $clauses);
+    }
 
     return $this->whereClause($where, $params);
   }
