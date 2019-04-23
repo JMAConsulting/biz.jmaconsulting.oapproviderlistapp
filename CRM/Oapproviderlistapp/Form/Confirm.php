@@ -159,7 +159,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
         'custom_60' => "Submitted",
       ]);
       CRM_Core_Session::setStatus("", E::ts('Thank you for submitting your application to the OAP Provider List'), "success");
-      CRM_Utils_System::redirect('https://oapproviderlist.ca');
+      CRM_Utils_System::redirect('https://oapproviderlist.ca/oap-application-submitted-successfully');
     }
     parent::postProcess();
   }

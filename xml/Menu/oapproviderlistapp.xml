@@ -80,6 +80,6 @@
     <path>civicrm/provider/details</path>
     <page_callback>CRM_Oapproviderlistapp_Page_Details</page_callback>
     <title>Details</title>
-    <access_arguments>access CiviCRM</access_arguments>
+    <access_arguments>profile view</access_arguments>
   </item>
 </menu>
