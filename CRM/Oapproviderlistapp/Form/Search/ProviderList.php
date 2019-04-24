@@ -18,26 +18,48 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    */
   function buildForm(&$form) {
     CRM_Utils_System::setTitle(E::ts('Provider Search List'));
-    $form->assign('customDataType', 'Contact');
-    $form->assign('groupID', 19);
 
+    $form->addElement('checkbox', 'accepting_clients_filter', ts('Show only if Accepting new clients?'), NULL);
+    $form->addElement('checkbox', 'remote_travel_filter', ts('Travels to remote areas?'), NULL);
+    $form->addElement('checkbox', 'supervision_filter', ts('Currently offers supervision?'), NULL);
+    $form->addElement('checkbox', 'videoconferencing_filter', ts('Offers video conferencing services?'), NULL);
+    $form->addElement('checkbox', 'bc', ts('Behaviour Consultants'), NULL);
+    $form->addElement('checkbox', 'ot', ts('Occupational Therapists'), NULL);
+    $form->addElement('checkbox', 'pt', ts('Physical Therapists'), NULL);
+    $form->addElement('checkbox', 'slp', ts('Speech Language Pathologists'), NULL);
+    $check = [];
+    foreach (['East', 'Central', 'North', 'South'] as $key) {
+      $check[] = &$form->addElement('advcheckbox', strtolower($key), NULL, ts($key));
+    }
+    $form->addGroup($check, 'region', ts('Region'));
+    $form->addEntityRef('language', ts('Language'), [
+      'entity' => 'OptionValue',
+      'placeholder' => ts('- any -'),
+      'multiple' => 1,
+      'api' => [
+        'params' => ['option_group_id' => 'languages'],
+      ],
+    ]);
     $form->add('text',
-      'first_name',
-      E::ts('First Name')
-    );
-    $form->add('text',
-      'last_name',
-      E::ts('Last Name')
+      'name',
+      E::ts('Name'),
+      ['class' => 'huge']
     );
     $form->add('text',
       'city',
-      E::ts('City')
+      E::ts('City'),
+      ['class' => 'big']
     );
 
     $form->assign('elements', array(
-      'first_name',
-      'last_name',
-      'city'
+      'region',
+      'language',
+      'name',
+      'city',
+      'accepting_clients_filter',
+      'remote_travel_filter',
+      'supervision_filter',
+      'videoconferencing_filter',
     ));
   }
 

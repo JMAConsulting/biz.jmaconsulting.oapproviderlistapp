@@ -9,19 +9,61 @@
     <div class="crm-accordion-body">
         <div class="crm-submit-buttons">{include file="CRM/common/formButtons.tpl" location="top"}</div>
         <table class="form-layout-compressed">
+          <tr>
+            <td></td>
+            <td>
+              {$form.bc.html}{$form.bc.label}&nbsp;{$form.ot.html}{$form.ot.label}
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              {$form.pt.html}{$form.pt.label}&nbsp;{$form.slp.html}{$form.slp.label}
+            </td>
+          </tr>
           {foreach from=$elements item=element}
               <tr class="crm-contact-custom-search-form-row-{$element}">
-                  <td class="label">{$form.$element.label}</td>
+                {if $element eq 'accepting_clients_filter'}
+                  <td></td>
+                  <td>
+                    {$form.$element.html}&nbsp;
+                    <span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>&nbsp;&nbsp;
+                    {$form.$element.label}
+                  </td>
+                {elseif $element eq 'remote_travel_filter'}
+                  <td></td>
+                  <td>
+                    {$form.$element.html}&nbsp;
+                    <span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>&nbsp;&nbsp;
+                    {$form.$element.label}
+                  </td>
+                {elseif $element eq 'supervision_filter'}
+                  <td></td>
+                  <td>
+                    {$form.$element.html}&nbsp;
+                    <span class="provider-icon icon-supervision-img" title="Currently offers supervision"></span>&nbsp;&nbsp;
+                    {$form.$element.label}
+                  </td>
+                {elseif $element eq 'videoconferencing_filter'}
+                  <td></td>
+                  <td>
+                    {$form.$element.html}&nbsp;
+                    <span class="provider-icon icon-videoconferencing-img" title="Offers video conferencing services"></span>&nbsp;&nbsp;
+                    {$form.$element.label}
+                  </td>
+                {else}
+                  <td class="label">
+                    {$form.$element.label}
+                  </td>
                   {if $element|strstr:'_date'}
                       <td>{include file="CRM/common/jcalendar.tpl" elementName=$element}</td>
                   {else}
                       <td>{$form.$element.html}</td>
                   {/if}
+                {/if}
               </tr>
           {/foreach}
         </table>
-        <div id="customData"></div>
-        {include file="CRM/common/customDataBlock.tpl"}
         <div class="crm-submit-buttons">{include file="CRM/common/formButtons.tpl" location="bottom"}</div>
     </div><!-- /.crm-accordion-body -->
 </div><!-- /.crm-accordion-wrapper -->
