@@ -23,10 +23,10 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $form->addElement('checkbox', 'remote_travel_filter', ts('Travels to remote areas?'), NULL);
     $form->addElement('checkbox', 'supervision_filter', ts('Currently offers supervision?'), NULL);
     $form->addElement('checkbox', 'videoconferencing_filter', ts('Offers video conferencing services?'), NULL);
-    $form->addElement('checkbox', 'bc', ts('Behaviour Consultants'), NULL);
-    $form->addElement('checkbox', 'ot', ts('Occupational Therapists'), NULL);
-    $form->addElement('checkbox', 'pt', ts('Physical Therapists'), NULL);
-    $form->addElement('checkbox', 'slp', ts('Speech Language Pathologists'), NULL);
+    $form->addElement('checkbox', 1, ts('Board Certified Behavior Analyst® (BCBA®)'), NULL);
+    $form->addElement('checkbox', 2, ts('Board Certified Behavior Analyst-Doctoral (BCBA-D™)'), NULL);
+    $form->addElement('checkbox', 3, ts('Registered Psychologist'), NULL);
+    $form->addElement('checkbox', 4, ts('Registered Psychological Associate'), NULL);
     $check = [];
     foreach (['East', 'Central', 'North', 'South'] as $key) {
       $check[] = &$form->addElement('advcheckbox', strtolower($key), NULL, ts($key));
@@ -35,10 +35,10 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
 
     $check = [];
     foreach ([
-      'bc' => 'Behaviour Consultants',
-      'ot' => 'Occupational Therapists',
-      'pt' => 'Physical Therapists',
-      'slp' => 'Speech Language Pathologists',
+      1 => E::ts('Board Certified Behavior Analyst® (BCBA®)'),
+      2 => E::ts('Board Certified Behavior Analyst-Doctoral (BCBA-D™)'),
+      3 => E::ts('Registered Psychologist'),
+      4 => E::ts('Registered Psychological Associate'),
     ] as $key => $label) {
       $check[] = &$form->addElement('advcheckbox', $key, NULL, ts($label));
     }
