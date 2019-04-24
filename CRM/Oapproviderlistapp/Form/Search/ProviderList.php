@@ -166,6 +166,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
                                              civicrm_email.is_primary = 1 )
       LEFT JOIN civicrm_state_province state_province ON state_province.id = address.state_province_id
       LEFT JOIN civicrm_value_contact_gener_19 temp ON temp.entity_id = contact_a.id
+      LEFT JOIN civicrm_value_track_changes_17 temp1 ON temp1.entity_id = contact_a.id
     ";
   }
 
@@ -177,7 +178,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    */
   function where($includeContactIDs = FALSE) {
     $params = array();
-    $where = "contact_a.contact_sub_type  = 'Provider'";
+    $where = "contact_a.contact_sub_type  = 'Provider' AND temp1.status_60 = 'Approved'";
     $customElements = [
       'accepting_clients_filter' => 'accepting_new_clients__63',
       'remote_travel_filter' => 'travels_to_remote_areas__65',

@@ -5,7 +5,6 @@
       <tr>
         <td>
         <b><i>{ts}Credentials{/ts}:</i></b> {$credential.which_of_the_following_credentia_7} <br/>
-        {if $credential.bcba_certification_date_8}<b><i>{ts}BCBA Certification Date{/ts}</i>:</b> {$credential.bcba_certification_date_8}{/if}  {if $credential.bcba_certification_number_40}<b><i>{ts}BCBA Certification Number{/ts}</i>:</b> {$credential.bcba_certification_number_40}{/if}
         </td>
       </tr>
       {/foreach}
