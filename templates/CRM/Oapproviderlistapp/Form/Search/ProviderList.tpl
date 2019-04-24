@@ -42,7 +42,7 @@
                   </td>
                 {else}
                   <td class="label">
-                    {$form.$element.label}{if $element eq 'region'}&nbsp;&nbsp;<a href="https://oapproviderlist.ca/civicrm/file?filename=region_064682ff6d22e5b9fc624a950a799257.png&id=285&reset=1" class="crm-image-popup action-item"><i class="crm-i fa-map-marker"></i></a>{/if}
+                    {$form.$element.label}{if $element eq 'region'}&nbsp;&nbsp;<a href="https://oapproviderlist.ca/civicrm/file?filename=region_064682ff6d22e5b9fc624a950a799257.png&id=285&reset=1" class="crm-image-popup"><i class="crm-i fa-map-marker"></i></a>{/if}
                   </td>
                   {if $element|strstr:'_date'}
                       <td>{include file="CRM/common/jcalendar.tpl" elementName=$element}</td>

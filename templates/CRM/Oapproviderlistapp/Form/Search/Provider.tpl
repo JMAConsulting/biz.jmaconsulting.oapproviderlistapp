@@ -5,7 +5,6 @@
         <h1>
           {$row.first_name} {$row.last_name}&nbsp;&nbsp;&nbsp;
           <span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>
-          <span class="provider-icon icon-not-accepting-img" title="Not accepting new clients"></span>
           <span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>
           <span class="provider-icon icon-supervision-img" title="Offers supervision"></span>
           <span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>
@@ -28,14 +27,7 @@
     </tr>
     <tr>
       <td>
-        <div class="label">Postal Code:</div>
-        <div class="content">{$row.postal_code}</div>
-        <div class=clear></div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a class="nowrap bold crm-expand-row rasp-expand-hint" title="{ts}view details{/ts}" href="{crmURL p="civicrm/provider/details" q="reset=1&cid=`$row.contact_id`"}">
+        <a class="nowrap bold crm-expand-row" title="{ts}view details{/ts}" href="{crmURL p="civicrm/provider/details" q="reset=1&cid=`$row.contact_id`"}">
           Click for more details
         </a>
       </td>

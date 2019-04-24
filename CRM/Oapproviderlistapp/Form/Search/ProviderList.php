@@ -100,9 +100,9 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'last_name',
       'postal_code',
       'accepting_new_clients__65',
-      'offer_remote_services__66',
       'travels_to_remote_areas__67',
       'offers_supervision__68',
+      'offers_video_conferencing_servic_69',
       'region_63',
       'language_64',
     );
@@ -177,12 +177,12 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $params = array();
     $where = "contact_a.contact_sub_type  = 'Provider'";
     $customElements = [
-      'custom_65_-1' => 'accepting_new_clients__65',
-      'custom_66_-1' => 'offer_remote_services__66',
-      'custom_67_-1' => 'travels_to_remote_areas__67',
-      'custom_68_-1' => 'offers_supervision__68',
-      'custom_63_-1' => 'region_63',
-      'custom_64_-1' => 'language_64',
+      'accepting_clients_filter' => 'accepting_new_clients__65',
+      'remote_travel_filter' => 'travels_to_remote_areas__67',
+      'supervision_filter' => 'offers_supervision__68',
+      'videoconferencing_filter' => 'offers_video_conferencing_servic_69',
+      'region' => 'region_63',
+      'language' => 'language_64',
       'first_name' => 'contact_a.first_name',
       'last_name' => 'contact_a.last_name',
       'city' => 'civicrm_address.city',
