@@ -27,7 +27,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $form->addElement('checkbox', 'videoconferencing_filter', ts('Offers remote services?'), NULL);
     $check = [];
     foreach (['East', 'Central', 'North', 'South'] as $key) {
-      $check[] = &$form->addElement('checkbox', strtolower($key), NULL, ts($key), 'ts_sel', array('checked' => 'checked'));
+      $check[] = &$form->addElement('checkbox', $key, NULL, ts($key), 'ts_sel', array('checked' => 'checked'));
     }
     $form->addGroup($check, 'region', ts('Region'));
 
@@ -194,6 +194,17 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       if (array_key_exists($key, $customElements) && !empty($value)) {
         if ($key == 'name') {
           $clauses[] = "(contact_a.first_name LIKE '%$value%' OR contact_a.last_name LIKE '%$value%')";
+        }
+        elseif ($key == 'language') {
+          $languages = explode(',', $value);
+          $c = [];
+          foreach ($languages as $lang) {
+            $c[] = "$customElements[$key] LIKE '%$lang%'";
+          }
+          $clauses[] = '(' . implode(' OR ', $c) . ')';
+        }
+        elseif ($key == 'region') {
+          $clauses[] = "$customElements[$key] = '$value'";
         }
         else {
           $clauses[] = sprintf("%s = %d", $customElements[$key], $value);

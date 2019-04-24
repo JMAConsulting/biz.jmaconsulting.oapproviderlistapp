@@ -44,3 +44,6 @@
 item:hover > .rasp-expand-hint {
   color: #337AB7 !important;
 }
+.not-accepting {
+    color: #999;
+}
