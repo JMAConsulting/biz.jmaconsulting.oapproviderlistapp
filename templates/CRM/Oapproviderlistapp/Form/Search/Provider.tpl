@@ -35,7 +35,7 @@
     </tr>
     <tr>
       <td>
-        <a class="nowrap bold crm-expand-row" title="{ts}view details{/ts}" href="{crmURL p="civicrm/provider/details" q="reset=1&cid=`$row.contact_id`"}">
+        <a class="nowrap bold crm-expand-row rasp-expand-hint" title="{ts}view details{/ts}" href="{crmURL p="civicrm/provider/details" q="reset=1&cid=`$row.contact_id`"}">
           Click for more details
         </a>
       </td>
