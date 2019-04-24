@@ -103,8 +103,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'travels_to_remote_areas__67',
       'offers_supervision__68',
       'offers_video_conferencing_servic_69',
-      'region_63',
-      'language_64',
+      'region_67',
+      'language_68',
     );
     return $columns;
   }
@@ -181,18 +181,17 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'remote_travel_filter' => 'travels_to_remote_areas__67',
       'supervision_filter' => 'offers_supervision__68',
       'videoconferencing_filter' => 'offers_video_conferencing_servic_69',
-      'region' => 'region_63',
-      'language' => 'language_64',
-      'first_name' => 'contact_a.first_name',
-      'last_name' => 'contact_a.last_name',
+      'region' => 'region_67',
+      'language' => 'language_68',
+      'name' => 'contact_a.first_name',
       'city' => 'civicrm_address.city',
     ];
     $submittedValues = $_POST;
     $clauses = [];
     foreach ($_POST as $key => $value) {
       if (array_key_exists($key, $customElements) && !empty($value)) {
-        if (in_array($key, ['custom_63_-1', 'custom_64_-1', 'first_name', 'last_name', 'city'])) {
-          $clauses[] = "$customElements[$key] LIKE '%$value%'";
+        if ($key == 'name') {
+          $clauses[] = "(contact_a.first_name LIKE '%$value%' OR contact_a.last_name LIKE '%$value%')";
         }
         else {
           $clauses[] = sprintf("%s = %d", $customElements[$key], $value);
