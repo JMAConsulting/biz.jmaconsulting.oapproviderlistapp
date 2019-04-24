@@ -30,14 +30,14 @@
                   <td></td>
                   <td>
                     {$form.$element.html}&nbsp;
-                    <span class="provider-icon icon-supervision-img" title="Currently offers supervision"></span>&nbsp;&nbsp;
+                    <span class="provider-icon icon-supervision-img" title="Offers supervision"></span>&nbsp;&nbsp;
                     {$form.$element.label}
                   </td>
                 {elseif $element eq 'videoconferencing_filter'}
                   <td></td>
                   <td>
                     {$form.$element.html}&nbsp;
-                    <span class="provider-icon icon-videoconferencing-img" title="Offers video conferencing services"></span>&nbsp;&nbsp;
+                    <span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>&nbsp;&nbsp;
                     {$form.$element.label}
                   </td>
                 {else}

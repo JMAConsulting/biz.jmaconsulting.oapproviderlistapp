@@ -21,15 +21,11 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
 
     $form->addElement('checkbox', 'accepting_clients_filter', ts('Show only if Accepting new clients?'), NULL);
     $form->addElement('checkbox', 'remote_travel_filter', ts('Travels to remote areas?'), NULL);
-    $form->addElement('checkbox', 'supervision_filter', ts('Currently offers supervision?'), NULL);
-    $form->addElement('checkbox', 'videoconferencing_filter', ts('Offers video conferencing services?'), NULL);
-    $form->addElement('checkbox', 1, ts('Board Certified Behavior Analyst® (BCBA®)'), NULL);
-    $form->addElement('checkbox', 2, ts('Board Certified Behavior Analyst-Doctoral (BCBA-D™)'), NULL);
-    $form->addElement('checkbox', 3, ts('Registered Psychologist'), NULL);
-    $form->addElement('checkbox', 4, ts('Registered Psychological Associate'), NULL);
+    $form->addElement('checkbox', 'supervision_filter', ts('Offers supervision?'), NULL);
+    $form->addElement('checkbox', 'videoconferencing_filter', ts('Offers remote services?'), NULL);
     $check = [];
     foreach (['East', 'Central', 'North', 'South'] as $key) {
-      $check[] = &$form->addElement('advcheckbox', strtolower($key), NULL, ts($key));
+      $check[] = &$form->addElement('advcheckbox', strtolower($key), NULL, ts($key), 'ts_sel', array('checked' => 'checked'));
     }
     $form->addGroup($check, 'region', ts('Region'));
 
@@ -40,7 +36,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       3 => E::ts('Registered Psychologist'),
       4 => E::ts('Registered Psychological Associate'),
     ] as $key => $label) {
-      $check[] = &$form->addElement('advcheckbox', $key, NULL, ts($label));
+      $check[] = &$form->addElement('advcheckbox', $key, NULL, ts($label), 'ts_sel', array('checked' => 'checked'));
     }
     $form->addGroup($check, 'credentials', ts('Credentials'));
 

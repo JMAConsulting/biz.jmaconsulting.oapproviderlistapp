@@ -7,8 +7,8 @@
           <span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>
           <span class="provider-icon icon-not-accepting-img" title="Not accepting new clients"></span>
           <span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>
-          <span class="provider-icon icon-supervision-img" title="Currently offers supervision"></span>
-          <span class="provider-icon icon-videoconferencing-img" title="Offers video conferencing services"></span>
+          <span class="provider-icon icon-supervision-img" title="Offers supervision"></span>
+          <span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>
         </h1>
       </td>
     </tr>
