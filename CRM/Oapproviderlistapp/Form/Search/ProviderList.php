@@ -167,6 +167,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       LEFT JOIN civicrm_state_province state_province ON state_province.id = address.state_province_id
       LEFT JOIN civicrm_value_contact_gener_19 temp ON temp.entity_id = contact_a.id
       LEFT JOIN civicrm_value_track_changes_17 temp1 ON temp1.entity_id = contact_a.id
+      LEFT JOIN civicrm_value_applicant_det_4 temp2 ON temp2.entity_id = contact_a.id
     ";
   }
 
@@ -184,6 +185,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'remote_travel_filter' => 'travels_to_remote_areas__65',
       'supervision_filter' => 'offers_supervision__66',
       'videoconferencing_filter' => 'offers_video_conferencing_servic_69',
+      'credentials' => 'temp2.which_of_the_following_credentia_7',
       'region' => 'region_67',
       'language' => 'language_68',
       'name' => 'contact_a.first_name',
@@ -205,7 +207,26 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
           $clauses[] = '(' . implode(' OR ', $c) . ')';
         }
         elseif ($key == 'region') {
-          $clauses[] = "$customElements[$key] = '$value'";
+          $c = [];
+          foreach ($value as $k => $v) {
+            if ($v == 1) {
+              $c[] = "$customElements[$key] = '$k'";
+            }
+          }
+          if (!empty($c)) {
+            $clauses[] = '(' . implode(' OR ', $c) . ')';
+          }
+        }
+        elseif ($key == 'credentials') {
+          $c = [];
+          foreach ($value as $k => $v) {
+            if ($v == 1) {
+              $c[] = "$customElements[$key] = $k";
+            }
+          }
+          if (!empty($c)) {
+            $clauses[] = '(' . implode(' OR ', $c) . ')';
+          }
         }
         else {
           $clauses[] = sprintf("%s = %d", $customElements[$key], $value);
