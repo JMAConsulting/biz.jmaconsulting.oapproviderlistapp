@@ -38,6 +38,7 @@
   overflow: hidden;
 }
 .rasp-expand-hint:hover {
+  color: #337AB7 !important;
   text-decoration: underline !important;
 }
 item:hover > .rasp-expand-hint {
