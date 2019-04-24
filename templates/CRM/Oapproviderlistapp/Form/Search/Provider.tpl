@@ -4,24 +4,24 @@
       <td>
         <h1>
           {$row.first_name} {$row.last_name}&nbsp;&nbsp;&nbsp;
-          <span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>
-          <span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>
-          <span class="provider-icon icon-supervision-img" title="Offers supervision"></span>
-          <span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>
+          {if $row.accepting_new_clients__65 eq 1}<span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>{/if}
+          {if $row.travels_to_remote_areas__67 eq 1}<span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>{/if}
+          {if $row.offers_supervision__68 eq 1}<span class="provider-icon icon-supervision-img" title="Offers supervision"></span>{/if}
+          {if $row.offers_video_conferencing_servic_69 eq 1}<span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>{/if}
         </h1>
       </td>
     </tr>
     <tr>
       <td>
         <div class="label"><i>Speaks:</i></div>
-        <div class="content">{$row.language_64}</div>
+        <div class="content">{$row.language_68}</div>
         <div class=clear></div>
       </td>
     </tr>
     <tr>
       <td>
         <div class="label"><i>Region:</i></div>
-        <div class="content">{$row.region_63}</div>
+        <div class="content">{$row.region_67}</div>
         <div class=clear></div>
       </td>
     </tr>

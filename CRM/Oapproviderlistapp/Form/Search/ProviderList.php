@@ -5,8 +5,10 @@ use CRM_Oapproviderlistapp_ExtensionUtil as E;
  * A custom contact search
  */
 class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_Search_Custom_Base implements CRM_Contact_Form_Search_Interface {
+  public $_languages;
   function __construct(&$formValues) {
     parent::__construct($formValues);
+    $this->_languages = CRM_Core_OptionGroup::values('languages');
     CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'css/style.css');
   }
 
@@ -25,7 +27,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $form->addElement('checkbox', 'videoconferencing_filter', ts('Offers remote services?'), NULL);
     $check = [];
     foreach (['East', 'Central', 'North', 'South'] as $key) {
-      $check[] = &$form->addElement('advcheckbox', strtolower($key), NULL, ts($key), 'ts_sel', array('checked' => 'checked'));
+      $check[] = &$form->addElement('checkbox', strtolower($key), NULL, ts($key), 'ts_sel', array('checked' => 'checked'));
     }
     $form->addGroup($check, 'region', ts('Region'));
 
@@ -36,7 +38,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       3 => E::ts('Registered Psychologist'),
       4 => E::ts('Registered Psychological Associate'),
     ] as $key => $label) {
-      $check[] = &$form->addElement('advcheckbox', $key, NULL, ts($label), 'ts_sel', array('checked' => 'checked'));
+      $check[] = &$form->addElement('checkbox', $key, NULL, ts($label), 'ts_sel', array('checked' => 'checked'));
     }
     $form->addGroup($check, 'credentials', ts('Credentials'));
 
@@ -177,9 +179,9 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $params = array();
     $where = "contact_a.contact_sub_type  = 'Provider'";
     $customElements = [
-      'accepting_clients_filter' => 'accepting_new_clients__65',
-      'remote_travel_filter' => 'travels_to_remote_areas__67',
-      'supervision_filter' => 'offers_supervision__68',
+      'accepting_clients_filter' => 'accepting_new_clients__63',
+      'remote_travel_filter' => 'travels_to_remote_areas__65',
+      'supervision_filter' => 'offers_supervision__66',
       'videoconferencing_filter' => 'offers_video_conferencing_servic_69',
       'region' => 'region_67',
       'language' => 'language_68',
@@ -222,6 +224,14 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    * @return void
    */
   function alterRow(&$row) {
+   if (!empty($row['language_68'])) {
+     $value = [];
+     $languages = explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row['language_68'], 1, -1));
+     foreach ($languages as $lang) {
+       $value[] = $this->_languages[$lang];
+     }
+     $row['language_68'] = implode(', ', $value);
+   }
     //CRM_Core_Error::debug_var('row', $row);
   }
 }
