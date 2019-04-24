@@ -25,26 +25,21 @@
 .provider-row tr{
   border-bottom: 0px !important;
 }
-
 .rasp-expand-hint {
-  position: absolute;
   bottom: 0;
-  background: white url('../img/expand-arrow.png') no-repeat 8px 10px;
+  background: url('../img/expand-arrow.png') no-repeat 8px 10px !important;
   width: 100%;
   text-align: left;
   padding-top: 2px;
-  padding-left: 35px;
-  cursor: pointer;
-  text-decoration: none;
-  color: white;
+  padding-left: 35px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  color: transparent !important;
   overflow: hidden;
 }
-
 .rasp-expand-hint:hover {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
-
 item:hover > .rasp-expand-hint {
-  background-position: 8px 14px;
-  color: #337AB7;
+  color: #337AB7 !important;
 }
