@@ -4,9 +4,9 @@
       <td>
         <h1>
           {$row.first_name} {$row.last_name}&nbsp;&nbsp;&nbsp;
-          {if $row.accepting_new_clients__65 eq 1}<span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>{/if}
-          {if $row.travels_to_remote_areas__67 eq 1}<span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>{/if}
-          {if $row.offers_supervision__68 eq 1}<span class="provider-icon icon-supervision-img" title="Offers supervision"></span>{/if}
+          {if $row.accepting_new_clients__63 eq 1}<span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>{/if}
+          {if $row.travels_to_remote_areas__65 eq 1}<span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>{/if}
+          {if $row.offers_supervision__66 eq 1}<span class="provider-icon icon-supervision-img" title="Offers supervision"></span>{/if}
           {if $row.offers_video_conferencing_servic_69 eq 1}<span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>{/if}
         </h1>
       </td>
