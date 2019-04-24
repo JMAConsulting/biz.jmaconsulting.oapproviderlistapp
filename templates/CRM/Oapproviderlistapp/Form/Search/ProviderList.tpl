@@ -8,19 +8,8 @@
     </div><!-- /.crm-accordion-header -->
     <div class="crm-accordion-body">
         <div class="crm-submit-buttons">{include file="CRM/common/formButtons.tpl" location="top"}</div>
+
         <table class="form-layout-compressed">
-          <tr>
-            <td></td>
-            <td>
-              {$form.bc.html}{$form.bc.label}&nbsp;{$form.ot.html}{$form.ot.label}
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              {$form.pt.html}{$form.pt.label}&nbsp;{$form.slp.html}{$form.slp.label}
-            </td>
-          </tr>
           {foreach from=$elements item=element}
               <tr class="crm-contact-custom-search-form-row-{$element}">
                 {if $element eq 'accepting_clients_filter'}
@@ -53,7 +42,7 @@
                   </td>
                 {else}
                   <td class="label">
-                    {$form.$element.label}
+                    {$form.$element.label}{if $element eq 'region'}&nbsp;&nbsp;<a href="https://oapproviderlist.ca/civicrm/file?filename=region_064682ff6d22e5b9fc624a950a799257.png&id=285&reset=1" class="crm-image-popup action-item"><i class="crm-i fa-map-marker"></i></a>{/if}
                   </td>
                   {if $element|strstr:'_date'}
                       <td>{include file="CRM/common/jcalendar.tpl" elementName=$element}</td>

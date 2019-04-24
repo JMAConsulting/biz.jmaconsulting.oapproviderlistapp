@@ -32,6 +32,18 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       $check[] = &$form->addElement('advcheckbox', strtolower($key), NULL, ts($key));
     }
     $form->addGroup($check, 'region', ts('Region'));
+
+    $check = [];
+    foreach ([
+      'bc' => 'Behaviour Consultants',
+      'ot' => 'Occupational Therapists',
+      'pt' => 'Physical Therapists',
+      'slp' => 'Speech Language Pathologists',
+    ] as $key => $label) {
+      $check[] = &$form->addElement('advcheckbox', $key, NULL, ts($label));
+    }
+    $form->addGroup($check, 'credentials', ts('Credentials'));
+
     $form->addEntityRef('language', ts('Language'), [
       'entity' => 'OptionValue',
       'placeholder' => ts('- any -'),
@@ -52,6 +64,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     );
 
     $form->assign('elements', array(
+      'credentials',
       'region',
       'language',
       'name',
