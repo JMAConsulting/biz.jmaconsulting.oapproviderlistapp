@@ -25,3 +25,26 @@
 .provider-row tr{
   border-bottom: 0px !important;
 }
+
+.rasp-expand-hint {
+  position: absolute;
+  bottom: 0;
+  background: white url('../img/expand-arrow.png') no-repeat 8px 10px;
+  width: 100%;
+  text-align: left;
+  padding-top: 2px;
+  padding-left: 35px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  overflow: hidden;
+}
+
+.rasp-expand-hint:hover {
+  text-decoration: underline;
+}
+
+item:hover > .rasp-expand-hint {
+  background-position: 8px 14px;
+  color: #337AB7;
+}
