@@ -20,7 +20,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    * @return void
    */
   function buildForm(&$form) {
-    CRM_Utils_System::setTitle(E::ts('Search the OAP Provider List'));
+    CRM_Utils_System::setTitle(E::ts('Provider Search List'));
 
     $form->addElement('checkbox', 'accepting_clients_filter', E::ts('Show only if accepting new clients?'), NULL);
     $form->addElement('checkbox', 'remote_travel_filter', E::ts('Travels to remote areas?'), NULL);
@@ -42,6 +42,16 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       $check[] = &$form->addElement('checkbox', $key, NULL, $label, 'ts_sel', array('checked' => 'checked'));
     }
     $form->addGroup($check, 'credentials', E::ts('Credentials'));
+    $form->setDefaults([
+      'East' => 1,
+      'Central' => 1,
+      'North' => 1,
+      'South' => 1,
+      1 => 1,
+      2 => 1,
+      3 => 1,
+      4 => 1,
+    ]);
 
     $form->addEntityRef('language', E::ts('Language'), [
       'entity' => 'OptionValue',
@@ -196,6 +206,9 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     ];
     $submittedValues = $_POST;
     $clauses = [];
+if (empty($_POST['credentials'])) {
+$clauses[] = " temp2.which_of_the_following_credentia_7 IS NULL ";
+}
     foreach ($_POST as $key => $value) {
       if (array_key_exists($key, $customElements) && !empty($value)) {
         if ($key == 'name') {
