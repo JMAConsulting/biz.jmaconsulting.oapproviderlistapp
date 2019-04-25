@@ -1,9 +1,9 @@
 <tr class="crm-section form-item"><td>
   <table class="form-item provider-row">
     <tr>
-      <td>
+      <td style="width=50%;">
         <div style="color:#bd3933">
-          <h1 style="float:left;color:#333;font-size:2rem" class="{if $row.accepting_new_clients__63 eq 0}not-accepting{/if}">{$row.first_name} {$row.last_name}</h1>&nbsp;&nbsp;&nbsp;
+          <h1 style="float:left;color:#333;font-size:2rem" class="{if $row.accepting_new_clients__63 eq 0}not-accepting{/if} provider-title">{$row.first_name} {$row.last_name}</h1>&nbsp;&nbsp;&nbsp;
           {if $row.accepting_new_clients__63 eq 1}
             <span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>
           {elseif $row.accepting_new_clients__63 eq 0}

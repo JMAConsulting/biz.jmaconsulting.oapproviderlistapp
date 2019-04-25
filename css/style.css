@@ -13,6 +13,10 @@
 .icon-videoconferencing-img{
     background-image: url('../img/icon_videoconferencing_24px.png');
 }
+.provider-image {
+  max-height: 200px;
+  max-width: 200px;
+}
 .provider-icon{
   width: 30px;
   height: 24px;
@@ -23,8 +27,17 @@
   background-position: center center;
   margin-top: 5px;
 }
-.provider-row tr{
+.provider-row tr {
   border-bottom: 0px !important;
+}
+.provider-row td {
+  padding: 0.5px !important;
+}
+.addDetails td {
+  padding: 3px !important;
+}
+.addDetails i {
+  font-size: 14px !important;
 }
 .rasp-expand-hint {
   bottom: 0;
@@ -55,6 +68,9 @@
   text-decoration: underline !important;
   background-position: 8px 14px !important;
 }
+.provider-title:hover {
+  text-decoration: underline !important;
+}
 .not-accepting {
     color: #999 !important;
 }
@@ -69,4 +85,7 @@
 }
 .crm-search-tasks {
   display: none;
+}
+.crm-container .crm-form-block {
+  background-color: #fff !important;
 }

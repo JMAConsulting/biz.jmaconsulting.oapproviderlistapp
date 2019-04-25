@@ -1,6 +1,15 @@
 {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
 <tr class="crm-section form-item addDetails"><td>
-  <table class="form-item provider-row">
+  <table class="form-item">
+      {if $image}
+      <tr>
+        <td>
+          <div class="provider-image">
+            <img src="{$image}" />
+          </div>
+        </td>
+      </tr>
+      {/if}
       {foreach from=$credentials item=credential}
       <tr>
         <td>
@@ -11,7 +20,7 @@
       {foreach from=$employers item=employer}
       <tr>
         <td>
-          <a href='https://oapproviderlist.ca/civicrm/contact/view?reset=1&cid={$employer.id}'>{$employer.organization_name}</a> <br/>
+          {$employer.organization_name} <br/>
           {$employer.street_address} <br/>
           {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code}
           <div class=clear></div>
