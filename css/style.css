@@ -37,9 +37,32 @@
   color: transparent !important;
   overflow: hidden;
 }
+.rasp-expand {
+  bottom: 0;
+  background: url('../img/collapse-arrow.png') no-repeat 8px 10px !important;
+  width: 100%;
+  text-align: left;
+  padding-top: 2px;
+  padding-left: 35px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  color: transparent !important;
+  overflow: hidden;
+}
 .rasp-expand-hint:hover {
+  color: #337AB7 !important;
   text-decoration: underline !important;
+  background-position: 8px 14px !important;
 }
 item:hover > .rasp-expand-hint {
   color: #337AB7 !important;
+}
+.not-accepting {
+    color: #999;
+}
+.crm-container table {
+  border: none !important;
+}
+.crm-container tr.odd-row td {
+  border: none !important;
 }
