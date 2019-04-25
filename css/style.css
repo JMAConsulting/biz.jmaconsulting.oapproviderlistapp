@@ -1,17 +1,17 @@
 .icon-accepting-img{
-    background-image: url('../img/icon_accepting_24px.png');
+    background-image: url('../img/icon_accepting_16px.png');
 }
 .icon-not-accepting-img{
-    background-image: url('../img/icon_not_accepting_24px.png');
+    background-image: url('../img/icon_not_accepting_16px.png');
 }
 .icon-remote-travel-img{
-    background-image: url('../img/icon_remote_travel_24px.png');
+    background-image: url('../img/icon_remote_travel_16px.png');
 }
 .icon-supervision-img{
-    background-image: url('../img/icon_supervision_24px.png');
+    background-image: url('../img/icon_supervision_16px.png');
 }
 .icon-videoconferencing-img{
-    background-image: url('../img/icon_videoconferencing_24px.png');
+    background-image: url('../img/icon_videoconferencing_16px.png');
 }
 .provider-image {
   max-height: 200px;
@@ -19,7 +19,7 @@
 }
 .provider-icon{
   width: 30px;
-  height: 24px;
+  height: 16px;
   display: inline-block;
   cursor: default;
   overflow: visible;
