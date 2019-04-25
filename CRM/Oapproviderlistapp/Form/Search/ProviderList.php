@@ -48,7 +48,9 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'placeholder' => E::ts('- any -'),
       'multiple' => 1,
       'api' => [
-        'params' => ['option_group_id' => 'languages'],
+        'params' => [
+'check_permissions' => FALSE,
+'option_group_id' => 'languages'],
       ],
     ]);
     $form->add('text',

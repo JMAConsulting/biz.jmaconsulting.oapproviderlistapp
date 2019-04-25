@@ -89,3 +89,17 @@
 .crm-container .crm-form-block {
   background-color: #fff !important;
 }
+table.provider-row:hover {
+  cursor: pointer !important;
+}
+table.provider-row:hover .provider-title {
+  text-decoration: underline !important;
+}
+table.provider-row:hover .rasp-expand-hint {
+  color: #337AB7 !important;
+  text-decoration: underline !important;
+  background-position: 8px 14px !important;
+}
+tr {
+    border-bottom: 0px solid #e6e4df !important;
+}
