@@ -266,6 +266,10 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
      }
      $row['language_68'] = implode(', ', $value);
    }
+   if (!empty($row['region_67'])) {
+     $regions = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row['region_67'], 1, -1)));
+     $row['region_67'] = implode(', ', $regions);
+   }
     //CRM_Core_Error::debug_var('row', $row);
   }
 }

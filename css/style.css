@@ -21,6 +21,7 @@
   overflow: visible;
   background-repeat: no-repeat;
   background-position: center center;
+  margin-top: 5px;
 }
 .provider-row tr{
   border-bottom: 0px !important;
@@ -54,15 +55,18 @@
   text-decoration: underline !important;
   background-position: 8px 14px !important;
 }
-item:hover > .rasp-expand-hint {
-  color: #337AB7 !important;
-}
 .not-accepting {
-    color: #999;
+    color: #999 !important;
 }
 .crm-container table {
   border: none !important;
 }
 .crm-container tr.odd-row td {
   border: none !important;
+}
+.add-decoration {
+  text-decoration: underline;
+}
+.crm-search-tasks {
+  display: none;
 }

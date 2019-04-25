@@ -4,7 +4,7 @@
       {foreach from=$credentials item=credential}
       <tr>
         <td>
-        <b><i>{ts}Credentials{/ts}:</i></b> {$credential.which_of_the_following_credentia_7} <br/>
+        <i>{ts}Credentials{/ts}:</i> {$credential.which_of_the_following_credentia_7} <br/>
         </td>
       </tr>
       {/foreach}
