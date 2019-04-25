@@ -1,5 +1,5 @@
 {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
-<tr class="{cycle values="odd-row,even-row"} crm-section form-item"><td>
+<tr class="crm-section form-item addDetails"><td>
   <table class="form-item provider-row">
       {foreach from=$credentials item=credential}
       <tr>

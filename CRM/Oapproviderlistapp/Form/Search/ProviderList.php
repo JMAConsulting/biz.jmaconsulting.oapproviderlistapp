@@ -221,7 +221,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
           $c = [];
           foreach ($value as $k => $v) {
             if ($v == 1) {
-              $c[] = "$customElements[$key] = $k";
+              $c[] = "$customElements[$key] LIKE '%$k%'";
             }
           }
           if (!empty($c)) {

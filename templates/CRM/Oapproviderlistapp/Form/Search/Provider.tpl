@@ -1,4 +1,4 @@
-<tr class="{cycle values="odd-row,even-row"} crm-section form-item"><td>
+<tr class="crm-section form-item"><td>
   <table class="form-item provider-row">
     <tr>
       <td>
@@ -42,9 +42,19 @@
 {literal}
 <script type="text/javascript">
 CRM.$(function($) {
-  if ($('a.rasp-expand-hint').hasClass('expanded')) {
-    $('a.expanded').addClass('rasp-expand');
-  }
+  $('body')
+    .off('.crmExpandRow')
+    .on('click.crmExpandRow', 'a.crm-expand-row', function(e) {
+      alert('called');
+      if ($(this).hasClass('expanded')) {
+        $(this).removeClass('rasp-expand');
+      } else {
+        $(this).addClass('rasp-expand');
+      }
+      $(this).toggleClass('rasp-expand');
+      e.preventDefault();
+    });
 });
+
 </script>
 {/literal}
