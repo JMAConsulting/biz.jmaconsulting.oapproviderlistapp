@@ -14,19 +14,23 @@
           {if $row.offers_video_conferencing_servic_69 eq 1}<span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>{/if}
         </div>
       </td>
-      <td>
-      </td>
     </tr>
     <tr>
       <td>
-        <div class="label"><i>Speaks:</i></div>
-        <div class="content">{$row.language_68}</div>
-        <div class=clear></div>
-      </td>
-      <td>
-        <div class="label"><i>Region:</i></div>
-        <div class="content">{$row.region_67}</div>
-        <div class=clear></div>
+        <table>
+          <tr>
+            <td>
+              <div class="label"><i>Speaks:</i></div>
+              <div class="content">{$row.language_68}</div>
+              <div class=clear></div>
+            </td>
+            <td>
+              <div class="label"><i>Region:</i></div>
+              <div class="content">{$row.region_67}</div>
+              <div class=clear></div>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
     <tr>
@@ -34,8 +38,6 @@
         <a class="nowrap bold crm-expand-row rasp-expand-hint" title="{ts}view details{/ts}" href="{crmURL p="civicrm/provider/details" q="reset=1&cid=`$row.contact_id`"}">
           Click for more details
         </a>
-      </td>
-      <td>
       </td>
     </tr>
   </table>
