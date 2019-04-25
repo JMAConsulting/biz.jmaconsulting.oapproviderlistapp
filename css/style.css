@@ -52,10 +52,17 @@
 .rasp-expand-hint:hover {
   color: #337AB7 !important;
   text-decoration: underline !important;
+  background-position: 8px 14px !important;
 }
 item:hover > .rasp-expand-hint {
   color: #337AB7 !important;
 }
 .not-accepting {
     color: #999;
+}
+.crm-container table {
+  border: none !important;
+}
+.crm-container tr.odd-row td {
+  border: none !important;
 }
