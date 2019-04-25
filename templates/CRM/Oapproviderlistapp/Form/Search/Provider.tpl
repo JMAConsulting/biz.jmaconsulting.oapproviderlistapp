@@ -42,18 +42,14 @@
 {literal}
 <script type="text/javascript">
 CRM.$(function($) {
-  $('body')
-    .off('.crmExpandRow')
-    .on('click.crmExpandRow', 'a.crm-expand-row', function(e) {
-      alert('called');
-      if ($(this).hasClass('expanded')) {
-        $(this).removeClass('rasp-expand');
-      } else {
-        $(this).addClass('rasp-expand');
-      }
-      $(this).toggleClass('rasp-expand');
-      e.preventDefault();
-    });
+  $('a.rasp-expand-hint').click(function () {
+    if ($(this).hasClass('expanded')) {
+      $(this).removeClass('rasp-expand');
+    }
+    else {
+      $(this).addClass('rasp-expand');
+    }
+  });
 });
 
 </script>
