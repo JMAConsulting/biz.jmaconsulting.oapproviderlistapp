@@ -2,13 +2,6 @@
    custom search .php file. If you want a different layout, clone and customize this file and point to new file using
    templateFile() function.*}
 <div class="crm-block crm-form-block crm-contact-custom-search-form-block">
-<div class="crm-accordion-wrapper crm-custom_search_form-accordion {if $rows}collapsed{/if}">
-    <div class="crm-accordion-header crm-master-accordion-header">
-      {ts}Edit Search Criteria{/ts}
-    </div><!-- /.crm-accordion-header -->
-    <div class="crm-accordion-body">
-        <div class="crm-submit-buttons">{include file="CRM/common/formButtons.tpl" location="top"}</div>
-
         <table class="form-layout-compressed">
           {foreach from=$elements item=element}
               <tr class="crm-contact-custom-search-form-row-{$element}">
@@ -54,8 +47,6 @@
           {/foreach}
         </table>
         <div class="crm-submit-buttons">{include file="CRM/common/formButtons.tpl" location="bottom"}</div>
-    </div><!-- /.crm-accordion-body -->
-</div><!-- /.crm-accordion-wrapper -->
 </div><!-- /.crm-form-block -->
 
 {if $rowsEmpty || $rows}
@@ -67,11 +58,7 @@
 {if $rows}
   <div class="crm-results-block">
     {* Search request has returned 1 or more matching rows. Display results and collapse the search criteria fieldset. *}
-        {* This section handles form elements for action task select and submit *}
-       <div class="crm-search-tasks">
-        {include file="CRM/Contact/Form/Search/ResultTasks.tpl"}
-    </div>
-        {* This section displays the rows along and includes the paging controls *}
+    {* This section displays the rows along and includes the paging controls *}
       <div class="crm-search-results">
 
         {include file="CRM/common/pager.tpl" location="top"}
@@ -105,6 +92,7 @@
 {literal}
 <script type="text/javascript">
 CRM.$(function($) {
+$('#block-seven-breadcrumbs').hide();
 $('a#expand').click( function() {
     if( $(this).attr('href') == '#expand') {
       var message = {/literal}"{ts escape='js'}Collapse all tabs{/ts}"{literal};
