@@ -38,3 +38,13 @@
     </tr>
   </table>
 </tr>
+
+{literal}
+<script type="text/javascript">
+CRM.$(function($) {
+  if ($('a.rasp-expand-hint').hasClass('expanded')) {
+    $('a.expanded').addClass('rasp-expand');
+  }
+});
+</script>
+{/literal}
