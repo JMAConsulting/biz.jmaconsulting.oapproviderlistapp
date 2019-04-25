@@ -190,7 +190,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'region' => 'region_67',
       'language' => 'language_68',
       'name' => 'contact_a.first_name',
-      'city' => 'civicrm_address.city',
+      'city' => 'address.city',
     ];
     $submittedValues = $_POST;
     $clauses = [];
@@ -228,6 +228,12 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
           if (!empty($c)) {
             $clauses[] = '(' . implode(' OR ', $c) . ')';
           }
+          else {
+            $clauses[] = " $customElements[$key] IS NULL ";
+          }
+        }
+        elseif ($key == 'city') {
+          $clauses[] = "$customElements[$key] LIKE '%$value%'";
         }
         else {
           $clauses[] = sprintf("%s = %d", $customElements[$key], $value);
