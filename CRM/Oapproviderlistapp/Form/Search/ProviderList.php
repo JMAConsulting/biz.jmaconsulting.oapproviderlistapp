@@ -22,15 +22,15 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
   function buildForm(&$form) {
     CRM_Utils_System::setTitle(E::ts('Provider Search List'));
 
-    $form->addElement('checkbox', 'accepting_clients_filter', ts('Show only if Accepting new clients?'), NULL);
-    $form->addElement('checkbox', 'remote_travel_filter', ts('Travels to remote areas?'), NULL);
-    $form->addElement('checkbox', 'supervision_filter', ts('Offers supervision?'), NULL);
-    $form->addElement('checkbox', 'videoconferencing_filter', ts('Offers remote services?'), NULL);
+    $form->addElement('checkbox', 'accepting_clients_filter', E::ts('Show only if accepting new clients?'), NULL);
+    $form->addElement('checkbox', 'remote_travel_filter', E::ts('Travels to remote areas?'), NULL);
+    $form->addElement('checkbox', 'supervision_filter', E::ts('Offers supervision?'), NULL);
+    $form->addElement('checkbox', 'videoconferencing_filter', E::ts('Offers remote services?'), NULL);
     $check = [];
     foreach (['East', 'Central', 'North', 'South'] as $key) {
-      $check[] = &$form->addElement('checkbox', $key, NULL, ts($key), 'ts_sel', array('checked' => 'checked'));
+      $check[] = &$form->addElement('checkbox', $key, NULL, E::ts($key), 'ts_sel', array('checked' => 'checked'));
     }
-    $form->addGroup($check, 'region', ts('Region'));
+    $form->addGroup($check, 'region', E::ts('Region'));
 
     $check = [];
     foreach ([
@@ -39,13 +39,13 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       3 => E::ts('Registered Psychologist'),
       4 => E::ts('Registered Psychological Associate'),
     ] as $key => $label) {
-      $check[] = &$form->addElement('checkbox', $key, NULL, ts($label), 'ts_sel', array('checked' => 'checked'));
+      $check[] = &$form->addElement('checkbox', $key, NULL, $label, 'ts_sel', array('checked' => 'checked'));
     }
-    $form->addGroup($check, 'credentials', ts('Credentials'));
+    $form->addGroup($check, 'credentials', E::ts('Credentials'));
 
-    $form->addEntityRef('language', ts('Language'), [
+    $form->addEntityRef('language', E::ts('Language'), [
       'entity' => 'OptionValue',
-      'placeholder' => ts('- any -'),
+      'placeholder' => E::ts('- any -'),
       'multiple' => 1,
       'api' => [
         'params' => ['option_group_id' => 'languages'],
