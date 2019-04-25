@@ -19,7 +19,7 @@
       <td>
         <table>
           <tr>
-            <td>
+            <td style="width:40%;text-align:left;">
               <div class="label"><i>Speaks:</i></div>
               <div class="content">{$row.language_68}</div>
               <div class=clear></div>
