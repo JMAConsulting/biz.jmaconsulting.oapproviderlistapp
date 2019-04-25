@@ -64,6 +64,14 @@ CRM.$(function($) {
       $(this).parents().eq(3).find('h1').removeClass("add-decoration");
     }
   );
+  $('table.provider-row').hover(
+    function () {
+      $(this).find('h1.provider-title').addClass("add-decoration");
+    },
+    function () {
+      $(this)..find('h1.provider-title').removeClass("add-decoration");
+    }
+  );
 });
 
 </script>

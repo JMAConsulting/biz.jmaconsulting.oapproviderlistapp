@@ -52,7 +52,7 @@
 {if $rowsEmpty || $rows}
 <div class="crm-content-block">
 {if $rowsEmpty}
-    {include file="CRM/Contact/Form/Search/Custom/EmptyResults.tpl"}
+    {include file="CRM/Oapproviderlistapp/Form/Search/EmptyResults.tpl"}
 {/if}
 
 {if $rows}
