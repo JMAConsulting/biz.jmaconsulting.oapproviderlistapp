@@ -240,3 +240,15 @@ msgstr "Numéro de téléphone est un champ requis."
 
 msgid "City/Town is required"
 msgstr "Ville/village est un champ requis."
+
+msgid "Board Certified Behavior Analyst® (BCBA®)"
+msgstr "Analyste du comportement certifié(e)&#x1F16B; (BCBA&#x1F16B;)"
+
+msgid "Board Certified Behavior Analyst-Doctoral (BCBA-D™)"
+msgstr "Analyste du comportement certifié(e) – doctoral(e)&#x1F16A; (BCBA-D&#x1F16A;)"
+
+msgid "Registered Psychologist"
+msgstr "Psychologue agréé(e)"
+
+msgid "Registered Psychological Associate"
+msgstr "Associé(e) en psychologie agréé(e)"
