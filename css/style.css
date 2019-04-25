@@ -75,7 +75,13 @@
     color: #999 !important;
 }
 .crm-container table {
-  border: none !important;
+  border: none;
+}
+.provider-row {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid #ddd !important;
 }
 .crm-container tr.odd-row td {
   border: none !important;
