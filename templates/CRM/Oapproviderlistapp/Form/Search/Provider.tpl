@@ -17,14 +17,14 @@
       </td>
     </tr>
     <tr>
-            <td >
-              <div class="innerbox">
-              Region: {$row.region_67}
-            </div>
-            <div>
-              Speaks: {$row.language_68}
-            </div>
-            </td>
+      <td >
+        <div style="float: left;width: 65%;overflow: hidden;">
+        Region: {$row.region_67}
+      </div>
+      <div style="overflow: hidden;">
+        Speaks: {$row.language_68}
+      </div>
+      </td>
     </tr>
     <tr>
       <td>
