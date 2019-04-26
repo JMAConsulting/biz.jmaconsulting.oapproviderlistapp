@@ -1,3 +1,19 @@
+* {
+  font-family: "Gill Sans",Helvetica,sans-serif;
+  font-size: 16px !important;
+}
+#block-de-theme-page-title > h1 {
+  font-size: 3rem !important;
+}
+.crm-container .crm-contact-custom-search-form-block .form-layout-compressed label {
+  font-weight: normal !important;
+}
+.crm-contact-custom-search-form-row-accepting_clients_filter label,
+.crm-contact-custom-search-form-row-remote_travel_filter label,
+.crm-contact-custom-search-form-row-supervision_filter label,
+.crm-contact-custom-search-form-row-videoconferencing_filter label {
+  cursor: pointer;
+}
 .icon-accepting-img{
     background-image: url('../img/icon_accepting_16px.png');
 }
@@ -16,6 +32,7 @@
 .provider-image {
   max-height: 200px;
   max-width: 200px;
+  margin-left: 15px;
 }
 .provider-icon{
   width: 30px;
@@ -98,6 +115,9 @@
 table.provider-row:hover {
   cursor: pointer !important;
 }
+.provider-title {
+  font-size: 1.8em !important;
+}
 table.provider-row:hover .provider-title {
   text-decoration: underline !important;
 }
@@ -109,16 +129,14 @@ table.provider-row:hover .rasp-expand-hint {
 tr {
     border-bottom: 0px solid #e6e4df !important;
 }
-.crm-form-submit {
+#_qf_Custom_refresh-bottom {
   font-family: "Gill Sans", Helvetica, sans-serif !important;
   border: 1px solid transparent !important;
-  font-weight: 400 !important;
-  border: none !important;
   cursor: pointer !important;
   display: inline-block !important;
   position: relative !important;
   overflow: hidden !important;
-  padding: 0.4096em 1.25em;
+  padding: 0.4096em 1.25em !important;
   font-size: 1em !important;
   text-decoration: none !important;
   -webkit-transition: all .3s ease-out, border-color .3s ease-out !important;
@@ -130,9 +148,19 @@ tr {
   border: 1px solid #ffffff !important;
   background-color: #231F20 !important;
   color: #ffffff !important;
+  text-transform: capitalize !important;
 }
-.crm-form-submit:hover {
+#_qf_Custom_refresh-bottom:hover {
   background-color: #abad00 !important;
   border: 1px solid #abad00 !important;
   color: #231F20 !important;
+}
+.provider-wrapper {
+    overflow: hidden; /* add this to contain floated children */
+}
+.provider-details {
+    float:left; /* add this */
+}
+.provider-image {
+    float: left; /* add this */
 }

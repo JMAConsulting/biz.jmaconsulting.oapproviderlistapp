@@ -1,19 +1,12 @@
 {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
 <tr class="crm-section form-item addDetails"><td>
+  <div class="provider-wrapper">
+  <div class="provider-details">
   <table class="form-item">
-      {if $image}
-      <tr>
-        <td>
-          <div class="provider-image">
-            <img src="{$image}" />
-          </div>
-        </td>
-      </tr>
-      {/if}
       {foreach from=$credentials item=credential}
       <tr>
         <td>
-        <i>{ts}Credentials{/ts}:</i> {$credential.which_of_the_following_credentia_7} <br/>
+        {ts}Credentials{/ts}: {$credential.which_of_the_following_credentia_7} <br/>
         </td>
       </tr>
       {/foreach}
@@ -33,5 +26,13 @@
       </tr>
       {/foreach}
   </table>
+  </div>
+  {if $image}
+    <div class="provider-image">
+      <img src="{$image}" />
+    </div>
+  {/if}
+  </div>
+  </td>
 </tr>
 {/crmScope}
