@@ -109,3 +109,30 @@ table.provider-row:hover .rasp-expand-hint {
 tr {
     border-bottom: 0px solid #e6e4df !important;
 }
+.crm-form-submit {
+  font-family: "Gill Sans", Helvetica, sans-serif !important;
+  border: 1px solid transparent !important;
+  font-weight: 400 !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  position: relative !important;
+  overflow: hidden !important;
+  padding: 0.4096em 1.25em;
+  font-size: 1em !important;
+  text-decoration: none !important;
+  -webkit-transition: all .3s ease-out, border-color .3s ease-out !important;
+  transition: all .3s ease-out, border-color .3s ease-out !important;
+  margin-right: 1em !important;
+  border-radius: 3px !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  outline: none !important;
+  border: 1px solid #ffffff !important;
+  background-color: #231F20 !important;
+  color: #ffffff !important;
+}
+.crm-form-submit:hover {
+  background-color: #abad00 !important;
+  border: 1px solid #abad00 !important;
+  color: #231F20 !important;
+}
