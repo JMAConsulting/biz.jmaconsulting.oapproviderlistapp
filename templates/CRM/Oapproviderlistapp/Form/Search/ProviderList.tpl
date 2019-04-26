@@ -2,7 +2,7 @@
    custom search .php file. If you want a different layout, clone and customize this file and point to new file using
    templateFile() function.*}
 <div class="crm-block crm-form-block crm-contact-custom-search-form-block">
-        <table class="form-layout-compressed">
+        <table>
           {foreach from=$elements item=element}
               <tr class="crm-contact-custom-search-form-row-{$element}">
                 {if $element eq 'accepting_clients_filter'}
@@ -32,6 +32,16 @@
                     {$form.$element.html}&nbsp;
                     <span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>&nbsp;&nbsp;
                     {$form.$element.label}
+                  </td>
+                {elseif $element eq 'credentials'}
+                  <td style="width:10%;text-align:right;">
+                    {$form.$element.label}
+                  </td>
+                  <td>
+                    {$form.credentials_1.html}&nbsp;{$form.credentials_1.label}
+                    {$form.credentials_2.html}&nbsp;{$form.credentials_2.label}
+                    {$form.credentials_3.html}&nbsp;{$form.credentials_3.label}
+                    {$form.credentials_4.htm}&nbsp;{$form.credentials_4.label}
                   </td>
                 {else}
                   <td class="label">

@@ -71,7 +71,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $form->add('text',
       'city',
       E::ts('City'),
-      ['class' => 'big']
+      ['class' => 'huge']
     );
 
     $form->assign('elements', array(
