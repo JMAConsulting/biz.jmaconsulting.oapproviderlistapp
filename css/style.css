@@ -2,6 +2,9 @@
   font-family: "Gill Sans",Helvetica,sans-serif;
   font-size: 16px !important;
 }
+ .crm-container .crm-form-block label {
+    font-weight: 500 !important;
+}
 #block-de-theme-page-title > h1 {
   font-size: 3rem !important;
 }
@@ -173,4 +176,10 @@ tr {
     width: 30px;
     padding-top: 0.4096em;
     border-bottom: 2px solid #abad00;
+}
+.innerbox
+{
+   width:250px;
+   max-width:250px;
+   display: inline-block;
 }

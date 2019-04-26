@@ -18,10 +18,12 @@
     </tr>
     <tr>
             <td >
-              Region: {$row.region_67}&nbsp;&nbsp;&nbsp;&nbsp;
-            </td>
-            <td>
+              <div class="innerbox">
+              Region: {$row.region_67}
+            </div>
+            <div>
               Speaks: {$row.language_68}
+            </div>
             </td>
     </tr>
     <tr>
