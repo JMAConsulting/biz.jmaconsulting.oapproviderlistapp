@@ -38,13 +38,13 @@
                     {$form.$element.label}
                   </td>
                   <td>
-                    {$form.credentials.1.html}
-                    {$form.credentials.2.html}
-                    {$form.credentials.3.html}
-                    {$form.credentials.4.html}
+                    {$form.credentials.1.html}<br/>
+                    {$form.credentials.2.html}<br/>
+                    {$form.credentials.3.html}<br/>
+                    {$form.credentials.4.html}<br/>
                   </td>
                 {else}
-                  <td class="label">
+                  <td style="width:10%;text-align:right;">
                     {$form.$element.label}{if $element eq 'region'}&nbsp;&nbsp;<a title="Click for map of regions" href="https://oapproviderlist.ca/civicrm/file?filename=region_064682ff6d22e5b9fc624a950a799257.png&id=285&reset=1" class="crm-image-popup"><i class="crm-i fa-map-marker"></i></a>{/if}
                   </td>
                   {if $element|strstr:'_date'}
