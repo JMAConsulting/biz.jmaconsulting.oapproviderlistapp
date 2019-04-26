@@ -167,3 +167,10 @@ tr {
 .provider-image {
     float: left; /* add this */
 }
+.field--name-field-title:after {
+    content: "";
+    display: block;
+    width: 30px;
+    padding-top: 0.4096em;
+    border-bottom: 2px solid #abad00;
+}

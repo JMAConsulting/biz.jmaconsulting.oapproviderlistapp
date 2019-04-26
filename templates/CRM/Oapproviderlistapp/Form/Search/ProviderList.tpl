@@ -35,7 +35,7 @@
                   </td>
                 {else}
                   <td class="label">
-                    {$form.$element.label}{if $element eq 'region'}&nbsp;&nbsp;<a href="https://oapproviderlist.ca/civicrm/file?filename=region_064682ff6d22e5b9fc624a950a799257.png&id=285&reset=1" class="crm-image-popup"><i class="crm-i fa-map-marker"></i></a>{/if}
+                    {$form.$element.label}{if $element eq 'region'}&nbsp;&nbsp;<a title="Click for map of regions" href="https://oapproviderlist.ca/civicrm/file?filename=region_064682ff6d22e5b9fc624a950a799257.png&id=285&reset=1" class="crm-image-popup"><i class="crm-i fa-map-marker"></i></a>{/if}
                   </td>
                   {if $element|strstr:'_date'}
                       <td>{include file="CRM/common/jcalendar.tpl" elementName=$element}</td>
@@ -67,6 +67,7 @@
         {if $atoZ}
             {include file="CRM/common/pagerAToZ.tpl"}
         {/if}
+        <span style="float:right;"><a href="#expand" id="expand">{ts}Expand all results{/ts}</a></span>
         <table>
           {counter start=0 skip=1 print=false}
             {foreach from=$rows item=row}
@@ -95,13 +96,22 @@ CRM.$(function($) {
 $('#block-seven-breadcrumbs').hide();
 $('a#expand').click( function() {
     if( $(this).attr('href') == '#expand') {
-      var message = {/literal}"{ts escape='js'}Collapse all tabs{/ts}"{literal};
+      var message = {/literal}"{ts escape='js'}Collapse all results{/ts}"{literal};
       $(this).attr('href', '#collapse');
+      $('.rasp-expand-hint').each(function(){
+       if (!$(this).hasClass('expanded')) {
+        $(this).trigger('click');
+       }
+     });
     }
-    else {
-      var message = {/literal}"{ts escape='js'}Expand all tabs{/ts}"{literal};
-      $('.crm-accordion-wrapper:not(.collapsed)').crmAccordionToggle();
+    else if ($(this).attr('href') == '#collapse') {
+      var message = {/literal}"{ts escape='js'}Expand all results{/ts}"{literal};
       $(this).attr('href', '#expand');
+      $('.rasp-expand-hint').each(function(){ 
+       if ($(this).hasClass('expanded')) {
+         $(this).trigger('click');
+       }
+      });
     }
     $(this).html(message);
     return false;
