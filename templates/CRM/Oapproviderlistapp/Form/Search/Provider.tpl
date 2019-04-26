@@ -1,6 +1,6 @@
 <tr class="crm-section form-item"><td>
   <table class="form-item provider-row">
-    <tr>
+    <tr colspan=2>
       <td style="width=50%;">
         <div style="color:#bd3933">
           <font style="float:left;color:#1264A9;font-size:1.4em;font-weight:bold;padding-top:3px;" class=" field--name-field-title {if $row.accepting_new_clients__63 eq 0}not-accepting{/if} provider-title">{$row.first_name} {$row.last_name}</font>&nbsp;&nbsp;&nbsp;
@@ -17,15 +17,14 @@
       </td>
     </tr>
     <tr>
-            <td style="float:lef;">
+            <td >
               <div class="label"  style="font-weight:normal;">Region:</div>
               <div class="content">{$row.region_67}</div>
               <div class=clear></div>
-<br/>
             </td>
 </tr>
 <tr>
-            <td style="float:lef;">
+            <td>
               <div class="label" style="font-weight:normal;">Speaks:</div>
               <div class="content">{$row.language_68}</div>
               <div class=clear></div>
@@ -41,24 +40,3 @@
     </tr>
   </table>
 </tr>
-
-{literal}
-<script type="text/javascript">
-CRM.$(function($) {
-  $('a.rasp-expand-hint').click(function () {
-    if ($(this).hasClass('expanded')) {
-      $(this).removeClass('rasp-expand');
-      $(this).text('Click for more details');
-    }
-    else {
-      $(this).addClass('rasp-expand');
-      $(this).text('Click to hide details');
-    }
-  });
-  $('table.provider-row').click(function() {
-  //  $(this).find('a.rasp-expand-hint').trigger('click');
-  });
-});
-
-</script>
-{/literal}

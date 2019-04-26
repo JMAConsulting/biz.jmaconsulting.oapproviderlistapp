@@ -107,7 +107,7 @@ $('a#expand').click( function() {
     else if ($(this).attr('href') == '#collapse') {
       var message = {/literal}"{ts escape='js'}Expand all results{/ts}"{literal};
       $(this).attr('href', '#expand');
-      $('.rasp-expand-hint').each(function(){ 
+      $('.rasp-expand-hint').each(function(){
        if ($(this).hasClass('expanded')) {
          $(this).trigger('click');
        }
@@ -115,6 +115,17 @@ $('a#expand').click( function() {
     }
     $(this).html(message);
     return false;
+  });
+
+  $('a.rasp-expand-hint').click(function () {
+    if ($(this).hasClass('expanded')) {
+      $(this).removeClass('rasp-expand');
+      $(this).text('Click for more details');
+    }
+    else {
+      $(this).addClass('rasp-expand');
+      $(this).text('Click to hide details');
+    }
   });
 });
 </script>
