@@ -18,7 +18,7 @@
     </tr>
     <tr>
       <td >
-        <div style="float: left;width: 65%;overflow: hidden;">
+        <div style="float: left;width:30%;overflow: hidden;">
         Region: {$row.region_67}
       </div>
       <div style="overflow: hidden;">
