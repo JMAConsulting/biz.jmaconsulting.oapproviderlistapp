@@ -6,6 +6,9 @@
   font-size: 3rem !important;
 }
 .crm-container .crm-contact-custom-search-form-block .form-layout-compressed label {
+  font-weight: 700 !important;
+}
+.provider-wrapper a, .provider-row a {
   font-weight: normal !important;
 }
 .crm-contact-custom-search-form-row-accepting_clients_filter label,
