@@ -18,16 +18,12 @@
     </tr>
     <tr>
             <td >
-              <div class="label"  style="font-weight:normal;">Region:</div>
-              <div class="content">{$row.region_67}</div>
-              <div class=clear></div>
+              Region: {$row.region_67}&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
 </tr>
 <tr>
             <td>
-              <div class="label" style="font-weight:normal;">Speaks:</div>
-              <div class="content">{$row.language_68}</div>
-              <div class=clear></div>
+              Speaks: {$row.language_68}
             </td>
     </tr>
     <tr>
