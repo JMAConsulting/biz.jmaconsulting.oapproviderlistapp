@@ -20,8 +20,6 @@
             <td >
               Region: {$row.region_67}&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
-</tr>
-<tr>
             <td>
               Speaks: {$row.language_68}
             </td>
