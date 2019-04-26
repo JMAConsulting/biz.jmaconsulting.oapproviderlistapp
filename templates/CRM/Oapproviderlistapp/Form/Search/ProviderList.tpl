@@ -38,10 +38,10 @@
                     {$form.$element.label}
                   </td>
                   <td>
-                    {$form.credentials_1.html}&nbsp;{$form.credentials_1.label}
-                    {$form.credentials_2.html}&nbsp;{$form.credentials_2.label}
-                    {$form.credentials_3.html}&nbsp;{$form.credentials_3.label}
-                    {$form.credentials_4.htm}&nbsp;{$form.credentials_4.label}
+                    {$form.credentials.1.html}
+                    {$form.credentials.2.html}
+                    {$form.credentials.3.html}
+                    {$form.credentials.4.html}
                   </td>
                 {else}
                   <td class="label">
