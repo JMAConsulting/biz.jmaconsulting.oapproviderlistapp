@@ -95,6 +95,10 @@
 .provider-title:hover {
   text-decoration: underline !important;
 }
+.provider-title {
+  font-size: 1.8em !important;
+  color: #231F20 !important;
+}
 .not-accepting {
     color: #999 !important;
 }
@@ -121,10 +125,6 @@
 }
 table.provider-row:hover {
   cursor: pointer !important;
-}
-.provider-title {
-  font-size: 1.8em !important;
-  color: #231F20 !important;
 }
 table.provider-row:hover .provider-title {
   text-decoration: underline !important;
