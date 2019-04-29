@@ -34,14 +34,14 @@
                     {$form.$element.label}
                   </td>
                 {elseif $element eq 'credentials'}
-                  <td style="width:10%;text-align:right;">
+                  <td style="width:15%;text-align:right;">
                     {$form.$element.label}
                   </td>
                   <td>
-                    {$form.credentials.1.html}<br/>
-                    {$form.credentials.2.html}<br/>
-                    {$form.credentials.3.html}<br/>
-                    {$form.credentials.4.html}<br/>
+                    &nbsp;{$form.credentials.1.html}<br/>
+                    &nbsp;{$form.credentials.2.html}<br/>
+                    &nbsp;{$form.credentials.3.html}<br/>
+                    &nbsp;{$form.credentials.4.html}<br/>
                   </td>
                 {else}
                   <td style="width:10%;text-align:right;">
@@ -50,7 +50,7 @@
                   {if $element|strstr:'_date'}
                       <td>{include file="CRM/common/jcalendar.tpl" elementName=$element}</td>
                   {else}
-                      <td>{$form.$element.html}</td>
+                      <td>&nbsp;{$form.$element.html}</td>
                   {/if}
                 {/if}
               </tr>

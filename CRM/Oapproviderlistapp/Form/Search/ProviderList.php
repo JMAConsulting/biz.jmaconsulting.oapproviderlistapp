@@ -150,6 +150,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    */
   function all($offset = 0, $rowcount = 0, $sort = NULL, $includeContactIDs = FALSE, $justIDs = FALSE) {
     // delegate to $this->sql(), $this->select(), $this->from(), $this->where(), etc.
+    //CRM_Core_Error::debug('ag', $this->sql($this->select(), $offset, $rowcount, $sort, $includeContactIDs, NULL));exit;
     return $this->sql($this->select(), $offset, $rowcount, $sort, $includeContactIDs, NULL);
   }
 
@@ -164,7 +165,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       contact_a.first_name,
       contact_a.last_name,
       temp.*,
-      address.postal_code
+      address.postal_code,
+      temp3.*
     ";
   }
 
