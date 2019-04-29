@@ -139,6 +139,45 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
   }
 
   /**
+   * @param $selectClause
+   * @param int $offset
+   * @param int $rowcount
+   * @param null $sort
+   * @param bool $includeContactIDs
+   * @param null $groupBy
+   *
+   * @return string
+   */
+  public function sql(
+    $selectClause,
+    $offset = 0,
+    $rowcount = 0,
+    $sort = NULL,
+    $includeContactIDs = FALSE,
+    $groupBy = NULL
+  ) {
+
+    $sql = "SELECT $selectClause " . $this->from();
+    $where = $this->where();
+    if (!empty($where)) {
+      $sql .= " WHERE " . $where;
+    }
+
+    if ($includeContactIDs) {
+      $this->includeContactIDs($sql,
+        $this->_formValues
+      );
+    }
+
+    if ($groupBy) {
+      $sql .= " $groupBy ";
+    }
+
+    $this->addSortOffset($sql, $offset, $rowcount, "contact_a.last_name, contact_a.first_name");
+    return $sql;
+  }
+
+  /**
    * Construct a full SQL query which returns one page worth of results
    *
    * @param int $offset
@@ -150,7 +189,6 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    */
   function all($offset = 0, $rowcount = 0, $sort = NULL, $includeContactIDs = FALSE, $justIDs = FALSE) {
     // delegate to $this->sql(), $this->select(), $this->from(), $this->where(), etc.
-    //CRM_Core_Error::debug('ag', $this->sql($this->select(), $offset, $rowcount, $sort, $includeContactIDs, NULL));exit;
     return $this->sql($this->select(), $offset, $rowcount, $sort, $includeContactIDs, NULL);
   }
 
