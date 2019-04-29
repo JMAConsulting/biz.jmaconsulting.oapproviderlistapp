@@ -1,3 +1,4 @@
+{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
 <tr class="crm-section form-item"><td>
   <table class="form-item provider-row">
     <tr colspan=2>
@@ -18,6 +19,11 @@
     </tr>
     <tr>
       <td >
+        {if $row.bacb_r_disciplinary_action_70 || $row.cpo_discipline_and_other_proceed_71}
+        <div style="float:left;width:30%;overflow:hidden;color:#bd3933">
+         <a href="{$row.bacb_r_disciplinary_action_70}">{ts}BACB(r) Disciplinary Action{/ts}</a> {if}{if $row.bacb_r_disciplinary_action_70 and $row.cpo_discipline_and_other_proceed_71}, {/if} <a href="{$row.cpo_discipline_and_other_proceed_71}">{ts}CPO Discipline and Other Proceedings{/ts}</a>
+        </div>
+        {/if}
         <div style="float: left;width:30%;overflow: hidden;">
         Region: {$row.region_67}
       </div>
@@ -36,3 +42,4 @@
     </tr>
   </table>
 </tr>
+{/crmScope}

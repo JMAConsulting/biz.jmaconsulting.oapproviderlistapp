@@ -59,8 +59,9 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'multiple' => 1,
       'api' => [
         'params' => [
-'check_permissions' => FALSE,
-'option_group_id' => 'languages'],
+          'check_permissions' => FALSE,
+          'option_group_id' => 'languages',
+        ],
       ],
     ]);
     $form->add('text',
@@ -120,6 +121,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'offers_video_conferencing_servic_69',
       'region_67',
       'language_68',
+      'bacb_r_disciplinary_action_70',
+      'cpo_discipline_and_other_proceed_71',
     );
     return $columns;
   }
@@ -181,6 +184,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       LEFT JOIN civicrm_value_contact_gener_19 temp ON temp.entity_id = contact_a.id
       LEFT JOIN civicrm_value_track_changes_17 temp1 ON temp1.entity_id = contact_a.id
       LEFT JOIN civicrm_value_applicant_det_4 temp2 ON temp2.entity_id = contact_a.id
+      LEFT JOIN civicrm_value_disciplinary__20 temp3 ON temp3.entity_id = contact_a.id
     ";
   }
 
