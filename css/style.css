@@ -1,6 +1,7 @@
 * {
   font-family: "Gill Sans",Helvetica,sans-serif;
   font-size: 16px !important;
+  color: #4B4C4D !important;
 }
  .crm-container .crm-form-block label {
     font-weight: 500 !important;
@@ -123,6 +124,7 @@ table.provider-row:hover {
 }
 .provider-title {
   font-size: 1.8em !important;
+  color: #231F20 !important;
 }
 table.provider-row:hover .provider-title {
   text-decoration: underline !important;
