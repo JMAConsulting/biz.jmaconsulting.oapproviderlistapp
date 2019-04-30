@@ -109,6 +109,19 @@ function oapproviderlistapp_civicrm_alterSettingsFolders(&$metaDataFolders = NUL
   _oapproviderlistapp_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
 
+/**
+ * Implementation of hook_civicrm_permission
+ *
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_permission
+ */
+function oapproviderlistapp_civicrm_permission(&$permissions) {
+  $prefix = ts('CiviCRM') . ': ';
+  $permissions['edit my listing'] = array(
+    $prefix . ts('edit my listing'),
+    ts('Edit own Provider Listing'),
+  );
+}
+
 function oapproviderlistapp_civicrm_pageRun(&$page) {
   if (get_class($page) == "CRM_Profile_Page_Dynamic" && ($page->getVar('_gid') == OAPPROVIDERLIST)) {
     CRM_Core_Resources::singleton()->addScript(
