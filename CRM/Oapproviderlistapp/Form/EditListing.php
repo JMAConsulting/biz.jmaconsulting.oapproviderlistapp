@@ -86,6 +86,8 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Core_Form {
         }
       }
     }
+    $this->add('file', 'image_URL', E::ts('Image'));
+    $this->addUploadElement('image_URL');
     $this->assign('elementNames', $this->getRenderableElementNames());
     $this->addButtons(array(
       array(

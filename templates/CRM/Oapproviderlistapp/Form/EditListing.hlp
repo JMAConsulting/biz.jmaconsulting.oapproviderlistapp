@@ -1,0 +1,5 @@
+{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
+{htxt id="image-file"}
+  {ts}Contact Image Upload a png or jpg photo that you want to be displayed with your listing.{/ts}
+{/htxt}
+{/crmScope}
