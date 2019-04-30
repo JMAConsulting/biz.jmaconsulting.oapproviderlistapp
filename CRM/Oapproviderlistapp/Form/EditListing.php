@@ -117,6 +117,7 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Core_Form {
       'Individual'
     );
     parent::postProcess();
+    CRM_Core_Session::setStatus(E::ts('Your provider listing has been updated.'), ts('Listing Updated'), 'success');
   }
 
   /**
