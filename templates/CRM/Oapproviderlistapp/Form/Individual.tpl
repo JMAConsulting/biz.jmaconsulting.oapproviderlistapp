@@ -46,6 +46,10 @@
                 <br/>
                 <div class="label">{$form.custom_49.label}</div>
                 <div class="content">{$form.custom_49.html}</div>
+                {if $custom_49_file.displayURL}
+                  <div class="crm-section file_displayURL-section file_displayURL-section"><div class="content">{$custom_49_file.displayURL}</div></div>
+                  <div class="crm-section file_deleteURL-section file_deleteURL-section"><div class="content">{$custom_49_file.deleteURL}</div></div>
+                {/if}
                 <div class="clear"></div>
               {else}
                 <div><a href=# class="remove_item crm-hover-button" style="float:right;"><b>{ts}Hide{/ts}</b></a></div>

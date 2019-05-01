@@ -255,4 +255,49 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     }
   }
 
+  public function getFileUpload($entityID, $tableName, $columnName, $fieldID) {
+    if (!$entityID) {
+      return NULL;
+    }
+    $fileID = CRM_Core_DAO::singleValueQuery("SELECT $columnName FROM $tableName WHERE entity_id = $entityID LIMIT 1");
+    if (!empty($fileID)) {
+      $fileDAO = new CRM_Core_DAO_File();
+      $fileDAO->id = $fileID;
+      if ($fileDAO->find(TRUE)) {
+        $fileHash = CRM_Core_BAO_File::generateFileHash($entityID, $fileID);
+        $displayURL = CRM_Utils_System::url('civicrm/file', "reset=1&id=$fileID&eid=$entityID&fcs=$fileHash");
+        $deleteExtra = ts('Are you sure you want to delete attached file.');
+        $deleteURL = [
+          CRM_Core_Action::DELETE => [
+            'name' => ts('Delete Attached File'),
+            'url' => 'civicrm/file',
+            'qs' => 'reset=1&id=%%id%%&eid=%%eid%%&fid=%%fid%%&action=delete&fcs=%%fcs%%',
+            'extra' => 'onclick = "if (confirm( \'' . $deleteExtra
+            . '\' ) ) this.href+=\'&amp;confirmed=1\'; else return false;"',
+          ],
+        ];
+        $deleteURL = CRM_Core_Action::formLink($deleteURL,
+          CRM_Core_Action::DELETE,
+          [
+            'id' => $fileID,
+            'eid' => $entityID,
+            'fid' => $fieldID,
+            'fcs' => $fileHash,
+          ],
+          ts('more'),
+          FALSE,
+          'file.manage.delete',
+          'File',
+          $fileID
+        );
+        $fileName = CRM_Utils_File::cleanFileName(basename($fileDAO->uri));
+        return [
+          'deleteURL' => $deleteURL,
+          'displayURL' => $displayURL,
+          'name' => $fileName,
+        ];
+      }
+    }
+  }
+
 }

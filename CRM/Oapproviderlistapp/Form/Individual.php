@@ -49,6 +49,17 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       $this->add('text', "city[$rowNumber]", E::ts('City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
       $this->add('text', "email[$rowNumber]", E::ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
       if ($rowNumber == 1) {
+        if (!empty($this->_contactID)) {
+          $orgID = CRM_Core_DAO::getFieldValue('CRM_Contact_DAO_Contact', $this->_contactID, 'employer_id');
+          $relationshipID = civicrm_api3('Relationship', 'get', [
+            'relationship_type_id' => 5,
+            'contact_id_a' => $this->_contactID,
+            'contact_id_b' => $orgID,
+            'options' => ['limit' => 1],
+          ])['id'];
+          $file = $this->getFileUpload($relationshipID, 'civicrm_value_proof_of_empl_13', 'proof_of_employment_letter_49', 49);
+          $this->assign('custom_49_file', $file);
+        }
         CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, FALSE);
       }
     }
