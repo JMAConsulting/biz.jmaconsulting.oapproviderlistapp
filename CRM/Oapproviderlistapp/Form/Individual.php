@@ -86,7 +86,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       $errors['last_name'] = E::ts("Last Name is required");
     }
     if (empty($fields['email[1]'])) {
-      $errors['email[1]'] = E::ts("Email Address is required.");
+    //  $errors['email[1]'] = E::ts("Email Address is required.");
     }
     if (empty($fields["work_address"][1])) {
       $errors['work_address[1]'] = E::ts("Work Address is required.");
@@ -143,6 +143,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         else {
           $id = CRM_Utils_Array::value('id', civicrm_api3('Contact', 'get', [
             'organization_name' => $name,
+             'contact_type' => 'Organization',
             'options' => ['limit' => 1],
           ]));
         }
