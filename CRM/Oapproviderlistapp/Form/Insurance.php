@@ -16,6 +16,10 @@ class CRM_Oapproviderlistapp_Form_Insurance extends CRM_Oapproviderlistapp_Form_
   }
   public function buildQuickForm() {
     $this->buildCustom(OAP_INSURANCE, 'insurance');
+    if (!empty($this->_contactID)) {
+      $file = $this->getFileUpload($this->_contactID, 'civicrm_value_professional__7', 'professional_liability_insurance_57', 57);
+      $this->assign('custom_57_file', $file);
+    }
 
     parent::buildQuickForm();
   }

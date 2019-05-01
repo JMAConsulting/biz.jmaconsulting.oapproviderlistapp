@@ -13,6 +13,17 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
   public function buildQuickForm() {
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
     $this->buildCustom(OAP_SIGNATURE, 'signature', FALSE, TRUE);
+    if (!empty($this->_contactID)) {
+      $activityID = civicrm_api3('Activity', 'get', [
+        'source_contact_id' => $this->_contactID,
+        'activity_type_id' => "Provider List Application Submission",
+        'target_id' => $this->_contactID,
+        'assignee_id' => 99184,
+        'options' => ['limit' => 1],
+      ])['id'];
+      $file = $this->getFileUpload($activityID, 'civicrm_value_signature_14', 'signature_58', 58);
+      $this->assign('custom_58_file', $file);
+    }
 
     parent::buildQuickForm();
   }
@@ -30,7 +41,7 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
         'target_id' => $this->_contactID,
         'assignee_id' => 99184,
       ])['id'];
-    
+
       $fieldName = 'custom_58';
       $this->processEntityFile($fieldName, $values[$fieldName], $activityID);
     }

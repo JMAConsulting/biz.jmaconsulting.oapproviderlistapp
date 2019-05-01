@@ -47,7 +47,7 @@
                 <div class="label">{$form.custom_49.label}</div>
                 <div class="content">{$form.custom_49.html}</div>
                 {if $custom_49_file.displayURL}
-                  <div class="crm-section file_displayURL-section file_displayURL-section"><div class="content">{ts}Uploaded file:{/ts}<a src="{$custom_49_file.displayURL}">{$custom_49_file.name}</a></div></div>
+                  <div class="crm-section file_displayURL-section file_displayURL-section"><div class="content">{ts}Uploaded file:{/ts} <a src="{$custom_49_file.displayURL}">{$custom_49_file.name}</a></div></div>
                   <div class="crm-section file_deleteURL-section file_deleteURL-section"><div class="content">{$custom_49_file.deleteURL}</div></div>
                 {/if}
                 <div class="clear"></div>
