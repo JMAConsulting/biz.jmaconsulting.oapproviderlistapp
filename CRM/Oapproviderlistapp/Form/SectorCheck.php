@@ -17,6 +17,10 @@ class CRM_Oapproviderlistapp_Form_SectorCheck extends CRM_Oapproviderlistapp_For
 
   public function buildQuickForm() {
     $this->buildCustom(OAP_SECTORCHECK, 'sectorcheck');
+    if (!empty($this->_contactID)) {
+      $file = $this->getFileUpload($this->_contactID, 'civicrm_value_vulnerable_se_6', 'copy_of_result_of_vulnerable_sec_46', 46);
+      $this->assign('custom_46_file', $file);
+    }
 
     parent::buildQuickForm();
   }
