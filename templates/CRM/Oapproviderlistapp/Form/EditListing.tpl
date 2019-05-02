@@ -55,6 +55,7 @@
 <script type="text/javascript">
 CRM.$(function($) {
   $('.file-attachment').insertAfter('#image_URL');
+  $('#region-marker').insertAfter($('#editrow-custom_63 > .label > label'));
 });
 </script>
 {/literal}
