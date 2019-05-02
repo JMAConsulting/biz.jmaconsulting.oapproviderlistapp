@@ -119,8 +119,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'travels_to_remote_areas__65',
       'offers_supervision__66',
       'offers_video_conferencing_servic_69',
-      'region_67',
-      'language_68',
+      'region_63',
+      'language_64',
       'bacb_r_disciplinary_action_70',
       'cpo_discipline_and_other_proceed_71',
     );
@@ -224,7 +224,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       LEFT JOIN civicrm_value_contact_gener_19 temp ON temp.entity_id = contact_a.id
       LEFT JOIN civicrm_value_track_changes_17 temp1 ON temp1.entity_id = contact_a.id
       LEFT JOIN civicrm_value_applicant_det_4 temp2 ON temp2.entity_id = contact_a.id
-      LEFT JOIN civicrm_value_disciplinary__20 temp3 ON temp3.entity_id = contact_a.id
+      LEFT JOIN civicrm_value_disciplinary_20 temp3 ON temp3.entity_id = contact_a.id
     ";
   }
 
@@ -238,13 +238,13 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $params = array();
     $where = "contact_a.contact_sub_type  = 'Provider' AND temp1.status_60 = 'Approved'";
     $customElements = [
-      'accepting_clients_filter' => 'accepting_new_clients__63',
-      'remote_travel_filter' => 'travels_to_remote_areas__65',
-      'supervision_filter' => 'offers_supervision__66',
-      'videoconferencing_filter' => 'offers_video_conferencing_servic_69',
+      'accepting_clients_filter' => 'accepting_new_clients__65',
+      'remote_travel_filter' => 'travels_to_remote_areas__67',
+      'supervision_filter' => 'offers_supervision__68',
+      'videoconferencing_filter' => 'offer_video_conferencing_service_70',
       'credentials' => 'temp2.which_of_the_following_credentia_7',
-      'region' => 'region_67',
-      'language' => 'language_68',
+      'region' => 'region_63',
+      'language' => 'language_64',
       'name' => 'contact_a.first_name',
       'city' => 'address.city',
     ];
@@ -323,17 +323,17 @@ $clauses[] = " temp2.which_of_the_following_credentia_7 IS NULL ";
    * @return void
    */
   function alterRow(&$row) {
-   if (!empty($row['language_68'])) {
+   if (!empty($row['language_64'])) {
      $value = [];
-     $languages = explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row['language_68'], 1, -1));
+     $languages = explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row['language_64'], 1, -1));
      foreach ($languages as $lang) {
        $value[] = $this->_languages[$lang];
      }
-     $row['language_68'] = implode(', ', $value);
+     $row['language_64'] = implode(', ', $value);
    }
-   if (!empty($row['region_67'])) {
-     $regions = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row['region_67'], 1, -1)));
-     $row['region_67'] = implode(', ', $regions);
+   if (!empty($row['region_63'])) {
+     $regions = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row['region_63'], 1, -1)));
+     $row['region_63'] = implode(', ', $regions);
    }
     //CRM_Core_Error::debug_var('row', $row);
   }
