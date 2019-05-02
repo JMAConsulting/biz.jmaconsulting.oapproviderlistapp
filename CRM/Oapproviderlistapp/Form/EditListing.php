@@ -104,7 +104,7 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Core_Form {
   }
 
   function postProcess() {
-    $values = $this->exportValues();
+    $values = $this->controller->exportValues($this->_name);
     foreach ($values as $field => $value) {
       if (!is_array($value) && strpos($value, ',') !== false) {
         $value = explode(',', $value);
@@ -120,6 +120,10 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Core_Form {
     );
     if (!empty($values['image_URL'])) {
       CRM_Contact_BAO_Contact::processImageParams($values);
+      civicrm_api3('Contact', 'create', [
+        'id' => $this->_contactId,
+        'image_URL' => $values['image_URL'],
+      ]);
     }
     parent::postProcess();
     CRM_Core_Session::setStatus(E::ts('Your provider listing has been updated.'), ts('Listing Updated'), 'success');
