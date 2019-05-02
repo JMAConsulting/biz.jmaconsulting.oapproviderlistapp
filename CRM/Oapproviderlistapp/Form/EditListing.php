@@ -88,10 +88,9 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Core_Form {
     }
     $this->add('file', 'image_URL', E::ts('Image'));
     $this->addUploadElement('image_URL');
-    $this->assign('elementNames', $this->getRenderableElementNames());
     $this->addButtons(array(
       array(
-        'type' => 'submit',
+        'type' => 'upload',
         'name' => E::ts('Submit'),
         'isDefault' => TRUE,
       ),
@@ -118,28 +117,10 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Core_Form {
       $this->_contactId,
       'Individual'
     );
+    if (!empty($values['image_URL'])) {
+      CRM_Contact_BAO_Contact::processImageParams($values);
+    }
     parent::postProcess();
     CRM_Core_Session::setStatus(E::ts('Your provider listing has been updated.'), ts('Listing Updated'), 'success');
-  }
-
-  /**
-   * Get the fields/elements defined in this form.
-   *
-   * @return array (string)
-   */
-  function getRenderableElementNames() {
-    // The _elements list includes some items which should not be
-    // auto-rendered in the loop -- such as "qfKey" and "buttons".  These
-    // items don't have labels.  We'll identify renderable by filtering on
-    // the 'label'.
-    $elementNames = array();
-    foreach ($this->_elements as $element) {
-      /** @var HTML_QuickForm_Element $element */
-      $label = $element->getLabel();
-      if (!empty($label)) {
-        $elementNames[] = $element->getName();
-      }
-    }
-    return $elementNames;
   }
 }
