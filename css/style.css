@@ -3,8 +3,8 @@
   font-size: 16px !important;
   color: #4B4C4D !important;
 }
- .crm-container .crm-form-block label {
-    font-weight: 500 !important;
+.crm-container .crm-form-block label {
+  font-weight: 500 !important;
 }
 #block-de-theme-page-title > h1 {
   font-size: 3rem !important;
@@ -181,4 +181,10 @@ tr {
 }
 #expand {
   color: #337AB7 !important
+}
+.region-breadcrumb, #block-seven-breadcrumbs {
+  display: none !important;
+}
+legend {
+  display: none !important;
 }

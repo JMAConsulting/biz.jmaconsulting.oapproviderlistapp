@@ -9,18 +9,26 @@
   </div>
 {/if}
 
-<div class="crm-section">
-<div class="label"><label for="{ts}Employer(s){/ts}">{ts}Employer(s){/ts}</label></div>
+<div class="crm-section form-item">
+{if $credentials}
+<div class="label"><label for="{ts}Credentials{/ts}">{ts}Credentials{/ts}</label></div>
 <div class="content">
 <table class="form-item">
 {foreach from=$credentials item=credential}
   <tr>
     <td>
-    {ts}Credentials{/ts}: {$credential.which_of_the_following_credentia_7} <br/>
+    {$credential.which_of_the_following_credentia_7} <br/>
     </td>
   </tr>
 {/foreach}
+</table>
+</div>
+{/if}
+{if $employers}
 {foreach from=$employers item=employer}
+<div class="label"><label for="{ts}Employers{/ts}">{ts}Employers{/ts}</label></div>
+<div class="content">
+<table class="form-item">
   <tr>
     <td>
     {$employer.organization_name} <br/>
@@ -37,6 +45,7 @@
 {/foreach}
 </table>
 </div>
+{/if}
 </div>
 <div class="crm-submit-buttons">
 {include file="CRM/common/formButtons.tpl" location="bottom"}
@@ -45,7 +54,7 @@
 {literal}
 <script type="text/javascript">
 CRM.$(function($) {
-  $('.file-attachment').insertAfter('#editrow-image_URL');
+  $('.file-attachment').insertAfter('#image_URL');
 });
 </script>
 {/literal}
