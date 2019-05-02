@@ -257,6 +257,8 @@ function setMembership($cid, $submitValues) {
         'contact_id' => $cid,
         'start_date' => date('Ymd'),
       ]);
+      // Create drupal account if not exists.
+      createCMSAccount($cid);
     }
     elseif (CRM_Utils_Array::value($newStatus, $submitValues) == 'Cancelled') {
       $membershipID = civicrm_api3('Membership', 'get', [
@@ -280,6 +282,28 @@ function setMembership($cid, $submitValues) {
         'target_id' => $cid,
         'assignee_id' => 99184,
       ])['id'];
+    }
+  }
+}
+
+function createCMSAccount($cid) {
+  require_once 'CRM/CU/Form/Task/CreateUserLogin.php';
+  if (!CRM_CU_Form_Task_CreateUserLogin::usernameRule($cid) && !CRM_CU_Form_Task_CreateUserLogin::emailRule($cid)) {
+    $name = CRM_Core_DAO::executeQuery("SELECT LOWER(CONCAT(first_name, '.', last_name)) as name, display_name FROM civicrm_contact WHERE id = %1", [1 => [$cid, "Integer"]])->fetchAll()[0];
+    $params = [
+      'cms_name' => $name['name'],
+      'cms_pass' => 'changeme',
+      'cms_confirm_pass' => 'changeme',
+      'email' => CRM_Core_DAO::singleValueQuery("SELECT email FROM civicrm_email WHERE contact_id = %1 AND is_primary = 1", [1 => [$cid, "Integer"]]),
+      'contactID' => $cid,
+      'name' => $name['display_name'],
+      'notify' => TRUE,
+    ];
+    $ufId = CRM_Core_BAO_CMSUser::create($params, 'email');
+    $user = user_load($ufId);
+    if ($user) {
+      $user->addRole('provider');
+      $user->save();
     }
   }
 }
