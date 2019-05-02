@@ -42,6 +42,7 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
   function buildQuickForm() {
     $this->buildCustom(OAP_LISTING, 'listing');
     $this->assign('employers', $this->getEmployers($this->_contactId));
+    $this->assign('credentials', $this->getCredentials($this->_contactId));
     $this->addButtons(array(
       array(
         'type' => 'upload',
@@ -63,6 +64,23 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
       "reset=1&action=4&cid=" . $this->_contactId
     ));
     CRM_Core_Session::setStatus(E::ts('Your provider listing has been updated.'), ts('Listing Updated'), 'success');
+  }
+
+  function getCredentials($cid) {
+    $sql = "SELECT c.which_of_the_following_credentia_7 FROM civicrm_value_applicant_det_4 c
+      WHERE c.entity_id = %1";
+    $credentials = CRM_Core_DAO::executeQuery($sql, [1 => [$cid, 'Integer']])->fetchAll();
+    if (!empty($credentials[0]['which_of_the_following_credentia_7'])) {
+      $options = CRM_Core_OptionGroup::values('which_of_the_following_credentia_20190321014056');
+      $creds = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, $credentials[0]['which_of_the_following_credentia_7']));
+      foreach ($creds as $cred) {
+        $allCreds[] = $options[$cred];
+      }
+      $credentials[0]['which_of_the_following_credentia_7'] = implode(', ', $allCreds);
+    }
+    if (!empty($credentials)) {
+      return $credentials;
+    }
   }
 
   function getEmployers($cid) {
