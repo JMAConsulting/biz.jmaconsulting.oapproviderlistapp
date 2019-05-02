@@ -4,13 +4,13 @@
     <tr colspan=2>
       <td style="width=50%;">
         <div style="color:#bd3933 !important">
-          <font style="float:left;color:#1264A9;font-size:1.4em;font-weight:bold;padding-top:3px;" class=" field--name-field-title {if $row.accepting_new_clients__63 eq 0}not-accepting{/if} provider-title">{$row.first_name} {$row.last_name}</font>&nbsp;&nbsp;&nbsp;
-          {if $row.travels_to_remote_areas__65 eq 1}<span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>{/if}
-          {if $row.offers_supervision__66 eq 1}<span class="provider-icon icon-supervision-img" title="Offers supervision"></span>{/if}
-          {if $row.offers_video_conferencing_servic_69 eq 1}<span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>{/if}
-{if $row.accepting_new_clients__63 eq 1}
+          <font style="float:left;color:#1264A9;font-size:1.4em;font-weight:bold;padding-top:3px;" class=" field--name-field-title {if $row.accepting_new_clients__65 eq 0}not-accepting{/if} provider-title">{$row.first_name} {$row.last_name}</font>&nbsp;&nbsp;&nbsp;
+          {if $row.travels_to_remote_areas__67 eq 1}<span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>{/if}
+          {if $row.offers_supervision__68 eq 1}<span class="provider-icon icon-supervision-img" title="Offers supervision"></span>{/if}
+          {if $row.offer_video_conferencing_service_70 eq 1}<span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>{/if}
+          {if $row.accepting_new_clients__65 eq 1}
             <span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>
-          {elseif $row.accepting_new_clients__63 eq 0}
+          {elseif $row.accepting_new_clients__65 eq 0}
             <span class="provider-icon icon-not-accepting-img" title="Not accepting new clients"></span>&nbsp;Not accepting new clients
           {/if}
         </div>
@@ -25,10 +25,10 @@
         </div>
         {/if}
         <div style="float: left;width:30%;overflow: hidden;">
-        Region: {$row.region_67}
+        Region: {$row.region_63}
       </div>
       <div style="overflow: hidden;">
-        Speaks: {$row.language_68}
+        Speaks: {$row.language_64}
       </div>
       </td>
     </tr>
