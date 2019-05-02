@@ -30,17 +30,48 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
     if (empty($this->_action)) {
       $this->_action = CRM_Core_Action::UPDATE;
     }
+    $this->assign('action', $this->_action);
   }
 
   function setDefaultValues() {
     $defaults = [];
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_LISTING, FALSE);
-    CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactID, $fields, $defaults, TRUE);
+    CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactId, $fields, $defaults, TRUE);
+    if (!empty($defaults['image_URL'])) {
+      $url = $defaults['image_URL'];
+      list($width, $height) = getimagesize(CRM_Utils_String::unstupifyUrl($url));
+      list($thumbWidth, $thumbHeight) = CRM_Contact_BAO_Contact::getThumbSize($width, $height);
+      $image_URL = '<img src="' . $details->$name . '" height= ' . $thumbHeight . ' width= ' . $thumbWidth . '  />';
+      $this->assign('imageURL', "<a href='#' onclick='contactImagePopUp(\"{$url}\", {$width}, {$height});'>{$image_URL}</a>");
+
+      $deleteExtra = json_encode(ts('Are you sure you want to delete contact image.'));
+      $deleteURL = array(
+        CRM_Core_Action::DELETE => array(
+          'name' => ts('Delete Contact Image'),
+          'url' => 'civicrm/contact/image',
+          'qs' => 'reset=1&id=%%id%%&gid=%%gid%%&action=delete',
+          'extra' => 'onclick = "' . htmlspecialchars("if (confirm($deleteExtra)) this.href+='&confirmed=1'; else return false;") . '"',
+        ),
+      );
+      $deleteURL = CRM_Core_Action::formLink($deleteURL,
+        CRM_Core_Action::DELETE,
+        array(
+          'id' => $this->_contactId,
+          'gid' => OAP_LISTING,
+        ),
+        ts('more'),
+        FALSE,
+        'contact.profileimage.delete',
+        'Contact',
+        $this->_contactId
+      );
+      $this->assign('deleteURL', $deleteURL);
+    }
     return $defaults;
   }
 
   function buildQuickForm() {
-    $this->buildCustom(OAP_LISTING, 'listing');
+    $this->buildCustom(OAP_LISTING, 'listing', ($this->_action == CRM_Core_Action::VIEW));
     $this->assign('employers', $this->getEmployers($this->_contactId));
     $this->assign('credentials', $this->getCredentials($this->_contactId));
     $this->addButtons(array(
@@ -61,7 +92,7 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
     $fields = [];
     CRM_Contact_BAO_Contact::createProfileContact($params, $fields);
     CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/editlisting",
-      "reset=1&action=4&cid=" . $this->_contactId
+      "reset=1&action=4"
     ));
     CRM_Core_Session::setStatus(E::ts('Your provider listing has been updated.'), ts('Listing Updated'), 'success');
   }

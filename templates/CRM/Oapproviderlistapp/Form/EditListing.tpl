@@ -2,6 +2,13 @@
 <div class="crm-public-form-item crm-section listing">
   {include file="CRM/UF/Form/Block.tpl" fields=$listing}
 </div>
+{if $imageURL}
+  <div class="file-attachment">
+    <div class="crm-contact_image crm-contact_image-block">{$imageURL}</div>
+    <div class='crm-contact_image-block crm-contact_image crm-contact_image-delete'>{$deleteURL}</div>
+  </div>
+{/if}
+
 <div class="crm-section">
 <div class="label"><label for="{ts}Employer(s){/ts}">{ts}Employer(s){/ts}</label></div>
 <div class="content">
@@ -35,3 +42,10 @@
 {include file="CRM/common/formButtons.tpl" location="bottom"}
 </div>
 {/crmScope}
+{literal}
+<script type="text/javascript">
+CRM.$(function($) {
+  $('.file-attachment').insertAfter('#editrow-image_URL');
+});
+</script>
+{/literal}
