@@ -19,9 +19,12 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
   }
 
   function preProcess() {
+    if (!CRM_Core_Permission::check('edit my listing')) {
+      return CRM_Utils_System::permissionDenied();
+    }
     $this->_contactId = CRM_Core_Session::getLoggedInContactID();
     if (empty($this->_contactId)) {
-      CRM_Core_Error::fatal(E::ts('You must be logged in to view this form.'));
+      return CRM_Utils_System::permissionDenied();
     }
     $this->_action = CRM_Utils_Request::retrieve('action', 'Positive', $this);
     if (empty($this->_action)) {
