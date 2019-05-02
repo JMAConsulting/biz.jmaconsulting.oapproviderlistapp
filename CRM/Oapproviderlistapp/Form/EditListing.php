@@ -8,7 +8,7 @@ use CRM_Oapproviderlistapp_ExtensionUtil as E;
  *
  * @see http://wiki.civicrm.org/confluence/display/CRMDOC43/QuickForm+Reference
  */
-class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Core_Form {
+class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_Form_ManageApplication {
 
   public $_contactId;
 
@@ -30,69 +30,14 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Core_Form {
   }
 
   function setDefaultValues() {
-    $result = civicrm_api3('CustomField', 'get', [
-      'sequential' => 1,
-      'custom_group_id' => "Contact_general",
-      'return' => 'id',
-    ])['values'];
-    foreach ($result as $fid) {
-      $fieldIds[] = $fid['id'];
-    }
-    $customValues = CRM_Core_BAO_CustomValueTable::getEntityValues($this->_contactId, 'Contact', $fieldIds);
-    foreach ($customValues as $key => $value) {
-      $customValues['custom_' . $key] = $value;
-      if ($key == 67) {
-        $value = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, $value));
-        foreach ($value as $val) {
-          $vals[$val] = 1;
-        }
-        $customValues['custom_' . $key] = $vals;
-      }
-      unset($customValues[$key]);
-    }
-    return $customValues;
+    $defaults = [];
+    $fields = CRM_Core_BAO_UFGroup::getFields(OAP_LISTING, FALSE);
+    CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactID, $fields, $defaults, TRUE);
+    return $defaults;
   }
 
   function buildQuickForm() {
-    $customGroups = [
-      "Contact_general",
-    ];
-    foreach ($customGroups as $group) {
-      $result = civicrm_api3('CustomField', 'get', [
-        'sequential' => 1,
-        'custom_group_id' => $group,
-        'options' => ['sort' => "weight"],
-      ])['values'];
-      foreach ($result as $field => $value) {
-        $name = sprintf("%s_%d", "custom", $value['id']);
-        if (strtolower($value['html_type']) == 'multi-select') {
-          $this->addEntityRef($name, E::ts($value['label']), [
-            'entity' => 'OptionValue',
-            'placeholder' => E::ts('- any -'),
-            'multiple' => 1,
-            'api' => [
-              'params' => [
-                'check_permissions' => FALSE,
-                'option_group_id' => $value['option_group_id'],
-              ],
-            ],
-          ]);
-        }
-        elseif (strtolower($value['html_type']) == 'checkbox') {
-          $options = CRM_Core_OptionGroup::values(CRM_Core_DAO::getFieldValue('CRM_Core_DAO_OptionGroup', $value['option_group_id'], 'name', 'id'));
-          $this->addCheckBox($name, E::ts("%1", [1 => $value['label']]), $options, NULL, NULL, NULL, NULL, ' &nbsp; ');
-        }
-        elseif (strtolower($value['html_type']) == 'radio') {
-          $this->addYesno($name, E::ts("%1", [1 => $value['label']]), NULL);
-        }
-        else {
-          $this->add(strtolower($value['html_type']), $name, E::ts("%1", [1 => $value['label']]), NULL);
-        }
-      }
-    }
-    $this->add('file', 'image_URL', E::ts('Image'));
-    $this->addUploadElement('image_URL');
-    $this->assign('elementNames', $this->getRenderableElementNames());
+    $this->buildCustom(OAP_LISTING, 'listing');
     $this->assign('employers', $this->getEmployers($this->_contactId));
     $this->addButtons(array(
       array(
@@ -105,37 +50,13 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Core_Form {
         'name' => E::ts('Cancel'),
       ),
     ));
-    if ($this->_action & CRM_Core_Action::VIEW) {
-      foreach ($this->getRenderableElementNames() as $element) {
-        $this->freeze($element);
-      }
-    }
     parent::buildQuickForm();
   }
 
   function postProcess() {
     $values = $this->controller->exportValues($this->_name);
-    foreach ($values as $field => $value) {
-      if (!is_array($value) && strpos($value, ',') !== false) {
-        $value = explode(',', $value);
-      }
-      if (strpos($field, 'custom_') !== false) {
-        $customValues[$field] = $value;
-      }
-    }
-    CRM_Core_BAO_CustomValueTable::postProcess($customValues,
-      'civicrm_contact',
-      $this->_contactId,
-      'Individual'
-    );
-    if (!empty($values['image_URL'])) {
-      CRM_Contact_BAO_Contact::processImageParams($values);
-      civicrm_api3('Contact', 'create', [
-        'id' => $this->_contactId,
-        'image_URL' => $values['image_URL'],
-      ]);
-    }
-    parent::postProcess();
+    $fields = [];
+    CRM_Contact_BAO_Contact::createProfileContact($params, $fields);
     CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/editlisting",
       "reset=1&action=4&cid=" . $this->_contactId
     ));
@@ -158,25 +79,7 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Core_Form {
     }
   }
 
-  /**
-   * Get the fields/elements defined in this form.
-   *
-   * @return array (string)
-   */
-  function getRenderableElementNames() {
-    // The _elements list includes some items which should not be
-    // auto-rendered in the loop -- such as "qfKey" and "buttons".  These
-    // items don't have labels.  We'll identify renderable by filtering on
-    // the 'label'.
-    $elementNames = array();
-    foreach ($this->_elements as $element) {
-      /** @var HTML_QuickForm_Element $element */
-      $label = $element->getLabel();
-      if (!empty($label)) {
-        $elementNames[] = $element->getName();
-      }
-    }
-    return $elementNames;
+  public function getTemplateFileName() {
+    return 'CRM/Oapproviderlistapp/Form/EditListing.tpl';
   }
-
 }

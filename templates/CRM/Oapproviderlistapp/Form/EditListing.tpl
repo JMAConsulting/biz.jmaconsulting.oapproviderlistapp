@@ -1,15 +1,7 @@
 {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
-{foreach from=$elementNames item=elementName}
-  <div class="crm-section">
-    <div class="label">{$form.$elementName.label}
-    {if $elementName eq 'image_URL'}
-      {help id="image-file" file="CRM/Oapproviderlistapp/Form/EditListing.hlp"}
-    {/if}
-    </div>
-    <div class="content">{$form.$elementName.html}</div>
-    <div class="clear"></div>
-  </div>
-{/foreach}
+<div class="crm-public-form-item crm-section listing">
+  {include file="CRM/UF/Form/Block.tpl" fields=$listing}
+</div>
 <div class="crm-section">
 <div class="label"><label for="{ts}Employer(s){/ts}">{ts}Employer(s){/ts}</label></div>
 <div class="content">
