@@ -50,7 +50,6 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
         'name' => E::ts('Cancel'),
       ),
     ));
-    parent::buildQuickForm();
   }
 
   function postProcess() {
