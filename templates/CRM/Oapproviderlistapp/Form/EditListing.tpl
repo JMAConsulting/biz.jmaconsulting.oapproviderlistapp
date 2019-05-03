@@ -1,12 +1,12 @@
 {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
 <div class="crm-public-form-item crm-section listing">
-  {include file="CRM/UF/Form/Block.tpl" fields=$listing}
-</div>
 {if $name}
   <div class="label"><label for="name">{ts}Name{/ts}</label></div>
   <div class="content">{$name}</div>
   <div class=clear></div>
 {/if}
+  {include file="CRM/UF/Form/Block.tpl" fields=$listing}
+</div>
 {if $imageURL}
   <div class="file-attachment">
     <div class="crm-contact_image crm-contact_image-block">{$imageURL}</div>
