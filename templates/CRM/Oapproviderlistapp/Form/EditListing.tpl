@@ -1,8 +1,8 @@
 {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
 <div class="crm-public-form-item crm-section form-item listing">
 {if $name}
-  <div class="label"><label for="name">{ts}Name{/ts}</label></div>
-  <div class="content">{$name}</div>
+  <!--<div class="label"><label for="name">{ts}Name{/ts}</label></div>-->
+  <div class="content provider-title" style="font-weight:bold">{$name}</div>
   <div class=clear></div>
 {/if}
   {include file="CRM/UF/Form/Block.tpl" fields=$listing}
@@ -37,7 +37,7 @@
 {/if}
 {if $employers}
 {foreach from=$employers item=employer}
-<div class="label"><label for="{ts}Employers{/ts}">{ts}Employers{/ts}</label></div>
+<div class="label"><label for="{ts}Employers{/ts}">{ts}Employers(s){/ts}</label></div>
 <div class="content">
 <table class="form-item">
   <tr>
@@ -55,6 +55,7 @@
   </tr>
 {/foreach}
 </table>
+<div class="content-description">To change Employer(s) information, please contact <a href="coordinator@oapproviderlist.ca">coordinator@oapproviderlist.ca</a></div>
 </div>
 {/if}
 </div>

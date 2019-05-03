@@ -15,6 +15,11 @@
 .provider-wrapper a, .provider-row a {
   font-weight: normal !important;
 }
+.content a:hover {
+  text-decoration:underline !important;
+  color: #abad00 !important;
+  cursor: pointer !important;
+}
 .crm-contact-custom-search-form-row-accepting_clients_filter label,
 .crm-contact-custom-search-form-row-remote_travel_filter label,
 .crm-contact-custom-search-form-row-supervision_filter label,
