@@ -19,9 +19,9 @@
     </tr>
     <tr>
       <td >
-        {if isset($row.bacb_r_disciplinary_action_70) || isset($row.cpo_discipline_and_other_proceed_71)}
+        {if isset($row.bacb_r_disciplinary_action_71) || isset($row.cpo_discipline_and_other_proceed_72)}
         <div style="overflow:hidden;color:#bd3933">
-         <a style="color:#bd3933 !important" href="{$row.bacb_r_disciplinary_action_70}">{ts}BACB(r) Disciplinary Action{/ts}</a>{if isset($row.bacb_r_disciplinary_action_70) and isset($row.cpo_discipline_and_other_proceed_71)}, {/if} <a style="color:#bd3933 !important" href="{$row.cpo_discipline_and_other_proceed_71}">{ts}CPO Discipline and Other Proceedings{/ts}</a>
+         <a style="color:#bd3933 !important" href="{$row.bacb_r_disciplinary_action_71}">{ts}BACB(r) Disciplinary Action{/ts}</a>{if isset($row.bacb_r_disciplinary_action_71) and isset($row.cpo_discipline_and_other_proceed_72)}, {/if} <a style="color:#bd3933 !important" href="{$row.cpo_discipline_and_other_proceed_72}">{ts}CPO Discipline and Other Proceedings{/ts}</a>
         </div>
         {/if}
         <div style="float: left;width:30%;overflow: hidden;">

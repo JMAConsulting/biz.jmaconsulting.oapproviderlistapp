@@ -121,8 +121,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'offer_video_conferencing_service_70',
       'region_63',
       'language_64',
-      'bacb_r_disciplinary_action_70',
-      'cpo_discipline_and_other_proceed_71',
+      'bacb_r_disciplinary_action_71',
+      'cpo_discipline_and_other_proceed_72',
     );
     return $columns;
   }
