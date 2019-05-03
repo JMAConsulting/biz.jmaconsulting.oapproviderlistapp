@@ -88,6 +88,29 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
         'name' => E::ts('Cancel'),
       ),
     ));
+    $this->addFormRule(array('CRM_Oapproviderlistapp_Form_EditListing', 'imageRule'), $this);
+  }
+
+  function imageRule($fields, $files = array(), $self = NULL) {
+    $errors = [];
+    $mimeType = array(
+      'image/jpeg',
+      'image/jpg',
+      'image/png',
+      'image/p-jpeg',
+      'image/x-png',
+    );
+    if (!in_array($params['image_URL']['type'], $mimeType)) {
+      $errors['image_URL'] = E::ts('Image could not be uploaded due to invalid type extension.');
+    }
+    $maxSize = CRM_Core_Config::singleton()->maxFileSize * 1024*1024;
+    if (empty($maxSize)) {
+      $maxSize = $fields['MAX_FILE_SIZE'];
+    }
+    if ($params['image_URL']['size'] > $maxSize) {
+      $errors['image_URL'] = E::ts('Maximum file size cannot exceed upload max size');
+    }
+    return empty($errors) ? TRUE : $errors;
   }
 
   function postProcess() {
