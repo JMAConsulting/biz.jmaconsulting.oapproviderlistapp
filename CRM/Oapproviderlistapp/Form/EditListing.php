@@ -41,8 +41,6 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
       $url = $defaults['image_URL'];
       list($width, $height) = getimagesize(CRM_Utils_String::unstupifyUrl($url));
       list($thumbWidth, $thumbHeight) = CRM_Contact_BAO_Contact::getThumbSize($width, $height);
-//      $image_URL = '<img src="' . $details->$name . '" height= ' . $thumbHeight . ' width= ' . $thumbWidth . '  />';
-  //    $this->assign('imageURL', "<a href='#' onclick='contactImagePopUp(\"{$url}\", {$width}, {$height});'>{$image_URL}</a>");
       $image_URL = '<img src="' . $url . '" height= ' . $thumbHeight . ' width= ' . $thumbWidth . '  />';
       $this->assign('imageURL', "<a href='#' onclick='contactImagePopUp(\"{$url}\", 180, 200);'>{$image_URL}</a>");
 
@@ -75,6 +73,7 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
 
   function buildQuickForm() {
     $this->buildCustom(OAP_LISTING, 'listing', ($this->_action == CRM_Core_Action::VIEW));
+    $this->assign('name', CRM_Contact_BAO_Contact::displayName($this->_contactId));
     $this->assign('employers', $this->getEmployers($this->_contactId));
     $this->assign('credentials', $this->getCredentials($this->_contactId));
     $this->addButtons(array(
