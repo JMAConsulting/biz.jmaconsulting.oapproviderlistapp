@@ -76,6 +76,7 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
     $this->assign('name', CRM_Contact_BAO_Contact::displayName($this->_contactId));
     $this->assign('employers', $this->getEmployers($this->_contactId));
     $this->assign('credentials', $this->getCredentials($this->_contactId));
+    $this->assign('disciplinary', $this->getDisciplinaryActions($this->_contactId));
     $this->addButtons(array(
       array(
         'type' => 'upload',
@@ -97,6 +98,15 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
       "reset=1&action=4"
     ));
     CRM_Core_Session::setStatus(E::ts('Your provider listing has been updated.'), ts('Listing Updated'), 'success');
+  }
+
+  function getDisciplinaryActions($cid) {
+    $sql = "SELECT * FROM civicrm_value_disciplinary_20 c
+      WHERE c.entity_id = %1";
+    $disc = CRM_Core_DAO::executeQuery($sql, [1 => [$cid, 'Integer']])->fetchAll();
+    if (!empty($disc)) {
+      return $disc;
+    }
   }
 
   function getCredentials($cid) {
