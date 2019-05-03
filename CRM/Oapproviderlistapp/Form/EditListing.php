@@ -104,8 +104,18 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
     $sql = "SELECT * FROM civicrm_value_disciplinary_20 c
       WHERE c.entity_id = %1";
     $disc = CRM_Core_DAO::executeQuery($sql, [1 => [$cid, 'Integer']])->fetchAll();
+    $field = '';
     if (!empty($disc)) {
-      return $disc;
+      if (!empty($disc[0]['bacb_r_disciplinary_action_71'])) {
+        $field = "<a href='" . $disc[0]['bacb_r_disciplinary_action_71'] . "'>" . E::ts('BACB(r) Disciplinary Action') . "</a>";
+      }
+      if (!empty($disc[0]['bacb_r_disciplinary_action_71']) && !empty($disc[0]['cpo_discipline_and_other_proceed_72'])) {
+        $field .= ", ";
+      }
+      if (!empty($disc[0]['cpo_discipline_and_other_proceed_72'])) {
+        $field .= "<a href='" . $disc[0]['cpo_discipline_and_other_proceed_72'] . "'>" . E::ts('CPO Discipline and Other Proceedings') . "</a>";
+      }
+      return $field;
     }
   }
 

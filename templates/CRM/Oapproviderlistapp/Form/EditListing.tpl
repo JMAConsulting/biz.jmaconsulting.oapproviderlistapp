@@ -1,5 +1,5 @@
 {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
-<div class="crm-public-form-item crm-section listing">
+<div class="crm-public-form-item crm-section form-item listing">
 {if $name}
   <div class="label"><label for="name">{ts}Name{/ts}</label></div>
   <div class="content">{$name}</div>
@@ -16,6 +16,11 @@
 {/if}
 
 <div class="crm-section form-item">
+{if $disciplinary}
+<div class="label"><label for="disciplinary">{ts}Disciplinary Actions{/ts}</label></div>
+<div class="content" style="padding-left:4px;">{$disciplinary}</div>
+<div class=clear></div>
+{/if}
 {if $credentials}
 <div class="label"><label for="{ts}Credentials{/ts}">{ts}Credentials{/ts}</label></div>
 <div class="content">
