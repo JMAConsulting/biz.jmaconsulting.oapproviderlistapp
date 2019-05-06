@@ -21,7 +21,9 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
     $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_32']['dbAlias'] = 'GROUP_CONCAT(employer_organization_32)';
     $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_33']['dbAlias'] = 'GROUP_CONCAT(position_title_33)';
     $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_47']['dbAlias'] = 'GROUP_CONCAT(start_date_47)';
+    $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_47']['type'] = CRM_Utils_Type::T_STRING;
     $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_48']['dbAlias'] = 'GROUP_CONCAT(end_date_48)';
+    $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_48']['type'] = CRM_Utils_Type::T_STRING;
     $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_35']['dbAlias'] = 'GROUP_CONCAT(main_tasks_that_involved_deliver_35)';
   }
 
@@ -156,14 +158,15 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
         $entryFound = TRUE;
       }
 
-      foreach (['civicrm_value_other_profess_12_custom_45', 'civicrm_value_employment_hi_10_custom_48', 'civicrm_value_employment_hi_10_custom_47'] as $key) {
-        if (!empty($rows[$rowNum][$key])) {
-          $value = (array) explode(',', $rows[$rowNum][$key]);
+      foreach (['civicrm_value_other_profess_12_custom_45', 'civicrm_value_employment_hi_10_custom_48', 'civicrm_value_employment_hi_10_custom_47'] as $k) {
+        if (!empty($rows[$rowNum][$k])) {
+          $value = (array) explode(',', strtotime($rows[$rowNum][$key]));
           $v = [];
           foreach($value as $date) {
-            $v[] = CRM_Utils_Date::customFormat($date, $dateFormat);
+            $v[] = date("F j, Y, g:i a", $date);
           }
           $rows[$rowNum][$key] = implode(', ', $v);
+          $entryFound = TRUE;
         }
       }
 
