@@ -62,6 +62,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         }
         CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49", 49, FALSE);
       }
+      else {
+        CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49[$rowNumber]", 49, FALSE);
+      }
     }
 
     $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Individual', 'formRule'), $this);
