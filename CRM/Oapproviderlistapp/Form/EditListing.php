@@ -44,7 +44,6 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
       $image_URL = '<img src="' . $url . '" height= ' . $thumbHeight . ' width= ' . $thumbWidth . '  />';
       $this->assign('imageURL', "<a href='#' onclick='contactImagePopUp(\"{$url}\", 180, 200);'>{$image_URL}</a>");
 
-
       $deleteExtra = json_encode(ts('Are you sure you want to delete contact image.'));
       $deleteURL = array(
         CRM_Core_Action::DELETE => array(
