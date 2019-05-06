@@ -160,14 +160,17 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
 
       foreach (['civicrm_value_other_profess_12_custom_45', 'civicrm_value_employment_hi_10_custom_48', 'civicrm_value_employment_hi_10_custom_47'] as $k) {
         if (!empty($rows[$rowNum][$k])) {
-          $value = (array) explode(',', strtotime($rows[$rowNum][$key]));
+          $value = (array) explode(',', $rows[$rowNum][$key]);
           $v = [];
           foreach($value as $date) {
-            $v[] = date("F j, Y, g:i a", $date);
+            $v[] = date("F j Y g:i a", strtotime($date));
           }
           $rows[$rowNum][$key] = implode(', ', $v);
           $entryFound = TRUE;
         }
+      }
+      if (!empty($rows[$rowNum]['civicrm_contact_employer_id'])) {
+        $rows[$rowNum]['civicrm_contact_employer_id'] = $this->getEmployers($rows[$rowNum]['civicrm_contact_id']);
       }
 
 
@@ -180,6 +183,12 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
         break;
       }
     }
+  }
+
+  public function getEmployers($contactID) {
+    $otherEmployers[] = CRM_Core_DAO::singleValueQuery("SELECT GROUP_CONCAT(primary_employer_organization_na_53) FROM civicrm_value_other_employe_16 WHERE entity_id = $contactID ");
+    $otherEmployers[] = CRM_Core_DAO::singleValueQuery("SELECT GROUP_CONCAT(organization_name) FROM civicrm_contact c LEFT JOIN civicrm_relationship r ON r.contact_id_b = c.id AND r.relationship_type_id = 5 WHERE r.contact_id_a = $contactID ");
+    return implode(', ', $otherEmployers);
   }
 
 }
