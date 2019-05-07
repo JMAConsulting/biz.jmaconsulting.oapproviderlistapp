@@ -37,7 +37,7 @@
 {/if}
 {if $employers}
 {foreach from=$employers item=employer}
-<div class="label"><label for="{ts}Employers{/ts}">{ts}Employers(s){/ts}</label></div>
+<div class="label"><label for="{ts}Employer(s){/ts}">{ts}Employer(s){/ts}</label></div>
 <div class="content">
 <table class="form-item">
   <tr>
@@ -48,7 +48,7 @@
     <div class=clear></div>
     </td>
     <td>
-    {if $employer.phone}Phone: {$employer.phone} <br/>{/if}
+    {if $employer.phone}{ts}Phone{/ts}: {$employer.phone} <br/>{/if}
     <a href='mailto:{$employer.email}'>{$employer.email}</a>
     <div class=clear></div>
     </td>

@@ -330,3 +330,6 @@ msgstr "- toutes -"
 
 msgid "Enter search term"
 msgstr "Entrer un mot à rechercher"
+
+msgid "Phone"
+msgstr "Téléphone"
