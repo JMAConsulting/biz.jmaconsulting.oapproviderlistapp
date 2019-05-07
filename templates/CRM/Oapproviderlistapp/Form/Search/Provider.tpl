@@ -5,13 +5,13 @@
       <td style="width=50%;">
         <div style="color:#bd3933 !important">
           <font style="float:left;color:#1264A9;font-size:1.4em;font-weight:bold;padding-top:3px;" class=" field--name-field-title {if $row.accepting_new_clients__65 eq 0}not-accepting{/if} provider-title">{$row.first_name} {$row.last_name}</font>&nbsp;&nbsp;&nbsp;
-          {if $row.travels_to_remote_areas__67 eq 1}<span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>{/if}
-          {if $row.offers_supervision__68 eq 1}<span class="provider-icon icon-supervision-img" title="Offers supervision"></span>{/if}
-          {if $row.offer_video_conferencing_service_70 eq 1}<span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>{/if}
+          {if $row.travels_to_remote_areas__67 eq 1}<span class="provider-icon icon-remote-travel-img" title="{ts}Travels to remote areas{/ts}"></span>{/if}
+          {if $row.offers_supervision__68 eq 1}<span class="provider-icon icon-supervision-img" title="{ts}Offers supervision{/ts}"></span>{/if}
+          {if $row.offer_video_conferencing_service_70 eq 1}<span class="provider-icon icon-videoconferencing-img" title="{ts}Offers remote services{/ts}"></span>{/if}
           {if $row.accepting_new_clients__65 eq 1}
-            <span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>
+            <span class="provider-icon icon-accepting-img" title="{ts}Currently accepting new clients{/ts}"></span>
           {elseif $row.accepting_new_clients__65 eq 0}
-            <span class="provider-icon icon-not-accepting-img" title="Not accepting new clients"></span>&nbsp;Not accepting new clients
+            <span class="provider-icon icon-not-accepting-img" title="{ts}Not accepting new clients{/ts}"></span>&nbsp;{ts}Not accepting new clients{/ts}
           {/if}
         </div>
 <br/>
@@ -36,7 +36,7 @@
       <td>
         <br/>
         <a class="nowrap bold crm-expand-row rasp-expand-hint" title="{ts}view details{/ts}" href="{crmURL p="civicrm/provider/details" q="reset=1&cid=`$row.contact_id`"}">
-          Click for more details
+          {ts}Click for more details{/ts}
         </a>
       </td>
     </tr>

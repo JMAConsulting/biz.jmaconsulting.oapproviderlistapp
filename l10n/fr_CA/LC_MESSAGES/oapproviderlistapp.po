@@ -252,3 +252,81 @@ msgstr "Psychologue agréé(e)"
 
 msgid "Registered Psychological Associate"
 msgstr "Associé(e) en psychologie agréé(e)"
+
+msgid "Employer(s)"
+msgstr "Employeur(s)"
+
+msgid "Edit My Listing"
+msgstr "Modifier mon dossier d’inscription"
+
+msgid "Your provider listing has been updated."
+msgstr "Votre dossier de fournisseur a été mis à jour."
+
+msgid "Please read the following statements and indicate agreement by clicking Submit."
+msgstr "Veuillez lire les déclarations ci-dessous et indiquer votre accord avec celles-ci en cliquant sur Envoyer."
+
+msgid "Search the OAP Provider List"
+msgstr "Faire une recherche dans la Liste des fournisseurs du POSA"
+
+msgid "BACB(r) Disciplinary Action"
+msgstr "Mesure disciplinaire du BACB(MD)"
+
+msgid "CPO Discipline and Other Proceedings"
+msgstr "Mesure disciplinaire ou autre procédure de l’OPO"
+
+msgid "Credentials"
+msgstr "Titres de compétence"
+
+msgid "Region"
+msgstr "Région"
+
+msgid "East"
+msgstr "Est"
+
+msgid "Central"
+msgstr "Centre"
+
+msgid "North"
+msgstr "Nord"
+
+msgid "South"
+msgstr "Sud"
+
+msgid "Show only if accepting new clients"
+msgstr "N’afficher que si le fournisseur accepte de nouveaux clients"
+
+msgid "Not accepting new clients"
+msgstr "N’accepte pas de nouveaux clients"
+
+msgid "Travels to remote areas"
+msgstr "Déplacements dans les régions éloignées"
+
+msgid "Offers supervision"
+msgstr "Services de supervision offerts"
+
+msgid "Offers remote services"
+msgstr "Services offerts dans les régions éloignées"
+
+msgid "No providers found that match your criteria."
+msgstr "Aucun fournisseur ne correspond à vos critères."
+
+msgid "Use fewer criteria so you limit results less."
+msgstr "Définissez moins de critères afin d’obtenir plus de résultats."
+
+msgid "Speaks"
+msgstr "Langue(s) parlée(s)"
+
+msgid "Click for more details"
+msgstr "Cliquer pour afficher d’autres détails"
+
+msgid "Click to hide details"
+msgstr "Cliquer pour masquer les détails"
+
+msgid "Expand all results"
+msgstr "Afficher tous les résultats"
+
+msgid "- any -"
+msgstr "- toutes -"
+
+msgid "Enter search term"
+msgstr "Entrer un mot à rechercher"

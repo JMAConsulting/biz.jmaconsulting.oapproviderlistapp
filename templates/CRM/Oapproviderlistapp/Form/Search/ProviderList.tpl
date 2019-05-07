@@ -1,6 +1,7 @@
 {* Default template custom searches. This template is used automatically if templateFile() function not defined in
    custom search .php file. If you want a different layout, clone and customize this file and point to new file using
    templateFile() function.*}
+{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
 <div class="crm-block crm-form-block crm-contact-custom-search-form-block">
         <table>
           {foreach from=$elements item=element}
@@ -9,28 +10,28 @@
                   <td></td>
                   <td>
                     {$form.$element.html}&nbsp;
-                    <span class="provider-icon icon-accepting-img" title="Currently accepting new clients"></span>&nbsp;&nbsp;
+                    <span class="provider-icon icon-accepting-img" title="{ts}Currently accepting new clients{/ts}"></span>&nbsp;&nbsp;
                     {$form.$element.label}
                   </td>
                 {elseif $element eq 'remote_travel_filter'}
                   <td></td>
                   <td>
                     {$form.$element.html}&nbsp;
-                    <span class="provider-icon icon-remote-travel-img" title="Travels to remote areas"></span>&nbsp;&nbsp;
+                    <span class="provider-icon icon-remote-travel-img" title="{ts}Travels to remote areas{/ts}"></span>&nbsp;&nbsp;
                     {$form.$element.label}
                   </td>
                 {elseif $element eq 'supervision_filter'}
                   <td></td>
                   <td>
                     {$form.$element.html}&nbsp;
-                    <span class="provider-icon icon-supervision-img" title="Offers supervision"></span>&nbsp;&nbsp;
+                    <span class="provider-icon icon-supervision-img" title="{ts}Offers supervision{/ts}"></span>&nbsp;&nbsp;
                     {$form.$element.label}
                   </td>
                 {elseif $element eq 'videoconferencing_filter'}
                   <td></td>
                   <td>
                     {$form.$element.html}&nbsp;
-                    <span class="provider-icon icon-videoconferencing-img" title="Offers remote services"></span>&nbsp;&nbsp;
+                    <span class="provider-icon icon-videoconferencing-img" title="{ts}Offers remote services{/ts}"></span>&nbsp;&nbsp;
                     {$form.$element.label}
                   </td>
                 {elseif $element eq 'credentials'}
@@ -45,7 +46,7 @@
                   </td>
                 {else}
                   <td style="width:10%;text-align:right;">
-                    {$form.$element.label}{if $element eq 'region'}&nbsp;&nbsp;<a title="Click for map of regions" href="https://oapproviderlist.ca/civicrm/file?filename=region_064682ff6d22e5b9fc624a950a799257.png&id=285&reset=1" class="crm-image-popup"><i class="crm-i fa-map-marker"></i></a>{/if}
+                    {$form.$element.label}{if $element eq 'region'}&nbsp;&nbsp;<a title="{ts}Click for map of regions{/ts}" href="https://oapproviderlist.ca/civicrm/file?filename=region_064682ff6d22e5b9fc624a950a799257.png&id=285&reset=1" class="crm-image-popup"><i class="crm-i fa-map-marker"></i></a>{/if}
                   </td>
                   {if $element|strstr:'_date'}
                       <td>{include file="CRM/common/jcalendar.tpl" elementName=$element}</td>
@@ -130,13 +131,16 @@ $('a#expand').click( function() {
   $('a.rasp-expand-hint').click(function () {
     if ($(this).hasClass('expanded')) {
       $(this).removeClass('rasp-expand');
-      $(this).text('Click for more details');
+      var message = {/literal}"{ts escape='js'}Click for more details{/ts}"{literal};
+      $(this).text(message);
     }
     else {
       $(this).addClass('rasp-expand');
-      $(this).text('Click to hide details');
+      var message = {/literal}"{ts escape='js'}Click to hide details{/ts}"{literal};
+      $(this).text(message);
     }
   });
 });
 </script>
 {/literal}
+{/crmScope}

@@ -22,10 +22,10 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
   function buildForm(&$form) {
     CRM_Utils_System::setTitle(E::ts('Search the OAP Provider List'));
 
-    $form->addElement('checkbox', 'accepting_clients_filter', E::ts('Show only if accepting new clients?'), NULL);
-    $form->addElement('checkbox', 'remote_travel_filter', E::ts('Travels to remote areas?'), NULL);
-    $form->addElement('checkbox', 'supervision_filter', E::ts('Offers supervision?'), NULL);
-    $form->addElement('checkbox', 'videoconferencing_filter', E::ts('Offers remote services?'), NULL);
+    $form->addElement('checkbox', 'accepting_clients_filter', E::ts('Show only if accepting new clients') . '?', NULL);
+    $form->addElement('checkbox', 'remote_travel_filter', E::ts('Travels to remote areas') . '?', NULL);
+    $form->addElement('checkbox', 'supervision_filter', E::ts('Offers supervision') . '?', NULL);
+    $form->addElement('checkbox', 'videoconferencing_filter', E::ts('Offers remote services') . '?', NULL);
     $check = [];
     foreach (['East', 'Central', 'North', 'South'] as $key) {
       $check[] = &$form->addElement('checkbox', $key, NULL, E::ts($key), 'ts_sel', array('checked' => 'checked'));
