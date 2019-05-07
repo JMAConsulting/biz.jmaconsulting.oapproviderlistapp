@@ -21,7 +21,7 @@
 <div class="content" style="padding-left:4px;">{$disciplinary}</div>
 <div class=clear></div>
 {/if}
-{if $credentials}
+{if $credentials.0.which_of_the_following_credentia_7}
 <div class="label"><label for="{ts}Credentials{/ts}">{ts}Credentials{/ts}</label></div>
 <div class="content">
 <table class="form-item">

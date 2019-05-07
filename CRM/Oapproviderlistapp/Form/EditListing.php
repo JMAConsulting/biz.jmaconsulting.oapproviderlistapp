@@ -92,6 +92,9 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
   }
 
   function imageRule($fields, $files = array(), $self = NULL) {
+    if (empty($files['image_URL']['name'])) {
+      return TRUE;
+    }
     $errors = [];
     $mimeType = array(
       'image/jpeg',
@@ -100,14 +103,14 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
       'image/p-jpeg',
       'image/x-png',
     );
-    if (!in_array($params['image_URL']['type'], $mimeType)) {
+    if (!in_array($files['image_URL']['type'], $mimeType)) {
       $errors['image_URL'] = E::ts('Image could not be uploaded due to invalid type extension.');
     }
     $maxSize = CRM_Core_Config::singleton()->maxFileSize * 1024*1024;
     if (empty($maxSize)) {
       $maxSize = $fields['MAX_FILE_SIZE'];
     }
-    if ($params['image_URL']['size'] > $maxSize) {
+    if ($files['image_URL']['size'] > $maxSize) {
       $errors['image_URL'] = E::ts('Maximum file size cannot exceed upload max size');
     }
     return empty($errors) ? TRUE : $errors;
