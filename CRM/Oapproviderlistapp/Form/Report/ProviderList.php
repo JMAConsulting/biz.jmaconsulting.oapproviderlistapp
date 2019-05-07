@@ -16,6 +16,12 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
       'title' => ts('Created Date'),
       'default' => FALSE,
     ];
+    unset($this->_columns['civicrm_contact']['fields']['employer_id']);
+    $this->_columns['civicrm_contact']['fields']['employer'] = [
+      'title' => ts('Employer(s)'),
+      'dbAlias' => "'1'",
+      'default' => FALSE,
+    ];
     $this->_columns['civicrm_value_other_profess_12']['fields']['custom_44']['dbAlias'] = 'GROUP_CONCAT(other_relevant_credential_44)';
     $this->_columns['civicrm_value_other_profess_12']['fields']['custom_45']['dbAlias'] = 'GROUP_CONCAT(date_obtained_45)';
     $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_32']['dbAlias'] = 'GROUP_CONCAT(employer_organization_32)';
@@ -169,8 +175,8 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
           $entryFound = TRUE;
         }
       }
-      if (!empty($rows[$rowNum]['civicrm_contact_employer_id'])) {
-        $rows[$rowNum]['civicrm_contact_employer_id'] = $this->getEmployers($rows[$rowNum]['civicrm_contact_id']);
+      if (!empty($rows[$rowNum]['civicrm_contact_employer'])) {
+        $rows[$rowNum]['civicrm_contact_employer'] = $this->getEmployers($rows[$rowNum]['civicrm_contact_id']);
         $entryFound = TRUE;
       }
 
