@@ -193,7 +193,10 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
   }
 
   public function getEmployers($contactID) {
-    $otherEmployers[] = CRM_Core_DAO::singleValueQuery("SELECT GROUP_CONCAT(primary_employer_organization_na_53) FROM civicrm_value_other_employe_16 WHERE entity_id = $contactID ");
+    $otherEmployers = [];
+    if ($emp = CRM_Core_DAO::singleValueQuery("SELECT GROUP_CONCAT(primary_employer_organization_na_53) FROM civicrm_value_other_employe_16 WHERE entity_id = $contactID ")) {
+      $otherEmployers[] = $emp;
+    }
     $otherEmployers[] = CRM_Core_DAO::singleValueQuery("SELECT GROUP_CONCAT(organization_name) FROM civicrm_contact c LEFT JOIN civicrm_relationship r ON r.contact_id_b = c.id AND r.relationship_type_id = 5 WHERE r.contact_id_a = $contactID ");
     return implode(', ', $otherEmployers);
   }
