@@ -25,10 +25,10 @@
         </div>
         {/if}
         <div style="float: left;width:30%;overflow: hidden;">
-        Region: {$row.region_63}
+        {ts}Region{/ts}: {$row.region_63}
       </div>
       <div style="overflow: hidden;">
-        Speaks: {$row.language_64}
+        {ts}Speaks{/ts}: {$row.language_64}
       </div>
       </td>
     </tr>
