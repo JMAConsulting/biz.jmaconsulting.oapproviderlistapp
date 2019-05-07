@@ -19,7 +19,7 @@
           <div class=clear></div>
         </td>
         <td>
-          {if $employer.phone}Phone: {$employer.phone} <br/>{/if}
+          {if $employer.phone}{ts}Phone{/ts}: {$employer.phone} <br/>{/if}
           <a href='mailto:{$employer.email}'>{$employer.email}</a>
           <div class=clear></div>
         </td>
