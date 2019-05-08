@@ -42,19 +42,15 @@
               <div class="label">{$form.email.$rowNumber.label} {if $rowNumber neq 1}<span class="crm-marker" title="This field is required.">*</span>{/if}</div>
               <div class="content">{$form.email.$rowNumber.html}</div>
               <div class="clear"></div>
-              {if $rowNumber eq 1}
-                <br/>
-                <div class="label">{$form.custom_49.label}</div>
-                <div class="content">{$form.custom_49.html}</div>
-                {if $custom_49_file.displayURL}
-                  <div class="crm-section file_displayURL-section file_displayURL-section"><div class="content">{ts}Uploaded file:{/ts} <a src="{$custom_49_file.displayURL}">{$custom_49_file.name}</a></div></div>
-                  <div class="crm-section file_deleteURL-section file_deleteURL-section"><div class="content">{$custom_49_file.deleteURL}</div></div>
-                {/if}
+              <div class="label">{$form.custom_49.$rowNumber.label}</div>
+              <div class="content">{$form.custom_49.$rowNumber.html}</div>
+              <div class="clear"></div>
+              {if $custom_49_file.$rowNumber.displayURL}
+                <div class="crm-section file_displayURL-section file_displayURL-section"><div class="content">{ts}Uploaded file:{/ts} <a src="{$custom_49_file.displayURL}">{$custom_49_file.name}</a></div></div>
+                <div class="crm-section file_deleteURL-section file_deleteURL-section"><div class="content">{$custom_49_file.deleteURL}</div></div>
                 <div class="clear"></div>
-              {else}
-                <div class="label">{$form.custom_49.$rowNumber.label}</div>
-                <div class="content">{$form.custom_49.$rowNumber.html}</div>
-                <div class="clear"></div>
+              {/if}
+              {if $rowNumber neq 1}
                 <div><a href=# class="remove_item crm-hover-button" style="float:right;"><b>{ts}Hide{/ts}</b></a></div>
               {/if}
               <br/>
