@@ -84,7 +84,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       ])['values'];
       foreach ($relationships as $key => $relationship) {
         $count = $key + 1;
-        $files[$key] = $this->getFileUpload($relationship['id'], 'civicrm_value_proof_of_empl_13', 'proof_of_employment_letter_49', 49);
+        $files[$count] = $this->getFileUpload($relationship['id'], 'civicrm_value_proof_of_empl_13', 'proof_of_employment_letter_49', 49);
       }
       $this->assign('custom_49_file', $files);
     }
