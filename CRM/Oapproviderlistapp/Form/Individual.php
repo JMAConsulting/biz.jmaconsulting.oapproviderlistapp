@@ -41,9 +41,12 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         'contact_id_a' => $this->_contactID,
         'sequential' => 1,
       ])['values'];
-      unset($relationships[0]);
       foreach ($relationships as $relationship) {
+        if ($relationship['contact_id_b'] == $this->_orgID) {
+          continue;
+        }
         $contact = civicrm_api3('Contact', 'getsingle', ['id' => $relationship['contact_id_b']]);
+        $defaults["organization_name[$count]"] = $contact['organization_name'];
         $defaults["email[$count]"] = $contact['email'];
         $address = civicrm_api3('Address', 'get', ['contact_id' => $relationship['contact_id_b'], 'sequential' => 1])['values'];
         $phone = civicrm_api3('Phone', 'get', ['contact_id' => $relationship['contact_id_b'], 'sequential' => 1])['values'];
@@ -147,7 +150,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
 
       $id = CRM_Utils_Array::value('id', civicrm_api3('Contact', 'get', [
         'organization_name' => $name,
-         'contact_type' => 'Organization',
+        'contact_type' => 'Organization',
         'options' => ['limit' => 1],
       ]));
       if (empty($id)) {
@@ -162,6 +165,14 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           'contact_id_b' => $id,
         ])['id'];
         $fieldName = 'custom_49';
+        $form->processEntityFile($fieldName, $values[$fieldName][$key], $relationshipID);
+      }
+      else {
+        $relationshipID = civicrm_api3('Relationship', 'get', [
+          'relationship_type_id' => 5,
+          'contact_id_a' => $contactID,
+          'contact_id_b' => $id,
+        ])['id'];
         $form->processEntityFile($fieldName, $values[$fieldName][$key], $relationshipID);
       }
       $params = [
