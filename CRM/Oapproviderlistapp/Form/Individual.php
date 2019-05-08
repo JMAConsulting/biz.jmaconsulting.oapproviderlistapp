@@ -88,7 +88,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         $files[$count] = $this->getFileUpload($relationship['id'], 'civicrm_value_proof_of_empl_13', 'proof_of_employment_letter_49', 49);
       }
       $this->assign('custom_49_file', $files);
-      $totalCount = count($relationships['count']) ?: 1;
+      $totalCount = count($relationships) ?: 1;
     }
     $this->assign('employer_count', $totalCount);
 
