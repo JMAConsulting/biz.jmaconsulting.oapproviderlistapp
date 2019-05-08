@@ -22,7 +22,7 @@
             <div class="crm-public-form-item crm-section">
             {section name='i' start=1 loop=5}
             {assign var='rowNumber' value=$smarty.section.i.index}
-            <div id="organization_name-{$rowNumber}" class="{if $rowNumber neq 1}hiddenElement{/if} {cycle values="odd-row,even-row"} crm-section form-item">
+            <div id="organization_name-{$rowNumber}" class="{if $rowNumber > $totalCount}hiddenElement{/if} {cycle values="odd-row,even-row"} crm-section form-item">
               <br/>
               <div class="content description">{ts}(if self-employed, write &#8220;self-employed&#8221; here){/ts}</div>
               <div class="label">{$form.organization_name.$rowNumber.label}  <span class="crm-marker" title="This field is required.">*</span></div>

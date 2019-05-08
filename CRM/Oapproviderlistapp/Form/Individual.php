@@ -75,6 +75,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       $this->add('text', "email[$rowNumber]", E::ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
       CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49[$rowNumber]", 49, FALSE);
     }
+    $totalCount = 1;
     if (!empty($this->_contactID)) {
       $files = [];
       $relationships = civicrm_api3('Relationship', 'get', [
@@ -87,7 +88,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         $files[$count] = $this->getFileUpload($relationship['id'], 'civicrm_value_proof_of_empl_13', 'proof_of_employment_letter_49', 49);
       }
       $this->assign('custom_49_file', $files);
+      $totalCount = $relationships['count'];
     }
+    $this->assign('employer_count', $totalCount);
 
     $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Individual', 'formRule'), $this);
     parent::buildQuickForm();
