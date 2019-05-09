@@ -16,13 +16,13 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
     parent::__construct($formValues);
     CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'css/style.css');
     CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
+    $this->_contactId = CRM_Core_Session::getLoggedInContactID();
   }
 
   function preProcess() {
     if (!CRM_Core_Permission::check('edit my listing')) {
       return CRM_Utils_System::permissionDenied();
     }
-    $this->_contactId = CRM_Core_Session::getLoggedInContactID();
     if (empty($this->_contactId)) {
       return CRM_Utils_System::permissionDenied();
     }
@@ -118,8 +118,8 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
 
   function postProcess() {
     $values = $this->controller->exportValues($this->_name);
-    $fields = [];
-    CRM_Contact_BAO_Contact::createProfileContact($params, $fields);
+    $fields = CRM_Core_BAO_UFGroup::getFields(OAP_LISTING, FALSE, CRM_Core_Action::VIEW);
+    CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $this->_contactId, NULL, OAP_LISTING);
     CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/editlisting",
       "reset=1&action=4"
     ));
