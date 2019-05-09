@@ -333,3 +333,12 @@ msgstr "Entrer un mot à rechercher"
 
 msgid "Phone"
 msgstr "Téléphone"
+
+msgid "Complete the application online on the form below or"
+msgstr "Vous pouvez compléter votre demande en ligne en utilisant le formulaire ci-dessous ou"
+
+msgid "click here to download a fillable PDF application form."
+msgstr "cliquer ici pour télécharger un formulaire version PDF à remplir."
+
+msgid "Please note"
+msgstr "Note"
