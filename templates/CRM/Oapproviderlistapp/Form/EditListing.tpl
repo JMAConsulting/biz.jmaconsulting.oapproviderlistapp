@@ -65,9 +65,12 @@
 {/crmScope}
 {literal}
 <script type="text/javascript">
-CRM.$(function($) {
-  $('.file-attachment').insertAfter('#image_URL');
-  $('#region-marker').insertAfter($('#editrow-custom_63 > .label > label'));
-});
+  function contactImagePopUp (url, width, height) {
+     newWindow = window.open( url,'name', 'width='+width+', height='+height );
+  }
+  CRM.$(function($) {
+    $('.file-attachment').insertAfter('#image_URL');
+    $('#region-marker').insertAfter($('#editrow-custom_63 > .label > label'));
+  });
 </script>
 {/literal}

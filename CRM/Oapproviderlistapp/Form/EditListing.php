@@ -118,6 +118,7 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
 
   function postProcess() {
     $values = $this->controller->exportValues($this->_name);
+    CRM_Contact_BAO_Contact::processImageParams($values);
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_LISTING, FALSE, CRM_Core_Action::VIEW);
     CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $this->_contactId, NULL, OAP_LISTING);
     CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/editlisting",
