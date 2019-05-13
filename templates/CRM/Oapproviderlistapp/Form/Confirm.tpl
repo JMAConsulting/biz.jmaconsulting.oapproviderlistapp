@@ -4,6 +4,8 @@
 <div class="crm-summary-display_name">{$displayName}</div>
 </h1>
 <br/>
+<fieldset class="crm-profile">
+  <legend>{ts}Employer Information{/ts}</legend>
 <table class="form-item">
     {foreach from=$emps item=employer}
     <tr>
@@ -24,7 +26,6 @@
         <td style="float:left;">
           {if $employer.files.displayURL}
             {ts}Proof of Employment:{/ts} <a href="{$employer.files.displayURL}">{$employer.files.name}</a><br>
-            {$employer.files.deleteURL}
           {/if}
         </td>
         <td>
@@ -34,6 +35,7 @@
     {/if}
     {/foreach}
 </table>
+</fieldset>
 <div class="crm-public-form-item crm-section professional">
   {include file="CRM/UF/Form/Block.tpl" fields=$professional}
   {if $otherProfessional}
