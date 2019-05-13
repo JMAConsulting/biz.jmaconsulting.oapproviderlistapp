@@ -5,10 +5,10 @@
 </h1>
 <br/>
 <table class="form-item">
-    {foreach from=$employers item=employer}
+    {foreach from=$emps item=employer}
     <tr>
-      <td>
-        {$employer.organization_name} <br/>
+      <td width=50%>
+        <b>{$employer.organization_name}<b> <br/>
         {$employer.street_address} <br/>
         {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code}
         <div class=clear></div>
@@ -21,15 +21,16 @@
     </tr>
     {if !empty($employer.files)}
       <tr>
-        <td>
+        <td style="float:left;">
           {if $employer.files.displayURL}
-            <div class="crm-section file_displayURL-section file_displayURL-section"><div class="content">{ts}Uploaded file:{/ts} <a href="{$employer.files.displayURL}">{$employer.files.name}</a></div></div>
-            <div class="crm-section file_deleteURL-section file_deleteURL-section"><div class="content">{$employer.files.deleteURL}</div></div>
+            {ts}Proof of Employment:{/ts} <a href="{$employer.files.displayURL}">{$employer.files.name}</a><br>
+            {$employer.files.deleteURL}
           {/if}
         </td>
         <td>
         </td>
       </tr>
+      <tr><td></br></td><td></td><tr>
     {/if}
     {/foreach}
 </table>

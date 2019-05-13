@@ -117,6 +117,9 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
       foreach ($row as $tableCol => $val) {
         if (array_key_exists($tableCol, $customFields)) {
           if (array_key_exists($tableCol, $fileFields)) {
+            if (!CRM_Utils_Rule::integer($val)) {
+              continue;
+            }
             $currentAttachmentInfo = CRM_Core_BAO_File::getEntityFile('*', $val);
             foreach ($currentAttachmentInfo as $fileKey => $fileValue) {
               $rows[$rowNum][$tableCol] = ($this->_outputMode == 'csv') ? CRM_Utils_System::url($fileValue['url'], NULL, TRUE) : sprintf("<a href='%s'>%s</a>", CRM_Utils_System::url($fileValue['url'], NULL, TRUE), $fileValue['cleanName']);
@@ -151,7 +154,7 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
     $entryFound = FALSE;
 
     foreach ($rows as $rowNum => $row) {
-      $employerInfo = CRM_Oapproviderlistapp_Page_Details::getAdditionalDetails($row['civicrm_contact_id'])['employers'];
+      $employerInfo = CRM_Oapproviderlistapp_Page_Details::getAdditionalDetails($row['civicrm_contact_id'], TRUE)['employers'];
 
       foreach ([
       'civicrm_contact_employer' => 'organization_name',

@@ -53,7 +53,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
         $employerInfo['employers'][$k]['files'] = $this->getFileUpload($relationship['id'], 'civicrm_value_proof_of_empl_13', 'proof_of_employment_letter_49', 49);
       }
     }
-    $this->assign('employers', $employerInfo['employers']);
+    $this->assign('emps', $employerInfo['employers']);
 
     $displayName = CRM_Contact_BAO_Contact::displayName($this->_contactID);
     $this->assign('displayName', $displayName);
