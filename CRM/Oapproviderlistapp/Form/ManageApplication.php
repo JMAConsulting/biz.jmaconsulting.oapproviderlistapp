@@ -54,6 +54,34 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     parent::postProcess();
   }
 
+  public function sendConfirm($contactID) {
+    if (empty($contactID)) {
+      return;
+    }
+    $messageTemplates = new CRM_Core_DAO_MessageTemplate();
+    $messageTemplates->id = 68;
+    $messageTemplates->find(TRUE);
+
+    $body_subject = CRM_Core_Smarty::singleton()->fetch("string:$messageTemplates->msg_subject");
+    $body_text    = $messageTemplates->msg_text;
+    $body_html    = "{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}" . $messageTemplates->msg_html . "{/crmScope}";
+    $body_html = CRM_Core_Smarty::singleton()->fetch("string:{$body_html}");
+    $body_text = CRM_Core_Smarty::singleton()->fetch("string:{$body_text}");
+
+    $contact = civicrm_api3('Contact', 'getsingle', ['id' => $contactID]);
+    $mailParams = array(
+      'groupName' => 'OAP Application Confirmation',
+      'from' => "<info@oapproviderlist.ca>",
+      'toName' =>  $contact['display_name'],
+      'toEmail' => $contact['email'],
+      'subject' => $body_subject,
+      'messageTemplateID' => $messageTemplates->id,
+      'html' => $body_html,
+      'text' => $body_text,
+    );
+    CRM_Utils_Mail::send($mailParams);
+  }
+
   public function sendDraft($contactID, $qfKey = NULL) {
     if (empty($contactID)) {
       return;

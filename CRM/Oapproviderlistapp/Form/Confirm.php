@@ -41,19 +41,23 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
 
 
   public function buildQuickForm() {
+    $employerInfo = CRM_Oapproviderlistapp_Page_Details::getAdditionalDetails($this->_contactID);
+    foreach ($employerInfo['employers'] as $key => $emp) {
+      $relationship = civicrm_api3('Relationship', 'get', [
+        'relationship_type_id' => 5,
+        'contact_id_a' => $this->_contactID,
+        'contact_id_b' => $emp['id'],
+        'sequential' => 1,
+      ])['values'][0];
+      if (!empty($relationship['id'])) {
+        $employerInfo['employers'][$k]['files'] = $this->getFileUpload($relationship['id'], 'civicrm_value_proof_of_empl_13', 'proof_of_employment_letter_49', 49);
+      }
+    }
+    $this->assign('employers', $employerInfo['employers']);
+
     $displayName = CRM_Contact_BAO_Contact::displayName($this->_contactID);
     $this->assign('displayName', $displayName);
     $employerID = CRM_Core_DAO::getFieldValue('CRM_Contact_BAO_Contact', $this->_contactID, 'employer_id');
-    if (!empty($employerID)) {
-      $this->assign('employerName', CRM_Contact_BAO_Contact::displayName($employerID));
-    }
-    $relationship = civicrm_api3('Relationship', 'get', [
-      'relationship_type_id' => 5,
-      'contact_id_a' => $this->_contactID,
-      'contact_id_b' => $employerID,
-      'sequential' => 1,
-    ])['values'][0];
-    $this->assign('custom_49', CRM_Core_BAO_CustomField::displayValue($relationship['custom_49']['fid'], 'custom_49', $relationship['id']));
 
     $email = civicrm_api3('Email', 'getvalue', ['contact_id' => $this->_contactID, 'is_primary' => TRUE, 'return' => 'email']);
     $this->assign('email', $email);
@@ -158,6 +162,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
         'is_deleted' => FALSE,
         'custom_60' => "Submitted",
       ]);
+      $this->sendConfirm($this->_contactID);
       CRM_Core_Session::setStatus("", E::ts('Thank you for submitting your application to the OAP Provider List'), "success");
       CRM_Utils_System::redirect('https://oapproviderlist.ca/oap-application-submitted-successfully');
     }

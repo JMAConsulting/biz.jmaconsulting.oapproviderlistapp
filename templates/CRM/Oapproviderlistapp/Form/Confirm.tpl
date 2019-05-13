@@ -4,41 +4,35 @@
 <div class="crm-summary-display_name">{$displayName}</div>
 </h1>
 <br/>
-<div class="crm-section form-item">
-  <div class="label">
-    <label for="employer">{ts}Employer{/ts}:</label>
-  </div>
-  <div class="content">{$employerName}</div>
-  <br/>
-</div>
-<div class="crm-section form-item">
-  <div class="label">
-    <label for="address">{ts}Address{/ts}:</label>
-  </div>
-  <div class="content">{$address}</div>
-  <br/>
-</div>
-<div class="crm-section form-item">
-  <div class="label">
-    <label for="address">{ts}Work Phone{/ts}:</label>
-  </div>
-  <div class="content">{$phone}</div>
-  <br/>
-</div>
-<div class="crm-section form-item">
-  <div class="label">
-    <label for="email">{ts}Email Address{/ts}:</label>
-  </div>
-  <div class="content">{$email}</div>
-  <br/>
-</div>
-<div class="crm-section form-item">
-  <div class="label">
-    <label for="proof_of_emp">{ts}Proof of Employment{/ts}:</label>
-  </div>
-  <div class="content">{$custom_49}</div>
-  <br/>
-</div>
+<table class="form-item">
+    {foreach from=$employers item=employer}
+    <tr>
+      <td>
+        {$employer.organization_name} <br/>
+        {$employer.street_address} <br/>
+        {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code}
+        <div class=clear></div>
+      </td>
+      <td>
+        {if $employer.phone}{ts}Phone{/ts}: {$employer.phone} <br/>{/if}
+        <a href='mailto:{$employer.email}'>{$employer.email}</a>
+        <div class=clear></div>
+      </td>
+    </tr>
+    {if !empty($employer.files)}
+      <tr>
+        <td>
+          {if $employer.files.displayURL}
+            <div class="crm-section file_displayURL-section file_displayURL-section"><div class="content">{ts}Uploaded file:{/ts} <a href="{$employer.files.displayURL}">{$employer.files.name}</a></div></div>
+            <div class="crm-section file_deleteURL-section file_deleteURL-section"><div class="content">{$employer.files.deleteURL}</div></div>
+          {/if}
+        </td>
+        <td>
+        </td>
+      </tr>
+    {/if}
+    {/foreach}
+</table>
 <div class="crm-public-form-item crm-section professional">
   {include file="CRM/UF/Form/Block.tpl" fields=$professional}
   {if $otherProfessional}

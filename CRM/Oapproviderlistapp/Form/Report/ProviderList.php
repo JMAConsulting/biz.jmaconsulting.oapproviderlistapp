@@ -22,6 +22,7 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
       'dbAlias' => "'1'",
       'default' => FALSE,
     ];
+    $this->_columns['civicrm_value_proof_of_empl_13']['fields']['custom_49']['dbAlias'] = '1';
     $this->_columns['civicrm_value_other_profess_12']['fields']['custom_44']['dbAlias'] = 'GROUP_CONCAT(other_relevant_credential_44)';
     $this->_columns['civicrm_value_other_profess_12']['fields']['custom_45']['dbAlias'] = 'GROUP_CONCAT(date_obtained_45)';
     $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_32']['dbAlias'] = 'GROUP_CONCAT(employer_organization_32)';
@@ -150,6 +151,21 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
     $entryFound = FALSE;
 
     foreach ($rows as $rowNum => $row) {
+      $employerInfo = CRM_Oapproviderlistapp_Page_Details::getAdditionalDetails($row['civicrm_contact_id'])['employers'];
+
+      foreach ([
+      'civicrm_contact_employer' => 'organization_name',
+      'civicrm_address_city' => 'city',
+      'civicrm_address_street_address' => 'street_address',
+      'civicrm_address_postal_code' => 'postal_code',
+      'civicrm_email_email' => 'email',
+      'civicrm_phone_phone' => 'phone',
+      ] as $column => $name) {
+        if (!empty($row[$column])) {
+          $rows[$rowNum][$column] = implode(',', CRM_Utils_Array::collect($name, $employerInfo));
+        }
+      }
+
       // make count columns point to detail report
       // convert sort name to links
       if (array_key_exists('civicrm_contact_sort_name', $row) &&
@@ -175,15 +191,26 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
           $entryFound = TRUE;
         }
       }
-      if (!empty($rows[$rowNum]['civicrm_contact_employer'])) {
-        $rows[$rowNum]['civicrm_contact_employer'] = CRM_Core_DAO::singleValueQuery("
-          SELECT GROUP_CONCAT(organization_name)
-           FROM civicrm_contact c
-            LEFT JOIN civicrm_relationship r ON r.contact_id_b = c.id AND r.relationship_type_id = 5
-          WHERE r.contact_id_a = " . $rows[$rowNum]['civicrm_contact_id']);
-        $entryFound = TRUE;
-      }
 
+
+      if (!empty($rows[$rowNum]['civicrm_value_proof_of_empl_13_custom_49'])) {
+         $values = (array) explode(',', CRM_Core_DAO::singleValueQuery("
+          SELECT GROUP_CONCAT(proof_of_employment_letter_49)
+           FROM civicrm_value_proof_of_empl_13 temp
+            LEFT JOIN civicrm_relationship r ON temp.entity_id = r.id AND r.relationship_type_id = 5
+          WHERE r.contact_id_a = " . $rows[$rowNum]['civicrm_contact_id']));
+          if (!empty($values)) {
+            foreach ($values as $k => $val) {
+              $currentAttachmentInfo = CRM_Core_BAO_File::getEntityFile('*', $val);
+              foreach ($currentAttachmentInfo as $fileKey => $fileValue) {
+                $values[$k] = ($this->_outputMode == 'csv') ? CRM_Utils_System::url($fileValue['url'], NULL, TRUE) : sprintf("<a href='%s'>%s</a>", CRM_Utils_System::url($fileValue['url'], NULL, TRUE), $fileValue['cleanName']);
+              }
+            }
+          }
+
+          $rows[$rowNum]['civicrm_value_proof_of_empl_13_custom_49'] = implode(', ', $values);
+          $entryFound = TRUE;
+      }
 
       // Handle ID to label conversion for contact fields
       $entryFound = $this->alterDisplayContactFields($row, $rows, $rowNum, 'contact/summary', 'View Contact Summary') ? TRUE : $entryFound;
