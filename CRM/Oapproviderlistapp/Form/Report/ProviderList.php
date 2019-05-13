@@ -158,14 +158,14 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
 
       foreach ([
       'civicrm_contact_employer' => 'organization_name',
-      'civicrm_address_city' => 'city',
-      'civicrm_address_street_address' => 'street_address',
+      'civicrm_address_address_city' => 'city',
+      'civicrm_address_address_street_address' => 'street_address',
       'civicrm_address_postal_code' => 'postal_code',
       'civicrm_email_email' => 'email',
       'civicrm_phone_phone' => 'phone',
       ] as $column => $name) {
         if (!empty($row[$column])) {
-          $rows[$rowNum][$column] = implode(',', CRM_Utils_Array::collect($name, $employerInfo));
+          $rows[$rowNum][$column] = implode(',', array_filter(CRM_Utils_Array::collect($name, $employerInfo)));
         }
       }
 

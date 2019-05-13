@@ -50,7 +50,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
         'sequential' => 1,
       ])['values'][0];
       if (!empty($relationship['id'])) {
-        $employerInfo['employers'][$k]['files'] = $this->getFileUpload($relationship['id'], 'civicrm_value_proof_of_empl_13', 'proof_of_employment_letter_49', 49);
+        $employerInfo['employers'][$key]['files'] = $this->getFileUpload($relationship['id'], 'civicrm_value_proof_of_empl_13', 'proof_of_employment_letter_49', 49);
       }
     }
     $this->assign('emps', $employerInfo['employers']);
