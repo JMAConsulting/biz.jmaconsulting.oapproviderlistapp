@@ -5,7 +5,7 @@
 </h1>
 <br/>
 <fieldset class="crm-profile">
-  <legend>{ts}Employer Information{/ts}</legend>
+  <div class="header-dark">{ts}Employer information{/ts}</div>
 <table class="form-item">
     {foreach from=$emps item=employer}
     <tr>
