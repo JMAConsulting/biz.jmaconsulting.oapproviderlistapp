@@ -165,7 +165,7 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
       'civicrm_phone_phone' => 'phone',
       ] as $column => $name) {
         if (!empty($row[$column])) {
-          $rows[$rowNum][$column] = implode(',', array_filter(CRM_Utils_Array::collect($name, $employerInfo)));
+          $rows[$rowNum][$column] = implode(', ', array_filter(CRM_Utils_Array::collect($name, $employerInfo)));
         }
       }
 
