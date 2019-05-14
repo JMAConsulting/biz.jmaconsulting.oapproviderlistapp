@@ -5,6 +5,8 @@ class CRM_Oapproviderlistapp_Page_Draft extends CRM_Core_Page {
 
   public function run() {
     // Example: Set the page-title dynamically; alternatively, declare a static title in xml/Menu/*.xml
+    CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
+    CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'templates/css/oapp.css');
     $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
     $title = ($lang == 'fr') ? 'Sauvegarde de l’ébauche de la Demande d’inscription sur la liste des fournisseurs du POSA!' : 'Draft saved successfully!';
