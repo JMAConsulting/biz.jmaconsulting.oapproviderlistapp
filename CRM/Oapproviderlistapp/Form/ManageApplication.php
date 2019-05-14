@@ -123,7 +123,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       'assignee_id' => 99184,
       'details' => $body_html,
     ]);
-    $url = CRM_Utils_System::url("civicrm/draft-saved", "reset=1&cid=" . $contactID)
+    $url = CRM_Utils_System::url("civicrm/draft-saved", "reset=1&cid=" . $contactID);
     CRM_Utils_System::redirect($url);
   }
 
