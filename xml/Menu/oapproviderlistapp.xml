@@ -90,7 +90,7 @@
     <is_public>true</is_public>
   </item>
   <item>
-    <path>draft-saved</path>
+    <path>civicrm/draft-saved</path>
     <page_callback>CRM_Oapproviderlistapp_Page_Draft</page_callback>
     <title>Draft</title>
     <access_arguments>profile view</access_arguments>
