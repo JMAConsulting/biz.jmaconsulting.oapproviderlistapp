@@ -11,8 +11,8 @@ class CRM_Oapproviderlistapp_Page_Draft extends CRM_Core_Page {
 
     $title = ($lang == 'fr') ? 'Sauvegarde de l’ébauche de la Demande d’inscription sur la liste des fournisseurs du POSA!' : 'Draft saved successfully!';
     $text = ($lang == 'fr') ? sprintf(
-      "Sauvegarde de l’ébauche de la demande d’inscription sur la liste des fournisseurs du POSA! Cliquez  <a href='%s'>ici pour représenter votre demande",
-        CRM_Utils_System::url("fr/civicrm/application", "reset=1&cid=" . $_GET['cid'])) :
+      "Sauvegarde de l’ébauche de la demande d’inscription sur la liste des fournisseurs du POSA! Cliquez  <a href='%s'>ici</a> pour représenter votre demande",
+        CRM_Utils_System::url("civicrm/application", "reset=1&cid=" . $_GET['cid'])) :
       sprintf(
         "Your draft registration for the OAP provider list has been saved successfully! Click <a href='%s'>here</a> to resume your application.",
           CRM_Utils_System::url("civicrm/application", "reset=1&cid=" . $_GET['cid'])
