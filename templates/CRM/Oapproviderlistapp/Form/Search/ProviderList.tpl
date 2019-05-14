@@ -36,7 +36,7 @@
                   </td>
                 {elseif $element eq 'credentials'}
                   <td style="width:15%;text-align:right;">
-                    {$form.$element.label}
+                    {$form.$element.label}:
                   </td>
                   <td>
                     &nbsp;{$form.credentials.1.html}<br/>

@@ -41,7 +41,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     ] as $key => $label) {
       $check[] = &$form->addElement('checkbox', $key, NULL, $label, 'ts_sel', array('checked' => 'checked'));
     }
-    $form->addGroup($check, 'credentials', E::ts('Credentials'));
+    $form->addGroup($check, 'credentials', E::ts('I am looking for'));
     $form->setDefaults([
       'East' => 1,
       'Central' => 1,
