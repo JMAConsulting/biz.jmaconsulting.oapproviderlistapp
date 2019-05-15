@@ -342,3 +342,6 @@ msgstr "cliquer ici pour télécharger un formulaire version PDF à remplir."
 
 msgid "Please note"
 msgstr "Note"
+
+msgid "I am looking for"
+msgstr "Ce que je cherche"

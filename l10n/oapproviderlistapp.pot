@@ -154,3 +154,6 @@ msgstr ""
 msgid "Add Another Employer"
 msgstr ""
 
+#: ./templates/CRM/ProviderList.tpl
+msgid "I am looking for"
+msgstr "Ce que je cherche"
