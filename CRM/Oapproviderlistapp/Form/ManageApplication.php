@@ -204,7 +204,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
           list($prefixName, $index) = CRM_Utils_System::explode('-', $key, 2);
           if ($viewOnly) {
             $field['is_view'] = $viewOnly;
-            if ($field['data_type'] == 'File') {
+            if ($field['data_type'] == 'File' || $field['name'] == 'image_URL') {
               $this->add('text', $field['name'], $field['title'], []);
               $this->freeze($field['name']);
               continue;

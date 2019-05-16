@@ -60,7 +60,9 @@
 {/if}
 </div>
 <div class="crm-submit-buttons">
-{include file="CRM/common/formButtons.tpl" location="bottom"}
+{if $action neq 4}
+  {include file="CRM/common/formButtons.tpl" location="bottom"}
+{/if}
 </div>
 {/crmScope}
 {literal}
