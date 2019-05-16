@@ -75,7 +75,8 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
   }
 
   function buildQuickForm() {
-    CRM_Utils_System::setTitle(E::ts('Edit My Listing'));
+    $title = ($this->_action == CRM_Core_Action::VIEW) ? E::ts('View My Listing') : E::ts('Edit My Listing');
+    CRM_Utils_System::setTitle($title);
     $this->buildCustom(OAP_LISTING, 'listing', ($this->_action == CRM_Core_Action::VIEW));
     $this->assign('name', CRM_Contact_BAO_Contact::displayName($this->_contactId));
     $this->assign('employers', $this->getEmployers($this->_contactId));
