@@ -260,6 +260,26 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     CRM_Core_DAO::executeQuery($sql);
   }
 
+  /**
+   * Extract contact id from url for deleting contact image.
+   */
+  public static function processImage() {
+
+    $action = CRM_Utils_Request::retrieve('action', 'String');
+    $cid = CRM_Utils_Request::retrieve('cid', 'Positive');
+    // retrieve contact id in case of Profile context
+    $id = CRM_Utils_Request::retrieve('id', 'Positive');
+    $cid = $cid ? $cid : $id;
+    if ($action & CRM_Core_Action::DELETE) {
+      if (CRM_Utils_Request::retrieve('confirmed', 'Boolean')) {
+        CRM_Contact_BAO_Contact::deleteContactImage($cid);
+        CRM_Core_Session::setStatus(ts('Contact image deleted successfully'), ts('Image Deleted'), 'success');
+        $toUrl = CRM_Utils_System::url('civicrm/editlisting');
+        CRM_Utils_System::redirect($toUrl);
+      }
+    }
+  }
+
   public function updateContactAddress($contactID, $params) {
     foreach (['email', 'phone', 'address'] as $param) {
       if (!empty($params[$param])) {

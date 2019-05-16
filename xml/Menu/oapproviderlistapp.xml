@@ -96,4 +96,11 @@
     <access_arguments>profile view</access_arguments>
     <is_public>true</is_public>
   </item>
+  <item>
+    <path>civicrm/contact/image</path>
+    <title>Process Uploaded Images</title>
+    <page_callback>CRM_Oapproviderlistapp_Form_ManageApplication::processImage</page_callback>
+    <access_arguments>profile view</access_arguments>
+    <is_public>true</is_public>
+  </item>
 </menu>
