@@ -45,31 +45,31 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
       $this->assign('imageURL', "<a href='#' onclick='contactImagePopUp(\"{$url}\", 180, 200);'>{$image_URL}</a>");
       if ($this->_action == CRM_Core_Action::VIEW) {
         unset($defaults['image_URL']);
-        continue;
       }
-
-      $deleteExtra = json_encode(ts('Are you sure you want to delete contact image.'));
-      $deleteURL = array(
-        CRM_Core_Action::DELETE => array(
-          'name' => ts('Delete Contact Image'),
-          'url' => 'civicrm/contact/image',
-          'qs' => 'reset=1&id=%%id%%&gid=%%gid%%&action=delete',
-          'extra' => 'onclick = "' . htmlspecialchars("if (confirm($deleteExtra)) this.href+='&confirmed=1'; else return false;") . '"',
-        ),
-      );
-      $deleteURL = CRM_Core_Action::formLink($deleteURL,
-        CRM_Core_Action::DELETE,
-        array(
-          'id' => $this->_contactId,
-          'gid' => OAP_LISTING,
-        ),
-        ts('more'),
-        FALSE,
-        'contact.profileimage.delete',
-        'Contact',
-        $this->_contactId
-      );
-      $this->assign('deleteURL', $deleteURL);
+      else {
+        $deleteExtra = json_encode(ts('Are you sure you want to delete contact image.'));
+        $deleteURL = array(
+          CRM_Core_Action::DELETE => array(
+            'name' => ts('Delete Contact Image'),
+            'url' => 'civicrm/contact/image',
+            'qs' => 'reset=1&id=%%id%%&gid=%%gid%%&action=delete',
+            'extra' => 'onclick = "' . htmlspecialchars("if (confirm($deleteExtra)) this.href+='&confirmed=1'; else return false;") . '"',
+          ),
+        );
+        $deleteURL = CRM_Core_Action::formLink($deleteURL,
+          CRM_Core_Action::DELETE,
+          array(
+            'id' => $this->_contactId,
+            'gid' => OAP_LISTING,
+          ),
+          ts('more'),
+          FALSE,
+          'contact.profileimage.delete',
+          'Contact',
+          $this->_contactId
+        );
+        $this->assign('deleteURL', $deleteURL);
+      }
     }
     return $defaults;
   }
