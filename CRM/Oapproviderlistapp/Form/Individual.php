@@ -35,7 +35,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         $defaults['organization_name[1]'] = $orgnaization['organization_name'];
       }
 
-      $count = 2;
+      $count = 1;
       $relationships = civicrm_api3('Relationship', 'get', [
         'relationship_type_id' => 5,
         'contact_id_a' => $this->_contactID,

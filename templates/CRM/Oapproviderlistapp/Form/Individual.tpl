@@ -46,7 +46,15 @@
               <div class="content">{$form.custom_49.$rowNumber.html}</div>
               <div class="clear"></div>
               {if $custom_49_file.$rowNumber.displayURL}
-                <div class="crm-section file_displayURL-section file_displayURL-section"><div class="content">{ts}Uploaded file:{/ts} <a href="{$custom_49_file.$rowNumber.displayURL}">{$custom_49_file.$rowNumber.name}</a></div></div>
+                <div class="crm-section file_displayURL-section file_displayURL-section"><div class="content">{ts}Uploaded file:{/ts}
+                  <a class="crm-image-popup" href="{$custom_49_file.$rowNumber.displayURL}">
+                  {if $custom_49_file.$rowNumber.imageURL}
+                    {if !empty($custom_49_file.$rowNumber.imageURL)}
+                      {$custom_49_file.$rowNumber.imageURL}
+                    {else}
+                      {$custom_49_file.$rowNumber.name}
+                  {/if}
+                </a></div></div>
                 <div class="crm-section file_deleteURL-section file_deleteURL-section"><div class="content">{$custom_49_file.$rowNumber.deleteURL}</div></div>
               {/if}
               {if $rowNumber neq 1}
