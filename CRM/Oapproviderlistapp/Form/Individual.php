@@ -185,6 +185,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         'city' => CRM_Utils_Array::value($key, $values['city']),
       ];
       $form->updateContactAddress($id, $params);
+      if ($key == 1) {
+        $form->updateContactAddress($contactID, $params);
+      }
     }
 
     return $contactID;

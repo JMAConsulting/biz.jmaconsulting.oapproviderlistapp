@@ -336,6 +336,25 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
           $fileID
         );
         $fileName = CRM_Utils_File::cleanFileName(basename($fileDAO->uri));
+        if ($fileDAO->mime_type == "image/jpeg" ||
+          $fileDAO->mime_type == "image/pjpeg" ||
+          $fileDAO->mime_type == "image/gif" ||
+          $fileDAO->mime_type == "image/x-png" ||
+          $fileDAO->mime_type == "image/png"
+        ) {
+          $entityId = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_EntityFile',
+            $fileDAO->id,
+            'entity_id',
+            'file_id'
+          );
+          $url = str_replace('persist/contribute', 'custom', $config->imageUploadURL) . $fileDAO->uri;
+          list($path) = CRM_Core_BAO_File::path($fileDAO->id, $entityId);
+          if ($path && file_exists($path)) {
+            list($imageWidth, $imageHeight) = getimagesize($path);
+            list($imageThumbWidth, $imageThumbHeight) = CRM_Contact_BAO_Contact::getThumbSize($imageWidth, $imageHeight);
+            $displayURL = "<img src=\"$url\" width=$imageThumbWidth height=$imageThumbHeight/>";
+          }
+        }
         return [
           'deleteURL' => $deleteURL,
           'displayURL' => $displayURL,
