@@ -25,7 +25,13 @@
       <tr>
         <td style="float:left;">
           {if $employer.files.displayURL}
-            {ts}Proof of Employment:{/ts}{$employer.files.displayURL}<br>
+            {ts}Proof of Employment:{/ts} <a class="crm-image-popup" href="{$employer.files.displayURL}">
+              {if !empty($employer.files.imageURL)}
+                {$employer.files.imageURL}
+              {else}
+                {$employer.files.name}
+              {/if}
+            </a><br>
           {/if}
         </td>
         <td>

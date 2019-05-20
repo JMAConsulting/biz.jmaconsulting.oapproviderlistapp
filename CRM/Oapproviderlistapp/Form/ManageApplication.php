@@ -352,7 +352,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
           if ($path && file_exists($path)) {
             list($imageWidth, $imageHeight) = getimagesize($path);
             list($imageThumbWidth, $imageThumbHeight) = CRM_Contact_BAO_Contact::getThumbSize($imageWidth, $imageHeight);
-            $displayURL = "<img src='$displayURL' width=$imageThumbWidth height=$imageThumbHeight />";
+            $imageURL = "<img src='$displayURL' width=$imageThumbWidth height=$imageThumbHeight />";
           }
         }
         else {
@@ -361,6 +361,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         return [
           'deleteURL' => $deleteURL,
           'displayURL' => $displayURL,
+          'imageURL' => $imageURL,
         ];
       }
     }
