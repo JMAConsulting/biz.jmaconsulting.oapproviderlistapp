@@ -352,7 +352,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
           if ($path && file_exists($path)) {
             list($imageWidth, $imageHeight) = getimagesize($path);
             list($imageThumbWidth, $imageThumbHeight) = CRM_Contact_BAO_Contact::getThumbSize($imageWidth, $imageHeight);
-            $displayURL = "<img src=\"$url\" width=$imageThumbWidth height=$imageThumbHeight/>";
+            $displayURL = "<img src='$url' width=$imageThumbWidth height=$imageThumbHeight />";
           }
         }
         return [
