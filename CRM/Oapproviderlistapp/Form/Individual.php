@@ -42,9 +42,6 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         'sequential' => 1,
       ])['values'];
       foreach ($relationships as $relationship) {
-        if ($relationship['contact_id_b'] == $this->_orgID) {
-          continue;
-        }
         $contact = civicrm_api3('Contact', 'getsingle', ['id' => $relationship['contact_id_b']]);
         $defaults["organization_name[$count]"] = $contact['organization_name'];
         $defaults["email[$count]"] = $contact['email'];
