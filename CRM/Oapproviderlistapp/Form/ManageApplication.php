@@ -356,7 +356,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
           }
         }
         else {
-          $displayURL = "<a href="$displayURL">$fileName</a>";
+          $displayURL = "<a href=\"$displayURL\">$fileName</a>";
         }
         return [
           'deleteURL' => $deleteURL,
