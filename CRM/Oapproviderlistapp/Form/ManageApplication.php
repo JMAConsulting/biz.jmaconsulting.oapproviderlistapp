@@ -355,10 +355,12 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
             $displayURL = "<img src='$url' width=$imageThumbWidth height=$imageThumbHeight />";
           }
         }
+        else {
+          $displayURL = "<a href="$displayURL">$fileName</a>";
+        }
         return [
           'deleteURL' => $deleteURL,
           'displayURL' => $displayURL,
-          'name' => $fileName,
         ];
       }
     }
