@@ -25,7 +25,7 @@
       <tr>
         <td style="float:left;">
           {if $employer.files.displayURL}
-            {ts}Proof of Employment:{/ts} <a href="{$employer.files.displayURL}">{$employer.files.name}</a><br>
+            {ts}Proof of Employment:{/ts}{$employer.files.displayURL}<br>
           {/if}
         </td>
         <td>
