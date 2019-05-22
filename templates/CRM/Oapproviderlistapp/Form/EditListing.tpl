@@ -34,6 +34,7 @@
 {/foreach}
 </table>
 </div>
+<div class=clear></div>
 {/if}
 {if $employers}
 <div class="label"><label for="{ts}Employer(s){/ts}">{ts}Employer(s){/ts}</label></div>

@@ -83,7 +83,7 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
     $this->assign('credentials', $this->getCredentials($this->_contactId));
     $this->assign('disciplinary', $this->getDisciplinaryActions($this->_contactId));
     if ($this->_action == CRM_Core_Action::VIEW) {
-      $this->addElement('button', 'done', ts('Done'), ['onclick' => "location.href='civicrm/editlisting'"]);
+      $this->addElement('button', 'done', ts('Update your profile'), ['onclick' => "location.href='civicrm/editlisting'", 'id' => '_qf_EditListing_cancel-bottom']);
     }
     else {
       $this->addButtons(array(
