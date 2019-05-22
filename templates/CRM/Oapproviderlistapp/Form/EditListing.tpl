@@ -36,10 +36,10 @@
 </div>
 {/if}
 {if $employers}
-{foreach from=$employers item=employer}
 <div class="label"><label for="{ts}Employer(s){/ts}">{ts}Employer(s){/ts}</label></div>
 <div class="content">
-<table class="form-item">
+  <table class="form-item">
+{foreach from=$employers item=employer}
   <tr>
     <td>
     {$employer.organization_name} <br/>
