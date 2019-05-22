@@ -82,17 +82,22 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
     $this->assign('employers', $this->getEmployers($this->_contactId));
     $this->assign('credentials', $this->getCredentials($this->_contactId));
     $this->assign('disciplinary', $this->getDisciplinaryActions($this->_contactId));
-    $this->addButtons(array(
-      array(
-        'type' => 'upload',
-        'name' => E::ts('Submit'),
-        'isDefault' => TRUE,
-      ),
-      array(
-        'type' => 'cancel',
-        'name' => E::ts('Cancel'),
-      ),
-    ));
+    if ($this->_action == CRM_Core_Action::VIEW) {
+      $this->addElement('button', 'done', ts('Done'), ['onclick' => "location.href='civicrm/editlisting'"]);
+    }
+    else {
+      $this->addButtons(array(
+        array(
+          'type' => 'upload',
+          'name' => E::ts('Submit'),
+          'isDefault' => TRUE,
+        ),
+        array(
+          'type' => 'cancel',
+          'name' => E::ts('Cancel'),
+        ),
+      ));
+    }
     $this->addFormRule(array('CRM_Oapproviderlistapp_Form_EditListing', 'imageRule'), $this);
   }
 

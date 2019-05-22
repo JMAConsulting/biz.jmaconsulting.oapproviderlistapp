@@ -22,7 +22,7 @@
 <div class=clear></div>
 {/if}
 {if $credentials.0.which_of_the_following_credentia_7}
-<div class="label"><label for="{ts}Credentials{/ts}">{ts}Credentials{/ts}</label></div>
+<div class="label"><label for="{ts}Credentials{/ts}">{ts}Title/Professional Credentials{/ts}</label></div>
 <div class="content">
 <table class="form-item">
 {foreach from=$credentials item=credential}
@@ -42,7 +42,7 @@
 {foreach from=$employers item=employer}
   <tr>
     <td>
-    {$employer.organization_name} <br/>
+    <b>{$employer.organization_name}</b> <br/>
     {$employer.street_address} <br/>
     {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code}
     <div class=clear></div>
@@ -60,9 +60,7 @@
 {/if}
 </div>
 <div class="crm-submit-buttons">
-{if $action neq 4}
   {include file="CRM/common/formButtons.tpl" location="bottom"}
-{/if}
 </div>
 {/crmScope}
 {literal}
