@@ -61,6 +61,7 @@
 {/if}
 </div>
 <div class="crm-submit-buttons">
+  {$form.done.html}
   {include file="CRM/common/formButtons.tpl" location="bottom"}
 </div>
 {/crmScope}
