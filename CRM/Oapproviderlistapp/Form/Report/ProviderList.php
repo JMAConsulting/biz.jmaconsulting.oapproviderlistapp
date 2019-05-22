@@ -22,6 +22,10 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
       'dbAlias' => "'1'",
       'default' => FALSE,
     ];
+    $this->_columns['civicrm_contact']['order_bys']['created_date'] = [
+      'name' => 'created_date',
+      'title' => ts('Created Date'),
+    ];
     $this->_columns['civicrm_value_proof_of_empl_13']['fields']['custom_49']['dbAlias'] = '1';
     $this->_columns['civicrm_value_other_profess_12']['fields']['custom_44']['dbAlias'] = 'GROUP_CONCAT(other_relevant_credential_44)';
     $this->_columns['civicrm_value_other_profess_12']['fields']['custom_45']['dbAlias'] = 'GROUP_CONCAT(date_obtained_45)';
