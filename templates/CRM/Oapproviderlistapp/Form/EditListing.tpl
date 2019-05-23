@@ -51,6 +51,7 @@
   </tr>
 {/foreach}
 </table>
+</div>
 <div class="content-description">
   <br/>
   <br/>
@@ -61,7 +62,6 @@
   To change Employer(s) information, please contact <a href="coordinator@oapproviderlist.ca">coordinator@oapproviderlist.ca</a></div>
 </div>
 {/if}
-</div>
 <div class="crm-submit-buttons">
   {$form.done.html}
   {include file="CRM/common/formButtons.tpl" location="bottom"}
