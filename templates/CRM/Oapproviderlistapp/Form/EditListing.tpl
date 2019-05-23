@@ -16,13 +16,8 @@
 {/if}
 
 <div class="crm-section form-item">
-{if $disciplinary}
-<div class="label"><label for="disciplinary">{ts}Disciplinary Actions{/ts}</label></div>
-<div class="content" style="padding-left:4px;">{$disciplinary}</div>
-<div class=clear></div>
-{/if}
 {if $credentials.0.which_of_the_following_credentia_7}
-<div class="label"><label for="{ts}Credentials{/ts}">{ts}Title/Professional Credentials{/ts}</label></div>
+<div class="label"><label for="{ts}Credentials{/ts}">{ts}Title/Professional Credentials{/ts}</label> *</div>
 <div class="content">
 <table class="form-item">
 {foreach from=$credentials item=credential}
@@ -37,7 +32,7 @@
 <div class=clear></div>
 {/if}
 {if $employers}
-<div class="label"><label for="{ts}Employer(s){/ts}">{ts}Employer(s){/ts}</label></div>
+<div class="label"><label for="{ts}Employer(s){/ts}">{ts}Employer(s){/ts} *</label></div>
 <div class="content">
   <table class="form-item">
 {foreach from=$employers item=employer}
@@ -56,7 +51,12 @@
   </tr>
 {/foreach}
 </table>
-<div class="content-description">To change Employer(s) information, please contact <a href="coordinator@oapproviderlist.ca">coordinator@oapproviderlist.ca</a></div>
+<div class="content-description">
+ * To change these fields, please contact info@oapproviderlist.ca.
+ <br/>
+ <br/>
+ <br/>
+  To change Employer(s) information, please contact <a href="coordinator@oapproviderlist.ca">coordinator@oapproviderlist.ca</a></div>
 </div>
 {/if}
 </div>
