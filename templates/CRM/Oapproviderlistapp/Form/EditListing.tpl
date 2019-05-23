@@ -17,7 +17,7 @@
 
 <div class="crm-section form-item">
 {if $credentials.0.which_of_the_following_credentia_7}
-<div class="label"><label for="{ts}Credentials{/ts}">{ts}Title/Professional Credentials{/ts}</label> *</div>
+<div class="label"><label for="{ts}Credentials{/ts}">{ts}Title/Professional Credentials{/ts}</label></div>
 <div class="content">
 <table class="form-item">
 {foreach from=$credentials item=credential}
@@ -32,7 +32,7 @@
 <div class=clear></div>
 {/if}
 {if $employers}
-<div class="label"><label for="{ts}Employer(s){/ts}">{ts}Employer(s){/ts} *</label></div>
+<div class="label"><label for="{ts}Employer(s){/ts}">{ts}Employer(s){/ts}</label></div>
 <div class="content">
   <table class="form-item">
 {foreach from=$employers item=employer}
