@@ -51,14 +51,10 @@
   </tr>
 {/foreach}
 </table>
-</div>
 <div class="content-description">
   <br/>
   <br/>
   <br/>
- * To change these fields, please contact <a href='mailto:info@oapproviderlist.ca'>info@oapproviderlist.ca</a>.
- <br/>
- <br/>
   To change Employer(s) information, please contact <a href="coordinator@oapproviderlist.ca">coordinator@oapproviderlist.ca</a></div>
 </div>
 {/if}
