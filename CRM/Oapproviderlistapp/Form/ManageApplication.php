@@ -59,7 +59,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       return;
     }
     $messageTemplates = new CRM_Core_DAO_MessageTemplate();
-    $messageTemplates->id = 68;
+    $messageTemplates->id = 70;
     $messageTemplates->find(TRUE);
 
     $body_subject = CRM_Core_Smarty::singleton()->fetch("string:$messageTemplates->msg_subject");

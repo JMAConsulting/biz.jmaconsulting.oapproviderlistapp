@@ -30,7 +30,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     foreach (['East', 'Central', 'North', 'South'] as $key) {
       $check[] = $form->createElement('radio', NULL, '', E::ts($key), $key, ['allowClear' => TRUE]);
     }
-    $form->addGroup($check, 'region', E::ts('Region'));
+    $group = $form->addGroup($check, 'region', E::ts('Region'));
+    $group->setAttribute('allowClear', TRUE);
 
     $check = [];
     foreach ([
