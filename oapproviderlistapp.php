@@ -250,7 +250,9 @@ function setMembership($cid, $submitValues) {
   if (!empty($cid)) {
     $oldStatus = NULL;
     $oldStatus = civicrm_api3('Contact', 'getvalue', ['return' => "custom_60", 'id' => $cid]);
-    $newStatus = reset(preg_grep('/^custom_60_[\d]*/', array_keys($submitValues)));
+    $submitKeys = array_keys($submitValues);
+    $key = preg_grep('/^custom_60_[\d]*/', $submitKeys);
+    $newStatus = reset($key);
     if (CRM_Utils_Array::value($newStatus, $submitValues) == 'Approved') {
       civicrm_api3('Membership', 'create', [
         'membership_type_id' => "OAP Clinical Supervisor Provider",
@@ -288,8 +290,8 @@ function setMembership($cid, $submitValues) {
 
 function createCMSAccount($cid) {
   require_once 'CRM/CU/Form/Task/CreateUserLogin.php';
-  if (!CRM_CU_Form_Task_CreateUserLogin::usernameRule($cid) && !CRM_CU_Form_Task_CreateUserLogin::emailRule($cid)) {
-    $name = CRM_Core_DAO::executeQuery("SELECT LOWER(CONCAT(first_name, '.', last_name)) as name, display_name FROM civicrm_contact WHERE id = %1", [1 => [$cid, "Integer"]])->fetchAll()[0];
+  if (!CRM_CU_Form_Task_CreateUserLogin::usernameRule($cid)) {
+    $name = CRM_Core_DAO::executeQuery("SELECT LOWER(CONCAT(first_name, '.', COALESCE(last_name, $cid))) as name, display_name FROM civicrm_contact WHERE id = %1", [1 => [$cid, "Integer"]])->fetchAll()[0];
     $params = [
       'cms_name' => $name['name'],
       'cms_pass' => 'changeme',
