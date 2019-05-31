@@ -25,6 +25,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       if (!empty($address[0])) {
         $defaults['work_address[1]'] = $address[0]['street_address'];
         $defaults['city[1]'] = $address[0]['city'];
+        $defaults['postal_code[1]'] = $address[0]['postal_code'];
       }
       if (!empty($phone[0])) {
         $defaults['phone[1]'] = $phone[0]['phone'];
@@ -50,6 +51,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         if (!empty($address[0])) {
           $defaults["work_address[$count]"] = $address[0]['street_address'];
           $defaults["city[$count]"] = $address[0]['city'];
+          $defaults["postal_code[$count]"] = $address[0]['postal_code'];
         }
         if (!empty($phone[0])) {
           $defaults["phone[$count]"] = $phone[0]['phone'];
@@ -66,8 +68,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
 
     for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
       $this->add('text', "organization_name[$rowNumber]", E::ts('Primary Employer Organization Name'), ['class' => 'big']);
-      $this->add('text', "work_address[$rowNumber]", E::ts('Work Address'), ['size' => 45, 'maxlength' => 96, 'class' => 'huge']);
       $this->add('text', "phone[$rowNumber]", E::ts('Phone Number'), ['size' => 20, 'maxlength' => 32, 'class' => 'medium']);
+      $this->add('text', "work_address[$rowNumber]", E::ts('Work Address'), ['size' => 45, 'maxlength' => 96, 'class' => 'huge']);
+      $this->add('text', "postal_code[$rowNumber]", E::ts('Postal code'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
       $this->add('text', "city[$rowNumber]", E::ts('City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
       $this->add('text', "email[$rowNumber]", E::ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
       CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49[$rowNumber]", 49, FALSE);
@@ -118,6 +121,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     }
     if (empty($fields["phone"][1])) {
       $errors['phone[1]'] = E::ts("Phone Number is required.");
+    }
+    if (empty($fields["postal_code"][1])) {
+      $errors['phone[1]'] = E::ts("Postal Code is required.");
     }
     if (empty($fields["city"][1])) {
       $errors['city[1]'] = E::ts("City/Town is required.");
@@ -181,6 +187,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         'address' => CRM_Utils_Array::value($key, $values['work_address']),
         'phone' => CRM_Utils_Array::value($key, $values['phone']),
         'city' => CRM_Utils_Array::value($key, $values['city']),
+        'postal_code' => CRM_Utils_Array::value($key, $values['postal_code']),
       ];
       $form->updateContactAddress($id, $params);
       if ($key == 1) {

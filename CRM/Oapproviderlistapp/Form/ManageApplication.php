@@ -293,6 +293,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         ];
         if ($param == 'address') {
           $apiParams['city'] = $params['city'];
+          $apiParams['postal_code'] = $params['postal_code'];
           $apiParams['street_address'] = $params[$param];
         }
         civicrm_api3(ucwords($param), 'create', $apiParams);

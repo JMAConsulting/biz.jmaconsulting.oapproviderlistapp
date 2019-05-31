@@ -30,14 +30,17 @@
                 {$form.organization_name.$rowNumber.html}
               </div>
               <div class="clear"></div><br/>
-              <div class="label">{$form.work_address.$rowNumber.label}  <span class="crm-marker" title="This field is required.">*</span></div>
-              <div class="content">{$form.work_address.$rowNumber.html}</div>
-              <div class="clear"></div><br/>
               <div class="label">{$form.phone.$rowNumber.label}  <span class="crm-marker" title="This field is required.">*</span> </div>
               <div class="content">{$form.phone.$rowNumber.html}</div>
               <div class="clear"></div><br/>
+              <div class="label">{$form.work_address.$rowNumber.label}  <span class="crm-marker" title="This field is required.">*</span></div>
+              <div class="content">{$form.work_address.$rowNumber.html}</div>
+              <div class="clear"></div><br/>
               <div class="label">{$form.city.$rowNumber.label}  <span class="crm-marker" title="This field is required.">*</span></div>
               <div class="content">{$form.city.$rowNumber.html}</div>
+              <div class="clear"></div><br/>
+              <div class="label">{$form.postal_code.$rowNumber.label}  <span class="crm-marker" title="This field is required.">*</span></div>
+              <div class="content">{$form.postal_code.$rowNumber.html}</div>
               <div class="clear"></div><br/>
               <div class="label">{$form.email.$rowNumber.label} {if $rowNumber neq 1}<span class="crm-marker" title="This field is required.">*</span>{/if}</div>
               <div class="content">{$form.email.$rowNumber.html}</div>
