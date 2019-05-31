@@ -229,6 +229,9 @@ msgstr "Nom de famille est un champ requis."
 msgid "Email Address is required"
 msgstr "Adresse courriel est un champ requis."
 
+msgid "Postal code is required"
+msgstr "Code postal est un champ requis."
+
 msgid "Email Address is a required field."
 msgstr "Adresse courriel est un champ requis."
 
@@ -345,3 +348,6 @@ msgstr "Note"
 
 msgid "I am looking for"
 msgstr "Ce que je cherche"
+
+msgid "Postal code"
+msgstr "Code postal"
