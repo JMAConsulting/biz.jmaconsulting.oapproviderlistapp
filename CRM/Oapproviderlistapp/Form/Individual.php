@@ -123,7 +123,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       $errors['phone[1]'] = E::ts("Phone Number is required.");
     }
     if (empty($fields["postal_code"][1])) {
-      $errors['phone[1]'] = E::ts("Postal Code is required.");
+      $errors['postal_code[1]'] = E::ts("Postal Code is required.");
     }
     if (empty($fields["city"][1])) {
       $errors['city[1]'] = E::ts("City/Town is required.");
