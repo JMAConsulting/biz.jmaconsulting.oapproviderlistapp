@@ -325,12 +325,7 @@ $clauses[] = " temp2.which_of_the_following_credentia_7 IS NULL ";
    */
   function alterRow(&$row) {
    if (!empty($row['language_64'])) {
-     $value = [];
-     $languages = explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row['language_64'], 1, -1));
-     foreach ($languages as $lang) {
-       $value[] = $this->_languages[$lang];
-     }
-     $row['language_64'] = implode(', ', $value);
+     $row['language_64'] = CRM_Utils_Array::value($row['language_64'], $this->_languages);
    }
    if (!empty($row['region_63'])) {
      $regions = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row['region_63'], 1, -1)));

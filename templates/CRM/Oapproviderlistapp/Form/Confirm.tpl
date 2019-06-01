@@ -26,13 +26,13 @@
       <tr>
         <td style="float:left;">
           {if $employer.files.displayURL}
-            {ts}Proof of Employment:{/ts} <a class="crm-image-popup" href="{$employer.files.displayURL}">
+            {ts}Proof of Employment:{/ts}
               {if !empty($employer.files.imageURL)}
-                {$employer.files.imageURL}
+                <a class="crm-image-popup" href="{$employer.files.displayURL}">{$employer.files.imageURL}</a>
               {else}
-                {$employer.files.name}
+                {$employer.files.displayURL}
               {/if}
-            </a><br>
+            </br>
           {/if}
         </td>
         <td>
@@ -104,6 +104,7 @@
 <script type="text/javascript">
 CRM.$(function($) {
   $('.crm-profile legend').hide();
+  $('#crm-container .signature').css('width', 'auto');
   $('#editrow-custom_46 .content .crm-frozen-field').val($('#editrow-custom_46 .content .crm-frozen-field').html($('#editrow-custom_46 .content .crm-frozen-field').text()).text());
   $('#editrow-custom_57 .content .crm-frozen-field').val($('#editrow-custom_57 .content .crm-frozen-field').html($('#editrow-custom_57 .content .crm-frozen-field').text()).text());
   $('#editrow-custom_58 .content .crm-frozen-field').val($('#editrow-custom_58 .content .crm-frozen-field').html($('#editrow-custom_58 .content .crm-frozen-field').text()).text());

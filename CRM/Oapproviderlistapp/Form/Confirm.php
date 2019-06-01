@@ -169,6 +169,20 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     parent::postProcess();
   }
 
+  $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Confirm', 'formRule'), $this);
+
+  public function formRule($fields, $files, $self) {
+    $errors = [];
+    if (!empty($fields['_qf_Confirm_submit_done'])) {
+      $email = civicrm_api3('Email', 'getvalue', ['contact_id' => $this->_contactID, 'is_primary' => TRUE, 'return' => 'email']);
+      if (empty($email)) {
+        $errors['_qf_default'] = ts('Email address not found. Please go back and provide email address');
+      }
+    }
+
+    return $errors;
+  }
+
   public function getTemplateFileName() {
     return 'CRM/Oapproviderlistapp/Form/Confirm.tpl';
   }
