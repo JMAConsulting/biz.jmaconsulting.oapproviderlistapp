@@ -138,6 +138,8 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     if ($this->_mode != 'embedded') {
       $this->addButtons($buttons);
     }
+
+    $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Confirm', 'formRule'), $this);
   }
 
   public function postProcess() {
@@ -168,8 +170,6 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     }
     parent::postProcess();
   }
-
-  $this->addFormRule(array('CRM_Oapproviderlistapp_Form_Confirm', 'formRule'), $this);
 
   public function formRule($fields, $files, $self) {
     $errors = [];
