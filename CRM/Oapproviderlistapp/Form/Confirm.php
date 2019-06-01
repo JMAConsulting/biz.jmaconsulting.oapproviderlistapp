@@ -174,7 +174,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
   public function formRule($fields, $files, $self) {
     $errors = [];
     if (!empty($fields['_qf_Confirm_submit_done'])) {
-      $email = civicrm_api3('Email', 'getvalue', ['contact_id' => $this->_contactID, 'is_primary' => TRUE, 'return' => 'email']);
+      $email = civicrm_api3('Email', 'getvalue', ['contact_id' => $self->_contactID, 'options' => ['limit' => 1], 'is_primary' => TRUE, 'return' => 'email']);
       if (empty($email)) {
         $errors['_qf_default'] = ts('Email address not found. Please go back and provide email address');
       }
