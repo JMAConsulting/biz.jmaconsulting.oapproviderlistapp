@@ -128,7 +128,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     if (empty($fields["city"][1])) {
       $errors['city[1]'] = E::ts("City/Town is required.");
     }
-    foreach ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
+    for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
       if (!empty($fields["organization_name"][$rowNumber]) && empty($files['custom_49']['name'][$rowNumber])) {
         $errors["custom_49[{$rowNumber}]"] = E::ts("Proof of Employment Letter is required.");
       }
