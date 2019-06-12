@@ -183,6 +183,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           'relationship_type_id' => 5,
           'contact_id_a' => $contactID,
           'contact_id_b' => $id,
+          'options' => ['limit' => 1],
         ])['id'];
         $fieldName = 'custom_49';
         $form->processEntityFile($fieldName, $values[$fieldName][$key], $relationshipID);

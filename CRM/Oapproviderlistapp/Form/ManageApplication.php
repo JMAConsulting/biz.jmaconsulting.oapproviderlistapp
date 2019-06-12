@@ -239,6 +239,10 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     if (empty($fileInfo['name'])) {
       return;
     }
+    if (empty($entityID)) {
+      CRM_Core_Error::debug_var('processEntityFile error', "can't find entityID");
+      return;
+    }
     $customFieldId = str_replace('custom_', '', $fieldName);
     list($tableName, $columnName, $groupID) = CRM_Core_BAO_CustomField::getTableColumnGroup($customFieldId);
 
