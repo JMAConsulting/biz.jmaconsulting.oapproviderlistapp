@@ -113,8 +113,12 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     if (empty($fields['last_name'])) {
       $errors['last_name'] = E::ts("Last Name is required");
     }
-    if (empty($fields['email[1]'])) {
-    //  $errors['email[1]'] = E::ts("Email Address is required.");
+    if (!empty($fields['email'][1])) {
+      // Check to see if email exists as provider.
+      $emailExists = civicrm_api3('Email', 'get', ['email' => $fields['email'][1]]);
+      if ($emailExists['count'] > 0) {
+        $errors['email[1]'] = E::ts("Email Address is already present.");
+      }
     }
     if (empty($fields["work_address"][1])) {
       $errors['work_address[1]'] = E::ts("Work Address is required.");

@@ -17,6 +17,17 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     CRM_Utils_System::setTitle(E::ts('OAP PROVIDER LIST APPLICATION FORM'));
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
     CRM_Oapproviderlistapp_Form_TabHeader::build($this, $this->_contactID);
+
+    // Check if application already submitted.
+    if ($this->_contactID) {
+      $statusCheck = civicrm_api3('Contact', 'get', [
+        'id' => $this->_contactID,
+        'return.custom_60' => 1,
+      ])['values'];
+      if (!empty($statusCheck[$this->_contactID]['custom_60'])) {
+        CRM_Core_Error::fatal(ts("You have already submitted this application."));
+      }
+    }
   }
 
   public function buildQuickForm() {
