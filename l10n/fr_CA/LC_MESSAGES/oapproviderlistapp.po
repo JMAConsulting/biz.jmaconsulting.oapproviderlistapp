@@ -351,3 +351,6 @@ msgstr "Ce que je cherche"
 
 msgid "Postal code"
 msgstr "Code postal"
+
+msgid "A person with this email address has already created an OAP Provider Listing application. Please contact info@oapproviderlist.ca for more information."
+msgstr "Une personne possédant cette même adresse courriel a déjà présenté une demande d’inscription sur la liste des fournisseurs de services prévue dans le POSA. Pour en savoir plus à ce sujet, veuillez utiliser l’adresse courriel suivante : info@oapproviderlist.ca"
