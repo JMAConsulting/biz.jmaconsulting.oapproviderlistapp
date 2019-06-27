@@ -257,7 +257,7 @@ $clauses[] = " temp2.which_of_the_following_credentia_7 IS NULL ";
     foreach ($_POST as $key => $value) {
       if (array_key_exists($key, $customElements) && !empty($value)) {
         if ($key == 'name') {
-          $clauses[] = "(contact_a.first_name LIKE '%$value%' OR contact_a.last_name LIKE '%$value%')";
+          $clauses[] = "(contact_a.first_name LIKE '%$value%' OR contact_a.last_name LIKE '%$value%' OR contact_a.sort_name LIKE '%$value%' OR contact_a.display_name LIKE '%$value%' )";
         }
         elseif ($key == 'language') {
           $languages = explode(',', $value);
