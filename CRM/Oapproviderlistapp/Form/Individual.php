@@ -115,8 +115,8 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     }
     if (!empty($fields['email'][1])) {
       // Check to see if email exists as provider.
-      $isProvider = CRM_Core_DAO::singleValueQuery('SELECT is_deleted FROM civicrm_email e INNER JOIN civicrm_contact c ON c.id = e.contact_id WHERE email LIKE %1', [1 => [$fields['email'][1], 'String']]);
-      if (empty($isProvider)) {
+      $isProvider = CRM_Core_DAO::singleValueQuery('SELECT is_deleted FROM civicrm_email e INNER JOIN civicrm_contact c ON c.id = e.contact_id WHERE email LIKE %1 AND e.contact_id = %2', [1 => [$fields['email'][1], 'String'], 2 => [$self->_contactID, 'Integer']]);
+      if ($isProvider != 1) {
         $errors['email[1]'] = E::ts("A person with this email address has already created an OAP Provider Listing application. Please contact info@oapproviderlist.ca for more information.");
       }
     }
