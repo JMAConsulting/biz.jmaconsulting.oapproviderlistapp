@@ -165,7 +165,6 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
       'civicrm_address_address_city' => 'city',
       'civicrm_address_address_street_address' => 'street_address',
       'civicrm_address_postal_code' => 'postal_code',
-      'civicrm_email_email' => 'email',
       'civicrm_phone_phone' => 'phone',
       ] as $column => $name) {
         if (!empty($row[$column])) {
