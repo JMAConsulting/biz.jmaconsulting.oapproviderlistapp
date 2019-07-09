@@ -298,13 +298,20 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
   public function updateContactAddress($contactID, $params) {
     foreach (['email', 'phone', 'address'] as $param) {
       if (!empty($params[$param])) {
-        $id = CRM_Utils_Array::value('id', civicrm_api3(ucwords($param), 'get', ['contact_id' => $contactID, 'is_primary' => TRUE, 'options' => ['limit' => 1]]));
+        $value = civicrm_api3(ucwords($param), 'get', ['contact_id' => $contactID, 'sequential' => TRUE, 'is_primary' => TRUE, 'options' => ['limit' => 1]]);
+        $id = CRM_Utils_Array::value('id', $value);
+        $isPrimary = TRUE;
+        if ($param == 'email') {
+          if ($id && !empty($value[0]['email']) && ($param['email'] != $value[0]['email'])) {
+            $isPrimary = FALSE;
+          }
+        }
         $apiParams = [
           'id' => $id,
           'contact_id' => $contactID,
           $param => $params[$param],
           'location_type_id' => 'Work',
-          'is_primary' => TRUE,
+          'is_primary' => $isPrimary,
         ];
         if ($param == 'address') {
           $apiParams['city'] = $params['city'];
