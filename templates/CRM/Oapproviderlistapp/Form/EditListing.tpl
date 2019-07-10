@@ -55,7 +55,7 @@
   <br/>
   <br/>
   <br/>
-  To change Employer(s) information, please contact <a href="coordinator@oapproviderlist.ca">coordinator@oapproviderlist.ca</a></div>
+  To change Employer(s) information, please contact <a href="mailto:info@oapproviderlist.ca">info@oapproviderlist.ca</a></div>
 </div>
 {/if}
 <div class="crm-submit-buttons">
