@@ -113,7 +113,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     if (empty($fields['last_name'])) {
       $errors['last_name'] = E::ts("Last Name is required");
     }
-    if (!empty($fields['email'][1])) {
+    if (!empty($fields['email'][1]) && !empty($self->_contactID)) {
       // Check to see if email exists as provider.
       $isProvider = CRM_Core_DAO::singleValueQuery('SELECT is_deleted FROM civicrm_email e INNER JOIN civicrm_contact c ON c.id = e.contact_id WHERE email LIKE %1 AND e.contact_id = %2', [1 => [$fields['email'][1], 'String'], 2 => [$self->_contactID, 'Integer']]);
       if ($isProvider != 1) {

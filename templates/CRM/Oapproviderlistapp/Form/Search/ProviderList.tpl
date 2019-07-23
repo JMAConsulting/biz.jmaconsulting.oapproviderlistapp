@@ -46,7 +46,7 @@
                   </td>
                 {else}
                   <td style="width:10%;text-align:right;">
-                    {$form.$element.label}{if $element eq 'region'}&nbsp;&nbsp;<a title="{ts}Click for map of regions{/ts}" href="/civicrm/file?reset=1&filename=region_b027bf1f1059130e1ebf36dd7e0f6b96.png&mime-type=image/png" class="crm-image-popup"><i class="crm-i fa-map-marker"></i></a>{/if}
+                    {$form.$element.label}{if $element eq 'region'}&nbsp;&nbsp;<a title="{ts}Click for map of regions{/ts}" href="/civicrm/file?reset=1&filename=Screen_Shot_2019_07_23_at_6_15_47_PM_8d080c4b5453b3e12e165b11764be645.png&mime-type=image/png" class="crm-image-popup"><i class="crm-i fa-map-marker"></i></a>{/if}
                   </td>
                   {if $element|strstr:'_date'}
                       <td>{include file="CRM/common/jcalendar.tpl" elementName=$element}</td>

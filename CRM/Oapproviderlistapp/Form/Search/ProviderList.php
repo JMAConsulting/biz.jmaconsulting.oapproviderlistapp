@@ -27,7 +27,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $form->addElement('checkbox', 'supervision_filter', E::ts('Offers supervision') . '?', NULL);
     $form->addElement('checkbox', 'videoconferencing_filter', E::ts('Offers remote services') . '?', NULL);
     $check = [];
-    foreach (['East', 'Central', 'North', 'South'] as $key) {
+    foreach (['East', 'Central', 'North', 'West'] as $key) {
       $check[] = $form->createElement('radio', NULL, '', E::ts($key), $key, ['allowClear' => TRUE]);
     }
     $group = $form->addGroup($check, 'region', E::ts('Region'));
@@ -329,7 +329,7 @@ $clauses[] = " temp2.which_of_the_following_credentia_7 IS NULL ";
    }
    if (!empty($row['region_63'])) {
      $regions = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row['region_63'], 1, -1)));
-     $row['region_63'] = implode(', ', $regions);
+     $row['region_63'] = str_replace('South', 'West', implode(', ', $regions));
    }
     //CRM_Core_Error::debug_var('row', $row);
   }
