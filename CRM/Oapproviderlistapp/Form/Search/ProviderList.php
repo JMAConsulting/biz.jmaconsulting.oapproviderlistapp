@@ -249,12 +249,12 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'name' => 'contact_a.first_name',
       'city' => 'address.city',
     ];
-    $submittedValues = $_POST;
+    $submittedValues = $this->_formValues;
     $clauses = [];
-if (empty($_POST['credentials'])) {
-$clauses[] = " temp2.which_of_the_following_credentia_7 IS NULL ";
-}
-    foreach ($_POST as $key => $value) {
+    if (empty($submittedValues['credentials'])) {
+     $clauses[] = " temp2.which_of_the_following_credentia_7 IS NULL ";
+    }
+    foreach ($submittedValues as $key => $value) {
       if (array_key_exists($key, $customElements) && !empty($value)) {
         if ($key == 'name') {
           $clauses[] = "(contact_a.first_name LIKE '%$value%' OR contact_a.last_name LIKE '%$value%' OR contact_a.sort_name LIKE '%$value%' OR contact_a.display_name LIKE '%$value%' )";
@@ -268,15 +268,7 @@ $clauses[] = " temp2.which_of_the_following_credentia_7 IS NULL ";
           $clauses[] = '(' . implode(' OR ', $c) . ')';
         }
         elseif ($key == 'region') {
-          $c = [];
-          foreach ($value as $k => $v) {
-            if ($v == 1) {
-              $c[] = "$customElements[$key] = '$k'";
-            }
-          }
-          if (!empty($c)) {
-            $clauses[] = '(' . implode(' OR ', $c) . ')';
-          }
+          $clauses[] = sprintf("%s = '%s'", $customElements[$key], $value);
         }
         elseif ($key == 'credentials') {
           $c = [];
