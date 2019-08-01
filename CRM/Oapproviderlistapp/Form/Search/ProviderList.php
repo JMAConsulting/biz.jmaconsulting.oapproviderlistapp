@@ -268,7 +268,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
           $clauses[] = '(' . implode(' OR ', $c) . ')';
         }
         elseif ($key == 'region') {
-          $clauses[] = sprintf("%s = '%s'", $customElements[$key], $value);
+          $clauses[] = sprintf("%s LIKE '%s'", $customElements[$key], '%' . $value . '%');
         }
         elseif ($key == 'credentials') {
           $c = [];
