@@ -105,6 +105,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     $url = CRM_Utils_System::url("civicrm/application", sprintf("cid=%d%s", $contactID, $qfKey), TRUE);
     $contact_params = array(array('contact_id', '=', $contactID, 0, 0));
     $contact = civicrm_api3('Contact', 'getsingle', ['id' => $contactID]);
+    $contact['email'] = $contact['email'] ?: CRM_Core_DAO::singleValueQuery("SELECT email FROM civicrm_email WHERE is_primary = 1 AND contact_id = " . $contactID . " LIMIT 1");
     $messageTemplates = new CRM_Core_DAO_MessageTemplate();
     $messageTemplates->id = 68;
     $messageTemplates->find(TRUE);
