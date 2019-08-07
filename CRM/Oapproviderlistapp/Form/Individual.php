@@ -97,13 +97,14 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
   }
 
   public function formRule($fields, $files, $self) {
+    $errors = [];
     if (!empty($fields['_qf_Individual_submit_done'])) {
       if (empty($fields['email[1]'])) {
         $errors['email[1]'] = E::ts("Email is a required field to send draft link.");
       }
-      return TRUE;
+      return $errors;
     }
-    $errors = [];
+
     if (empty($fields["organization_name"][1])) {
       $errors['organization_name[1]'] = E::ts("At least one Current Employer is required.");
     }
