@@ -302,8 +302,13 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         $value = civicrm_api3(ucwords($param), 'get', ['contact_id' => $contactID, 'sequential' => TRUE, 'is_primary' => TRUE, 'options' => ['limit' => 1]]);
         $id = CRM_Utils_Array::value('id', $value);
         $isPrimary = TRUE;
-        if ($param == 'email') {
-          if ($id && !empty($value[0]['email']) && ($param['email'] != $value[0]['email'])) {
+        if ($param == 'email' || $param == 'phone') {
+          if ($id && !empty($value['values'][0][$param]) && ($params[$param] != $value['values'][0][$param])) {
+            $isPrimary = FALSE;
+          }
+        }
+        if ($param == 'address') {
+          if ($id && !empty($value['values'][0]['street_address']) && ($params[$param] != $value['values'][0]['street_address'])) {
             $isPrimary = FALSE;
           }
         }
@@ -312,8 +317,13 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
           'contact_id' => $contactID,
           $param => $params[$param],
           'location_type_id' => 'Work',
-          'is_primary' => $isPrimary,
         ];
+        if ($isPrimary) {
+          $apiParams['is_primary'] = TRUE;
+        }
+        else {
+          unset($apiParams['id']);
+        }
         if ($param == 'address') {
           $apiParams['city'] = $params['city'];
           $apiParams['postal_code'] = $params['postal_code'];

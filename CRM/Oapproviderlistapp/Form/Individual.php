@@ -45,9 +45,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       foreach ($relationships as $relationship) {
         $contact = civicrm_api3('Contact', 'getsingle', ['id' => $relationship['contact_id_b']]);
         $defaults["organization_name[$count]"] = $contact['organization_name'];
-        $defaults["email[$count]"] = $contact['email'];
-        $address = civicrm_api3('Address', 'get', ['contact_id' => $relationship['contact_id_b'], 'sequential' => 1])['values'];
-        $phone = civicrm_api3('Phone', 'get', ['contact_id' => $relationship['contact_id_b'], 'sequential' => 1])['values'];
+   //     $defaults["email[$count]"] = $contact['email'];
+   //     $address = civicrm_api3('Address', 'get', ['contact_id' => $relationship['contact_id_b'], 'sequential' => 1])['values'];
+   //     $phone = civicrm_api3('Phone', 'get', ['contact_id' => $relationship['contact_id_b'], 'sequential' => 1])['values'];
         if (!empty($address[0])) {
           $defaults["work_address[$count]"] = $address[0]['street_address'];
           $defaults["city[$count]"] = $address[0]['city'];
@@ -116,8 +116,8 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     }
     if (!empty($fields['email'][1]) && !empty($self->_contactID)) {
       // Check to see if email exists as provider.
-      $isProvider = CRM_Core_DAO::singleValueQuery('SELECT is_deleted FROM civicrm_email e INNER JOIN civicrm_contact c ON c.id = e.contact_id WHERE email LIKE %1 AND e.contact_id = %2', [1 => [$fields['email'][1], 'String'], 2 => [$self->_contactID, 'Integer']]);
-      if ($isProvider != 1) {
+      $isProvider = CRM_Core_DAO::singleValueQuery('SELECT IF(is_deleted=0, "Yes", "No") FROM civicrm_email e INNER JOIN civicrm_contact c ON c.id = e.contact_id WHERE email LIKE %1 AND is_deleted <> 1', [1 => [$fields['email'][1], 'String']]);
+      if (!empty($isProvider) && $isProvider == "Yes") {
         $errors['email[1]'] = E::ts("A person with this email address has already created an OAP Provider Listing application. Please contact info@oapproviderlist.ca for more information.");
       }
     }
@@ -153,6 +153,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       }
     }
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
+    $values['skip_greeting_processing'] = TRUE;
     $contactID = CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $contactID, NULL, OAP_INDIVIDUAL);
 
     foreach ($values['organization_name'] as $key => $name) {
@@ -181,7 +182,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           'contact_id_b' => $id,
         ])['id'];
         $fieldName = 'custom_49';
-        $form->processEntityFile($fieldName, $values[$fieldName][$key], $relationshipID);
+        if (!empty($values[$fieldName])) {
+          $form->processEntityFile($fieldName, $values[$fieldName][$key], $relationshipID);
+        }
       }
       else {
         $relationshipID = civicrm_api3('Relationship', 'create', [
@@ -190,7 +193,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
           'contact_id_b' => $id,
         ])['id'];
         $fieldName = 'custom_49';
-        $form->processEntityFile($fieldName, $values[$fieldName][$key], $relationshipID);
+        if (!empty($values[$fieldName])) {
+          $form->processEntityFile($fieldName, $values[$fieldName][$key], $relationshipID);
+        }
       }
       $params = [
         'email' => CRM_Utils_Array::value($key, $values['email']),
