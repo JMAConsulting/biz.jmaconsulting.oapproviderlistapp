@@ -163,6 +163,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
         'id' => $this->_contactID,
         'is_deleted' => FALSE,
         'custom_60' => "Submitted",
+        'custom_65' => 1,
       ]);
       $this->sendConfirm($this->_contactID);
       CRM_Core_Session::setStatus("", E::ts('Thank you for submitting your application to the OAP Provider List'), "success");
