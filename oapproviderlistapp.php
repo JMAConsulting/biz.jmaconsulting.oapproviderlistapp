@@ -292,6 +292,10 @@ function createCMSAccount($cid) {
   require_once 'CRM/CU/Form/Task/CreateUserLogin.php';
   if (!CRM_CU_Form_Task_CreateUserLogin::usernameRule($cid)) {
     $name = CRM_Core_DAO::executeQuery("SELECT LOWER(CONCAT(first_name, '.', COALESCE(last_name, $cid))) as name, display_name FROM civicrm_contact WHERE id = %1", [1 => [$cid, "Integer"]])->fetchAll()[0];
+    $name1 = CRM_Core_DAO::executeQuery("SELECT LOWER(CONCAT(first_name, '.', last_name)) as name, display_name FROM civicrm_contact WHERE id != %1", [1 => [$cid, "Integer"]])->fetchAll()[0];
+    if (!empty($name1['name']) && $name['name'] == $name1['name']) {
+      $name['name'] .= $cid;
+    }
     $params = [
       'cms_name' => $name['name'],
       'cms_pass' => 'changeme',
