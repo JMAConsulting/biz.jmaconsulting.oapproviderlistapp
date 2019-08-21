@@ -261,6 +261,19 @@ function setMembership($cid, $submitValues) {
       ]);
       // Create drupal account if not exists.
       createCMSAccount($cid);
+
+      $activityID = civicrm_api3('Activity', 'get', [
+        'source_contact_id' => $cid,
+        'activity_type_id' => "Provider List Application Submission",
+        'activity_status_id' => 'Scheduled',
+        'sequential' => 1,
+      ])['values'][0]['id'];
+      if (!empty($activityID)) {
+        civicrm_api3('Activity', 'create', [
+          'id' => $activityID,
+          'activity_status_id' => 'Completed',
+        ]);
+      }
     }
     elseif (CRM_Utils_Array::value($newStatus, $submitValues) == 'Cancelled') {
       $membershipID = civicrm_api3('Membership', 'get', [
