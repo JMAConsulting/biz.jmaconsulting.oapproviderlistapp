@@ -317,7 +317,15 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    */
   function alterRow(&$row) {
    if (!empty($row['language_64'])) {
-     $row['language_64'] = CRM_Utils_Array::value($row['language_64'], $this->_languages);
+     $row['language_64'] = explode(CRM_Core_DAO::VALUE_SEPARATOR, $row['language_64']);
+     foreach ($row['language_64'] as $k => $language) {
+       if (!array_key_exists($language, $this->_languages)) {
+         unset($row['language_64'][$k]);
+         continue;
+       }
+       $row['language_64'][$k] = CRM_Utils_Array::value($language, $this->_languages);
+     }
+     $row['language_64'] = implode(', ', $row['language_64']);
    }
    if (!empty($row['region_63'])) {
      $regions = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row['region_63'], 1, -1)));
