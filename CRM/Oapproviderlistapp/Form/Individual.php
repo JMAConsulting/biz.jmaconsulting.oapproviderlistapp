@@ -206,6 +206,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       ];
       $form->updateContactAddress($id, $params);
       if ($key == 1) {
+        CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $contactID, 'employer_id', $id);
         $form->updateContactAddress($contactID, $params);
       }
     }
