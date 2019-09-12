@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/civicrm" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/civicrm/packages" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/civicrm/tests/phpunit" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/civicrm/civicrm-cxn-rpc" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/civicrm/civicrm-setup" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/dompdf/dompdf" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/electrolinux/phpquery" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/marcj/topsort" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/pclzip/pclzip" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/pear/auth_sasl" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/pear/net_smtp" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/pear/net_socket" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/pear/pear_exception" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/pear/validate_finance_creditcard" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/phenx/php-font-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/phenx/php-svg-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/phpoffice/common" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/phpoffice/phpword" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/phpseclib/phpseclib" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/sabberworm/php-css-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/symfony/config" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/symfony/dependency-injection" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/symfony/polyfill-iconv" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/tecnickcom/tcpdf" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/totten/ca-config" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/zendframework/zend-escaper" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/zendframework/zend-stdlib" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/zendframework/zend-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/zetacomponents/base" />
+      <excludeFolder url="file://$MODULE_DIR$/civicrm/vendor/zetacomponents/mail" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

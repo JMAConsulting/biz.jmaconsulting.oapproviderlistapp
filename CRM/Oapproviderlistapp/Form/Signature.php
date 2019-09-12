@@ -33,14 +33,23 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
     $values = $this->controller->exportValues($this->_name);
     if (!empty($this->_contactID)) {
       $fields = CRM_Core_BAO_UFGroup::getFields(OAP_SIGNATURE, FALSE, CRM_Core_Action::VIEW);
-      $activityID = civicrm_api3('Activity', 'create', [
+      $activity = civicrm_api3('Activity', 'get', [
+        'source_contact_id' => $this->_contactID,
+        'activity_type_id' => "Provider List Application Submission",
+        'sequential' => 0,
+      ])['values'][0];
+      $actParams = [
         'source_contact_id' => $this->_contactID,
         'activity_type_id' => "Provider List Application Submission",
         'subject' => 'Provider List Application Submission',
         'activity_status_id' => 'Scheduled',
         'target_id' => $this->_contactID,
         'assignee_id' => 99184,
-      ])['id'];
+      ];
+      if (!empty($activity['id'])) {
+        $actParams['id'] = $activity['id'];
+      }
+      $activityID = civicrm_api3('Activity', 'create', $actParams)['id'];
 
       $fieldName = 'custom_58';
       $this->processEntityFile($fieldName, $values[$fieldName], $activityID);

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/civicrm/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/zetacomponents/mail" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/zetacomponents/base" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/pclzip/pclzip" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/zendframework/zend-escaper" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/zendframework/zend-stdlib" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/zendframework/zend-validator" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/totten/ca-config" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/phpoffice/common" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/phpoffice/phpword" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/pear/auth_sasl" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/civicrm/civicrm-setup" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/pear/net_socket" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/civicrm/civicrm-cxn-rpc" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/pear/validate_finance_creditcard" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/pear/net_smtp" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/marcj/topsort" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/pear/pear_exception" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/tecnickcom/tcpdf" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/electrolinux/phpquery" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/composer" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/civicrm/vendor/guzzlehttp/psr7" />
+    </include_path>
+  </component>
+</project>
