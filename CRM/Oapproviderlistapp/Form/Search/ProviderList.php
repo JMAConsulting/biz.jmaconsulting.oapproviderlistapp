@@ -27,7 +27,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $form->addElement('checkbox', 'supervision_filter', E::ts('Offers supervision') . '?', NULL);
     $form->addElement('checkbox', 'videoconferencing_filter', E::ts('Offers remote services') . '?', NULL);
     $check = [];
-    foreach (['East', 'Central', 'North', 'West'] as $key) {
+    foreach (['East', 'Central', 'Toronto', 'North', 'West'] as $key) {
       $check[] = $form->createElement('radio', NULL, '', E::ts($key), $key, ['allowClear' => TRUE]);
     }
     $group = $form->addGroup($check, 'region', E::ts('Region'));
