@@ -70,13 +70,13 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       if (strstr($key, 'custom_')) {
         if (!is_array($value)) {
           if (trim($value) === '') {
-            $values[$key] = NULL;
+            unset($values[$key]);
           }
         }
         else {
           foreach ($value as $k => $v) {
             if (trim($value) === '') {
-              $values[$key][$k] = NULL;
+              unset($values[$key][$k]);
             }
           }
         }
