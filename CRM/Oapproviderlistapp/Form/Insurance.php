@@ -27,6 +27,7 @@ class CRM_Oapproviderlistapp_Form_Insurance extends CRM_Oapproviderlistapp_Form_
   public function postProcess() {
     parent::postProcess();
     $values = $this->controller->exportValues($this->_name);
+    $this->processCustomValue($values);
 
     if (!empty($this->_contactID)) {
       $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INSURANCE, FALSE, CRM_Core_Action::VIEW);

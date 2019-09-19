@@ -84,6 +84,8 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
   public function postProcess() {
     parent::postProcess();
     $values = $this->controller->exportValues($this->_name);
+    $this->processCustomValue($values);
+    $this->processCustomValue($this->_submitValues);
     if (!empty($this->_contactID)) {
       $params = array_merge($values, ['contact_id' => $this->_contactID]);
       $fields = [];
