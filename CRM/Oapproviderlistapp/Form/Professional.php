@@ -78,6 +78,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
   public function postProcess() {
     parent::postProcess();
     $values = $this->controller->exportValues($this->_name);
+    $this->processCustomValue($values);
     if (!empty($this->_contactID)) {
       $params = array_merge($values, ['contact_id' => $this->_contactID]);
       $fields = [];

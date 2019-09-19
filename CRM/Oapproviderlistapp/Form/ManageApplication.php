@@ -65,6 +65,25 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     parent::postProcess();
   }
 
+  public function processCustomValue(&$values) {
+    foreach ($values as $key => $value) {
+      if (strstr($key, 'custom_')) {
+        if (!is_array($value)) {
+          if (trim($value) === '') {
+            $values[$key][$value] = NULL;
+          }
+        }
+        else {
+          foreach ($value as $k => $v) {
+            if (trim($value) === '') {
+              $values[$key][$k] = NULL;
+            }
+          }
+        }
+      }
+    }
+  }
+
   public function sendConfirm($contactID) {
     if (empty($contactID)) {
       return;
