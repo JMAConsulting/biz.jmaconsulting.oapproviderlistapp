@@ -72,6 +72,8 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
         }
       }
     }
+    $self->disableTab($errors);
+
     return $errors;
   }
 
