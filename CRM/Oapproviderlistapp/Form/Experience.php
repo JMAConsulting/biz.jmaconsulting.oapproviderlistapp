@@ -64,7 +64,7 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
           $errors['_qf_default'] = E::ts('All fields in Employment History are required.');
           CRM_Core_Session::setStatus("", E::ts('All fields in Employment History are required.'), "alert");
         }
-        elseif ((strstr($fieldName, 'custom_47') && !empty($fields[$fieldName])) {
+        elseif (strstr($fieldName, 'custom_47') && !empty($fields[$fieldName])) {
           $contact = civicrm_api3('Contact', 'get', [
             'sequential' => 1,
             'id' => $self->_contactID,
