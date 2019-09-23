@@ -36,9 +36,7 @@ CRM.$(function($) {
 
   var disableTab = '{/literal}{$disableTab}{literal}';
   if (disableTab == 1) {
-    $('#mainTabContainer ul li a').not($('#mainTabContainer ul li.ui-tabs-active')).click(function() {
-      return false;
-    });
+    $('#mainTabContainer ul li a').not($('#mainTabContainer ul li.ui-tabs-active')).removeAttr('class');
   }
 
   function rearrangeFields() {

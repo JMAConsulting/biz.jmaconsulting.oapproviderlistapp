@@ -78,6 +78,11 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
       $_SESSION[$self->get('qfKey')] = $errors;
       CRM_Core_BAO_Cache::setItem($fields, 'custom params', $self->get('qfKey'));
     }
+
+    if (count($errors) > 0) {
+      $self->assign('disableTab', 1);
+    }
+
     return $errors;
   }
 

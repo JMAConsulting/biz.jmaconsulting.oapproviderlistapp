@@ -30,6 +30,11 @@ CRM.$(function($) {
     });
   });
 
+  var disableTab = '{/literal}{$disableTab}{literal}';
+  if (disableTab == 1) {
+    $('#mainTabContainer ul li a').not($('#mainTabContainer ul li.ui-tabs-active')).removeAttr('class');
+  }
+
   $('#_qf_Experience_submit_done-bottom').on('click', function() {
     var msg = {/literal}"{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}An email will be sent to you{/ts}. {ts}It will contain a link that you can click to continue to review this request within the next seven days.{/ts}{/crmScope}"{literal};
     CRM.alert(msg);
