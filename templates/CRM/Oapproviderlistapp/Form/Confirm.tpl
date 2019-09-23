@@ -69,15 +69,16 @@
     <fieldset>
     <legend>{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}Employment History{/ts}{/crmScope}</legend>
     {foreach from=$employers item=values}
-      <div class="crm-section form-item">
+      <table class="crm-section form-item">
       {foreach from=$values item=value key=label}
-        <div class="label">
+      <tr>
+        <td class="label">
           <label>{$label}</label>
-        </div>
-        <div class="content">{$value}</div>
-        <br/>
+        </td>
+        <td class="content">{$value}</td>
+      </tr>
       {/foreach}
-      </div>
+    </table>
     {/foreach}
   </fieldset>
   {/if}
