@@ -39,18 +39,6 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     }
   }
 
-  public function disableTab($errors) {
-    if (count($errors) > 0) {
-      CRM_Core_Resources::singleton()->addScript("
-      CRM.$(function($) {
-        $('#mainTabContainer ul li a').not($('#mainTabContainer ul li.ui-tabs-active')).click(function() {
-          return false;
-        });
-      });
-      ");
-    }
-  }
-
   public function buildQuickForm() {
     $fileLink = (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'fr') ? '/sites/default/files/2019-04/v2%20OAP%20Registry%20Application%20French%20package.pdf' : '/sites/default/files/2019-04/v2%20OAP%20Registry%20Application%20package_0.pdf';
     $this->assign('fileLink', $fileLink);

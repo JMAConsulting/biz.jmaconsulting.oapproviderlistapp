@@ -34,6 +34,13 @@ CRM.$(function($) {
     rearrangeFields();
   });
 
+  var disableTab = '{/literal}{$disableTab}{literal}';
+  if (disableTab == 1) {
+    $('#mainTabContainer ul li a').not($('#mainTabContainer ul li.ui-tabs-active')).click(function() {
+      return false;
+    });
+  }
+
   function rearrangeFields() {
     // Certification Dates
     $('#editrow-custom_8').insertAfter($('input[name="custom_7[1]"]').parent('td'));
