@@ -68,12 +68,7 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
           $contact = civicrm_api3('Contact', 'get', [
             'sequential' => 1,
             'id' => $self->_contactID,
-            'return' => [
-              'custom_8',
-              'custom_9',
-              'custom_10',
-              'custom_11',
-            ],
+            'return' => ['custom_8', 'custom_9', 'custom_10', 'custom_11'],
           ])['values'][0];
           $lowestData = NULL;
           foreach (['custom_8', 'custom_9', 'custom_10', 'custom_11'] as $key) {
