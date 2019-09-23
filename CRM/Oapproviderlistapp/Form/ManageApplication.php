@@ -15,6 +15,15 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
 
   public function preProcess() {
     CRM_Utils_System::setTitle(E::ts('OAP PROVIDER LIST APPLICATION FORM'));
+    CRM_Core_Resources::singleton()->addScript("
+    CRM.$(function($) {
+      if ($('#mainTabContainer').hasClass('crm-error')) {
+        $('#mainTabContainer ul li a').not($('#mainTabContainer ul li.ui-tabs-active')).click(function() {
+          return false;
+        });
+      }
+    });
+    ");
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
     CRM_Oapproviderlistapp_Form_TabHeader::build($this, $this->_contactID);
 
