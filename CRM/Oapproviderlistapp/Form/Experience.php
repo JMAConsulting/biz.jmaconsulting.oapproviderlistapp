@@ -63,7 +63,28 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
         if (empty($fields[$fieldName])) {
           $errors['_qf_default'] = E::ts('All fields in Employment History are required.');
           CRM_Core_Session::setStatus("", E::ts('All fields in Employment History are required.'), "alert");
-      }
+        }
+        elseif ((strstr($fieldName, 'custom_47') && !empty($fields[$fieldName])) {
+          $contact = civicrm_api3('Contact', 'get', [
+            'sequential' => 1,
+            'id' => $self->_contactID,
+            'return' => [
+              'custom_8',
+              'custom_9',
+              'custom_10',
+              'custom_11',
+            ],
+          ])['values'][0];
+          $lowestData = NULL;
+          foreach (['custom_8', 'custom_9', 'custom_10', 'custom_11'] as $key) {
+            if (!$lowestData || $lowestData > strtotime($contact[$key])) {
+              $lowestData = strtotime($contact[$key]);
+            }
+          }
+          if (strtotime($fields[$fieldName]) < $lowestData) {
+            $errors['_qf_default'] = E::ts('For the purposes of OAP Provider List, only your employment after certification is counted. Please change Employment History Start Date to your certification date');
+          }
+        }
         elseif ((strstr($fieldName, 'custom_36') || strstr($fieldName, 'custom_37')) && !CRM_Utils_Rule::positiveInteger($fields[$fieldName])) {
           $name = strstr($fieldName, 'custom_37') ? E::ts('Approximate number of hours that involved supervisory duties') : E::ts('Total number of hours');
           $errors['_qf_default'] = E::ts('Please enter a numeric value for "%1"', [1 => $name]);
