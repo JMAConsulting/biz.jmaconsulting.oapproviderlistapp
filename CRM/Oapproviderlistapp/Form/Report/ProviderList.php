@@ -191,7 +191,7 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
           $value = (array) explode(',', $rows[$rowNum][$k]);
           $v = [];
           foreach($value as $date) {
-            $v[] = date("F j Y g:i a", strtotime($date));
+            $v[] = $this->_outputMode == 'csv' ? date("Y-m-d", strtotime($date)) : date("F j Y g:i a", strtotime($date));
           }
           $rows[$rowNum][$k] = implode(', ', $v);
           $entryFound = TRUE;
