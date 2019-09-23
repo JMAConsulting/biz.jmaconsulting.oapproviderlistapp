@@ -67,7 +67,7 @@
   {include file="CRM/UF/Form/Block.tpl" fields=$experience}
   {if $employers}
     <fieldset>
-    <legend>{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}Employment History{/ts}{/crmScope}</legend>
+    <div class="header-dark">{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}Employment History{/ts}{/crmScope}</div>
     {foreach from=$employers item=values}
       <div class="crm-section form-item">
       {foreach from=$values item=value key=label}
