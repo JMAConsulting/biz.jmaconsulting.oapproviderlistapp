@@ -36,7 +36,7 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
     $this->_columns['civicrm_contact']['fields']['verified_date'] = [
       'name' => 'verified_date',
       'title' => ts('Verified Date'),
-      'dbAlias' => 'DATE(a.activity_date_time)',
+      'dbAlias' => 'DATE(MAX(a.activity_date_time))',
       'type' => CRM_Utils_Type::T_DATE,
     ];
     $this->_columns['civicrm_contact']['filters']['approval_date'] = [
@@ -67,7 +67,7 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
     $this->joinEmailFromContact();
     $this->joinCountryFromAddress();
     $this->_from .= " LEFT JOIN civicrm_membership mem ON {$this->_aliases['civicrm_contact']}.id = mem.contact_id AND mem.membership_type_id = 4
-      LEFT JOIN civicrm_activity_contact ac ON ac.contact_id = {$this->_aliases['civicrm_contact']}.id AND ac.record_type_id = 3
+      LEFT JOIN civicrm_activity_contact ac ON ac.contact_id = {$this->_aliases['civicrm_contact']}.id AND ac.record_type_id = 3 AND ac.activity_id IS NOT NULL
       LEFT JOIN civicrm_activity a ON a.id = ac.activity_id AND a.activity_type_id = 58 AND a.subject LIKE '%changed to Verified%'
      ";
   }
@@ -101,6 +101,7 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
     LEFT JOIN civicrm_activity ca ON ca.id = cac.activity_id AND ca.activity_type_id = 56
     LEFT JOIN civicrm_value_signature_14 value_signature_14_civireport ON value_signature_14_civireport.entity_id = ca.id AND value_signature_14_civireport.entity_id IS NOT NULL
     ";
+
     $sql = str_replace($match, $replace, $sql);
     $this->_from = str_replace($match, $replace, $this->_from);
 
