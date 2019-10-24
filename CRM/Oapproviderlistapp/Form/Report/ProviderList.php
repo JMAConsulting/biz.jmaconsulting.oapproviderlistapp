@@ -26,6 +26,12 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
       'name' => 'created_date',
       'title' => ts('Created Date'),
     ];
+    $this->_columns['civicrm_contact']['fields']['approval_date'] = [
+      'name' => 'approval_date',
+      'title' => ts('Approval Date'),
+      'dbAlias' => 'mem.start_date',
+      'type' => CRM_Utils_Type::T_DATE,
+    ];
     $this->_columns['civicrm_value_proof_of_empl_13']['fields']['custom_49']['dbAlias'] = '1';
     $this->_columns['civicrm_value_other_profess_12']['fields']['custom_44']['dbAlias'] = 'GROUP_CONCAT(other_relevant_credential_44)';
     $this->_columns['civicrm_value_other_profess_12']['fields']['custom_45']['dbAlias'] = 'GROUP_CONCAT(date_obtained_45)';
@@ -36,6 +42,22 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
     $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_48']['dbAlias'] = 'GROUP_CONCAT(end_date_48)';
     $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_48']['type'] = CRM_Utils_Type::T_STRING;
     $this->_columns['civicrm_value_employment_hi_10']['fields']['custom_35']['dbAlias'] = 'GROUP_CONCAT(main_tasks_that_involved_deliver_35)';
+    $this->_columns['civicrm_value_track_changes_17']['fields']['custom_60']['title'] = ts('Current Status');
+  }
+
+  public function from() {
+    $this->_from = "
+        FROM civicrm_contact {$this->_aliases['civicrm_contact']} {$this->_aclFrom} ";
+    $this->joinAddressFromContact();
+    $this->joinPhoneFromContact();
+    $this->joinEmailFromContact();
+    $this->joinCountryFromAddress();
+    $this->_from .= " LEFT JOIN civicrm_membership mem ON {$this->_aliases['civicrm_contact']}.id = mem.contact_id ";
+  }
+
+  public function where() {
+    parent::where();
+    $this->_where = str_replace('AND ( contact_civireport.is_deleted = 0 )', '', $this->_where);
   }
 
   public function groupBy() {
