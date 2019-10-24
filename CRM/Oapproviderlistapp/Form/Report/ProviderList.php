@@ -15,6 +15,7 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
     $this->_columns['civicrm_contact']['fields']['created_date'] = [
       'title' => ts('Created Date'),
       'default' => FALSE,
+      'dbAlias' => 'DATE(contact_civireport.created_date)'
     ];
     unset($this->_columns['civicrm_contact']['fields']['employer_id']);
     $this->_columns['civicrm_contact']['fields']['employer'] = [
@@ -30,6 +31,12 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
       'name' => 'approval_date',
       'title' => ts('Approval Date'),
       'dbAlias' => 'mem.start_date',
+      'type' => CRM_Utils_Type::T_DATE,
+    ];
+    $this->_columns['civicrm_contact']['fields']['verified_date'] = [
+      'name' => 'verified_date',
+      'title' => ts('Verified Date'),
+      'dbAlias' => 'DATE(a.activity_date_time)',
       'type' => CRM_Utils_Type::T_DATE,
     ];
     $this->_columns['civicrm_contact']['filters']['approval_date'] = [
@@ -59,7 +66,10 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
     $this->joinPhoneFromContact();
     $this->joinEmailFromContact();
     $this->joinCountryFromAddress();
-    $this->_from .= " LEFT JOIN civicrm_membership mem ON {$this->_aliases['civicrm_contact']}.id = mem.contact_id AND mem.membership_type_id = 4 ";
+    $this->_from .= " LEFT JOIN civicrm_membership mem ON {$this->_aliases['civicrm_contact']}.id = mem.contact_id AND mem.membership_type_id = 4
+      LEFT JOIN civicrm_activity_contact ac ON ac.contact_id = {$this->_aliases['civicrm_contact']}.id AND ac.record_type_id = 3
+      LEFT JOIN civicrm_activity a ON a.id = ac.activity_id AND a.activity_type_id = 58 AND a.subject LIKE '%changed to Verified%'
+     ";
   }
 
   public function where() {
