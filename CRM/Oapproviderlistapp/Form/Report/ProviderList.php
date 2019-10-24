@@ -32,6 +32,13 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
       'dbAlias' => 'mem.start_date',
       'type' => CRM_Utils_Type::T_DATE,
     ];
+    $this->_columns['civicrm_contact']['filters']['approval_date'] = [
+      'name' => 'approval_date',
+      'title' => ts('Approval Date'),
+      'dbAlias' => 'mem.start_date',
+      'type' => CRM_Utils_Type::T_DATE,
+      'operatorType' => CRM_Report_Form::OP_DATE,
+    ];
     $this->_columns['civicrm_value_proof_of_empl_13']['fields']['custom_49']['dbAlias'] = '1';
     $this->_columns['civicrm_value_other_profess_12']['fields']['custom_44']['dbAlias'] = 'GROUP_CONCAT(other_relevant_credential_44)';
     $this->_columns['civicrm_value_other_profess_12']['fields']['custom_45']['dbAlias'] = 'GROUP_CONCAT(date_obtained_45)';
@@ -52,7 +59,7 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
     $this->joinPhoneFromContact();
     $this->joinEmailFromContact();
     $this->joinCountryFromAddress();
-    $this->_from .= " LEFT JOIN civicrm_membership mem ON {$this->_aliases['civicrm_contact']}.id = mem.contact_id ";
+    $this->_from .= " LEFT JOIN civicrm_membership mem ON {$this->_aliases['civicrm_contact']}.id = mem.contact_id AND mem.membership_type_id = 4 ";
   }
 
   public function where() {
