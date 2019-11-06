@@ -27,16 +27,16 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
       'name' => 'created_date',
       'title' => ts('Created Date'),
     ];
-    $this->_columns['civicrm_contact']['fields']['approval_date'] = [
-      'name' => 'approval_date',
-      'title' => ts('Approval Date'),
-      'dbAlias' => 'mem.start_date',
-      'type' => CRM_Utils_Type::T_DATE,
-    ];
     $this->_columns['civicrm_contact']['fields']['verified_date'] = [
       'name' => 'verified_date',
       'title' => ts('Complete (Ready to Verify) Date'),
       'dbAlias' => 'DATE(MAX(a.activity_date_time))',
+      'type' => CRM_Utils_Type::T_DATE,
+    ];
+    $this->_columns['civicrm_contact']['fields']['approval_date'] = [
+      'name' => 'approval_date',
+      'title' => ts('Approval Date'),
+      'dbAlias' => 'mem.start_date',
       'type' => CRM_Utils_Type::T_DATE,
     ];
     $this->_columns['civicrm_contact']['filters']['approval_date'] = [
