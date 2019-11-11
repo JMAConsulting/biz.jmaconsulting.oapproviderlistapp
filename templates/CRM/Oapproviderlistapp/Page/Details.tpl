@@ -15,11 +15,13 @@
         <td>
           {$employer.organization_name} <br/>
           {$employer.street_address} <br/>
+          {if $employer.supplemental_address_1}{$employer.supplemental_address_1} <br/>{/if}
           {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code}
+          <a href='{$employer.url}'>{$employer.url}</a>
           <div class=clear></div>
         </td>
         <td>
-          {if $employer.phone}{ts}Phone{/ts}: {$employer.phone} <br/>{/if}
+          {if $employer.phone}{ts}Phone{/ts}: {$employer.phone} {if $employer.phone_ext}{ts}ext{/ts}: {$employer.phone_ext}{/if}<br/>{/if}
           <a href='mailto:{$employer.email}'>{$employer.email}</a>
           <div class=clear></div>
         </td>
