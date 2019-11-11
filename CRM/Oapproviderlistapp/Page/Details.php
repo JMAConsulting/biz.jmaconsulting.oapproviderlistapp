@@ -57,7 +57,7 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
       LEFT JOIN civicrm_state_province sp ON sp.id = a.state_province_id
       LEFT JOIN civicrm_email e ON e.contact_id = o.id AND e.location_type_id = 2
       LEFT JOIN civicrm_phone p ON p.contact_id = o.id AND p.location_type_id = 2
-      LEFT JOIN civicrm_website w ON w.contact_id = o.id AND w.location_type_id = 2
+      LEFT JOIN civicrm_website w ON w.contact_id = o.id AND w.website_type_id = 1
       WHERE r.contact_id_a = %1 AND r.relationship_type_id = %2 AND o.is_deleted <> 1
       GROUP BY o.id";
     $rtype = CRM_Core_DAO::getFieldValue('CRM_Contact_DAO_RelationshipType', 'Employee of', 'id', 'name_a_b');

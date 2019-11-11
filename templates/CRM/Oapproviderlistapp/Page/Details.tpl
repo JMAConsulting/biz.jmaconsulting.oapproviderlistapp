@@ -16,7 +16,7 @@
           {$employer.organization_name} <br/>
           {$employer.street_address} <br/>
           {if $employer.supplemental_address_1}{$employer.supplemental_address_1} <br/>{/if}
-          {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code}
+          {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code} <br/>
           <a href='{$employer.url}'>{$employer.url}</a>
           <div class=clear></div>
         </td>
