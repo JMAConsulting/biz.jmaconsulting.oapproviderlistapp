@@ -17,12 +17,12 @@
           {$employer.street_address} <br/>
           {if $employer.supplemental_address_1}{$employer.supplemental_address_1} <br/>{/if}
           {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code} <br/>
-          <a href='{$employer.url}'>{$employer.url}</a>
+          <a href='{$employer.url}' style='color:#0071bd !important;cursor: pointer !important' target='_blank'>{$employer.url}</a>
           <div class=clear></div>
         </td>
         <td>
           {if $employer.phone}{ts}Phone{/ts}: {$employer.phone} {if $employer.phone_ext}{ts}ext{/ts}: {$employer.phone_ext}{/if}<br/>{/if}
-          <a href='mailto:{$employer.email}'>{$employer.email}</a>
+          <a href='mailto:{$employer.email}' style='color:#0071bd !important;cursor: pointer !important'>{$employer.email}</a>
           <div class=clear></div>
         </td>
       </tr>
