@@ -274,6 +274,11 @@ function setMembership($cid, $submitValues) {
           'status_id' => 'Completed',
         ]);
       }
+      civicrm_api3('Contact', 'create', [
+        'id' => $cid,
+        'is_deleted' => FALSE,
+        'custom_65' => 1,
+      ]);
     }
     elseif (CRM_Utils_Array::value($newStatus, $submitValues) == 'Cancelled') {
       $membershipID = civicrm_api3('Membership', 'get', [
