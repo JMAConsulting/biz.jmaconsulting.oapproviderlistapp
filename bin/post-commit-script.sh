@@ -20,7 +20,7 @@ cat > "$HOOK_FILE" <<EOF
 OUTPUT_FILE=CHANGELOG.md
 
 # generate the changelog
-git --no-pager log --no-merges --format="%n #### %ai [%s](https://github.com/JMAConsulting/biz.jmaconsulting.oapproviderlistapp/commit/%h) commited by '%an (%cE)' <br>" > \$OUTPUT_FILE
+git --no-pager log --no-merges --format="%n #### %ai [%s](https://github.com/JMAConsulting/biz.jmaconsulting.oapproviderlistapp/commit/%h) <br> %aN (committed by %cN)<br><br>" > \$OUTPUT_FILE
 
 # prevent recursion!
 # since a 'commit --amend' will trigger the post-commit script again

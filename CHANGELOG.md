@@ -1,5 +1,7 @@
 
- #### 2019-11-30 01:06:55 +0530 [add post-commit script](https://github.com/JMAConsulting/biz.jmaconsulting.oapproviderlistapp/commit/788ec74) commited by 'Monish Deb (deb.monish@gmail.com)' <br>
+ #### 2019-11-30 01:10:18 +0530 [minor change in script](https://github.com/JMAConsulting/biz.jmaconsulting.oapproviderlistapp/commit/647c863) commited by 'Monish Deb (deb.monish@gmail.com)' <br>
+
+ #### 2019-11-30 01:06:55 +0530 [add post-commit script](https://github.com/JMAConsulting/biz.jmaconsulting.oapproviderlistapp/commit/7c0e878) commited by 'Monish Deb (deb.monish@gmail.com)' <br>
 
  #### 2019-11-30 00:12:31 +0530 [minor changes](https://github.com/JMAConsulting/biz.jmaconsulting.oapproviderlistapp/commit/24d24b2) commited by 'Monish Deb (deb.monish@gmail.com)' <br>
 
