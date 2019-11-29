@@ -4,7 +4,6 @@ require_once 'oapproviderlistapp.civix.php';
 require_once 'oapproviderlistapp.variables.php';
 use CRM_Oapproviderlistapp_ExtensionUtil as E;
 
-// test changes
 /**
  * Implementation of hook_civicrm_config
  *
