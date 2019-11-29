@@ -1,5 +1,7 @@
 
- #### 2019-11-30 00:12:31 +0530 [minor changes](https://github.com/JMAConsulting/biz.jmaconsulting.oapproviderlistapp/commit/1c0abf5) commited by 'Monish Deb (deb.monish@gmail.com)' <br>
+ #### 2019-11-30 01:06:55 +0530 [add post-commit script](https://github.com/JMAConsulting/biz.jmaconsulting.oapproviderlistapp/commit/788ec74) commited by 'Monish Deb (deb.monish@gmail.com)' <br>
+
+ #### 2019-11-30 00:12:31 +0530 [minor changes](https://github.com/JMAConsulting/biz.jmaconsulting.oapproviderlistapp/commit/24d24b2) commited by 'Monish Deb (deb.monish@gmail.com)' <br>
 
  #### 2019-11-30 00:11:21 +0530 [CH-54 : Add shellscript to create script to generate changelog](https://github.com/JMAConsulting/biz.jmaconsulting.oapproviderlistapp/commit/b66a3d2) commited by 'Monish Deb (deb.monish@gmail.com)' <br>
 
