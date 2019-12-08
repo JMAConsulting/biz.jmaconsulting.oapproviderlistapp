@@ -1,3 +1,25 @@
+{if $searchByOrg}
+<tr class="crm-section form-item"><td>
+  <table class="form-item provider-row">
+    <tr colspan=2>
+      <td style="width=50%;">
+        <div style="color:#bd3933 !important">
+          <font style="float:left;color:#1264A9;font-size:1.4em;font-weight:bold;padding-top:3px;" class=" field--name-field-title provider-title">{$row.organization_name}</font>&nbsp;&nbsp;&nbsp;
+        </div>
+      <br/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <br/>
+        <a class="nowrap bold crm-expand-row rasp-expand-hint" title="{ts}view details{/ts}" href="{crmURL p="civicrm/provider/details" q="reset=1&cid=`$row.contact_id`"}">
+          {ts}Click for more details{/ts}
+        </a>
+      </td>
+    </tr>
+  </table>
+</tr>
+{else}
 {crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}
 <tr class="crm-section form-item"><td>
   <table class="form-item provider-row">
@@ -43,3 +65,4 @@
   </table>
 </tr>
 {/crmScope}
+{/if}

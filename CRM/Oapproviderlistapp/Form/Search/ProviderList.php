@@ -6,8 +6,10 @@ use CRM_Oapproviderlistapp_ExtensionUtil as E;
  */
 class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_Search_Custom_Base implements CRM_Contact_Form_Search_Interface {
   public $_languages;
+  public $_searchByOrg;
   function __construct(&$formValues) {
     parent::__construct($formValues);
+    $this->_searchByOrg = (!empty($_POST['_qf_Custom_submit']) && $_POST['_qf_Custom_submit'] == ts('Search By Organization'));
     $this->_languages = CRM_Core_OptionGroup::values('languages');
     CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'css/style.css');
     CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
@@ -66,8 +68,13 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       ],
     ]);
     $form->add('text',
-      'name',
-      E::ts('Name'),
+      'provider_name',
+      E::ts('Provider Name'),
+      ['class' => 'huge']
+    );
+    $form->add('text',
+      'organization_name',
+      E::ts('Organization Name'),
       ['class' => 'huge']
     );
     $form->add('text',
@@ -75,18 +82,32 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       E::ts('City'),
       ['class' => 'huge']
     );
+    $form->assign('searchByOrg',  $this->_searchByOrg);
 
     $form->assign('elements', array(
       'credentials',
       'region',
       'language',
-      'name',
+      'provider_name',
+      'organization_name',
       'city',
       'accepting_clients_filter',
       'remote_travel_filter',
       'supervision_filter',
       'videoconferencing_filter',
     ));
+
+    $form->addButtons([
+      [
+        'type' => 'refresh',
+        'name' => ts('Search by Provider'),
+        'isDefault' => TRUE,
+      ],
+      [
+        'type' => 'next',
+        'name' => ts('Search By Organization'),
+      ],
+    ]);
   }
 
   /**
@@ -110,21 +131,30 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    * @return array, keys are printable column headers and values are SQL column names
    */
   function &columns() {
-    // return by reference
-    $columns = array(
-      'contact_id',
-      'first_name',
-      'last_name',
-      'postal_code',
-      'accepting_new_clients__65',
-      'travels_to_remote_areas__67',
-      'offers_supervision__68',
-      'offer_video_conferencing_service_70',
-      'region_63',
-      'language_64',
-      'bacb_r_disciplinary_action_71',
-      'cpo_discipline_and_other_proceed_72',
-    );
+    if ($this->_searchByOrg) {
+      $columns = array(
+        'contact_id',
+        'organization_name',
+        'postal_code'
+      );
+    }
+    else {
+      // return by reference
+      $columns = array(
+        'contact_id',
+        'first_name',
+        'last_name',
+        'postal_code',
+        'accepting_new_clients__65',
+        'travels_to_remote_areas__67',
+        'offers_supervision__68',
+        'offer_video_conferencing_service_70',
+        'region_63',
+        'language_64',
+        'bacb_r_disciplinary_action_71',
+        'cpo_discipline_and_other_proceed_72',
+      );
+    }
     return $columns;
   }
   /**
@@ -190,7 +220,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    */
   function all($offset = 0, $rowcount = 0, $sort = NULL, $includeContactIDs = FALSE, $justIDs = FALSE) {
     // delegate to $this->sql(), $this->select(), $this->from(), $this->where(), etc.
-    return $this->sql($this->select(), $offset, $rowcount, $sort, $includeContactIDs, NULL);
+
+    return $this->sql($this->select(), $offset, $rowcount, $sort, $includeContactIDs, ' GROUP BY contact_a.id ');
   }
 
   /**
@@ -199,14 +230,30 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    * @return string, sql fragment with SELECT arguments
    */
   function select() {
-    return "
-      contact_a.id as contact_id,
-      contact_a.first_name,
-      contact_a.last_name,
-      temp.*,
-      address.postal_code,
-      temp3.*
-    ";
+    if ($this->_searchByOrg)  {
+      return "
+        contact_a.id as contact_id,
+        contact_a.organization_name,
+        GROUP_CONCAT(DISTINCT r.contact_id_a) as provider_ids,
+        GROUP_CONCAT(DISTINCT contact_b.display_name) as provider_names,
+        temp.*,
+        address.postal_code,
+        temp3.*
+      ";
+    }
+    else {
+      return "
+        contact_a.id as contact_id,
+        contact_a.first_name,
+        contact_a.last_name,
+        GROUP_CONCAT(DISTINCT r.contact_id_b) as org_ids,
+        GROUP_CONCAT(DISTINCT contact_b.organization_name) as org_names,
+        temp.*,
+        address.postal_code,
+        temp3.*
+      ";
+    }
+
   }
 
   /**
@@ -215,18 +262,39 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    * @return string, sql fragment with FROM and JOIN clauses
    */
   function from() {
-    return "
-      FROM      civicrm_contact contact_a
-      LEFT JOIN civicrm_address address ON ( address.contact_id       = contact_a.id AND
-                                             address.is_primary       = 1 )
-      LEFT JOIN civicrm_email           ON ( civicrm_email.contact_id = contact_a.id AND
-                                             civicrm_email.is_primary = 1 )
-      LEFT JOIN civicrm_state_province state_province ON state_province.id = address.state_province_id
-      LEFT JOIN civicrm_value_contact_gener_19 temp ON temp.entity_id = contact_a.id
-      LEFT JOIN civicrm_value_track_changes_17 temp1 ON temp1.entity_id = contact_a.id
-      LEFT JOIN civicrm_value_applicant_det_4 temp2 ON temp2.entity_id = contact_a.id
-      LEFT JOIN civicrm_value_disciplinary_20 temp3 ON temp3.entity_id = contact_a.id
-    ";
+    if ($this->_searchByOrg) {
+      return "
+        FROM      civicrm_contact contact_a
+        LEFT JOIN civicrm_relationship r ON r.contact_id_b = contact_a.id AND r.relationship_type_id = 5
+        LEFT JOIN civicrm_contact contact_b ON r.contact_id_a = contact_b.id
+        LEFT JOIN civicrm_address address ON ( address.contact_id       = contact_a.id AND
+                                               address.is_primary       = 1 )
+        LEFT JOIN civicrm_email           ON ( civicrm_email.contact_id = contact_a.id AND
+                                               civicrm_email.is_primary = 1 )
+        LEFT JOIN civicrm_state_province state_province ON state_province.id = address.state_province_id
+        LEFT JOIN civicrm_value_contact_gener_19 temp ON temp.entity_id = r.contact_id_a
+        LEFT JOIN civicrm_value_track_changes_17 temp1 ON temp1.entity_id = r.contact_id_a
+        LEFT JOIN civicrm_value_applicant_det_4 temp2 ON temp2.entity_id = r.contact_id_a
+        LEFT JOIN civicrm_value_disciplinary_20 temp3 ON temp3.entity_id = r.contact_id_a
+      ";
+    }
+    else {
+      return "
+        FROM  civicrm_contact contact_a
+        LEFT JOIN civicrm_relationship r ON r.contact_id_a = contact_a.id AND r.relationship_type_id = 5
+        LEFT JOIN civicrm_contact contact_b ON r.contact_id_b = contact_b.id
+        LEFT JOIN civicrm_address address ON ( address.contact_id       = contact_a.id AND
+                                               address.is_primary       = 1 )
+        LEFT JOIN civicrm_email           ON ( civicrm_email.contact_id = contact_a.id AND
+                                               civicrm_email.is_primary = 1 )
+        LEFT JOIN civicrm_state_province state_province ON state_province.id = address.state_province_id
+        LEFT JOIN civicrm_value_contact_gener_19 temp ON temp.entity_id = contact_a.id
+        LEFT JOIN civicrm_value_track_changes_17 temp1 ON temp1.entity_id = contact_a.id
+        LEFT JOIN civicrm_value_applicant_det_4 temp2 ON temp2.entity_id = contact_a.id
+        LEFT JOIN civicrm_value_disciplinary_20 temp3 ON temp3.entity_id = contact_a.id
+      ";
+    }
+
   }
 
   /**
@@ -237,7 +305,10 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    */
   function where($includeContactIDs = FALSE) {
     $params = array();
-    $where = "contact_a.contact_sub_type  = 'Provider' AND temp1.status_60 = 'Approved'";
+    $where = "contact_a.contact_sub_type = 'Provider' AND temp1.status_60 = 'Approved'";
+    if ($this->_searchByOrg) {
+      $where = "contact_b.contact_sub_type = 'Provider' AND temp1.status_60 = 'Approved'";
+    }
     $customElements = [
       'accepting_clients_filter' => 'accepting_new_clients__65',
       'remote_travel_filter' => 'travels_to_remote_areas__67',
@@ -256,8 +327,21 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     }
     foreach ($submittedValues as $key => $value) {
       if (array_key_exists($key, $customElements) && !empty($value)) {
-        if ($key == 'name') {
-          $clauses[] = "(contact_a.first_name LIKE '%$value%' OR contact_a.last_name LIKE '%$value%' OR contact_a.sort_name LIKE '%$value%' OR contact_a.display_name LIKE '%$value%' )";
+        if ($key == 'provider_name') {
+          if ($this->_searchByOrg) {
+            $clauses[] = "(provider_names LIKE '%$value%')";
+          }
+          else  {
+            $clauses[] = "(contact_a.first_name LIKE '%$value%' OR contact_a.last_name LIKE '%$value%' OR contact_a.sort_name LIKE '%$value%' OR contact_a.display_name LIKE '%$value%' )";
+          }
+        }
+        if ($key == 'organization_name') {
+          if (!$this->_searchByOrg) {
+            $clauses[] = "(org_names LIKE '%$value%')";
+          }
+          else {
+            $clauses[] = "(contact_a.organization_name LIKE '%$value%')";
+          }
         }
         elseif ($key == 'language') {
           $languages = explode(',', $value);
