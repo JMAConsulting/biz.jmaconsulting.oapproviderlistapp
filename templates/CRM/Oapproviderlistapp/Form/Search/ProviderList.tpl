@@ -44,6 +44,9 @@
                     &nbsp;{$form.credentials.3.html}<br/>
                     &nbsp;{$form.credentials.4.html}<br/>
                   </td>
+                {elseif $element eq 'search_by_org'}
+                    <td></td>
+                    <td><div style="display:none;">{$form.search_by_org.html}</div></td>
                 {else}
                   <td style="width:10%;text-align:right;">
                     {$form.$element.label}{if $element eq 'region'}&nbsp;&nbsp;<a title="{ts}Click for map of regions{/ts}" href="/civicrm/file?reset=1&filename=Screen_Shot_2019_07_23_at_6_15_47_PM_8d080c4b5453b3e12e165b11764be645.png&mime-type=image/png" class="crm-image-popup"><i class="crm-i fa-map-marker"></i></a>{/if}
@@ -126,6 +129,14 @@ $('a#expand').click( function() {
     }
     $(this).html(message);
     return false;
+  });
+
+  $('#_qf_Custom_refresh_savenext-bottom').click(function() {
+    $("#search_by_org").prop("checked", true);
+  });
+
+  $('#_qf_Custom_refresh-bottom').click(function() {
+    $("#search_by_org").prop("checked", false);
   });
 
   $('a.rasp-expand-hint').click(function () {

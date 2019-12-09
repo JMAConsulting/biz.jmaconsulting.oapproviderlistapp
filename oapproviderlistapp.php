@@ -189,7 +189,8 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
         'isDefault' => TRUE,
       ],
       [
-        'type' => 'submit',
+        'type' => 'refresh',
+        'subName' => 'savenext',
         'name' => ts('Search By Organization'),
       ],
     ]);

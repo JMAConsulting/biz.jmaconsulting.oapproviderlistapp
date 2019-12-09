@@ -9,7 +9,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
   public $_searchByOrg;
   function __construct(&$formValues) {
     parent::__construct($formValues);
-    $this->_searchByOrg = (!empty($_POST['_qf_Custom_submit']) && $_POST['_qf_Custom_submit'] == ts('Search By Organization'));
+    $this->_searchByOrg = (bool) $formValues['search_by_org'];
     $this->_languages = CRM_Core_OptionGroup::values('languages');
     CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'css/style.css');
     CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
@@ -67,6 +67,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
         ],
       ],
     ]);
+    $form->addElement('checkbox', 'search_by_org',  '', NULL);
     $form->add('text',
       'provider_name',
       E::ts('Provider Name'),
@@ -95,19 +96,9 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'remote_travel_filter',
       'supervision_filter',
       'videoconferencing_filter',
+      'search_by_org',
     ));
 
-    $form->addButtons([
-      [
-        'type' => 'refresh',
-        'name' => ts('Search by Provider'),
-        'isDefault' => TRUE,
-      ],
-      [
-        'type' => 'next',
-        'name' => ts('Search By Organization'),
-      ],
-    ]);
   }
 
   /**
