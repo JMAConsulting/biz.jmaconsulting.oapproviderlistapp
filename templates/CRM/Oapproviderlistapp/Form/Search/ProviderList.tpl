@@ -140,18 +140,28 @@ $('a#expand').click( function() {
   });
 
   $('a.rasp-expand-hint').click(function () {
-    if ($(this).hasClass('expanded')) {
-      $(this).removeClass('rasp-expand');
-      var message = {/literal}"{ts escape='js'}Click for more details{/ts}"{literal};
-      $(this).text(message);
-    }
-    else {
-      $(this).addClass('rasp-expand');
-      var message = {/literal}"{ts escape='js'}Click to hide details{/ts}"{literal};
-      $(this).text(message);
-    }
+    hideShowDetails($(this));
+  });
+
+  $('.provider-title').click(function () {
+    hideShowDetails($('a.rasp-expand-hint'));
+    $(this).closest('table').find('tr:nth-child(3) a').trigger('click');
   });
 });
+
+function hideShowDetails(selector) {
+  if (selector.hasClass('expanded')) {
+    selector.removeClass('rasp-expand');
+    var message = {/literal}"{ts escape='js'}Click for more details{/ts}"{literal};
+    selector.text(message);
+  }
+  else {
+    selector.addClass('rasp-expand');
+    var message = {/literal}"{ts escape='js'}Click to hide details{/ts}"{literal};
+    selector.text(message);
+  }
+
+}
 </script>
 {/literal}
 {/crmScope}

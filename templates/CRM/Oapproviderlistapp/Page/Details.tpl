@@ -13,19 +13,24 @@
       {foreach from=$employers item=employer}
       <tr>
         <td>
-          {$employer.organization_name} <br/>
+          {if !$isOrg}{$employer.organization_name}{/if}
+          <br/>{ts}Address{/ts}:
           {$employer.street_address} <br/>
           {if $employer.supplemental_address_1}{$employer.supplemental_address_1} <br/>{/if}
           {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code} <br/>
           <a href='{$employer.url}' style='color:#0071bd !important;cursor: pointer !important' target='_blank'>{$employer.url}</a>
           <div class=clear></div>
-          <br>{ts}Providers{/ts}:
-          {foreach from=$providers item=provider}
-            {$provider}<br/>
-          {/foreach}
+          {if !empty($providers)}
+            <div class='provider-list'>
+              <br>{ts}Providers{/ts}:
+              {foreach from=$providers item=provider}
+                <br/>{$provider}
+              {/foreach}
+            </div>
+          {/if}
         </td>
         <td>
-          {if $employer.phone}{ts}Phone{/ts}: {$employer.phone} {if $employer.phone_ext}{ts}ext{/ts}: {$employer.phone_ext}{/if}<br/>{/if}
+          <br/>{if $employer.phone}{ts}Phone{/ts}: {$employer.phone} {if $employer.phone_ext}{ts}ext{/ts}: {$employer.phone_ext}{/if}<br/>{/if}
           <a href='mailto:{$employer.email}' style='color:#0071bd !important;cursor: pointer !important'>{$employer.email}</a>
           <div class=clear></div>
         </td>
@@ -35,7 +40,7 @@
   </div>
   {if $image}
     <div class="provider-image">
-      <img src="{$image}" />
+      {$image}
     </div>
   {/if}
   </div>

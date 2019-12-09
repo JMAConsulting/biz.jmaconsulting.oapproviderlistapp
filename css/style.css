@@ -44,7 +44,7 @@
 .provider-image {
   max-height: 200px;
   max-width: 200px;
-  margin-left: 15px;
+  margin-left: 500px;
 }
 .provider-icon{
   width: 30px;
@@ -99,6 +99,7 @@
 }
 .provider-title:hover {
   text-decoration: underline !important;
+  cursor: pointer !important;
 }
 .provider-title {
   font-size: 1.8em !important;
@@ -128,8 +129,8 @@
 .crm-container .crm-form-block {
   background-color: #fff !important;
 }
-table.provider-row:hover {
-  cursor: pointer !important;
+table.provider-row:not(a) {
+  cursor: default !important;
 }
 table.provider-row:hover .provider-title {
   text-decoration: underline !important;
@@ -142,7 +143,7 @@ table.provider-row:hover .rasp-expand-hint {
 tr {
     border-bottom: 0px solid #e6e4df !important;
 }
-#_qf_Custom_refresh-bottom, #_qf_EditListing_upload-bottom, #_qf_EditListing_cancel-bottom {
+#_qf_Custom_refresh-bottom, #_qf_Custom_refresh_savenext-bottom, #_qf_EditListing_upload-bottom, #_qf_EditListing_cancel-bottom {
   font-family: "Gill Sans", Helvetica, sans-serif !important;
   border: 1px solid transparent !important;
   cursor: pointer !important;
@@ -163,7 +164,7 @@ tr {
   color: #ffffff !important;
   text-transform: capitalize !important;
 }
-#_qf_Custom_refresh-bottom:hover, #_qf_EditListing_upload-bottom:hover, #_qf_EditListing_cancel-bottom:hover {
+#_qf_Custom_refresh-bottom:hover, #_qf_Custom_refresh_savenext-bottom:hover, #_qf_EditListing_upload-bottom:hover, #_qf_EditListing_cancel-bottom:hover {
   background-color: #abad00 !important;
   border: 1px solid #abad00 !important;
   color: #231F20 !important;
@@ -174,6 +175,11 @@ tr {
 .provider-details {
     float:left; /* add this */
 }
+
+.provider-details:not(a) {
+  cursor: default !important;
+}
+
 .provider-image {
     float: left; /* add this */
 }

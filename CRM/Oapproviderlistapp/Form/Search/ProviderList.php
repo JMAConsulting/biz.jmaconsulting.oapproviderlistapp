@@ -24,6 +24,19 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
   function buildForm(&$form) {
     CRM_Utils_System::setTitle(E::ts('Search the OAP Provider List'));
 
+    $defaults = [];
+    if ($form->getVar('_force')) {
+      $form->_searchByOrg = CRM_Utils_Request::retrieve('is_org', 'Boolean');
+      if ($cid = CRM_Utils_Request::retrieve('cid', 'Integer')) {
+        if ($form->_searchByOrg) {
+          $defaults['organization_name'] = CRM_Contact_BAO_Contact::displayName($cid);
+        }
+        else {
+          $defaults['provider_name'] = CRM_Contact_BAO_Contact::displayName($cid);
+        }
+      }
+    }
+
     $form->addElement('checkbox', 'accepting_clients_filter', E::ts('Show only if accepting new clients') . '?', NULL);
     $form->addElement('checkbox', 'remote_travel_filter', E::ts('Travels to remote areas') . '?', NULL);
     $form->addElement('checkbox', 'supervision_filter', E::ts('Offers supervision') . '?', NULL);
@@ -45,16 +58,20 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       $check[] = &$form->addElement('checkbox', $key, NULL, $label, 'ts_sel', array('checked' => 'checked'));
     }
     $form->addGroup($check, 'credentials', E::ts('I am looking for'));
-    $form->setDefaults([
-      'East' => 1,
-      'Central' => 1,
-      'North' => 1,
-      'South' => 1,
-      1 => 1,
-      2 => 1,
-      3 => 1,
-      4 => 1,
-    ]);
+
+    if (empty($defaults)) {
+      $defaults = [
+        'East' => 1,
+        'Central' => 1,
+        'North' => 1,
+        'South' => 1,
+        1 => 1,
+        2 => 1,
+        3 => 1,
+        4 => 1,
+      ];
+    }
+    $form->setDefaults($defaults);
 
     $form->addEntityRef('language', E::ts('Language'), [
       'entity' => 'OptionValue',
@@ -126,7 +143,15 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       $columns = array(
         'contact_id',
         'organization_name',
-        'postal_code'
+        'postal_code',
+        'accepting_new_clients',
+        'travels_to_remote_areas',
+        'offers_supervision',
+        'offer_video_conferencing_service',
+        'region',
+        'language',
+        'bacb_r_disciplinary_action_71',
+        'cpo_discipline_and_other_proceed_72',
       );
     }
     else {
@@ -227,6 +252,12 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
         contact_a.organization_name,
         GROUP_CONCAT(DISTINCT r.contact_id_a) as provider_ids,
         GROUP_CONCAT(DISTINCT contact_b.display_name) as provider_names,
+        GROUP_CONCAT(DISTINCT accepting_new_clients__65) as accepting_new_clients,
+        GROUP_CONCAT(DISTINCT travels_to_remote_areas__67) as travels_to_remote_areas,
+        GROUP_CONCAT(DISTINCT offers_supervision__68) as offers_supervision,
+        GROUP_CONCAT(DISTINCT offer_video_conferencing_service_70) as offer_video_conferencing_service,
+        GROUP_CONCAT(DISTINCT region_63) as region,
+        GROUP_CONCAT(DISTINCT language_64) as language,
         temp.*,
         address.postal_code,
         temp3.*
@@ -295,6 +326,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    * @return string, sql fragment with conditional expressions
    */
   function where($includeContactIDs = FALSE) {
+    $force = CRM_Utils_Array::value('force', $_REQUEST);
     $params = array();
     $where = "contact_a.contact_sub_type = 'Provider' AND temp1.status_60 = 'Approved'";
     if ($this->_searchByOrg) {
@@ -314,7 +346,14 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     ];
     $submittedValues = $this->_formValues;
     $clauses = [];
-    if (empty($submittedValues['credentials'])) {
+
+    if ($force) {
+      if ($cid = CRM_Utils_Request::retrieve('cid', 'Integer')) {
+        $clauses[] = 'contact_a.id = ' . $cid;
+      }
+    }
+
+    if (empty($submittedValues['credentials']) && !$force) {
      $clauses[] = " temp2.which_of_the_following_credentia_7 IS NULL ";
     }
     foreach ($submittedValues as $key => $value) {
@@ -392,20 +431,28 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    * @return void
    */
   function alterRow(&$row) {
-   if (!empty($row['language_64'])) {
-     $row['language_64'] = explode(CRM_Core_DAO::VALUE_SEPARATOR, $row['language_64']);
-     foreach ($row['language_64'] as $k => $language) {
-       if (!array_key_exists($language, $this->_languages)) {
-         unset($row['language_64'][$k]);
+    $l = $this->_searchByOrg ? 'language' : 'language_64';
+    $region = $this->_searchByOrg ? 'region' : 'region_63';
+
+   if (!empty($row[$l])) {
+     if ($l == 'language') {
+       $row[$l] = str_replace(',', CRM_Core_DAO::VALUE_SEPARATOR, $row[$l]);
+     }
+     $row[$l] = explode(CRM_Core_DAO::VALUE_SEPARATOR, $row[$l]);
+     foreach ($row[$l] as $k => $language) {
+       if (!array_key_exists($language, $this->_languages) || !$language) {
+         unset($row[$l][$k]);
          continue;
        }
-       $row['language_64'][$k] = CRM_Utils_Array::value($language, $this->_languages);
+       if (!array_key_exists(CRM_Utils_Array::value($language, $this->_languages), $row[$l])) {
+         $row[$l][$k] = CRM_Utils_Array::value($language, $this->_languages);
+       }
      }
-     $row['language_64'] = implode(', ', $row['language_64']);
+     $row[$l] = implode(', ', array_unique($row[$l]));
    }
-   if (!empty($row['region_63'])) {
-     $regions = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row['region_63'], 1, -1)));
-     $row['region_63'] = str_replace('South', 'West', implode(', ', $regions));
+   if (!empty($row[$region])) {
+     $regions = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row[$region], 1, -1)));
+     $row[$region] = str_replace('South', 'West', implode(', ', $regions));
    }
     //CRM_Core_Error::debug_var('row', $row);
   }
