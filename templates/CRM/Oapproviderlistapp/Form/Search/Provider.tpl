@@ -12,7 +12,7 @@
     <tr>
       <td>
         <br/>
-        <a class="nowrap bold crm-expand-row rasp-expand-hint" title="{ts}view details{/ts}" href="{crmURL p="civicrm/provider/details" q="reset=1&cid=`$row.contact_id`"}">
+        <a class="nowrap bold crm-expand-row rasp-expand-hint" title="{ts}view details{/ts}" href="{crmURL p="civicrm/provider/details" q="reset=1&cid=`$row.contact_id`&is_org=1"}">
           {ts}Click for more details{/ts}
         </a>
       </td>

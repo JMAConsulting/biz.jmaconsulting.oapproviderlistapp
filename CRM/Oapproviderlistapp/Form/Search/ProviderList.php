@@ -308,7 +308,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'credentials' => 'temp2.which_of_the_following_credentia_7',
       'region' => 'region_63',
       'language' => 'language_64',
-      'name' => 'contact_a.first_name',
+      'provider_name' => 'contact_a.first_name',
+      'organization_name' => 'contact_a.display_name',
       'city' => 'address.city',
     ];
     $submittedValues = $this->_formValues;

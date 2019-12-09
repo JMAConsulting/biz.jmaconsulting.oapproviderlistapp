@@ -19,6 +19,10 @@
           {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code} <br/>
           <a href='{$employer.url}' style='color:#0071bd !important;cursor: pointer !important' target='_blank'>{$employer.url}</a>
           <div class=clear></div>
+          <br>{ts}Providers{/ts}:
+          {foreach from=$providers item=provider}
+            {$provider}<br/>
+          {/foreach}
         </td>
         <td>
           {if $employer.phone}{ts}Phone{/ts}: {$employer.phone} {if $employer.phone_ext}{ts}ext{/ts}: {$employer.phone_ext}{/if}<br/>{/if}
