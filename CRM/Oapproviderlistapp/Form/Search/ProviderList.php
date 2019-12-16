@@ -10,6 +10,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
   function __construct(&$formValues) {
     parent::__construct($formValues);
     $this->_searchByOrg = (bool) $formValues['search_by_org'];
+    $this->_searchByOrg = $this->_searchByOrg ?: CRM_Utils_Array::value('is_org', $_REQUEST);
     $this->_languages = CRM_Core_OptionGroup::values('languages');
     CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'css/style.css');
     CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
@@ -26,7 +27,6 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
 
     $defaults = [];
     if ($form->getVar('_force')) {
-      $form->_searchByOrg = CRM_Utils_Request::retrieve('is_org', 'Boolean');
       if ($cid = CRM_Utils_Request::retrieve('cid', 'Integer')) {
         if ($form->_searchByOrg) {
           $defaults['organization_name'] = CRM_Contact_BAO_Contact::displayName($cid);
@@ -59,18 +59,16 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     }
     $form->addGroup($check, 'credentials', E::ts('I am looking for'));
 
-    if (empty($defaults)) {
-      $defaults = [
-        'East' => 1,
-        'Central' => 1,
-        'North' => 1,
-        'South' => 1,
-        1 => 1,
-        2 => 1,
-        3 => 1,
-        4 => 1,
-      ];
-    }
+    $defaults = $defaults + [
+      'East' => 1,
+      'Central' => 1,
+      'North' => 1,
+      'South' => 1,
+      1 => 1,
+      2 => 1,
+      3 => 1,
+      4 => 1,
+    ];
     $form->setDefaults($defaults);
 
     $form->addEntityRef('language', E::ts('Language'), [
@@ -164,7 +162,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
         'accepting_new_clients__65',
         'travels_to_remote_areas__67',
         'offers_supervision__68',
-        'offer_video_conferencing_service_70',
+        'offer_remote_services__66',
         'region_63',
         'language_64',
         'bacb_r_disciplinary_action_71',
@@ -255,7 +253,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
         GROUP_CONCAT(DISTINCT accepting_new_clients__65) as accepting_new_clients,
         GROUP_CONCAT(DISTINCT travels_to_remote_areas__67) as travels_to_remote_areas,
         GROUP_CONCAT(DISTINCT offers_supervision__68) as offers_supervision,
-        GROUP_CONCAT(DISTINCT offer_video_conferencing_service_70) as offer_video_conferencing_service,
+        GROUP_CONCAT(DISTINCT offer_remote_services__66) as offer_remote_services,
         GROUP_CONCAT(DISTINCT region_63) as region,
         GROUP_CONCAT(DISTINCT language_64) as language,
         temp.*,
@@ -327,6 +325,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    */
   function where($includeContactIDs = FALSE) {
     $force = CRM_Utils_Array::value('force', $_REQUEST);
+
     $params = array();
     $where = "contact_a.contact_sub_type = 'Provider' AND temp1.status_60 = 'Approved'";
     if ($this->_searchByOrg) {
@@ -336,7 +335,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       'accepting_clients_filter' => 'accepting_new_clients__65',
       'remote_travel_filter' => 'travels_to_remote_areas__67',
       'supervision_filter' => 'offers_supervision__68',
-      'videoconferencing_filter' => 'offer_video_conferencing_service_70',
+      'videoconferencing_filter' => 'offer_remote_services__66',
       'credentials' => 'temp2.which_of_the_following_credentia_7',
       'region' => 'region_63',
       'language' => 'language_64',
@@ -360,7 +359,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       if (array_key_exists($key, $customElements) && !empty($value)) {
         if ($key == 'provider_name') {
           if ($this->_searchByOrg) {
-            $clauses[] = "(provider_names LIKE '%$value%')";
+            $clauses[] = "(contact_b.first_name LIKE '%$value%' OR contact_b.last_name LIKE '%$value%' OR contact_b.sort_name LIKE '%$value%' OR contact_b.display_name LIKE '%$value%' )";
           }
           else  {
             $clauses[] = "(contact_a.first_name LIKE '%$value%' OR contact_a.last_name LIKE '%$value%' OR contact_a.sort_name LIKE '%$value%' OR contact_a.display_name LIKE '%$value%' )";
@@ -368,7 +367,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
         }
         if ($key == 'organization_name') {
           if (!$this->_searchByOrg) {
-            $clauses[] = "(org_names LIKE '%$value%')";
+            $clauses[] = "(contact_b.organization_name LIKE '%$value%')";
           }
           else {
             $clauses[] = "(contact_a.organization_name LIKE '%$value%')";

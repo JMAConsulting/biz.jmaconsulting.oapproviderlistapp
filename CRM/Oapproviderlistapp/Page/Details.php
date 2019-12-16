@@ -34,13 +34,15 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
       GROUP_CONCAT(DISTINCT c.which_of_the_following_credentia_7) as credentials
       FROM civicrm_contact o
       INNER JOIN civicrm_relationship r ON r.contact_id_b = o.id
+      LEFT JOIN civicrm_contact contact_a ON r.contact_id_a = contact_a.id AND contact_a.contact_sub_type LIKE '%Provider%'
       LEFT JOIN civicrm_address a ON a.contact_id = o.id AND a.location_type_id = 2
       LEFT JOIN civicrm_state_province sp ON sp.id = a.state_province_id
       LEFT JOIN civicrm_email e ON e.contact_id = o.id AND e.location_type_id = 2
       LEFT JOIN civicrm_phone p ON p.contact_id = o.id AND p.location_type_id = 2
       LEFT JOIN civicrm_website w ON w.contact_id = o.id AND w.website_type_id = 1
       LEFT JOIN civicrm_value_applicant_det_4 c ON r.contact_id_a = c.entity_id
-      WHERE r.contact_id_b = %1 AND r.relationship_type_id = %2 AND o.is_deleted <> 1
+      LEFT JOIN civicrm_value_track_changes_17 temp1 ON temp1.entity_id = r.contact_id_a
+      WHERE r.contact_id_b = %1 AND r.relationship_type_id = %2 AND o.is_deleted <> 1 AND temp1.status_60 = 'Approved'
       GROUP BY o.id";
 
       $employers = CRM_Core_DAO::executeQuery($sql, [
@@ -68,10 +70,14 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
 
       $providers = [];
       foreach (explode(',', $employer['provider_ids']) as $providerID) {
+        $displayName = CRM_Contact_BAO_Contact::displayName($providerID);
+        if (strstr($displayName, '@')) {
+          continue;
+        }
         $providers[$providerID] = sprintf(
-          "<a href='%s' target='_blank'>%s</a>",
+          "<a href='%s' target='_blank' style='text-decoration: underline;' >%s</a>",
           CRM_Utils_System::url('civicrm/contact/search/custom', "reset=1&csid=16&force=1&cid=$providerID"),
-          CRM_Contact_BAO_Contact::displayName($providerID)
+          $displayName
         );
       }
       $details['providers'] = $providers;
@@ -107,7 +113,7 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
       $url = $details['image'];
       list($width, $height) = getimagesize(CRM_Utils_String::unstupifyUrl($url));
       list($thumbWidth, $thumbHeight) = CRM_Contact_BAO_Contact::getThumbSize($width, $height);
-      $details['image'] = '<img src="' . $url . '" height=100 width=100  />';
+      $details['image'] = '<img src="' . $url . '" height=200 width=150  />';
     }
 
     // Get employers
@@ -128,6 +134,13 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
       2 => [$rtype, 'Integer'],
     ])->fetchAll();
     if (!empty($employers)) {
+      foreach ($employers as $k => $employer) {
+        $employers[$k]['organization_name'] = sprintf(
+          "<a href='%s' target='_blank' style='text-decoration: underline;'>%s</a>",
+          CRM_Utils_System::url('civicrm/contact/search/custom', "reset=1&csid=16&force=1&is_org=1&cid=" . $employer['id']),
+          $employer['organization_name']
+        );
+      }
       $details['employers'] = $employers;
     }
     return $details;

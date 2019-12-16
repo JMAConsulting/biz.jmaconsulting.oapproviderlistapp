@@ -41,11 +41,6 @@
 .icon-videoconferencing-img{
     background-image: url('../img/icon_videoconferencing_16px.png');
 }
-.provider-image {
-  max-height: 200px;
-  max-width: 200px;
-  margin-left: 500px;
-}
 .provider-icon{
   width: 30px;
   height: 16px;
@@ -100,6 +95,15 @@
 .provider-title:hover {
   text-decoration: underline !important;
   cursor: pointer !important;
+}
+.bacb-type {
+  margin: -15px;
+}
+@media only screen and (max-width: 400px) {
+  .bacb-type {
+    postion: relative;
+    margin-top:10px;
+  }
 }
 .provider-title {
   font-size: 1.8em !important;

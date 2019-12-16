@@ -3,6 +3,15 @@
   <div class="provider-wrapper">
   <div class="provider-details">
   <table class="form-item">
+      {if $image}
+        <tr>
+          <td>
+            <div class="provider-image">
+              {$image}
+            </div>
+          </td>
+        </tr>
+      {/if}
       {foreach from=$credentials item=credential}
       <tr>
         <td>
@@ -38,11 +47,6 @@
       {/foreach}
   </table>
   </div>
-  {if $image}
-    <div class="provider-image">
-      {$image}
-    </div>
-  {/if}
   </div>
   </td>
 </tr>
