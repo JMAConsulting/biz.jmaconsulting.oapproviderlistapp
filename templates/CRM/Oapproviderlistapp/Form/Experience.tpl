@@ -8,6 +8,7 @@
 <div class="crm-submit-buttons">
   {include file="CRM/common/formButtons.tpl" location="bottom"}
 </div>
+
 {literal}
 <script type="text/javascript">
 CRM.$(function($) {
@@ -26,6 +27,9 @@ CRM.$(function($) {
   ];
   $( document ).ajaxComplete(function() {
     $.each(empFields, function(key, value) {
+      if (value == 'custom_36') {
+        $("label[for^='"+value+"']").closest('td').find('a').text(ts('How to calculate my hours'));
+      }
       if ($("label[for^='"+value+"'] .crm-marker").length == 0) {
         $("label[for^='"+value+"']").append("&nbsp;<span class='crm-marker' title='This field is required.'>*</span>");
       }
