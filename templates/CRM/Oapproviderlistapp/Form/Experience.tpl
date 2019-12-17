@@ -25,8 +25,10 @@ CRM.$(function($) {
     "custom_38",
   ];
   $( document ).ajaxComplete(function() {
-    $.each(empFields, function(key, value){
-      $("label[for^='"+value+"']").append("&nbsp;<span class='crm-marker' title='This field is required.'>*</span>");
+    $.each(empFields, function(key, value) {
+      if ($("label[for^='"+value+"'] .crm-marker").length == 0) {
+        $("label[for^='"+value+"']").append("&nbsp;<span class='crm-marker' title='This field is required.'>*</span>");
+      }
     });
   });
 
