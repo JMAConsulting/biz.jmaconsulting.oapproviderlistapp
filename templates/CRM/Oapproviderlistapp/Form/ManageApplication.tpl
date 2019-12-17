@@ -4,3 +4,5 @@
 &nbsp;</p>{/crmScope}
 
 {include file="CRM/common/TabHeader.tpl"}
+
+{include file="CRM/common/footer.tpl"}
