@@ -78,8 +78,38 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
     $title = ($this->_action == CRM_Core_Action::VIEW) ? E::ts('View My Listing') : E::ts('Edit My Listing');
     CRM_Utils_System::setTitle($title);
     $this->buildCustom(OAP_LISTING, 'listing', ($this->_action == CRM_Core_Action::VIEW));
+
+    $orgNames = [];
+    $employers = $this->getEmployers($this->_contactId);
+    if ($this->_action == CRM_Core_Action::VIEW) {
+      foreach ($employers as $employer) {
+        $url = civicrm_api3('Contact', 'getvalue', ['id' => $employer['id'], 'return' => 'image_URL']);
+        $orgNames[$employer['id']] = NULL;
+        if (!empty($url)) {
+          list($width, $height) = getimagesize(CRM_Utils_String::unstupifyUrl($url));
+          list($thumbWidth, $thumbHeight) = CRM_Contact_BAO_Contact::getThumbSize($width, $height);
+          $image_URL = '<img src="' . $url . '" height= ' . $thumbHeight . ' width= ' . $thumbWidth . '  />';
+          $orgNames[$employer['id']] = [
+            'label' => ts('Logo for %1', [1 => $employer['organization_name']]),
+            'image_URL' => "<a href='#' onclick='contactImagePopUp(\"{$url}\", 180, 200);'>{$image_URL}</a>",
+          ];
+        }
+      }
+    }
+    else {
+      foreach ($employers as $employer) {
+        $name = "org_image[" . $employer['id'] . "]";
+        $orgNames[] = $employer['id'];
+        $this->add('file', $name, ts('Logo for %1', [1 => $employer['organization_name']]));
+        $this->addUploadElement($name);
+      }
+    }
+
+
+    $this->assign('orgNames', $orgNames);
+
     $this->assign('name', CRM_Contact_BAO_Contact::displayName($this->_contactId));
-    $this->assign('employers', $this->getEmployers($this->_contactId));
+    $this->assign('employers', $employers);
     $this->assign('credentials', $this->getCredentials($this->_contactId));
     $this->assign('disciplinary', $this->getDisciplinaryActions($this->_contactId));
     if ($this->_action == CRM_Core_Action::VIEW) {
@@ -130,6 +160,26 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
     $values = $this->controller->exportValues($this->_name);
     CRM_Contact_BAO_Contact::processImageParams($values);
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_LISTING, FALSE, CRM_Core_Action::VIEW);
+
+    $fieldName = 'org_image';
+    if (!empty($values[$fieldName])) {
+      foreach ($values[$fieldName] as $orgID => $fileInfo) {
+        $fileDAO = new CRM_Core_DAO_File();
+        $filename = pathinfo($fileInfo['name'], PATHINFO_BASENAME);
+        $fileDAO->uri = $filename;
+        $fileDAO->mime_type = $fileInfo['type'];
+        $fileDAO->upload_date = date('YmdHis');
+        $fileDAO->save();
+        $fileID = $fileDAO->id;
+
+        $photo = basename($fileInfo['name']);
+        civicrm_api3('Contact', 'create', [
+          'id' => $orgID,
+          'image_URL' => CRM_Utils_System::url('civicrm/contact/imagefile', 'photo=' . $photo, TRUE, NULL, TRUE, TRUE),
+        ]);
+      }
+    }
+
     CRM_Contact_BAO_Contact::createProfileContact($values, $fields, $this->_contactId, NULL, OAP_LISTING);
     CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/editlisting",
       "reset=1&action=4"

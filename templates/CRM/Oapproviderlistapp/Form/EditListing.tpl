@@ -5,6 +5,28 @@
   <div class="content provider-title" style="font-weight:bold">{$name}</div>
   <div class=clear></div>
 {/if}
+  {if $orgNames}
+    {if $action eq 4}
+      <div class="org-file-attachment">
+        {foreach from=$orgNames key=orgid item=org}
+          <div class="crm-section form-item">
+            <div class="label">{$org.label}</div>
+            <div class="content">{$org.image_URL}</div>
+          </div>
+        {/foreach}
+      </div>
+    {else}
+      <div class="org-file-attachment">
+        {foreach from=$orgNames item=orgid}
+          <div class="crm-section form-item">
+            <div class="label">{$form.org_image.$orgid.label}</div>
+            <div class="content">{$form.org_image.$orgid.html}</div>
+            <div class=clear></div>
+          </div>
+        {/foreach}
+      </div>
+    {/if}
+  {/if}
   {include file="CRM/UF/Form/Block.tpl" fields=$listing}
 </div>
 {if $imageURL}
@@ -70,6 +92,7 @@
   }
   CRM.$(function($) {
     $('.file-attachment').insertAfter('#image_URL');
+    $('.org-file-attachment').insertAfter('#editrow-image_URL');
     $('#region-marker').insertAfter($('#editrow-custom_63 > .label > label'));
   });
 </script>

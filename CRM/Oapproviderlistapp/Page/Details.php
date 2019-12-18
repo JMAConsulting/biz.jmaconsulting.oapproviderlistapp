@@ -5,13 +5,85 @@ require_once 'CRM/Core/Page.php';
 class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
   function run() {
     $cid = CRM_Utils_Request::retrieve('cid', 'Positive');
+    $isOrg = CRM_Utils_Request::retrieve('is_org', 'Positive');
 
-    $details = self::getAdditionalDetails($cid);
+    if ($isOrg) {
+      $details = self::getOrgs($cid);
+      $this->assign('isOrg', $isOrg);
+      if (!empty($details['providers'])) {
+        $this->assign('providers', $details['providers']);
+      }
+    }
+    else  {
+      $details = self::getAdditionalDetails($cid);
+    }
 
     $this->assign('employers', $details['employers']);
     $this->assign('credentials', $details['credentials']);
     $this->assign('image', $details['image']);
     parent::run();
+  }
+
+  public static function getOrgs($cid) {
+    $details = [];
+    $options = CRM_Core_OptionGroup::values('which_of_the_following_credentia_20190321014056');
+    $rType = CRM_Core_DAO::getFieldValue('CRM_Contact_DAO_RelationshipType', 'Employee of', 'id', 'name_a_b');
+    $sql = "SELECT o.id, o.organization_name, a.street_address, a.supplemental_address_1, o.image_URL,
+      a.city, a.postal_code, e.email, p.phone, p.phone_ext, sp.abbreviation, w.url,
+      GROUP_CONCAT(DISTINCT r.contact_id_a) as provider_ids,
+      GROUP_CONCAT(DISTINCT c.which_of_the_following_credentia_7) as credentials
+      FROM civicrm_contact o
+      INNER JOIN civicrm_relationship r ON r.contact_id_b = o.id
+      LEFT JOIN civicrm_contact contact_a ON r.contact_id_a = contact_a.id AND contact_a.contact_sub_type LIKE '%Provider%'
+      LEFT JOIN civicrm_address a ON a.contact_id = o.id AND a.location_type_id = 2
+      LEFT JOIN civicrm_state_province sp ON sp.id = a.state_province_id
+      LEFT JOIN civicrm_email e ON e.contact_id = o.id AND e.location_type_id = 2
+      LEFT JOIN civicrm_phone p ON p.contact_id = o.id AND p.location_type_id = 2
+      LEFT JOIN civicrm_website w ON w.contact_id = o.id AND w.website_type_id = 1
+      LEFT JOIN civicrm_value_applicant_det_4 c ON r.contact_id_a = c.entity_id
+      LEFT JOIN civicrm_value_track_changes_17 temp1 ON temp1.entity_id = r.contact_id_a
+      WHERE r.contact_id_b = %1 AND r.relationship_type_id = %2 AND o.is_deleted <> 1 AND temp1.status_60 = 'Approved'
+      GROUP BY o.id";
+
+      $employers = CRM_Core_DAO::executeQuery($sql, [
+        1 => [$cid, 'Integer'],
+        2 => [$rType, 'Integer'],
+      ])->fetchAll();
+
+      foreach ($employers as $key => $employer) {
+        $providerIDs = $employer['provider_ids'];
+        $allCreds = [];
+        foreach (explode(',', $employer['credentials']) as $cred) {
+          $creds = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, $cred));
+          foreach ($creds as $cred) {
+            $allCreds[$options[$cred]] = 1;
+          }
+        }
+        $details['credentials'][$key]['which_of_the_following_credentia_7'] = '<br>' . implode(', <br/>', array_keys($allCreds));
+        if (!empty($employer['image_URL'])) {
+          $url = $employer['image_URL'];
+          list($width, $height) = getimagesize(CRM_Utils_String::unstupifyUrl($url));
+          list($thumbWidth, $thumbHeight) = CRM_Contact_BAO_Contact::getThumbSize($width, $height);
+          $details['image'] = '<img src="' . $url . '" height= ' . $thumbHeight . ' width= ' . $thumbWidth . '  />';
+        }
+      }
+
+      $providers = [];
+      foreach (explode(',', $employer['provider_ids']) as $providerID) {
+        $displayName = CRM_Contact_BAO_Contact::displayName($providerID);
+        if (strstr($displayName, '@')) {
+          continue;
+        }
+        $providers[$providerID] = sprintf(
+          "<a href='%s' target='_blank' style='text-decoration: underline;' >%s</a>",
+          CRM_Utils_System::url('civicrm/contact/search/custom', "reset=1&csid=16&force=1&cid=$providerID"),
+          $displayName
+        );
+      }
+      $details['providers'] = $providers;
+      $details['employers'] = $employers;
+
+      return $details;
   }
 
 
@@ -30,23 +102,19 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
       }
       $credentials[0]['which_of_the_following_credentia_7'] = implode(', ', $allCreds);
     }
-    /* $dates = [
-      'bcba_certification_date_8',
-      'bcba_d_9',
-      'registered_psychologist_registra_10',
-      'registered_psychological_associa_11',
-    ];
-    foreach ($dates as $dateField) {
-      if (!empty($credentials[0][$dateField])) {
-        $credentials[0][$dateField] = date('Y-m-d', strtotime($credentials[0][$dateField]));
-      }
-    } */
+
     if (!empty($credentials)) {
       $details['credentials'] = $credentials;
     }
 
     // Get contact image
     $details['image'] = CRM_Core_DAO::singleValueQuery("SELECT image_URL FROM civicrm_contact WHERE id = %1", [1 => [$cid, 'Integer']]);
+    if (!empty($details['image'])) {
+      $url = $details['image'];
+      list($width, $height) = getimagesize(CRM_Utils_String::unstupifyUrl($url));
+      list($thumbWidth, $thumbHeight) = CRM_Contact_BAO_Contact::getThumbSize($width, $height);
+      $details['image'] = '<img src="' . $url . '" height=200 width=150  />';
+    }
 
     // Get employers
     $sql = "SELECT o.id, o.organization_name, a.street_address, a.supplemental_address_1,
@@ -66,6 +134,13 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
       2 => [$rtype, 'Integer'],
     ])->fetchAll();
     if (!empty($employers)) {
+      foreach ($employers as $k => $employer) {
+        $employers[$k]['organization_name'] = sprintf(
+          "<a href='%s' target='_blank' style='text-decoration: underline;'>%s</a>",
+          CRM_Utils_System::url('civicrm/contact/search/custom', "reset=1&csid=16&force=1&is_org=1&cid=" . $employer['id']),
+          $employer['organization_name']
+        );
+      }
       $details['employers'] = $employers;
     }
     return $details;

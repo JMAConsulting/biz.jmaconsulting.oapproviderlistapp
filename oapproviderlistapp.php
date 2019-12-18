@@ -181,6 +181,20 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
     $form->assign('superHoursField', 'field_' . SUPER_HOURS);
     $form->assign('superContactField', 'field_' . SUPER_CONTACT);
   }
+  if ($formName == "CRM_Contact_Form_Search_Custom" && $form->getVar('_customSearchClass') == 'CRM_Oapproviderlistapp_Form_Search_ProviderList') {
+    $form->addButtons([
+      [
+        'type' => 'refresh',
+        'name' => ts('Search by Provider'),
+        'isDefault' => TRUE,
+      ],
+      [
+        'type' => 'refresh',
+        'subName' => 'savenext',
+        'name' => ts('Search By Organization'),
+      ],
+    ]);
+  }
 }
 
 /**
