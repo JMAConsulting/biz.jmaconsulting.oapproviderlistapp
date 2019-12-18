@@ -75,7 +75,7 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
           continue;
         }
         $providers[$providerID] = sprintf(
-          "<a href='%s' target='_blank' style='text-decoration: underline;' >%s</a>",
+          "<a href='%s' target='_blank' class='provider' >%s</a>",
           CRM_Utils_System::url('civicrm/contact/search/custom', "reset=1&csid=16&force=1&cid=$providerID"),
           $displayName
         );
@@ -136,7 +136,7 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
     if (!empty($employers)) {
       foreach ($employers as $k => $employer) {
         $employers[$k]['organization_name'] = sprintf(
-          "<a href='%s' target='_blank' style='text-decoration: underline;'>%s</a>",
+          "<a href='%s' target='_blank' class='employer' >%s</a>",
           CRM_Utils_System::url('civicrm/contact/search/custom', "reset=1&csid=16&force=1&is_org=1&cid=" . $employer['id']),
           $employer['organization_name']
         );

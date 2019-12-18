@@ -206,3 +206,7 @@ legend {
 .crm-container.crm-public .select2-container-multi .select2-choices .select2-search-choice {
   padding: 3px 24px 3px 20px !important;
 }
+
+a.employer:hover, a.provider:hover {
+  text-decoration: underline !important;
+}
