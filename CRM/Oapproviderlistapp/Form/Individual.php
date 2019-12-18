@@ -162,7 +162,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       }
 
       if (strpos(strtolower($name), 'self') !== false || strpos(strtolower($name), 'employ') !== false) {
-        $name = "Self employed by " . $values['last_name'] . "," . $values['first_name'];
+        $name = "Self employed by " . $values['last_name'] . ", " . $values['first_name'];
       }
 
       $id = CRM_Utils_Array::value('id', civicrm_api3('Contact', 'get', [
