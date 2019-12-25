@@ -50,8 +50,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
 
     $check = [];
     foreach ([
-      1 => E::ts('Board Certified Behavior Analyst® (BCBA®)'),
-      2 => E::ts('Board Certified Behavior Analyst-Doctoral (BCBA-D™)'),
+      1 => E::ts('Board Certified Behavior Analyst%1 (BCBA%1)', [1 => '®']),
+      2 => E::ts('Board Certified Behavior Analyst-Doctoral (BCBA-D%1)', [1 => '™']),
       3 => E::ts('Registered Psychologist'),
       4 => E::ts('Registered Psychological Associate'),
     ] as $key => $label) {
