@@ -146,6 +146,10 @@ msgstr ""
 msgid "Please note any other relevant credentials you have achieved and the date you obtained them."
 msgstr ""
 
+#: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+msgid "If you are a psychologist or psychological associate with ABA expertise, you are eligible to join the OAP Provider List. You do not need to obtain a BCBA or BCBA-D, however, you will need to a BCBA-D provide an "Applied Behaviour Analysis Expertise Package", which will confirm your ABA expertise. Details of what that package must include can be found"
+msgstr ""
+
 #: ./templates/CRM/ProviderList.tpl
 msgid "ADD ANOTHER DEGREE"
 msgstr ""
