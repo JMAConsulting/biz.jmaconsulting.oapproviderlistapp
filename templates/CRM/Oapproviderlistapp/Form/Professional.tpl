@@ -4,7 +4,7 @@
   {ts}To join the Provider List, you must be a Board Certified Behavior Analyst® in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario.{/ts}
   </p>
   <p>
-  {ts}If you are a psychologist or psychological associate with ABA expertise, you are eligible to join the OAP Provider List. You do not need to obtain a BCBA or BCBA-D, however, you will need to a BCBA-D provide an "Applied Behaviour Analysis Expertise Package", which will confirm your ABA expertise. Details of what that package must include can be found <a target='_blank' href="/sites/default/files/2019-11/OAP%20-%20Reg%20Psychologist%20ABA%20Expertise%20Package%20V2.pdf">here</a>.{/ts}
+  {ts}If you are a psychologist or psychological associate with ABA expertise, you are eligible to join the OAP Provider List. You do not need to obtain a BCBA or BCBA-D, however, you will need to a BCBA-D provide an "Applied Behaviour Analysis Expertise Package", which will confirm your ABA expertise.{/ts} {ts}Details of what that package must include can be found <a target='_blank' href="/sites/default/files/2019-11/OAP%20-%20Reg%20Psychologist%20ABA%20Expertise%20Package%20V2.pdf">here</a>.{/ts}
   </p>
   </div>
 {assign var="groupID" value="12"}
