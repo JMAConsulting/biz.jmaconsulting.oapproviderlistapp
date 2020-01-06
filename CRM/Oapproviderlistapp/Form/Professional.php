@@ -17,7 +17,11 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
 
   public function buildQuickForm() {
     $this->buildCustom(OAP_PROFESSIONAL, 'professional');
-
+    $dlText = "Details of what that package must include can be found <a target='_blank' href='/sites/default/files/2019-11/OAP%20-%20Reg%20Psychologist%20ABA%20Expertise%20Package%20V2.pdf'>here</a>.";
+    if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'fr') {
+      $dlText = "Vous trouverez ici plus de détails sur le contenu de cette <a target='_blank' href='/sites/default/files/2019-11/OAP%20-%20Reg%20Psychologist%20ABA%20Expertise%20Package%20V2.pdf'>trousse</a>.";
+    }
+    $this->assign('dlText', $dlText);
     $this->assign('customDataType', 'Individual');
     $this->assign('customDataSubType', 'Provider');
     $this->assign('entityID', $this->_contactID);
