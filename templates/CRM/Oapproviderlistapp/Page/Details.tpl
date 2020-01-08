@@ -21,27 +21,24 @@
               <br/>
             {/foreach}
           {/if}
-          {if !$isOrg}<strong>{$employer.organization_name}</strong><br/>{/if}
-          <br/><div class="label-text">{ts}Address{/ts}:</div>
+          {if !$isOrg}<strong>{$employer.organization_name}</strong>{/if}
+          <br/>
           {$employer.street_address} <br/>
           {if $employer.supplemental_address_1}{$employer.supplemental_address_1} <br/>{/if}
           {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code} <br/>
           <div class=clear></div><br/>
 
           {if $employer.phone}
-            <div class="label-text">{ts}Phone{/ts}:</div>
              {$employer.phone} {if $employer.phone_ext}{ts}ext{/ts}: {$employer.phone_ext}{/if}
             <div class=clear></div><br/>
           {/if}
 
           {if $employer.email}
-            <div class="label-text">{ts}Email{/ts}:</div>
             <a href='mailto:{$employer.email}' style='color:#0071bd !important;cursor: pointer !important'>{$employer.email}</a>
             <div class=clear></div><br/>
           {/if}
 
           {if $employer.url}
-            <div class="label-text">{ts}Website{/ts}:</div>
             <a href='{$employer.url}' style='color:#0071bd !important;cursor: pointer !important' target='_blank'>{$employer.url}</a>
             <br/>
             <div class=clear></div><br/>
