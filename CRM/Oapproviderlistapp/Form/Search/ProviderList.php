@@ -218,7 +218,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       $sql .= " $groupBy ";
     }
 
-    $sort = 'contact_a.first_name, contact_a.last_name';
+    $sort = 'contact_a.last_name, contact_a.first_name';
     if ($this->_searchByOrg) {
       $sort = 'contact_a.organization_name';
     }
@@ -455,7 +455,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
      $row[$l] = implode(', ', array_unique($row[$l]));
    }
    if (!empty($row[$region])) {
-     $regions = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row[$region], 1, -1)));
+     $regions = array_unique(array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row[$region], 1, -1)), function($value) { return in_array($value, ['East', 'Central', 'Toronto', 'North', 'West', 'South']); }));
      $row[$region] = str_replace('South', 'West', implode(', ', $regions));
    }
     //CRM_Core_Error::debug_var('row', $row);

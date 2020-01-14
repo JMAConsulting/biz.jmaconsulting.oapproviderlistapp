@@ -193,6 +193,7 @@ tr {
 
 .provider-image {
     float: left; /* add this */
+    height: 200px;
 }
 .field--name-field-title:after {
     content: "";

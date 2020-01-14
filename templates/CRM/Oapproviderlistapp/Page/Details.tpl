@@ -26,29 +26,29 @@
           {$employer.street_address} <br/>
           {if $employer.supplemental_address_1}{$employer.supplemental_address_1} <br/>{/if}
           {$employer.city}{if $employer.abbreviation}, {$employer.abbreviation}{/if} {$employer.postal_code} <br/>
-          <div class=clear></div><br/>
+          <div class=clear></div>
 
           {if $employer.phone}
              {$employer.phone} {if $employer.phone_ext}{ts}ext{/ts}: {$employer.phone_ext}{/if}
-            <div class=clear></div><br/>
+            <div class=clear></div>
           {/if}
 
           {if $employer.email}
             <a href='mailto:{$employer.email}' style='color:#0071bd !important;cursor: pointer !important'>{$employer.email}</a>
-            <div class=clear></div><br/>
+            <div class=clear></div>
           {/if}
 
           {if $employer.url}
             <a href='{$employer.url}' style='color:#0071bd !important;cursor: pointer !important' target='_blank'>{$employer.url}</a>
             <br/>
-            <div class=clear></div><br/>
+            <div class=clear></div>
           {/if}
 
           {if !empty($providers)}
             <div class='provider-list'>
               <br><div class="label-text">{ts}Providers{/ts}:</div>
               {foreach from=$providers item=provider}
-                {$provider}<br/>
+                <br/>{$provider}
               {/foreach}
             </div>
           {/if}
