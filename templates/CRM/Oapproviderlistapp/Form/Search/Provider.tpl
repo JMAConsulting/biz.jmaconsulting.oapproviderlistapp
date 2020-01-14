@@ -73,11 +73,11 @@
          <a style="color:#bd3933 !important" href="{$row.bacb_r_disciplinary_action_71}">{ts}BACB(r) Disciplinary Action{/ts}</a>{if isset($row.bacb_r_disciplinary_action_71) and isset($row.cpo_discipline_and_other_proceed_72)}, {/if} <a style="color:#bd3933 !important" href="{$row.cpo_discipline_and_other_proceed_72}">{ts}CPO Discipline and Other Proceedings{/ts}</a>
         </div>
         {/if}
-        <div style="float: left;width:30%;overflow: hidden;">
-        {ts}Region{/ts}: {$row.region_63}
+        <div style="float: left;width:40%;overflow: hidden;">
+        <font style="text-decoration: underline;">{ts}Region{/ts}:</font> {$row.region_63}
       </div>
       <div style="overflow: hidden;">
-        {ts}Speaks{/ts}: {$row.language_64}
+        <font style="text-decoration: underline;">{ts}Speaks{/ts}:</font> {$row.language_64}
       </div>
       </td>
     </tr>

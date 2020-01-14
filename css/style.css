@@ -213,3 +213,14 @@ legend {
 .crm-container.crm-public .select2-container-multi .select2-choices .select2-search-choice {
   padding: 3px 24px 3px 20px !important;
 }
+a.employer {
+  font-weight: bold !important;
+  font-weight: 20px !important;
+}
+a.employer:hover, .label-text {
+  text-decoration: underline !important;
+}
+
+.provider-list a {
+  color:#0071bd !important;
+}
