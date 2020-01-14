@@ -3,6 +3,13 @@
   font-size: 16px !important;
   color: #4B4C4D !important;
 }
+.responsive-menu-block-wrapper .horizontal-menu > .menu-item.menu-item--expanded .sub-nav a,
+.menu--footer .menu-item a,
+.region--footer-second .block-topsociallinks-2 a,
+.region--footer-second .block-topsociallinks-2 a .fa,
+.toolbar .toolbar-bar .toolbar-item {
+  color: white !important;
+}
 .crm-container .crm-form-block label {
   font-weight: 500 !important;
 }
