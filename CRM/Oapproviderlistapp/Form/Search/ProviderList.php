@@ -455,9 +455,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
      $row[$l] = implode(', ', array_unique($row[$l]));
    }
    if (!empty($row[$region])) {
-     $regions = array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row[$region], 1, -1)));
+     $regions = array_unique(array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row[$region], 1, -1)), function($value) { return in_array($value, ['East', 'Central', 'Toronto', 'North', 'West', 'South']); }));
      $row[$region] = str_replace('South', 'West', implode(', ', $regions));
    }
-    //CRM_Core_Error::debug_var('row', $row);
   }
 }
