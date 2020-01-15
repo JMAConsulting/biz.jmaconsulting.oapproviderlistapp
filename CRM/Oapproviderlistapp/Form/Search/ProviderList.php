@@ -218,7 +218,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       $sql .= " $groupBy ";
     }
 
-    $sort = 'contact_a.first_name, contact_a.last_name';
+    $sort = 'contact_a.last_name, contact_a.first_name';
     if ($this->_searchByOrg) {
       $sort = 'contact_a.organization_name';
     }

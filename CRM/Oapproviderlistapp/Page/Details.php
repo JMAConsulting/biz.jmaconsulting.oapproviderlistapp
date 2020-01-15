@@ -66,7 +66,9 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
         SELECT display_name, cc.id, GROUP_CONCAT(DISTINCT c.which_of_the_following_credentia_7) as credentials
          FROM civicrm_contact cc
           LEFT JOIN civicrm_value_applicant_det_4 c ON cc.id = c.entity_id
-         WHERE cc.id IN (" . $employer['provider_ids'] . ") AND display_name NOT LIKE '%@%' ORDER BY sort_name ";
+         WHERE cc.id IN (" . $employer['provider_ids'] . ") AND display_name NOT LIKE '%@%'
+         GROUP BY cc.id
+         ORDER BY sort_name ";
         $result = CRM_Core_DAO::executeQuery($sql)->fetchAll();
         foreach ($result as $k => $value) {
           $allCreds = [];
@@ -78,7 +80,7 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
           }
 
           $details['providers'][$k] = sprintf(
-            "<a href='%s' target='_blank'>%s</a> %s",
+            "<a href='%s' target='_blank'>%s</a>, %s",
             CRM_Utils_System::url('civicrm/contact/search/custom', "reset=1&csid=16&force=1&cid=" . $value['id']),
             $value['display_name'],
             implode(', ', $allCreds)
