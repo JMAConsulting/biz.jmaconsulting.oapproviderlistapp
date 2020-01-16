@@ -217,6 +217,7 @@ legend {
 a.employer {
   font-weight: bold !important;
   font-weight: 20px !important;
+  color: #0071bd !important;
 }
 a.employer:hover, .label-text {
   text-decoration: underline !important;

@@ -68,7 +68,7 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
           LEFT JOIN civicrm_value_applicant_det_4 c ON cc.id = c.entity_id
          WHERE cc.id IN (" . $employer['provider_ids'] . ") AND display_name NOT LIKE '%@%'
          GROUP BY cc.id
-         ORDER BY sort_name ";
+         ORDER BY cc.last_name, cc.first_name ";
         $result = CRM_Core_DAO::executeQuery($sql)->fetchAll();
         foreach ($result as $k => $value) {
           $allCreds = [];
