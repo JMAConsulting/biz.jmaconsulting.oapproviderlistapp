@@ -69,7 +69,7 @@ class CRM_Oapproviderlistapp_Form_TabHeader {
         'current' => FALSE,
       ],
       'signature' => [
-        'title' => E::ts('Attestation'),
+        'title' => E::ts('Declaration of Compliance'),
         'url' => NULL,
         'valid' => FALSE,
         'active' => FALSE,
