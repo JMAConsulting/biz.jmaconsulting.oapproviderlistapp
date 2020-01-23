@@ -103,3 +103,19 @@ h1 {
     padding-left: 0px;
   }
 }
+
+.helpicon:before {
+    content: "" !important;
+}
+
+.helpicon:after {
+    content: "\f059" !important;
+}
+
+#crm-notification-container {
+  width: 80% !important;
+  position: absolute !important;
+  top: 400px !important;
+  right : 10% !important;
+  z-index: 999999 !important;
+}
