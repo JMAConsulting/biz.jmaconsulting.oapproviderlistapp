@@ -1,128 +1,595 @@
-#: ./CRM/Oapproviderlistapp/Form/Individual.php ./CRM/Oapproviderlistapp/Form/ManageApplication.php
-msgid "Individual Information"
+# Copyright CiviCRM LLC (c) 2004-2015
+# This file is distributed under the same license as the CiviCRM package.
+# If you contribute heavily to a translation and deem your work copyrightable,
+# make sure you license it to CiviCRM LLC under Academic Free License 3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: oapproviderlistapp\n"
+"POT-Creation-Date: 2020-01-24 16:13+1100\n"
+"Language-Team: CiviCRM Translators <civicrm-translators@lists.civicrm.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: CRM/Oapproviderlistapp/Form/Confirm.php
+msgid "OAP PROVIDER LIST CONFIRMATION PAGE"
 msgstr ""
 
-#: ./CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Primary Employer Organization Name"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Work Address"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Phone Number"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/Individual.php
-msgid "City/Town"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Email Address"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
-msgid "OAP PROVIDER LIST APPLICATION FORM"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
-msgid "Professional Credential(s)"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
-msgid "Experience"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
-msgid "Vulnerable Sector Check"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
-msgid "Professional Liability Insurance"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
-msgid "Signature"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
+#: CRM/Oapproviderlistapp/Form/Confirm.php
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Previous"
 msgstr ""
 
-#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
-msgid "Submit"
+#: CRM/Oapproviderlistapp/Form/Confirm.php
+msgid "Confirm"
 msgstr ""
 
-#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
-msgid "Next"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
-msgid "Save Draft"
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/ManageApplication.php
-msgid "Some of the profile fields cannot be configured for this page."
-msgstr ""
-
-#: ./CRM/Oapproviderlistapp/Form/Signature.php
+#: CRM/Oapproviderlistapp/Form/Confirm.php
+#: CRM/Oapproviderlistapp/Form/Signature.php
 msgid "Thank you for submitting your application to the OAP Provider List"
 msgstr ""
 
-#: ./oapproviderlistapp.php
+#: CRM/Oapproviderlistapp/Form/Confirm.php
+msgid "Email address not found. Please go back and provide email address"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+msgid "Are you sure you want to delete contact image."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+msgid "Delete Contact Image"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "more"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+msgid "View My Listing"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+msgid "Edit My Listing"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+msgid "Logo for %1"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+msgid "Update your profile"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Submit"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+msgid "Cancel"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+msgid "Image could not be uploaded due to invalid type extension."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+msgid "Maximum file size cannot exceed upload max size"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+msgid "Your provider listing has been updated."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+msgid "Listing Updated"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+#: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
+msgid "BACB(r) Disciplinary Action"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/EditListing.php
+#: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
+msgid "CPO Discipline and Other Proceedings"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Experience.php
+msgid "Each option of Experience check list is a required field."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Experience.php
+msgid "All fields in Employment History are required."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Experience.php
+msgid ""
+"For the purposes of OAP Provider List, only your employment after "
+"certification is counted. Please change Employment History Start Date to "
+"your certification date"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Experience.php
+msgid "Approximate number of hours that involved supervisory duties"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Experience.php
+msgid "Total number of hours"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Experience.php
+msgid "Please enter a numeric value for \"%1\""
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Primary Employer Organization Name"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Phone Number"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Work Address"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Postal code"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "City/Town"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Email Address"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Email is a required field to send draft link."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "At least one Current Employer is required."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "First Name is required"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Last Name is required"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid ""
+"A person with this email address has already created an OAP Provider Listing "
+"application. Please contact info@oapproviderlist.ca for more information."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Work Address is required."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Phone Number is required."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Postal Code is required."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "City/Town is required."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "OAP PROVIDER LIST APPLICATION FORM"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "You have already submitted this application."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Next"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Save Draft"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Some of the profile fields cannot be configured for this page."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Contact image deleted successfully"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Image Deleted"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Are you sure you want to delete attached file."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "Delete Attached File"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Professional.php
+msgid "At least one credential must be selected."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Certification Date for this credential."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Certification Number for this credential."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Registration Date for this credential."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Professional.php
+msgid "Please provide Registration Number for this credential."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Report/ProviderList.php
+msgid "Created Date"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Report/ProviderList.php
+#: templates/CRM/Oapproviderlistapp/Form/EditListing.tpl
+msgid "Employer(s)"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Report/ProviderList.php
+msgid "Complete (Ready to Verify) Date"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Report/ProviderList.php
+msgid "Approval Date"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Report/ProviderList.php
+msgid "Current Status"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Report/ProviderList.php
+msgid "View Contact Detail Report for this contact"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "Search the OAP Provider List"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "Show only if accepting new clients"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+#: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
+msgid "Travels to remote areas"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+#: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
+msgid "Offers supervision"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+#: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
+msgid "Offers remote services"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+#: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
+msgid "Region"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "Board Certified Behavior Analyst%1 (BCBA%1)"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "Board Certified Behavior Analyst-Doctoral (BCBA-D%1)"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "Registered Psychologist"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "Registered Psychological Associate"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "I am looking for"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "Language"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "- any -"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "Provider Name"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "Organization Name"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
+msgid "City"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/TabHeader.php
+msgid "Individual Information"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/TabHeader.php
+msgid "Professional Credential(s)"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/TabHeader.php
+msgid "Experience"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/TabHeader.php
+msgid "Vulnerable Sector Check"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/TabHeader.php
+msgid "Professional Liability Insurance"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/TabHeader.php
+msgid "Declaration of Compliance"
+msgstr ""
+
+#: oapproviderlistapp.php
+msgid "CiviCRM"
+msgstr ""
+
+#: oapproviderlistapp.php
+msgid "edit my listing"
+msgstr ""
+
+#: oapproviderlistapp.php
+msgid "Edit own Provider Listing"
+msgstr ""
+
+#: oapproviderlistapp.php
 msgid "%1"
 msgstr ""
 
-#: ./oapproviderlistapp.php
+#: oapproviderlistapp.php
 msgid "%1 must be a number."
 msgstr ""
 
-#: ./oapproviderlistapp.php
-msgid "Your consent is required for all statements"
+#: oapproviderlistapp.php
+msgid "Search by Provider"
 msgstr ""
 
-#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
-msgid "Please read this form carefully to make sure that you meet the requirements to join the Ontario Autism Program (OAP) Provider List."
+#: oapproviderlistapp.php
+msgid "Search By Organization"
 msgstr ""
 
-#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
-msgid "Please provide information on your primary current employer(s) through which you will be clinically supervising Ontario Autism Program behavioural services."
+#: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
+msgid "Employer information"
 msgstr ""
 
-#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
-msgid "You must provide a proof of employment letter for each employer listed below. This letter must be on the organization’s letterhead and include the role and credentials of the person signing. You do not need to submit proof of self-employment."
+#: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
+#: templates/CRM/Oapproviderlistapp/Form/EditListing.tpl
+msgid "Phone"
 msgstr ""
 
-#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
+msgid "Proof of Employment:"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
+msgid "Other Professional Credentials"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
+msgid "Employment History"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/EditListing.hlp
+msgid ""
+"Contact Image Upload a png or jpg photo that you want to be displayed with "
+"your listing."
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/EditListing.tpl
+msgid "Name"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/EditListing.tpl
+#: templates/CRM/Oapproviderlistapp/Page/Details.tpl
+msgid "Credentials"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/EditListing.tpl
+msgid "Title/Professional Credentials"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Experience.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Insurance.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+#: templates/CRM/Oapproviderlistapp/Form/SectorCheck.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Signature.tpl
+msgid "An email will be sent to you"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Experience.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Insurance.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+#: templates/CRM/Oapproviderlistapp/Form/SectorCheck.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Signature.tpl
+msgid ""
+"It will contain a link that you can click to continue to review this request "
+"within the next seven days."
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid ""
+"Please read this form carefully to make sure that you meet the requirements "
+"to join the Ontario Autism Program (OAP) Provider List."
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid ""
+"Please provide information on your primary current employer(s) through which "
+"you will be clinically supervising Ontario Autism Program behavioural "
+"services."
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid ""
+"You must provide a proof of employment letter for each employer listed "
+"below. This letter must be on the organization’s letterhead and include the "
+"role and credentials of the person signing. You do not need to submit proof "
+"of self-employment."
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "(if self-employed, write &#8220;self-employed&#8221; here)"
 msgstr ""
 
-#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Insurance.tpl
+#: templates/CRM/Oapproviderlistapp/Form/SectorCheck.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Signature.tpl
+msgid "Uploaded file:"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Hide"
 msgstr ""
 
-#: ./templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Add another employer"
 msgstr ""
 
-#: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid "To join the Provider List, you must be a Board Certified Behavior Analyst® in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario."
+#: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
+msgid "Complete the application online on the form below or"
 msgstr ""
 
-#: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid "If you are a psychologist or psychological associate with ABA expertise, you are eligible to join the OAP Provider List. You do not need to obtain a BCBA® or BCBA-D™, however, you will need to have your ABA expertise confirmed by a BCBA-D™. Upon receiving your application package, the Provider List administrator will contact you with more information about the equivalency process for confirming ABA expertise."
+#: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
+msgid "click here to download a fillable PDF application form."
 msgstr ""
 
-#: ./templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid "Please note any other relevant credentials you have achieved and the date you obtained them."
+#: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
+msgid "Please note"
 msgstr ""
 
-#: ./templates/CRM/ProviderList.tpl
+#: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
+msgid ""
+"If you download the application form, please email the completed form to"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+msgid ""
+"To join the Provider List, you must be a Board Certified Behavior Analyst® "
+"in good standing, or a registered psychologist or psychological associate in "
+"good standing with the College of Psychologists of Ontario."
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+msgid ""
+"If you are a psychologist or psychological associate with ABA expertise, you "
+"are eligible to join the OAP Provider List. You do not need to obtain a BCBA "
+"or BCBA-D, however, you will need to a BCBA-D provide an \"Applied Behaviour "
+"Analysis Expertise Package\", which will confirm your ABA expertise."
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
+msgid ""
+"Please note any other relevant credentials you have achieved and the date "
+"you obtained them."
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/EmptyResults.tpl
+msgid "No providers found that match your criteria."
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/EmptyResults.tpl
+msgid "Suggestion:"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/EmptyResults.tpl
+msgid "Use fewer criteria so you limit results less."
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
+msgid "Currently accepting new clients"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
+msgid "Not accepting new clients"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
+msgid "Speaks"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
+msgid "view details"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
+#: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
+msgid "Click for more details"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
+msgid "Click for map of regions"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
+msgid "Expand all results"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
+msgid "Collapse all results"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
+msgid "Click to hide details"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Page/Details.tpl
+msgid "ext"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Page/Details.tpl
+msgid "Providers"
+msgstr ""
+
+#: templates/CRM/ProviderList.tpl
 msgid "ADD ANOTHER DEGREE"
 msgstr ""
 
-#: ./templates/CRM/ProviderList.tpl
+#: templates/CRM/ProviderList.tpl
 msgid "Add Another Employer"
 msgstr ""
-
