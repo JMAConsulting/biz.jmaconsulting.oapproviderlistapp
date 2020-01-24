@@ -12,8 +12,6 @@ msgstr ""
 "X-Generator: Poedit 2.2.4\n"
 
 #: CRM/Oapproviderlistapp/Form/Confirm.php
-#, fuzzy
-#| msgid "OAP PROVIDER LIST APPLICATION FORM"
 msgid "OAP PROVIDER LIST CONFIRMATION PAGE"
 msgstr ""
 "FORMULAIRE DE DEMANDE D’INSCRIPTION SUR LA LISTE DES FOURNISSEURS DU POSA"
@@ -52,8 +50,6 @@ msgid "more"
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/EditListing.php
-#, fuzzy
-#| msgid "Edit My Listing"
 msgid "View My Listing"
 msgstr "Modifier mon dossier d’inscription"
 
@@ -105,14 +101,10 @@ msgid "CPO Discipline and Other Proceedings"
 msgstr "Mesure disciplinaire ou autre procédure de l’OPO"
 
 #: CRM/Oapproviderlistapp/Form/Experience.php
-#, fuzzy
-#| msgid "Email Address is a required field."
 msgid "Each option of Experience check list is a required field."
 msgstr "Adresse courriel est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/Experience.php
-#, fuzzy
-#| msgid "At least one Current Employer is required."
 msgid "All fields in Employment History are required."
 msgstr "Au moins un employeur actuel est exigé."
 
@@ -140,36 +132,26 @@ msgid "Primary Employer Organization Name"
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-#, fuzzy
-#| msgid "Phone Number is required"
 msgid "Phone Number"
-msgstr "Numéro de téléphone est un champ requis."
+msgstr "Numéro de téléphone"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-#, fuzzy
-#| msgid "Work Address is required"
 msgid "Work Address"
-msgstr "Adresse du lieu de travail est un champ requis."
+msgstr "Adresse du lieu de travail"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Postal code"
 msgstr "Code postal"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-#, fuzzy
-#| msgid "City/Town is required"
 msgid "City/Town"
-msgstr "Ville/village est un champ requis."
+msgstr "Ville/village"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-#, fuzzy
-#| msgid "Email Address is required"
 msgid "Email Address"
-msgstr "Adresse courriel est un champ requis."
+msgstr "Adresse courriel"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-#, fuzzy
-#| msgid "Email Address is a required field."
 msgid "Email is a required field to send draft link."
 msgstr "Adresse courriel est un champ requis."
 
@@ -196,26 +178,18 @@ msgstr ""
 "courriel suivante : info@oapproviderlist.ca"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-#, fuzzy
-#| msgid "Work Address is required"
 msgid "Work Address is required."
 msgstr "Adresse du lieu de travail est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-#, fuzzy
-#| msgid "Phone Number is required"
 msgid "Phone Number is required."
 msgstr "Numéro de téléphone est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-#, fuzzy
-#| msgid "Postal code is required"
 msgid "Postal Code is required."
 msgstr "Code postal est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-#, fuzzy
-#| msgid "City/Town is required"
 msgid "City/Town is required."
 msgstr "Ville/village est un champ requis."
 
@@ -262,26 +236,18 @@ msgid "At least one credential must be selected."
 msgstr "Au moins une qualification doit être sélectionnée."
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
-#, fuzzy
-#| msgid "Please provide a Certification Date for this credential."
 msgid "Please provide Certification Date for this credential."
 msgstr "Veuillez indiquer une date de certification pour cette qualification."
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
-#, fuzzy
-#| msgid "Please provide a Certification Number for this credential."
 msgid "Please provide Certification Number for this credential."
 msgstr "Veuillez indiquer un numéro de certificat pour cette qualification."
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
-#, fuzzy
-#| msgid "Please provide a Certification Date for this credential."
 msgid "Please provide Registration Date for this credential."
 msgstr "Veuillez indiquer une date de certification pour cette qualification."
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
-#, fuzzy
-#| msgid "Please provide a Certification Number for this credential."
 msgid "Please provide Registration Number for this credential."
 msgstr "Veuillez indiquer un numéro de certificat pour cette qualification."
 
@@ -342,14 +308,10 @@ msgid "Region"
 msgstr "Région"
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
-#, fuzzy
-#| msgid "Board Certified Behavior Analyst® (BCBA®)"
 msgid "Board Certified Behavior Analyst%1 (BCBA%1)"
 msgstr "Analyste du comportement certifié(e)&#x1F16B; (BCBA&#x1F16B;)"
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
-#, fuzzy
-#| msgid "Board Certified Behavior Analyst-Doctoral (BCBA-D™)"
 msgid "Board Certified Behavior Analyst-Doctoral (BCBA-D%1)"
 msgstr ""
 "Analyste du comportement certifié(e) – doctoral(e)&#x1F16A; (BCBA-D&#x1F16A;)"
@@ -415,14 +377,10 @@ msgid "CiviCRM"
 msgstr ""
 
 #: oapproviderlistapp.php
-#, fuzzy
-#| msgid "Edit My Listing"
 msgid "edit my listing"
 msgstr "Modifier mon dossier d’inscription"
 
 #: oapproviderlistapp.php
-#, fuzzy
-#| msgid "Edit My Listing"
 msgid "Edit own Provider Listing"
 msgstr "Modifier mon dossier d’inscription"
 
@@ -435,8 +393,6 @@ msgid "%1 must be a number."
 msgstr "%1 doit être un chiffre."
 
 #: oapproviderlistapp.php
-#, fuzzy
-#| msgid "Search the OAP Provider List"
 msgid "Search by Provider"
 msgstr "Faire une recherche dans la Liste des fournisseurs du POSA"
 
@@ -454,14 +410,10 @@ msgid "Phone"
 msgstr "Téléphone"
 
 #: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
-#, fuzzy
-#| msgid "Proof of Employment Letter"
 msgid "Proof of Employment:"
 msgstr "Lettre de preuve d’emploi"
 
 #: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
-#, fuzzy
-#| msgid "Professional Credential(s)"
 msgid "Other Professional Credentials"
 msgstr "Qualifications professionnel(s)"
 
@@ -485,8 +437,6 @@ msgid "Credentials"
 msgstr "Titres de compétence"
 
 #: templates/CRM/Oapproviderlistapp/Form/EditListing.tpl
-#, fuzzy
-#| msgid "Professional Credential(s)"
 msgid "Title/Professional Credentials"
 msgstr "Qualifications professionnel(s)"
 
@@ -496,8 +446,6 @@ msgstr "Qualifications professionnel(s)"
 #: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
 #: templates/CRM/Oapproviderlistapp/Form/SectorCheck.tpl
 #: templates/CRM/Oapproviderlistapp/Form/Signature.tpl
-#, fuzzy
-#| msgid "An email will be sent to"
 msgid "An email will be sent to you"
 msgstr "Un courriel sera envoyé à"
 
@@ -638,8 +586,6 @@ msgstr "Définissez moins de critères afin d’obtenir plus de résultats."
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
-#, fuzzy
-#| msgid "Not accepting new clients"
 msgid "Currently accepting new clients"
 msgstr "N’accepte pas de nouveaux clients"
 
@@ -652,8 +598,6 @@ msgid "Speaks"
 msgstr "Langue(s) parlée(s)"
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
-#, fuzzy
-#| msgid "Click to hide details"
 msgid "view details"
 msgstr "Cliquer pour masquer les détails"
 
@@ -663,8 +607,6 @@ msgid "Click for more details"
 msgstr "Cliquer pour afficher d’autres détails"
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
-#, fuzzy
-#| msgid "Click for more details"
 msgid "Click for map of regions"
 msgstr "Cliquer pour afficher d’autres détails"
 
@@ -673,8 +615,6 @@ msgid "Expand all results"
 msgstr "Afficher tous les résultats"
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
-#, fuzzy
-#| msgid "Expand all results"
 msgid "Collapse all results"
 msgstr "Afficher tous les résultats"
 
@@ -683,8 +623,6 @@ msgid "Click to hide details"
 msgstr "Cliquer pour masquer les détails"
 
 #: templates/CRM/Oapproviderlistapp/Page/Details.tpl
-#, fuzzy
-#| msgid "Next"
 msgid "ext"
 msgstr "Prochain"
 
