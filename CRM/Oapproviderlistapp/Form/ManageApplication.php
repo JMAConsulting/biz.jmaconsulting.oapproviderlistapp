@@ -34,7 +34,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         'return.custom_60' => 1,
       ])['values'];
       if (!empty($statusCheck[$this->_contactID]['custom_60'])) {
-        CRM_Core_Error::fatal(ts("You have already submitted this application."));
+        CRM_Core_Error::statusBounce(ts("You have already submitted this application."), CRM_Utils_System::url('civicrm/application', 'reset=1'));
       }
     }
   }
