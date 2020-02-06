@@ -147,9 +147,24 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       'email' => CRM_Utils_Array::value(1, $values['email']),
     ];
     if (empty($contactID) && !empty($params['email'])) {
+      // fetch contact from existing approved Contact
       $contact = civicrm_api3('contact', 'get', ['email' => $params['email'], 'contact_sub_type' => 'Provider', 'sequential' => 1])['values'];
+      $contactID = NULL;
       if (!empty($contact)) {
         $contactID = $contact[0]['contact_id'];
+      }
+      else {
+        // if not found then fetch contact from trash based on first and last name
+        $contact = civicrm_api3('Contact', 'get', [
+          'sequential' => 1,
+          'contact_sub_type' => "Provider",
+          'first_name' => $values['first_name'],
+          'last_name' => $values['last_name'],
+          'is_deleted' => 1,
+        ])['values'];
+        if (!empty($contact)) {
+          $contactID = $contact[0]['contact_id'];
+        }
       }
     }
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_INDIVIDUAL, FALSE, CRM_Core_Action::VIEW);
