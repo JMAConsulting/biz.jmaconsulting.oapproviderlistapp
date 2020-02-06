@@ -202,11 +202,22 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         }
       }
       else {
-        $relationshipID = civicrm_api3('Relationship', 'create', [
+        $relationshipParams = [
           'relationship_type_id' => 5,
           'contact_id_a' => $contactID,
           'contact_id_b' => $id,
-        ])['id'];
+        ];
+        $relationship = civicrm_api3('Relationship', 'get', $relationshipParams);
+        if (empty($relationship['count'])) {
+          $relationshipID = civicrm_api3('Relationship', 'create', [
+            'relationship_type_id' => 5,
+            'contact_id_a' => $contactID,
+            'contact_id_b' => $id,
+          ])['id'];
+        }
+        else {
+          $relationshipID = $relationship['id'];
+        }
         $fieldName = 'custom_49';
         if (!empty($values[$fieldName])) {
           $form->processEntityFile($fieldName, $values[$fieldName][$key], $relationshipID);
