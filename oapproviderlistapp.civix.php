@@ -32,6 +32,24 @@ class CRM_Oapproviderlistapp_ExtensionUtil {
   }
 
   /**
+   * Check whether the matched up contact in the system has ever submitted a
+   * previous application or not
+   * @param int $contactID
+   */
+  public static function checkProviderExist($contactID) {
+    if (!$contactID) {
+      return;
+    }
+    $statusCheck = civicrm_api3('Contact', 'get', [
+      'id' => $contactID,
+      'return.custom_60' => 1,
+    ])['values'];
+    if (!empty($statusCheck[$contactID]['custom_60'])) {
+      CRM_Core_Error::statusBounce(ts("You have already submitted this application."), CRM_Utils_System::url('civicrm/application', 'reset=1'));
+    }
+  }
+
+  /**
    * Get the URL of a resource file (in this extension).
    *
    * @param string|NULL $file

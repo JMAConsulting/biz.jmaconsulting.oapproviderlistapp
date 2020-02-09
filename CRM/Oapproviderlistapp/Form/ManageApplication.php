@@ -29,13 +29,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
 
     // Check if application already submitted.
     if ($this->_contactID) {
-      $statusCheck = civicrm_api3('Contact', 'get', [
-        'id' => $this->_contactID,
-        'return.custom_60' => 1,
-      ])['values'];
-      if (!empty($statusCheck[$this->_contactID]['custom_60'])) {
-        CRM_Core_Error::statusBounce(ts("You have already submitted this application."), CRM_Utils_System::url('civicrm/application', 'reset=1'));
-      }
+      E::checkProviderExist($this->_contactID);
     }
   }
 
