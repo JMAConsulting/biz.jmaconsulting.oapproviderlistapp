@@ -12,6 +12,7 @@
   <tr>
     <td width="55%">
       <div class="crm-public-form-item crm-section individual" colspan="2">
+        <h3>Your Contact Information</h3>
         {include file="CRM/UF/Form/Block.tpl" fields=$individual}
       </div>
     </td>
@@ -20,6 +21,7 @@
         <tr>
           <td>
             <div class="crm-public-form-item crm-section">
+            <h3>Current Employer(s)</h3>
             {section name='i' start=1 loop=5}
             {assign var='rowNumber' value=$smarty.section.i.index}
             <div id="organization_name-{$rowNumber}" class="{if $rowNumber > $employer_count}hiddenElement{/if} {cycle values="odd-row,even-row"} crm-section form-item">
@@ -44,6 +46,9 @@
               <div class="clear"></div><br/>
               <div class="label">{$form.email.$rowNumber.label} {if $rowNumber neq 1}<span class="crm-marker" title="This field is required.">*</span>{/if}</div>
               <div class="content">{$form.email.$rowNumber.html}</div>
+              <div class="clear"></div><br/>
+              <div class="label">{$form.website.$rowNumber.label}</div>
+              <div class="content">{$form.website.$rowNumber.html}</div>
               <div class="clear"></div><br/>
               <div class="label">{$form.custom_49.$rowNumber.label} <!-- <span class="crm-marker" title="This field is required.">*</span> --></div>
               <div class="content">{$form.custom_49.$rowNumber.html}</div>
