@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-27 17:59+1100\n"
+"POT-Creation-Date: 2020-03-30 02:32+1100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -144,24 +144,28 @@ msgid "Primary Employer Organization Name"
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Phone Number"
-msgstr "Numéro de téléphone"
+msgid "Main Employer Phone"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Work Address"
-msgstr "Adresse du lieu de travail"
+msgid "Main Employer Address"
+msgstr "Adresse courriel"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Postal code"
+msgid "Main Employer Postal code"
 msgstr "Code postal"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "City/Town"
-msgstr "Ville/village"
+msgid "Main Employer City/Town"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Email Address"
-msgstr "Adresse courriel"
+msgid "Main Employer Email or Intake Email"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Employer Website"
+msgstr "Employeur(s)"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Email is a required field to send draft link."
@@ -246,7 +250,7 @@ msgstr ""
 #: CRM/Oapproviderlistapp/Form/Professional.php
 msgid ""
 "To join the Provider List, you must be a Board Certified Behavior Analyst%1 "
-"in good standing, or a registered psychologist or psychological associate in "
+"in good standing, or a Registered Psychologist or Psychological Associate in "
 "good standing with the College of Psychologists of Ontario."
 msgstr ""
 "Pour vous inscrire sur la Liste des fournisseurs, vous devez être un(e) "
@@ -256,10 +260,11 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
 msgid ""
-"If you are a psychologist or psychological associate with ABA expertise, you "
-"are eligible to join the OAP Provider List. You do not need to obtain a BCBA "
-"or BCBA-D, however, you will need to a BCBA-D provide an \"Applied Behaviour "
-"Analysis Expertise Package\", which will confirm your ABA expertise."
+"If you are a Registered Psychologist or Psychological Associate with ABA "
+"expertise, you are eligible to join the OAP Provider List. You do not need "
+"to obtain a BCBA%1 or BCBA-D%1, however, you will need to a BCBA-D%1 provide "
+"an \"Applied Behaviour Analysis Expertise Package\", which will confirm your "
+"ABA expertise."
 msgstr ""
 "Si vous êtes un(e) psychologue ou un(e) associé(e) en psychologie qui "
 "possède des compétences en analyse comportementale appliquée (ACA), vous "
@@ -624,14 +629,6 @@ msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
 msgid ""
-"Please note any other relevant credentials you have achieved and the date "
-"you obtained them."
-msgstr ""
-"Veuillez indiquer tout autre titre de compétence pertinent que vous avez "
-"obtenu et la date à laquelle vous l'avez obtenu."
-
-#: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid ""
 "As a psychologist or psychological associate, you will need to a BCBA-D "
 "provide an \"Applied Behaviour Analysis Expertise Package\", which will "
 "confirm your ABA expertise."
@@ -706,6 +703,22 @@ msgstr "AJOUTER UN AUTRE DEGRÉ"
 #: templates/CRM/ProviderList.tpl
 msgid "Add Another Employer"
 msgstr "Ajouter un autre employeur"
+
+#~ msgid "Phone Number"
+#~ msgstr "Numéro de téléphone"
+
+#~ msgid "Work Address"
+#~ msgstr "Adresse du lieu de travail"
+
+#~ msgid "City/Town"
+#~ msgstr "Ville/village"
+
+#~ msgid ""
+#~ "Please note any other relevant credentials you have achieved and the date "
+#~ "you obtained them."
+#~ msgstr ""
+#~ "Veuillez indiquer tout autre titre de compétence pertinent que vous avez "
+#~ "obtenu et la date à laquelle vous l'avez obtenu."
 
 #~ msgid "Signature"
 #~ msgstr "Signature"
