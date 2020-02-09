@@ -126,11 +126,11 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
       $this->sendDraft($this->_contactID);
     }
     if (CRM_Utils_Array::value('_qf_Experience_submit', $this->exportValues())) {
-      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/professional", "reset=1&cid=" . $this->_contactID));
+      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/professional", "reset=1&cid=" . $this->_contactID . '&cs=' .  CRM_Contact_BAO_Contact_Utils::generateChecksum($this->_contactID, NULL, 'inf')));
     }
     else {
       CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/sectorcheck",
-        "reset=1&cid=" . $this->_contactID
+        "reset=1&cid=" . $this->_contactID . '&cs=' .  CRM_Contact_BAO_Contact_Utils::generateChecksum($this->_contactID, NULL, 'inf')
       ));
     }
   }

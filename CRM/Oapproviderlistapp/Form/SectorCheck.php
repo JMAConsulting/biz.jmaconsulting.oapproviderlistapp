@@ -37,10 +37,10 @@ class CRM_Oapproviderlistapp_Form_SectorCheck extends CRM_Oapproviderlistapp_For
       $this->sendDraft($this->_contactID);
     }
     elseif (CRM_Utils_Array::value('_qf_SectorCheck_submit', $this->exportValues())) {
-      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/experience", "cid=" . $this->_contactID));
+      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/experience", "cid=" . $this->_contactID . '&cs=' . CRM_Contact_BAO_Contact_Utils::generateChecksum($this->_contactID, NULL, 'inf')));
     }
     else {
-      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/insurance", "cid=" . $this->_contactID));
+      CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/insurance", "cid=" . $this->_contactID . '&cs=' . CRM_Contact_BAO_Contact_Utils::generateChecksum($this->_contactID, NULL, 'inf')));
     }
   }
 

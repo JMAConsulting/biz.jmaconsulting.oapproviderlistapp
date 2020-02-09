@@ -25,6 +25,27 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     });
     ");
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
+    $cs = CRM_Utils_Request::retrieve('cs', 'String', $this, FALSE);
+
+    // Cases when:
+    //  1. contact ID is present but checksum is not present in url argument or valid checksum is not found
+    if ($this->_contactID && !CRM_Contact_BAO_Contact_Utils::validChecksum($this->_contactID, $cs)) {
+      $inValidUserFound = TRUE;
+      // 2. If checksum is not passed in url argument, then check if the user is loggedin and if the contact id in url matched with loggedin contact ID then allow to access the application form
+      if (!$cs) {
+        if ($this->_contactID == CRM_Core_Session::getLoggedInContactID()) {
+          $inValidUserFound = FALSE;
+        }
+      }
+      if ($inValidUserFound) {
+        CRM_Core_Error::statusBounce(ts('You do not have privilege to edit this application'), CRM_Utils_System::url());
+      }
+    }
+    // 3. if the contact ID is not passed in url but
+    elseif (!$this->_contactID && CRM_Core_Session::getLoggedInContactID()) {
+      $this->_contactID = CRM_Core_Session::getLoggedInContactID();
+    }
+
     CRM_Oapproviderlistapp_Form_TabHeader::build($this, $this->_contactID);
 
     // Check if application already submitted.
@@ -129,8 +150,11 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     if (!empty($qfKey)) {
       $qfKey = "&qfKey{$qfKey}";
     }
+
+    $cs = CRM_Contact_BAO_Contact_Utils::generateChecksum($contactID, NULL, 'inf');
+
     $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
-    $url = CRM_Utils_System::url("civicrm/application", sprintf("cid=%d%s", $contactID, $qfKey), TRUE);
+    $url = CRM_Utils_System::url("civicrm/application", sprintf("cid=%d&cs=%s%s", $contactID, $cs, $qfKey), TRUE);
     $contact_params = array(array('contact_id', '=', $contactID, 0, 0));
     $contact = civicrm_api3('Contact', 'getsingle', ['id' => $contactID]);
     $contact['email'] = $contact['email'] ?: CRM_Core_DAO::singleValueQuery("SELECT email FROM civicrm_email WHERE is_primary = 1 AND contact_id = " . $contactID . " LIMIT 1");

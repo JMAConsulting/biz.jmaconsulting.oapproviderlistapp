@@ -256,7 +256,12 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       $this->sendDraft($contactID);
     }
 
-    CRM_Utils_System::redirect(CRM_Utils_System::url("civicrm/professional", "&cid=" . $contactID));
+    CRM_Contact_BAO_Contact_Utils::generateChecksum($contactID, NULL, 'inf');
+    CRM_Utils_System::redirect(
+      CRM_Utils_System::url("civicrm/professional",
+        "&cid=" . $contactID . '&cs=' .  CRM_Contact_BAO_Contact_Utils::generateChecksum($contactID, NULL, 'inf')
+      )
+    );
   }
 
 }
