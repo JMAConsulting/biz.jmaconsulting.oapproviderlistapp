@@ -29,7 +29,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
 
     // Check if application already submitted.
     if ($this->_contactID) {
-      E::checkProviderExist($this->_contactID)
+      E::checkProviderExist($this->_contactID);
     }
   }
 
