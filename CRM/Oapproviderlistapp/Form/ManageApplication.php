@@ -38,7 +38,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         }
       }
       if ($inValidUserFound) {
-        CRM_Core_Error::statusBounce(ts('You do not have privilege to edit this application'), CRM_Utils_System::url());
+        CRM_Core_Error::statusBounce(ts('You do not have privilege to edit this application'), CRM_Utils_System::url('civicrm/application', 'reset=1'));
       }
     }
     // 3. if the contact ID is not passed in url but
