@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-24 16:13+1100\n"
+"POT-Creation-Date: 2020-02-11 11:05+1100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -199,6 +199,10 @@ msgstr ""
 "FORMULAIRE DE DEMANDE D’INSCRIPTION SUR LA LISTE DES FOURNISSEURS DU POSA"
 
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
+msgid "You do not have privilege to edit this application"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "You have already submitted this application."
 msgstr ""
 
@@ -371,6 +375,26 @@ msgstr "Assurance responsabilité civile professionnelle"
 #: CRM/Oapproviderlistapp/Form/TabHeader.php
 msgid "Declaration of Compliance"
 msgstr "Déclaration de conformité"
+
+#: CRM/Oapproviderlistapp/Page/Draft.php
+msgid ""
+"Your draft registration for the OAP provider list has been saved "
+"successfully!"
+msgstr "Sauvegarde de l’ébauche de la demande d’inscription sur la liste des fournisseurs du POSA!"
+
+#: CRM/Oapproviderlistapp/Page/Draft.php
+msgid "here"
+msgstr "ici"
+
+#: CRM/Oapproviderlistapp/Page/Draft.php
+msgid ""
+"Your draft registration for the OAP provider list has been saved "
+"successfully! Click %1 to resume your application"
+msgstr "Sauvegarde de l’ébauche de la demande d’inscription sur la liste des fournisseurs du POSA! Cliquez %1 our représenter votre demande"
+
+#: CRM/Oapproviderlistapp/Page/Draft.php
+msgid "Draft saved successfully!"
+msgstr "Sauvegarde de l’ébauche de la Demande d’inscription sur la liste des fournisseurs du POSA!"
 
 #: oapproviderlistapp.php
 msgid "CiviCRM"
