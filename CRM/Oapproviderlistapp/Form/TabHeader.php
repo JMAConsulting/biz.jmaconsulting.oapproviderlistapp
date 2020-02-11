@@ -86,7 +86,7 @@ class CRM_Oapproviderlistapp_Form_TabHeader {
       $tabs[$class]['qfKey'] = "&qfKey={$qfKey}";
     }
     if ($cid) {
-      $cid = "cid={$cid}";
+      $cid = "cid={$cid}&cs=" . CRM_Contact_BAO_Contact_Utils::generateChecksum($cid, NULL, 'inf');
     }
 
     foreach ($tabs as $key => $value) {
