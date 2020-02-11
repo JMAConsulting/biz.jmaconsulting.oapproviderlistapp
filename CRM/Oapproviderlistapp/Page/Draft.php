@@ -9,9 +9,10 @@ class CRM_Oapproviderlistapp_Page_Draft extends CRM_Core_Page {
     // Example: Set the page-title dynamically; alternatively, declare a static title in xml/Menu/*.xml
     CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
     CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'templates/css/oapp.css');
-
-    $this->contactID = CRM_Utils_Request::retrieve('cid', 'Positive', NULL, TRUE, 'GET');
-    $checksum = CRM_Utils_Request::retrieve('cs', 'Positive', NULL, TRUE, 'GET');
+    
+    $form = NULL;
+    $this->contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $form, TRUE, 'GET');
+    $checksum = CRM_Utils_Request::retrieve('cs', 'Positive', $form, TRUE, 'GET');
     $includeURL = TRUE;
     if ($this->contactID && !CRM_Contact_BAO_Contact_Utils::validChecksum($this->contactID, $checksum)) {
       $includeURL = FALSE;
