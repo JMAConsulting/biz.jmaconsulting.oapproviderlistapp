@@ -110,7 +110,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
     }
     else {
       CRM_Core_Session::singleton()->pushUserContext(CRM_Utils_System::url("civicrm/experience",
-        "reset=1&cid=" . $this->_contactID
+        "reset=1&cid=" . $this->_contactID . '&cs=' .  CRM_Contact_BAO_Contact_Utils::generateChecksum($this->_contactID, NULL, 'inf')
       ));
     }
   }
