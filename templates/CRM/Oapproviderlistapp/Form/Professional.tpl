@@ -22,6 +22,9 @@
 <div class="crm-submit-buttons">
   {include file="CRM/common/formButtons.tpl" location="bottom"}
 </div>
+<div id="application-dialog">
+  <p>{ts}As a psychologist or psychological associate, you will need to a BCBA-D provide an "Applied Behaviour Analysis Expertise Package", which will confirm your ABA expertise.{/ts} <a href="https://oapproviderlist.ca/sites/default/files/2020-01/OAP%20-%20Reg%20Psychologist%20ABA%20Expertise%20Package%20V3.pdf">{ts}Click here for details of what that package must include.{/ts}</a></p>
+</div>
 {literal}
 <script type="text/javascript">
 CRM.$(function($) {
@@ -38,6 +41,31 @@ CRM.$(function($) {
   if (disableTab == 1) {
     $('#mainTabContainer ul li a').not($('#mainTabContainer ul li.ui-tabs-active')).removeAttr('class');
   }
+
+  $('#application-dialog').dialog({
+    autoOpen: false,
+    resizable: false,
+    height: "auto",
+    width: 400,
+    modal: true,
+    buttons: {
+      "Ok": function() {
+        $(this).dialog('close');
+      },
+    },
+  });
+
+  $('#custom_7_3').on('click', function() {
+    if ($(this).prop('checked') && !$('#custom_7_1').prop('checked') && !$('#custom_7_2').prop('checked')) {
+      $('#application-dialog').dialog('open');
+    }
+  });
+
+  $('#custom_7_4').on('click', function() {
+    if ($(this).prop('checked') && !$('#custom_7_1').prop('checked') && !$('#custom_7_2').prop('checked')) {
+      $('#application-dialog').dialog('open');
+    }
+  });
 
   function rearrangeFields() {
     // Certification Dates
