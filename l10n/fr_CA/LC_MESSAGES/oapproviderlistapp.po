@@ -309,12 +309,12 @@ msgstr "Région"
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Board Certified Behavior Analyst%1 (BCBA%1)"
-msgstr "Analyste du comportement certifié(e)&#x1F16B; (BCBA&#x1F16B;)"
+msgstr "Analyste du comportement certifié(e)%1 (BCBA%1)"
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Board Certified Behavior Analyst-Doctoral (BCBA-D%1)"
 msgstr ""
-"Analyste du comportement certifié(e) – doctoral(e)&#x1F16A; (BCBA-D&#x1F16A;)"
+"Analyste du comportement certifié(e) – doctoral(e)%1 (BCBA-D%1)"
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Registered Psychologist"
