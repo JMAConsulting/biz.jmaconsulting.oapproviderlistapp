@@ -70,6 +70,21 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
   public function buildQuickForm() {
     $this->buildCustom(OAP_INDIVIDUAL, 'individual', $this->_contactID);
 
+    // If we have a contact but they don't have an other Email or Other Phone unfreeeze the fields so that they can add them in.
+    if (!empty($this->_contactID)) {
+      $otherEmail = $this->getElement('email-4');
+      $emailCount = civicrm_api3('Email', 'get', ['location_type_id' => 'Other', 'contact_id' => $this->_contactID]);
+      if (empty($emailCount['count'])) {
+        $otherEmail->unfreeze();
+      }
+
+      $otherPhone = $this->getElement('phone-4-1');
+      $phoneCount = civicrm_api3('Phone', 'get', ['location_type_id' => 'Other', 'contact_id' => $this->_contactID, 'phone_type_id' => 'Phone']);
+      if (empty($phoneCount['count'])) {
+        $otherPhone->unfreeze();
+      }
+    }
+
     for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
       $this->add('text', "organization_name[$rowNumber]", E::ts('Primary Employer Organization Name'), ['class' => 'big']);
       $this->add('text', "phone[$rowNumber]", E::ts('Main Employer Phone'), ['size' => 20, 'maxlength' => 32, 'class' => 'medium']);
