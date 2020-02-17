@@ -30,6 +30,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
       $dlText = "Vous trouverez ici plus de détails sur le contenu de cette <a target='_blank' href='/sites/default/files/2020-01/OAP%20-%20Reg%20Psychologist%20ABA%20Expertise%20Package_FR%20V2.pdf'>trousse</a>.";
     }
     $descriptionText . ' ' . $dlText . '</p>';
+    CRM_Core_Resources::singleton()->addStyle('span.sup { font-size: 50% !important; top: -0.5em; position: relative; }');
     $this->assign('descriptionText', $descriptionText);
     $this->assign('customDataType', 'Individual');
     $this->assign('customDataSubType', 'Provider');
