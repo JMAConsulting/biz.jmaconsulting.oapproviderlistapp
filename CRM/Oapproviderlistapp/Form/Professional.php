@@ -18,7 +18,7 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
   public function buildQuickForm() {
     $tsLocale = CRM_Core_I18n::getLocale();
     if ($tsLocale === 'fr_CA') {
-      $registeredSign = '<span class="sup">MC</span>';
+      $registeredSign = '<span class="sup">MD</span>';
     }
     else {
       $registeredSign = '®';

@@ -51,7 +51,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $check = [];
     $tsLocale = CRM_Core_I18n::getLocale();
     if ($tsLocale === 'fr_CA') {
-      $registeredSign = '<span class="sup">MC</span>';
+      $registeredSign = '<span class="sup">MD</span>';
     }
     else {
       $registeredSign = '®';
