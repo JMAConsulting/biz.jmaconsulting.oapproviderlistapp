@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: oapproviderlistapp\n"
-"POT-Creation-Date: 2020-02-13 11:23+1100\n"
+"POT-Creation-Date: 2020-02-17 14:38+1100\n"
 "Language-Team: CiviCRM Translators <civicrm-translators@lists.civicrm.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -220,6 +220,22 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Delete Attached File"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Professional.php
+msgid ""
+"To join the Provider List, you must be a Board Certified Behavior Analyst%1 "
+"in good standing, or a registered psychologist or psychological associate in "
+"good standing with the College of Psychologists of Ontario."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Professional.php
+msgid ""
+"If you are a psychologist or psychological associate with ABA expertise, you "
+"are eligible to join the OAP Provider List. You do not need to obtain a BCBA"
+"%1 or BCBA-D%1, however, you will need to a BCBA-D%1 provide an \"Applied "
+"Behaviour Analysis Expertise Package\", which will confirm your ABA "
+"expertise."
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
@@ -529,21 +545,6 @@ msgstr ""
 #: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
 msgid ""
 "If you download the application form, please email the completed form to"
-msgstr ""
-
-#: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid ""
-"To join the Provider List, you must be a Board Certified Behavior Analyst® "
-"in good standing, or a registered psychologist or psychological associate in "
-"good standing with the College of Psychologists of Ontario."
-msgstr ""
-
-#: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid ""
-"If you are a psychologist or psychological associate with ABA expertise, you "
-"are eligible to join the OAP Provider List. You do not need to obtain a BCBA "
-"or BCBA-D, however, you will need to a BCBA-D provide an \"Applied Behaviour "
-"Analysis Expertise Package\", which will confirm your ABA expertise."
 msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
