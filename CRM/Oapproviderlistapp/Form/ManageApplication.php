@@ -24,6 +24,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
       }
     });
     ");
+    CRM_Core_Resources::singleton()->addScriptFile('biz.jmaconsulting.oapproviderlistapp', 'js/public_help.js');
     $this->_contactID = CRM_Utils_Request::retrieve('cid', 'Positive', $this, FALSE);
     $cs = CRM_Utils_Request::retrieve('cs', 'String', $this, FALSE);
 
