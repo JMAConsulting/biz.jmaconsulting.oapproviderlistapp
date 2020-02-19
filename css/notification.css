@@ -56,3 +56,9 @@
 #crm-public-notification-container .ui-notify-message .ui-notify-cross:focus {
   color: #ffffab;
 }
+
+/* Fix help icon style */
+.crm-container .crm-accordion-body .helpicon {
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif,fontAwesome;
+  font-size: inherit;
+}
