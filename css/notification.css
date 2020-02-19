@@ -6,6 +6,7 @@
   right: 15px;
   z-index: 999999;
 }
+#crm-public-notification-container div.notify-content,
 #crm-public-notification-container div.notify-content b,
 #crm-public-notification-container div.notify-content li {
   color: #fff;
