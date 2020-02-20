@@ -122,6 +122,16 @@ function oapproviderlistapp_civicrm_permission(&$permissions) {
   );
 }
 
+function oapproviderlistapp_civicrm_coreResourceList(&$items, $region) {
+  if (array_search('packages/jquery/plugins/jquery.notify.min.js', $items) === FALSE) {
+    $items[] = 'packages/jquery/plugins/jquery.notify.min.js';
+  }
+}
+
+function oapproviderlistapp_civicrm_alterMenu(&$items) {
+  $items['civicrm/ajax/inline']['access_arguments'][0] = '*always allow*';
+}
+
 function oapproviderlistapp_civicrm_pageRun(&$page) {
   if (get_class($page) == "CRM_Profile_Page_Dynamic" && ($page->getVar('_gid') == OAPPROVIDERLIST)) {
     CRM_Core_Resources::singleton()->addScript(
