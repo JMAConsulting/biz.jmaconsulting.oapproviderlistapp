@@ -16,12 +16,22 @@ class CRM_Oapproviderlistapp_Form_Professional extends CRM_Oapproviderlistapp_Fo
   }
 
   public function buildQuickForm() {
+    $tsLocale = CRM_Core_I18n::getLocale();
+    if ($tsLocale === 'fr_CA') {
+      $registeredSign = '<span class="sup">MD</span>';
+    }
+    else {
+      $registeredSign = '®';
+    }
+    $descriptionText = '<p>' . E::ts('To join the Provider List, you must be a Board Certified Behavior Analyst%1 in good standing, or a registered psychologist or psychological associate in good standing with the College of Psychologists of Ontario.', [1 => $registeredSign]) . '</p><p>' . E::ts('If you are a psychologist or psychological associate with ABA expertise, you are eligible to join the OAP Provider List. You do not need to obtain a BCBA or BCBA-D, however, you will need to a BCBA-D provide an "Applied Behaviour Analysis Expertise Package", which will confirm your ABA expertise.', [1 => $registeredSign]);
     $this->buildCustom(OAP_PROFESSIONAL, 'professional');
     $dlText = "Details of what that package must include can be found <a target='_blank' href='/sites/default/files/2020-01/OAP%20-%20Reg%20Psychologist%20ABA%20Expertise%20Package%20V3.pdf'>here</a>.";
     if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'fr') {
       $dlText = "Vous trouverez ici plus de détails sur le contenu de cette <a target='_blank' href='/sites/default/files/2020-01/OAP%20-%20Reg%20Psychologist%20ABA%20Expertise%20Package_FR%20V2.pdf'>trousse</a>.";
     }
-    $this->assign('dlText', $dlText);
+    $descriptionText . ' ' . $dlText . '</p>';
+    CRM_Core_Resources::singleton()->addStyle('span.sup { font-size: 50% !important; top: -0.5em; position: relative; }');
+    $this->assign('descriptionText', $descriptionText);
     $this->assign('customDataType', 'Individual');
     $this->assign('customDataSubType', 'Provider');
     $this->assign('entityID', $this->_contactID);

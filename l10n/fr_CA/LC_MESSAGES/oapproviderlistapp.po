@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-13 11:23+1100\n"
+"POT-Creation-Date: 2020-02-17 14:38+1100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -232,6 +232,33 @@ msgid "Delete Attached File"
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
+msgid ""
+"To join the Provider List, you must be a Board Certified Behavior Analyst%1 "
+"in good standing, or a registered psychologist or psychological associate in "
+"good standing with the College of Psychologists of Ontario."
+msgstr ""
+"Pour vous inscrire sur la Liste des fournisseurs, vous devez être un(e) "
+"analyste du comportement certifié(e)%1 en règle ou un(e) psychologue "
+"agréé(e) ou un(e) associé(e) en psychologie en règle inscrit(e) auprès de "
+"l'Ordre des psychologues de l'Ontario."
+
+#: CRM/Oapproviderlistapp/Form/Professional.php
+msgid ""
+"If you are a psychologist or psychological associate with ABA expertise, you "
+"are eligible to join the OAP Provider List. You do not need to obtain a BCBA "
+"or BCBA-D, however, you will need to a BCBA-D provide an \"Applied Behaviour "
+"Analysis Expertise Package\", which will confirm your ABA expertise."
+msgstr ""
+"Si vous êtes un(e) psychologue ou un(e) associé(e) en psychologie qui "
+"possède des compétences en analyse comportementale appliquée (ACA), vous "
+"êtes admissible à l’inscription sur la Liste des fournisseurs du POSA. Vous "
+"n'avez pas besoin d’avoir le titre d’analyste du comportement certifié(e)"
+"(BCBA) ou d’analyste du comportement certifié(e) – doctorat (BCBA-D), "
+"mais vous devrez toutefois fournir une « trousse d’expertise en analyse "
+"comportementale appliquée » de la part d’un BCBA-D confirmera vos "
+"compétences en ACA."
+
+#: CRM/Oapproviderlistapp/Form/Professional.php
 msgid "At least one credential must be selected."
 msgstr "Au moins une qualification doit être sélectionnée."
 
@@ -309,12 +336,11 @@ msgstr "Région"
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Board Certified Behavior Analyst%1 (BCBA%1)"
-msgstr "Analyste du comportement certifié(e)&#x1F16B; (BCBA&#x1F16B;)"
+msgstr "Analyste du comportement certifié(e)%1 (BCBA%1)"
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Board Certified Behavior Analyst-Doctoral (BCBA-D%1)"
-msgstr ""
-"Analyste du comportement certifié(e) – doctoral(e)&#x1F16A; (BCBA-D&#x1F16A;)"
+msgstr "Analyste du comportement certifié(e) – doctoral(e)%1 (BCBA-D%1)"
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Registered Psychologist"
@@ -566,33 +592,6 @@ msgid ""
 msgstr ""
 "Si vous téléchargez le formulaire de demande, veuillez le transmettre, une "
 "fois rempli, à l’adresse"
-
-#: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid ""
-"To join the Provider List, you must be a Board Certified Behavior Analyst® "
-"in good standing, or a registered psychologist or psychological associate in "
-"good standing with the College of Psychologists of Ontario."
-msgstr ""
-"Pour vous inscrire sur la Liste des fournisseurs, vous devez être un(e) "
-"analyste du comportement certifié(e)&#x1F16B; en règle ou un(e) psychologue "
-"agréé(e) ou un(e) associé(e) en psychologie en règle inscrit(e) auprès de "
-"l'Ordre des psychologues de l'Ontario."
-
-#: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid ""
-"If you are a psychologist or psychological associate with ABA expertise, you "
-"are eligible to join the OAP Provider List. You do not need to obtain a BCBA "
-"or BCBA-D, however, you will need to a BCBA-D provide an \"Applied Behaviour "
-"Analysis Expertise Package\", which will confirm your ABA expertise."
-msgstr ""
-"Si vous êtes un(e) psychologue ou un(e) associé(e) en psychologie qui "
-"possède des compétences en analyse comportementale appliquée (ACA), vous "
-"êtes admissible à l’inscription sur la Liste des fournisseurs du POSA. Vous "
-"n'avez pas besoin d’avoir le titre d’analyste du comportement certifié(e)"
-"(BCBA) ou d’analyste du comportement certifié(e) – doctorat (BCBA-D), mais "
-"vous devrez toutefois fournir une « trousse d’expertise en analyse "
-"comportementale appliquée » de la part d’un BCBA-D confirmera vos "
-"compétences en ACA."
 
 #: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
 msgid ""

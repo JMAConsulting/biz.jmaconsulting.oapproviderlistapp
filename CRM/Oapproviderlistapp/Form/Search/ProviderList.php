@@ -49,9 +49,17 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $group->setAttribute('allowClear', TRUE);
 
     $check = [];
+    $tsLocale = CRM_Core_I18n::getLocale();
+    if ($tsLocale === 'fr_CA') {
+      $registeredSign = '<span class="sup">MD</span>';
+    }
+    else {
+      $registeredSign = '®';
+    }
+    CRM_Core_Resources::singleton()->addStyle('span.sup { font-size: 50% !important; top: -0.5em; position: relative; }');
     foreach ([
-      1 => E::ts('Board Certified Behavior Analyst%1 (BCBA%1)', [1 => '®']),
-      2 => E::ts('Board Certified Behavior Analyst-Doctoral (BCBA-D%1)', [1 => '™']),
+      1 => E::ts('Board Certified Behavior Analyst%1 (BCBA%1)', [1 => $registeredSign]),
+      2 => E::ts('Board Certified Behavior Analyst-Doctoral (BCBA-D%1)', [1 => $registeredSign]),
       3 => E::ts('Registered Psychologist'),
       4 => E::ts('Registered Psychological Associate'),
     ] as $key => $label) {
