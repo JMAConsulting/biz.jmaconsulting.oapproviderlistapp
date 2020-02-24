@@ -86,13 +86,13 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     }
 
     for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
-      $this->add('text', "organization_name[$rowNumber]", E::ts('Primary Employer Organization Name'), ['class' => 'big']);
-      $this->add('text', "phone[$rowNumber]", E::ts('Main Employer Phone'), ['size' => 20, 'maxlength' => 32, 'class' => 'medium']);
-      $this->add('text', "work_address[$rowNumber]", E::ts('Main Employer Address'), ['size' => 45, 'maxlength' => 96, 'class' => 'huge']);
-      $this->add('text', "postal_code[$rowNumber]", E::ts('Main Employer Postal code'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
-      $this->add('text', "city[$rowNumber]", E::ts('Main Employer City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
-      $this->add('text', "email[$rowNumber]", E::ts('Main Employer Email or Intake Email'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
-      $this->add('text', "website[$rowNumber]", E::ts('Employer Website'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium']);
+      $this->add('text', "organization_name[$rowNumber]", E::ts('Employer #%1', [1 => $rowNumber]), ['class' => 'big']);
+      $this->add('text', "phone[$rowNumber]", E::ts('Employer #%1 - Main Phone Number', [1 => $rowNumber]), ['size' => 20, 'maxlength' => 32, 'class' => 'medium']);
+      $this->add('text', "work_address[$rowNumber]", E::ts('Employer #%1 - Main Address', [1 => $rowNumber]), ['size' => 45, 'maxlength' => 96, 'class' => 'huge']);
+      $this->add('text', "postal_code[$rowNumber]", E::ts('Employer #%1 - Main Postal code', [1 => $rowNumber]), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
+      $this->add('text', "city[$rowNumber]", E::ts('Employer #%1 - Main City/Town', [1 => $rowNumber]), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
+      $this->add('text', "email[$rowNumber]", E::ts('Employer #%1 - Main Email or Intake Email', [1 => $rowNumber]), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
+      $this->add('text', "website[$rowNumber]", E::ts('Employer #%1 - Website', [1 => $rowNumber]), ['size' => 20, 'maxlength' => 254, 'class' => 'medium']);
       CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49[$rowNumber]", 49, FALSE);
     }
     $totalCount = 1;
@@ -142,16 +142,16 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       }
     }
     if (empty($fields["work_address"][1])) {
-      $errors['work_address[1]'] = E::ts("Work Address is required.");
+      $errors['work_address[1]'] = E::ts("Employer #1 - Main Address is required.");
     }
     if (empty($fields["phone"][1])) {
-      $errors['phone[1]'] = E::ts("Phone Number is required.");
+      $errors['phone[1]'] = E::ts("Employer #1 - Main Phone Number is required.");
     }
     if (empty($fields["postal_code"][1])) {
-      $errors['postal_code[1]'] = E::ts("Postal Code is required.");
+      $errors['postal_code[1]'] = E::ts("Employer #1 - Main Postal code is required.");
     }
     if (empty($fields["city"][1])) {
-      $errors['city[1]'] = E::ts("City/Town is required.");
+      $errors['city[1]'] = E::ts("Employer #1 - Main City/Town is required.");
     }
    /* for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
       if (!empty($fields["organization_name"][$rowNumber]) && empty($files['custom_49']['name'][$rowNumber])) {

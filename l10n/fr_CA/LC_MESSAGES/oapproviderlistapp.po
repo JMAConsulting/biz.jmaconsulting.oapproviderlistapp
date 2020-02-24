@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-30 02:32+1100\n"
+"POT-Creation-Date: 2020-03-30 02:34+1100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -140,32 +140,33 @@ msgid "Please enter a numeric value for \"%1\""
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Primary Employer Organization Name"
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Employer #%1"
+msgstr "Employeur(s)"
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Employer #%1 - Main Phone Number"
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Main Employer Phone"
-msgstr ""
-
-#: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Main Employer Address"
+msgid "Employer #%1 - Main Address"
 msgstr "Adresse courriel"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Main Employer Postal code"
+msgid "Employer #%1 - Main Postal code"
 msgstr "Code postal"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Main Employer City/Town"
+msgid "Employer #%1 - Main City/Town"
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Main Employer Email or Intake Email"
+msgid "Employer #%1 - Main Email or Intake Email"
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Employer Website"
-msgstr "Employeur(s)"
+msgid "Employer #%1 - Website"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Email is a required field to send draft link."
@@ -194,19 +195,19 @@ msgstr ""
 "courriel suivante. : info@oapproviderlist.ca"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Work Address is required."
+msgid "Employer #1 - Main Address is required."
 msgstr "Adresse du lieu de travail est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Phone Number is required."
+msgid "Employer #1 - Main Phone Number is required."
 msgstr "Numéro de téléphone est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Postal Code is required."
+msgid "Employer #1 - Main Postal code is required."
 msgstr "Code postal est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "City/Town is required."
+msgid "Employer #1 - Main City/Town is required."
 msgstr "Ville/village est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
@@ -580,6 +581,10 @@ msgstr ""
 "à en-tête de l’organisation et indiquer le rôle et les titres de compétence "
 "de la personne qui la signe. Vous n'avez pas besoin de soumettre une preuve "
 "de travail indépendant."
+
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Your Contact Information"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "(if self-employed, write &#8220;self-employed&#8221; here)"
