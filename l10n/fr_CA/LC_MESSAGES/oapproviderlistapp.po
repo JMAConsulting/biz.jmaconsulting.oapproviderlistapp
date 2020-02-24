@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-30 02:34+1100\n"
+"POT-Creation-Date: 2020-03-30 02:36+1100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -140,7 +140,6 @@ msgid "Please enter a numeric value for \"%1\""
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Employer #%1"
 msgstr "Employeur(s)"
 
@@ -584,6 +583,17 @@ msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Your Contact Information"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Employer #1"
+msgstr "Employeur(s)"
+
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid ""
+"Please provide information on your primary current employer(s) through which "
+"you will be clinically supervising Ontario Autism Program (OAP) behavioural "
+"services.  Please note: This information will be shared publicly."
 msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl

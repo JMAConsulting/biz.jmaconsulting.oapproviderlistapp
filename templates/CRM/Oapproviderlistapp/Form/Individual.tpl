@@ -21,10 +21,11 @@
         <tr>
           <td>
             <div class="crm-public-form-item crm-section">
+            <h3>{ts 1=$rowNumber}Employer #1{/ts}</h3>
+            <p>{ts}Please provide information on your primary current employer(s) through which you will be clinically supervising Ontario Autism Program (OAP) behavioural services.  Please note: This information will be shared publicly.{/ts}</p>
             {section name='i' start=1 loop=5}
             {assign var='rowNumber' value=$smarty.section.i.index}
             <div id="organization_name-{$rowNumber}" class="{if $rowNumber > $employer_count}hiddenElement{/if} {cycle values="odd-row,even-row"} crm-section form-item">
-              <h3>{ts 1=$rowNumber}Employer #%1{/ts}</h3>
               <br/>
               <div class="content description">{ts}(if self-employed, write &#8220;self-employed&#8221; here){/ts}</div>
               <div class="label">{$form.organization_name.$rowNumber.label}  <span class="crm-marker" title="This field is required.">*</span></div>
