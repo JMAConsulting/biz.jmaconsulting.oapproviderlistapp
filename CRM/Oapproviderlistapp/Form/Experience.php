@@ -60,9 +60,17 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
         if (!array_key_exists($fieldName, $fields)) {
           continue;
         }
+        $error = '';
         if (empty($fields[$fieldName])) {
-          $errors['_qf_default'] = E::ts('All fields in Employment History are required.');
-          CRM_Core_Session::setStatus("", E::ts('All fields in Employment History are required.'), "alert");
+          if (strstr($fieldName, 'custom_36')) {
+            $error .= E::ts('Total number of hours') . ':<br />' . E::ts('Applicants are required to have at least 3,000 hours post-certification/registration experience.');
+          }
+          if (strstr($fieldName, 'custom_37')) {
+            $error = E::ts('Approximate number of hours that involved supervisory duties') . ':<br />' . E::ts('Applicants are required to have a minimum of 1,500 post-certification hours involving supervisory duties.');
+          }
+          $error .= E::ts('All fields in Employment History are required.');
+          $errors['_qf_default'] = $error;
+          CRM_Core_Session::setStatus("", $error, "alert");
         }
         elseif (strstr($fieldName, 'custom_47') && !empty($fields[$fieldName])) {
           $contact = civicrm_api3('Contact', 'get', [
