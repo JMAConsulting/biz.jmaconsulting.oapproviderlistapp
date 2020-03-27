@@ -4,6 +4,9 @@
 <div class="crm-summary-display_name">{$displayName}</div>
 </h1>
 <br/>
+<div class="help">{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}<p>{ts}Please click the “Confirm” button to submit your application.{/ts}</p>
+  <p>{ts}Leaving the page before confirming your application will result in your application remaining in draft mode and eventually cancelled.{/ts}</p>{/crmScope}
+</div>
 <fieldset class="crm-profile">
   <div class="header-dark">{ts}Employer information{/ts}</div>
 <table class="form-item">
