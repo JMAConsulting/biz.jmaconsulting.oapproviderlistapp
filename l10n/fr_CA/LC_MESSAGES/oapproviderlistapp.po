@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-17 14:38+1100\n"
+"POT-Creation-Date: 2020-03-27 17:59+1100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -105,6 +105,26 @@ msgid "Each option of Experience check list is a required field."
 msgstr "Adresse courriel est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/Experience.php
+msgid "Total number of hours"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Experience.php
+msgid ""
+"Applicants are required to have at least 3,000 hours post-certification/"
+"registration experience."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Experience.php
+msgid "Approximate number of hours that involved supervisory duties"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Experience.php
+msgid ""
+"Applicants are required to have a minimum of 1,500 post-certification hours "
+"involving supervisory duties."
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Experience.php
 msgid "All fields in Employment History are required."
 msgstr "Au moins un employeur actuel est exigé."
 
@@ -113,14 +133,6 @@ msgid ""
 "For the purposes of OAP Provider List, only your employment after "
 "certification is counted. Please change Employment History Start Date to "
 "your certification date"
-msgstr ""
-
-#: CRM/Oapproviderlistapp/Form/Experience.php
-msgid "Approximate number of hours that involved supervisory duties"
-msgstr ""
-
-#: CRM/Oapproviderlistapp/Form/Experience.php
-msgid "Total number of hours"
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Experience.php
@@ -253,8 +265,8 @@ msgstr ""
 "possède des compétences en analyse comportementale appliquée (ACA), vous "
 "êtes admissible à l’inscription sur la Liste des fournisseurs du POSA. Vous "
 "n'avez pas besoin d’avoir le titre d’analyste du comportement certifié(e)"
-"(BCBA) ou d’analyste du comportement certifié(e) – doctorat (BCBA-D), "
-"mais vous devrez toutefois fournir une « trousse d’expertise en analyse "
+"(BCBA) ou d’analyste du comportement certifié(e) – doctorat (BCBA-D), mais "
+"vous devrez toutefois fournir une « trousse d’expertise en analyse "
 "comportementale appliquée » de la part d’un BCBA-D confirmera vos "
 "compétences en ACA."
 
@@ -457,6 +469,19 @@ msgid "Search By Organization"
 msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
+msgid "Please click the “Confirm” button to submit your application."
+msgstr ""
+"Veuillez cliquer sur le bouton « Confirmer » pour présenter votre demande."
+
+#: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
+msgid ""
+"Leaving the page before confirming your application will result in your "
+"application remaining in draft mode and eventually cancelled."
+msgstr ""
+"Si vous quittez la page avant de confirmer votre demande, celle-ci demeurera "
+"en mode brouillon et finira par être annulée."
+
+#: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
 msgid "Employer information"
 msgstr ""
 
@@ -592,6 +617,10 @@ msgid ""
 msgstr ""
 "Si vous téléchargez le formulaire de demande, veuillez le transmettre, une "
 "fois rempli, à l’adresse"
+
+#: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
+msgid "close"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
 msgid ""
