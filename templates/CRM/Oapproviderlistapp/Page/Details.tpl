@@ -3,6 +3,7 @@
   <div class="provider-wrapper">
   <div class="provider-details">
   <table class="form-item">
+      {if $employers}
       {foreach from=$employers key=k item=employer}
       <tr>
         <td>
@@ -57,6 +58,26 @@
         </td>
       </tr>
       {/foreach}
+      {else}
+      <tr>
+          {if $image}
+          <td>
+              <div class="provider-image">
+                  {$image}
+              </div>
+          </td>
+          {/if}
+          {if $credentials}
+          <td>
+              {foreach from=$credentials item=credential}
+                  <div>
+                      {ts}Credentials{/ts}: {$credential.which_of_the_following_credentia_7} <br/>
+                  </div>
+              {/foreach}
+          </td>
+          {/if}
+      </tr>
+      {/if}
   </table>
   </div>
   </div>
