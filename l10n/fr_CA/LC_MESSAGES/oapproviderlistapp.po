@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-27 17:59+1100\n"
+"POT-Creation-Date: 2020-03-30 02:36+1100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -140,28 +140,32 @@ msgid "Please enter a numeric value for \"%1\""
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Primary Employer Organization Name"
+msgid "Employer #%1"
+msgstr "Employeur(s)"
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Employer #%1 - Main Phone Number"
 msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Phone Number"
-msgstr "Numéro de téléphone"
+msgid "Employer #%1 - Main Address"
+msgstr "Adresse courriel"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Work Address"
-msgstr "Adresse du lieu de travail"
-
-#: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Postal code"
+msgid "Employer #%1 - Main Postal code"
 msgstr "Code postal"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "City/Town"
-msgstr "Ville/village"
+msgid "Employer #%1 - Main City/Town"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Email Address"
-msgstr "Adresse courriel"
+msgid "Employer #%1 - Main Email or Intake Email"
+msgstr ""
+
+#: CRM/Oapproviderlistapp/Form/Individual.php
+msgid "Employer #%1 - Website"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Email is a required field to send draft link."
@@ -190,19 +194,19 @@ msgstr ""
 "courriel suivante. : info@oapproviderlist.ca"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Work Address is required."
+msgid "Employer #1 - Main Address is required."
 msgstr "Adresse du lieu de travail est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Phone Number is required."
+msgid "Employer #1 - Main Phone Number is required."
 msgstr "Numéro de téléphone est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "Postal Code is required."
+msgid "Employer #1 - Main Postal code is required."
 msgstr "Code postal est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
-msgid "City/Town is required."
+msgid "Employer #1 - Main City/Town is required."
 msgstr "Ville/village est un champ requis."
 
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
@@ -246,7 +250,7 @@ msgstr ""
 #: CRM/Oapproviderlistapp/Form/Professional.php
 msgid ""
 "To join the Provider List, you must be a Board Certified Behavior Analyst%1 "
-"in good standing, or a registered psychologist or psychological associate in "
+"in good standing, or a Registered Psychologist or Psychological Associate in "
 "good standing with the College of Psychologists of Ontario."
 msgstr ""
 "Pour vous inscrire sur la Liste des fournisseurs, vous devez être un(e) "
@@ -256,10 +260,11 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
 msgid ""
-"If you are a psychologist or psychological associate with ABA expertise, you "
-"are eligible to join the OAP Provider List. You do not need to obtain a BCBA "
-"or BCBA-D, however, you will need to a BCBA-D provide an \"Applied Behaviour "
-"Analysis Expertise Package\", which will confirm your ABA expertise."
+"If you are a Registered Psychologist or Psychological Associate with ABA "
+"expertise, you are eligible to join the OAP Provider List. You do not need "
+"to obtain a BCBA%1 or BCBA-D%1, however, you will need to a BCBA-D%1 provide "
+"an \"Applied Behaviour Analysis Expertise Package\", which will confirm your "
+"ABA expertise."
 msgstr ""
 "Si vous êtes un(e) psychologue ou un(e) associé(e) en psychologie qui "
 "possède des compétences en analyse comportementale appliquée (ACA), vous "
@@ -577,6 +582,21 @@ msgstr ""
 "de travail indépendant."
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Your Contact Information"
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid "Employer #1"
+msgstr "Employeur(s)"
+
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
+msgid ""
+"Please provide information on your primary current employer(s) through which "
+"you will be clinically supervising Ontario Autism Program (OAP) behavioural "
+"services.  Please note: This information will be shared publicly."
+msgstr ""
+
+#: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "(if self-employed, write &#8220;self-employed&#8221; here)"
 msgstr ""
 "(si vous êtes travailleur autonome, écrivez &laquo; travailleur autonome "
@@ -621,14 +641,6 @@ msgstr ""
 #: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
 msgid "close"
 msgstr ""
-
-#: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
-msgid ""
-"Please note any other relevant credentials you have achieved and the date "
-"you obtained them."
-msgstr ""
-"Veuillez indiquer tout autre titre de compétence pertinent que vous avez "
-"obtenu et la date à laquelle vous l'avez obtenu."
 
 #: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
 msgid ""
@@ -706,6 +718,22 @@ msgstr "AJOUTER UN AUTRE DEGRÉ"
 #: templates/CRM/ProviderList.tpl
 msgid "Add Another Employer"
 msgstr "Ajouter un autre employeur"
+
+#~ msgid "Phone Number"
+#~ msgstr "Numéro de téléphone"
+
+#~ msgid "Work Address"
+#~ msgstr "Adresse du lieu de travail"
+
+#~ msgid "City/Town"
+#~ msgstr "Ville/village"
+
+#~ msgid ""
+#~ "Please note any other relevant credentials you have achieved and the date "
+#~ "you obtained them."
+#~ msgstr ""
+#~ "Veuillez indiquer tout autre titre de compétence pertinent que vous avez "
+#~ "obtenu et la date à laquelle vous l'avez obtenu."
 
 #~ msgid "Signature"
 #~ msgstr "Signature"

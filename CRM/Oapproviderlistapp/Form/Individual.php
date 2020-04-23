@@ -19,9 +19,9 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
 
     if (!empty($this->_contactID)) {
       $contact = civicrm_api3('Contact', 'getsingle', ['id' => $this->_contactID]);
-      $defaults['email[1]'] = $contact['email'];
       $address = civicrm_api3('Address', 'get', ['contact_id' => $this->_contactID, 'sequential' => 1, 'is_primary' => TRUE])['values'];
       $phone = civicrm_api3('Phone', 'get', ['contact_id' => $this->_contactID, 'sequential' => 1, 'is_primary' => TRUE])['values'];
+      $website = civicrm_api3('Website', 'get', ['contact_id' => $this->_contactID, 'sequential' => 1, 'is_primary' => TRUE])['values'];
       if (!empty($address[0])) {
         $defaults['work_address[1]'] = $address[0]['street_address'];
         $defaults['city[1]'] = $address[0]['city'];
@@ -45,7 +45,7 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       foreach ($relationships as $relationship) {
         $contact = civicrm_api3('Contact', 'getsingle', ['id' => $relationship['contact_id_b']]);
         $defaults["organization_name[$count]"] = $contact['organization_name'];
-   //     $defaults["email[$count]"] = $contact['email'];
+        $defaults["email[$count]"] = $contact['email'];
    //     $address = civicrm_api3('Address', 'get', ['contact_id' => $relationship['contact_id_b'], 'sequential' => 1])['values'];
    //     $phone = civicrm_api3('Phone', 'get', ['contact_id' => $relationship['contact_id_b'], 'sequential' => 1])['values'];
         if (!empty($address[0])) {
@@ -55,6 +55,10 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         }
         if (!empty($phone[0])) {
           $defaults["phone[$count]"] = $phone[0]['phone'];
+        }
+        $website = civicrm_api3('Website', 'get', ['contact_id' => $contact['id'], 'sequential' => 1, 'is_primary' => TRUE])['values'];
+        if (!empty($website[0])) {
+          $defaults["website[$count]"] = $website[0]['url'];
         }
         $count++;
       }
@@ -66,13 +70,29 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
   public function buildQuickForm() {
     $this->buildCustom(OAP_INDIVIDUAL, 'individual', $this->_contactID);
 
+    // If we have a contact but they don't have an other Email or Other Phone unfreeeze the fields so that they can add them in.
+    if (!empty($this->_contactID)) {
+      $otherEmail = $this->getElement('email-4');
+      $emailCount = civicrm_api3('Email', 'get', ['location_type_id' => 'Other', 'contact_id' => $this->_contactID]);
+      if (empty($emailCount['count'])) {
+        $otherEmail->unfreeze();
+      }
+
+      $otherPhone = $this->getElement('phone-4-1');
+      $phoneCount = civicrm_api3('Phone', 'get', ['location_type_id' => 'Other', 'contact_id' => $this->_contactID, 'phone_type_id' => 'Phone']);
+      if (empty($phoneCount['count'])) {
+        $otherPhone->unfreeze();
+      }
+    }
+
     for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
-      $this->add('text', "organization_name[$rowNumber]", E::ts('Primary Employer Organization Name'), ['class' => 'big']);
-      $this->add('text', "phone[$rowNumber]", E::ts('Phone Number'), ['size' => 20, 'maxlength' => 32, 'class' => 'medium']);
-      $this->add('text', "work_address[$rowNumber]", E::ts('Work Address'), ['size' => 45, 'maxlength' => 96, 'class' => 'huge']);
-      $this->add('text', "postal_code[$rowNumber]", E::ts('Postal code'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
-      $this->add('text', "city[$rowNumber]", E::ts('City/Town'), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
-      $this->add('text', "email[$rowNumber]", E::ts('Email Address'), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
+      $this->add('text', "organization_name[$rowNumber]", E::ts('Employer #%1', [1 => $rowNumber]), ['class' => 'big']);
+      $this->add('text', "phone[$rowNumber]", E::ts('Employer #%1 - Main Phone Number', [1 => $rowNumber]), ['size' => 20, 'maxlength' => 32, 'class' => 'medium']);
+      $this->add('text', "work_address[$rowNumber]", E::ts('Employer #%1 - Main Address', [1 => $rowNumber]), ['size' => 45, 'maxlength' => 96, 'class' => 'huge']);
+      $this->add('text', "postal_code[$rowNumber]", E::ts('Employer #%1 - Main Postal code', [1 => $rowNumber]), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
+      $this->add('text', "city[$rowNumber]", E::ts('Employer #%1 - Main City/Town', [1 => $rowNumber]), ['size' => 20, 'maxlength' => 64, 'class' => 'medium']);
+      $this->add('text', "email[$rowNumber]", E::ts('Employer #%1 - Main Email or Intake Email', [1 => $rowNumber]), ['size' => 20, 'maxlength' => 254, 'class' => 'medium'], ($rowNumber == 1));
+      $this->add('text', "website[$rowNumber]", E::ts('Employer #%1 - Website', [1 => $rowNumber]), ['size' => 20, 'maxlength' => 254, 'class' => 'medium']);
       CRM_Core_BAO_CustomField::addQuickFormElement($this, "custom_49[$rowNumber]", 49, FALSE);
     }
     $totalCount = 1;
@@ -122,16 +142,16 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
       }
     }
     if (empty($fields["work_address"][1])) {
-      $errors['work_address[1]'] = E::ts("Work Address is required.");
+      $errors['work_address[1]'] = E::ts("Employer #1 - Main Address is required.");
     }
     if (empty($fields["phone"][1])) {
-      $errors['phone[1]'] = E::ts("Phone Number is required.");
+      $errors['phone[1]'] = E::ts("Employer #1 - Main Phone Number is required.");
     }
     if (empty($fields["postal_code"][1])) {
-      $errors['postal_code[1]'] = E::ts("Postal Code is required.");
+      $errors['postal_code[1]'] = E::ts("Employer #1 - Main Postal code is required.");
     }
     if (empty($fields["city"][1])) {
-      $errors['city[1]'] = E::ts("City/Town is required.");
+      $errors['city[1]'] = E::ts("Employer #1 - Main City/Town is required.");
     }
    /* for ($rowNumber = 1; $rowNumber <= 5; $rowNumber++) {
       if (!empty($fields["organization_name"][$rowNumber]) && empty($files['custom_49']['name'][$rowNumber])) {
@@ -143,12 +163,13 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
   }
 
   public static function submit($form, $values, $contactID, $orgID) {
+    // Use the email supplied for the contact's email not the work email.
     $params = [
-      'email' => CRM_Utils_Array::value(1, $values['email']),
+      'email' => CRM_Utils_Array::value(1, $values['email-4']),
     ];
     if (empty($contactID) && !empty($params['email'])) {
       // fetch contact from existing approved Contact
-      $contact = civicrm_api3('contact', 'get', ['email' => $params['email'], 'contact_sub_type' => 'Provider', 'sequential' => 1])['values'];
+      $contact = civicrm_api3('contact', 'get', ['email' => trim($params['email']), 'contact_sub_type' => 'Provider', 'sequential' => 1])['values'];
       $contactID = NULL;
       if (!empty($contact)) {
         $contactID = $contact[0]['contact_id'];
@@ -232,13 +253,22 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
         'phone' => CRM_Utils_Array::value($key, $values['phone']),
         'city' => CRM_Utils_Array::value($key, $values['city']),
         'postal_code' => CRM_Utils_Array::value($key, $values['postal_code']),
+        'website' => CRM_Utils_Array::value($key, $values['website']),
       ];
       $form->updateContactAddress($id, $params);
       if ($key == 1) {
+        unset($params['website']);
         CRM_Core_DAO::setFieldValue('CRM_Contact_DAO_Contact', $contactID, 'employer_id', $id);
         $form->updateContactAddress($contactID, $params);
       }
     }
+ 
+    // This code should not be needed as should be covered in the profile saving but something isn't working right. 
+    $current_primary_email = civicrm_api3('Email', 'get', ['is_primary' => 1, 'contact_id' => $contactID]);
+    civicrm_api3('Email', 'create', ['is_primary' => 0, 'id' => $current_primary_email['id']]);
+    civicrm_api3('Email', 'create', ['is_primary' => 1, 'email' => trim($values['email-4']), 'location_type_id' => 'Other', 'contact_id' => $contactID]);
+    civicrm_api3('Phone', 'create', ['phone' => trim($values['phone-4-1']), 'location_type_id' => 'Other', 'contact_id' => $contactID, 'phone_type_id' => 'Phone']);
+    
 
     return $contactID;
   }

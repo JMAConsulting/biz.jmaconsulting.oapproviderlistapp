@@ -345,7 +345,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
   }
 
   public function updateContactAddress($contactID, $params) {
-    foreach (['email', 'phone', 'address'] as $param) {
+    foreach (['email', 'phone', 'address', 'website'] as $param) {
       if (!empty($params[$param])) {
         $value = civicrm_api3(ucwords($param), 'get', ['contact_id' => $contactID, 'sequential' => TRUE, 'is_primary' => TRUE, 'options' => ['limit' => 1]]);
         $id = CRM_Utils_Array::value('id', $value);
@@ -360,12 +360,28 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
             $isPrimary = FALSE;
           }
         }
-        $apiParams = [
-          'id' => $id,
-          'contact_id' => $contactID,
-          $param => $params[$param],
-          'location_type_id' => 'Work',
-        ];
+        if ($param == 'website') {
+          if ($id && !empty($value['values'][0]['url']) && ($params[$param] != $value['values'][0]['url'])) {
+            $isPrimary = FALSE;
+          }
+        }
+        if ($param != 'website') {
+          $apiParams = [
+            'id' => $id,
+            'contact_id' => $contactID,
+            $param => $params[$param],
+            'location_type_id' => 'Work',
+          ];
+        }
+        else {
+          $apiParams = [
+            'id' => $id,
+            'contact_id' => $contactID,
+            'url' => $params[$param],
+            'location_type_id' => 'Work',
+            'website_type_id' => 'Work',
+          ];
+        }
         if ($isPrimary) {
           $apiParams['is_primary'] = TRUE;
         }

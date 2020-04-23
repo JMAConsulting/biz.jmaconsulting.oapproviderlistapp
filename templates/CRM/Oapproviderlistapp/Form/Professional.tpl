@@ -2,18 +2,9 @@
 <div class="content description-text">
   {$descriptionText}
 </div>
-{assign var="groupID" value="12"}
 <div class="crm-public-form-item crm-section professional">
   {include file="CRM/UF/Form/Block.tpl" fields=$professional}
 </div>
-<div class="content description-text">
-<p>
-{ts}Please note any other relevant credentials you have achieved and the date you obtained them.{/ts}
-</p>
-</div>
-<div id="customData"></div>
-{include file="CRM/common/customData.tpl"}
-
 <div class="crm-submit-buttons">
   {include file="CRM/common/formButtons.tpl" location="bottom"}
 </div>
@@ -23,7 +14,6 @@
 {literal}
 <script type="text/javascript">
 CRM.$(function($) {
-  CRM.buildCustomData('Individual', 'Provider');
   $('.crm-profile legend').hide();
 
   rearrangeFields();
