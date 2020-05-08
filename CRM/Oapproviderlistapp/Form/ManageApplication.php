@@ -57,7 +57,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
   }
 
   public function buildQuickForm() {
-    $fileLink = (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'fr') '/sites/default/files/2020-05/OAP%20Registry%20Application%20package%20FR%20v3.pdf' : '/sites/default/files/2020-02/OAP%20Registry%20Application%20package%20v6.pdf';
+    $fileLink = (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'fr') ? '/sites/default/files/2020-05/OAP%20Registry%20Application%20package%20FR%20v3.pdf' : '/sites/default/files/2020-02/OAP%20Registry%20Application%20package%20v6.pdf';
     $this->assign('fileLink', $fileLink);
     $buttons = array();
     if (!$this->_first) {
