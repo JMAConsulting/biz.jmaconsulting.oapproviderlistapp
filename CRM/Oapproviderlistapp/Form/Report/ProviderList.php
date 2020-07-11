@@ -15,7 +15,8 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
     $this->_columns['civicrm_contact']['fields']['created_date'] = [
       'title' => ts('Created Date'),
       'default' => FALSE,
-      'dbAlias' => 'DATE(contact_civireport.created_date)'
+      'dbAlias' => 'DATE(contact_civireport.created_date)',
+      'type' => CRM_Utils_Type::T_STRING,
     ];
     unset($this->_columns['civicrm_contact']['fields']['employer_id']);
     $this->_columns['civicrm_contact']['fields']['employer'] = [
@@ -31,13 +32,11 @@ class CRM_Oapproviderlistapp_Form_Report_ProviderList extends CRM_Report_Form_Co
       'name' => 'verified_date',
       'title' => ts('Complete (Ready to Verify) Date'),
       'dbAlias' => 'DATE(MAX(a.activity_date_time))',
-      'type' => CRM_Utils_Type::T_DATE,
     ];
     $this->_columns['civicrm_contact']['fields']['approval_date'] = [
       'name' => 'approval_date',
       'title' => ts('Approval Date'),
       'dbAlias' => 'mem.start_date',
-      'type' => CRM_Utils_Type::T_DATE,
     ];
     $this->_columns['civicrm_contact']['filters']['approval_date'] = [
       'name' => 'approval_date',
@@ -234,6 +233,14 @@ WHERE cg.extends IN ('" . implode("','", $this->_customGroupExtends) . "') AND
             $v[] = $this->_outputMode == 'csv' ? date("Y-m-d", strtotime($date)) : date("F j Y g:i a", strtotime($date));
           }
           $rows[$rowNum][$k] = implode(', ', $v);
+          $entryFound = TRUE;
+        }
+      }
+
+      foreach (['civicrm_contact_approval_date', 'civicrm_contact_created_date', 'civicrm_contact_verified_date'] as $k) {
+        if (!empty($rows[$rowNum][$k])) {
+          $date = $rows[$rowNum][$k];
+          $rows[$rowNum][$k] = date("F d Y", strtotime($date));
           $entryFound = TRUE;
         }
       }
