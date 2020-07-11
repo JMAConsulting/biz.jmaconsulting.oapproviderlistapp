@@ -272,6 +272,7 @@ function setMembership($cid, $submitValues, $defaultValues) {
     $oldStatus = $defaultValues[$statusKey] ?? NULL;
     if (empty($oldStatus) || $oldStatus != $newStatus) {
       if ($newStatus == 'Approved') {
+        $oldStatus = $oldStatus ?: 'Approved';
         civicrm_api3('Membership', 'create', [
           'membership_type_id' => "OAP Clinical Supervisor Provider",
           'contact_id' => $cid,
