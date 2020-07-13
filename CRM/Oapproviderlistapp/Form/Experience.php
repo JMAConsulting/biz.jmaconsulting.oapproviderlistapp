@@ -26,7 +26,7 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
   }
 
   public function formRule($fields, $files, $self) {
-    if (!empty($fields['_qf_Experience_submit_done'])) {
+    if (!empty($fields['_qf_Experience_submit_done']) || !empty($fields['_qf_Experience_submit'])) {
       return TRUE;
     }
     $errors = [];
