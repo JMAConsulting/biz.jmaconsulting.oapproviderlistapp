@@ -17,10 +17,15 @@
       </div>
     {else}
       <div class="org-file-attachment">
-        {foreach from=$orgNames item=orgid}
+        {foreach from=$orgNames key=orgid item=org}
           <div class="crm-section form-item">
-            <div class="label">{$form.org_image.$orgid.label}</div>
-            <div class="content">{$form.org_image.$orgid.html}</div>
+            {if !empty($org.image_URL)}
+              <div class="label">{$org.label}</div>
+              <div class="content">{$org.image_URL}</div>
+            {else}
+              <div class="label">{$form.org_image.$orgid.label}</div>
+              <div class="content">{$form.org_image.$orgid.html}</div>
+            {/if}
             <div class=clear></div>
           </div>
         {/foreach}

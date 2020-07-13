@@ -99,9 +99,21 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
     else {
       foreach ($employers as $employer) {
         $name = "org_image[" . $employer['id'] . "]";
-        $orgNames[] = $employer['id'];
-        $this->add('file', $name, ts('Logo for %1', [1 => $employer['organization_name']]));
-        $this->addUploadElement($name);
+        $orgNames[$employer['id']] = $employer['id'];
+        $url = civicrm_api3('Contact', 'getvalue', ['id' => $employer['id'], 'return' => 'image_URL']);
+        if ($url) {
+          list($width, $height) = getimagesize(CRM_Utils_String::unstupifyUrl($url));
+          list($thumbWidth, $thumbHeight) = CRM_Contact_BAO_Contact::getThumbSize($width, $height);
+          $image_URL = '<img src="' . $url . '" height= ' . $thumbHeight . ' width= ' . $thumbWidth . '  />';
+          $orgNames[$employer['id']] = [
+            'label' => ts('Logo for %1', [1 => $employer['organization_name']]),
+            'image_URL' => "<a href='#' onclick='contactImagePopUp(\"{$url}\", 180, 200);'>{$image_URL}</a>",
+          ];
+        }
+        else {
+          $this->add('file', $name, ts('Logo for %1', [1 => $employer['organization_name']]));
+          $this->addUploadElement($name);
+        }
       }
     }
 
@@ -132,7 +144,7 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
   }
 
   function imageRule($fields, $files = array(), $self = NULL) {
-    if (empty($files['image_URL']['name'])) {
+    if (empty($files['image_URL']['name']) && empty($files['org_image']['name'])) {
       return TRUE;
     }
     $errors = [];
@@ -143,15 +155,28 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
       'image/p-jpeg',
       'image/x-png',
     );
-    if (!in_array($files['image_URL']['type'], $mimeType)) {
-      $errors['image_URL'] = E::ts('Image could not be uploaded due to invalid type extension.');
+    $fileNames = ['image_URL' => 'image_URL'];
+    if (!empty($files['org_image']['name'])) {
+      foreach (array_keys($files['org_image']['name']) as $orgID) {
+        $fileNames[$orgID] = sprintf('org_image[%s]', $orgID);
+      }
     }
-    $maxSize = CRM_Core_Config::singleton()->maxFileSize * 1024*1024;
-    if (empty($maxSize)) {
-      $maxSize = $fields['MAX_FILE_SIZE'];
-    }
-    if ($files['image_URL']['size'] > $maxSize) {
-      $errors['image_URL'] = E::ts('Maximum file size cannot exceed upload max size');
+    foreach ($fileNames as $orgID => $fileName) {
+      if ((empty($files[$orgID]['name']) && $orgID == 'image_URL') || (empty($files['org_image']['name'][$orgID]) && $orgID == 'org_image')) {
+        continue;
+      }
+      $type = $orgID == 'image_URL' ? $files[$orgID]['type'] : $files['org_image']['type'][$orgID];
+      if (!in_array($type, $mimeType)) {
+        $errors[$fileName] = E::ts('Image could not be uploaded due to invalid type extension.');
+      }
+      $size = $orgID == 'image_URL' ? $files[$orgID]['size'] : $files['org_image']['size'][$orgID];
+      $maxSize = CRM_Core_Config::singleton()->maxFileSize * 1024*1024;
+      if (empty($maxSize)) {
+        $maxSize = $fields['MAX_FILE_SIZE'];
+      }
+      if ($size > $maxSize) {
+        $errors[$fileName] = E::ts('Maximum file size cannot exceed upload max size');
+      }
     }
     return empty($errors) ? TRUE : $errors;
   }
