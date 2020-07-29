@@ -1,25 +1,29 @@
+# Copyright CiviCRM LLC (c) 2004-2015
+# This file is distributed under the same license as the CiviCRM package.
+# If you contribute heavily to a translation and deem your work copyrightable,
+# make sure you license it to CiviCRM LLC under Academic Free License 3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: oapproviderlistapp\n"
 "POT-Creation-Date: 2020-03-30 02:36+1100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: fr_CA\n"
+"Language-Team: CiviCRM Translators <civicrm-translators@lists.civicrm.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
+"PO-Revision-Date: \n"
+"X-Generator: Poedit 2.4\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr\n"
 
 #: CRM/Oapproviderlistapp/Form/Confirm.php
 msgid "OAP PROVIDER LIST CONFIRMATION PAGE"
 msgstr ""
-"FORMULAIRE DE DEMANDE D’INSCRIPTION SUR LA LISTE DES FOURNISSEURS DU POSA"
 
 #: CRM/Oapproviderlistapp/Form/Confirm.php
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Previous"
-msgstr "Précédent"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Confirm.php
 msgid "Confirm"
@@ -29,8 +33,6 @@ msgstr ""
 #: CRM/Oapproviderlistapp/Form/Signature.php
 msgid "Thank you for submitting your application to the OAP Provider List"
 msgstr ""
-"Merci d'avoir envoyé votre demand d'inscription à la liste des fournisseurs "
-"du POSA"
 
 #: CRM/Oapproviderlistapp/Form/Confirm.php
 msgid "Email address not found. Please go back and provide email address"
@@ -51,11 +53,11 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/EditListing.php
 msgid "View My Listing"
-msgstr "Modifier mon dossier d’inscription"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/EditListing.php
 msgid "Edit My Listing"
-msgstr "Modifier mon dossier d’inscription"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/EditListing.php
 msgid "Logo for %1"
@@ -68,7 +70,7 @@ msgstr ""
 #: CRM/Oapproviderlistapp/Form/EditListing.php
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Submit"
-msgstr "Envoyer"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/EditListing.php
 msgid "Cancel"
@@ -84,7 +86,7 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/EditListing.php
 msgid "Your provider listing has been updated."
-msgstr "Votre dossier de fournisseur a été mis à jour."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/EditListing.php
 msgid "Listing Updated"
@@ -93,16 +95,16 @@ msgstr ""
 #: CRM/Oapproviderlistapp/Form/EditListing.php
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 msgid "BACB(r) Disciplinary Action"
-msgstr "Mesure disciplinaire du BACB(MD)"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/EditListing.php
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 msgid "CPO Discipline and Other Proceedings"
-msgstr "Mesure disciplinaire ou autre procédure de l’OPO"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Experience.php
 msgid "Each option of Experience check list is a required field."
-msgstr "Adresse courriel est un champ requis."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Experience.php
 msgid "Total number of hours"
@@ -126,7 +128,7 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Experience.php
 msgid "All fields in Employment History are required."
-msgstr "Au moins un employeur actuel est exigé."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Experience.php
 msgid ""
@@ -141,7 +143,7 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Employer #%1"
-msgstr "Employeur(s)"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Employer #%1 - Main Phone Number"
@@ -149,11 +151,11 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Employer #%1 - Main Address"
-msgstr "Adresse courriel"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Employer #%1 - Main Postal code"
-msgstr "Code postal"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Employer #%1 - Main City/Town"
@@ -169,50 +171,45 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Email is a required field to send draft link."
-msgstr "Adresse courriel est un champ requis."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "At least one Current Employer is required."
-msgstr "Au moins un employeur actuel est exigé."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "First Name is required"
-msgstr "Prénom est un champ requis"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Last Name is required"
-msgstr "Nom de famille est un champ requis"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid ""
 "A person with this email address has already created an OAP Provider Listing "
 "application. Please contact info@oapproviderlist.ca for more information."
 msgstr ""
-"Une personne possédant cette même adresse courriel a déjà présenté une "
-"demande d’inscription sur la liste des fournisseurs de services prévue dans "
-"le POSA. Pour en savoir plus à ce sujet, veuillez utiliser l’adresse "
-"courriel suivante. : info@oapproviderlist.ca"
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Employer #1 - Main Address is required."
-msgstr "Adresse du lieu de travail est un champ requis."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Employer #1 - Main Phone Number is required."
-msgstr "Numéro de téléphone est un champ requis."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Employer #1 - Main Postal code is required."
-msgstr "Code postal est un champ requis."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Individual.php
 msgid "Employer #1 - Main City/Town is required."
-msgstr "Ville/village est un champ requis."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "OAP PROVIDER LIST APPLICATION FORM"
 msgstr ""
-"FORMULAIRE DE DEMANDE D’INSCRIPTION SUR LA LISTE DES FOURNISSEURS DU POSA"
 
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "You do not have privilege to edit this application"
@@ -220,16 +217,15 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Next"
-msgstr "Prochain"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Save Draft"
-msgstr "Sauvegarder l’ébauche"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Some of the profile fields cannot be configured for this page."
 msgstr ""
-"Certains champs de profil ne peuvent pas être configurés pour cette page."
 
 #: CRM/Oapproviderlistapp/Form/ManageApplication.php
 msgid "Contact image deleted successfully"
@@ -253,10 +249,6 @@ msgid ""
 "in good standing, or a Registered Psychologist or Psychological Associate in "
 "good standing with the College of Psychologists of Ontario."
 msgstr ""
-"Pour vous inscrire sur la Liste des fournisseurs, vous devez être un(e) "
-"analyste du comportement certifié(e)%1 en règle ou un(e) psychologue "
-"agréé(e) ou un(e) associé(e) en psychologie en règle inscrit(e) auprès de "
-"l'Ordre des psychologues de l'Ontario."
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
 msgid ""
@@ -266,34 +258,26 @@ msgid ""
 "an \"Applied Behaviour Analysis Expertise Package\", which will confirm your "
 "ABA expertise."
 msgstr ""
-"Si vous êtes un(e) psychologue ou un(e) associé(e) en psychologie qui "
-"possède des compétences en analyse comportementale appliquée (ACA), vous "
-"êtes admissible à l’inscription sur la Liste des fournisseurs du POSA. Vous "
-"n'avez pas besoin d’avoir le titre d’analyste du comportement certifié(e)"
-"(BCBA) ou d’analyste du comportement certifié(e) – doctorat (BCBA-D), mais "
-"vous devrez toutefois fournir une « trousse d’expertise en analyse "
-"comportementale appliquée » de la part d’un BCBA-D confirmera vos "
-"compétences en ACA."
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
 msgid "At least one credential must be selected."
-msgstr "Au moins une qualification doit être sélectionnée."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
 msgid "Please provide Certification Date for this credential."
-msgstr "Veuillez indiquer une date de certification pour cette qualification."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
 msgid "Please provide Certification Number for this credential."
-msgstr "Veuillez indiquer un numéro de certificat pour cette qualification."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
 msgid "Please provide Registration Date for this credential."
-msgstr "Veuillez indiquer une date de certification pour cette qualification."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Professional.php
 msgid "Please provide Registration Number for this credential."
-msgstr "Veuillez indiquer un numéro de certificat pour cette qualification."
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Report/ProviderList.php
 msgid "Created Date"
@@ -302,7 +286,7 @@ msgstr ""
 #: CRM/Oapproviderlistapp/Form/Report/ProviderList.php
 #: templates/CRM/Oapproviderlistapp/Form/EditListing.tpl
 msgid "Employer(s)"
-msgstr "Employeur(s)"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Report/ProviderList.php
 msgid "Complete (Ready to Verify) Date"
@@ -322,54 +306,54 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Search the OAP Provider List"
-msgstr "Faire une recherche dans la Liste des fournisseurs du POSA"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Show only if accepting new clients"
-msgstr "N’afficher que si le fournisseur accepte de nouveaux clients"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
 msgid "Travels to remote areas"
-msgstr "Déplacements dans les régions éloignées"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
 msgid "Offers supervision"
-msgstr "Services de supervision offerts"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
 msgid "Offers remote services"
-msgstr "Services offerts dans les régions éloignées"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 msgid "Region"
-msgstr "Région"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Board Certified Behavior Analyst%1 (BCBA%1)"
-msgstr "Analyste du comportement certifié(e)%1 (BCBA%1)"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Board Certified Behavior Analyst-Doctoral (BCBA-D%1)"
-msgstr "Analyste du comportement certifié(e) – doctoral(e)%1 (BCBA-D%1)"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Registered Psychologist"
-msgstr "Psychologue agréé(e)"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Registered Psychological Associate"
-msgstr "Associé(e) en psychologie agréé(e)"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "I am looking for"
-msgstr "Ce que je cherche"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Language"
@@ -377,7 +361,7 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "- any -"
-msgstr "- toutes -"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Provider Name"
@@ -397,49 +381,43 @@ msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/TabHeader.php
 msgid "Professional Credential(s)"
-msgstr "Qualifications professionnel(s)"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/TabHeader.php
 msgid "Experience"
-msgstr "Expérience"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/TabHeader.php
 msgid "Vulnerable Sector Check"
-msgstr "Vérification relative aux personnes vulnérables"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/TabHeader.php
 msgid "Professional Liability Insurance"
-msgstr "Assurance responsabilité civile professionnelle"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Form/TabHeader.php
 msgid "Declaration of Compliance"
-msgstr "Déclaration de conformité"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Page/Draft.php
 msgid ""
 "Your draft registration for the OAP provider list has been saved "
 "successfully!"
 msgstr ""
-"Sauvegarde de l’ébauche de la demande d’inscription sur la liste des "
-"fournisseurs du POSA!"
 
 #: CRM/Oapproviderlistapp/Page/Draft.php
 msgid "here"
-msgstr "ici"
+msgstr ""
 
 #: CRM/Oapproviderlistapp/Page/Draft.php
 msgid ""
 "Your draft registration for the OAP provider list has been saved "
 "successfully! Click %1 to resume your application"
 msgstr ""
-"Sauvegarde de l’ébauche de la demande d’inscription sur la liste des "
-"fournisseurs du POSA! Cliquez %1 our représenter votre demande"
 
 #: CRM/Oapproviderlistapp/Page/Draft.php
 msgid "Draft saved successfully!"
 msgstr ""
-"Sauvegarde de l’ébauche de la Demande d’inscription sur la liste des "
-"fournisseurs du POSA!"
 
 #: oapproviderlistapp.civix.php
 msgid "You have already submitted this application."
@@ -451,11 +429,11 @@ msgstr ""
 
 #: oapproviderlistapp.php
 msgid "edit my listing"
-msgstr "modifier mon dossier d’inscription"
+msgstr ""
 
 #: oapproviderlistapp.php
 msgid "Edit own Provider Listing"
-msgstr "Modifier mon dossier d’inscription"
+msgstr ""
 
 #: oapproviderlistapp.php
 msgid "%1"
@@ -463,11 +441,11 @@ msgstr ""
 
 #: oapproviderlistapp.php
 msgid "%1 must be a number."
-msgstr "%1 doit être un chiffre."
+msgstr ""
 
 #: oapproviderlistapp.php
 msgid "Search by Provider"
-msgstr "Faire une recherche dans la Liste des fournisseurs du POSA"
+msgstr ""
 
 #: oapproviderlistapp.php
 msgid "Search By Organization"
@@ -476,15 +454,12 @@ msgstr ""
 #: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
 msgid "Please click the “Confirm” button to submit your application."
 msgstr ""
-"Veuillez cliquer sur le bouton « Confirmer » pour présenter votre demande."
 
 #: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
 msgid ""
 "Leaving the page before confirming your application will result in your "
 "application remaining in draft mode and eventually cancelled."
 msgstr ""
-"Si vous quittez la page avant de confirmer votre demande, celle-ci demeurera "
-"en mode brouillon et finira par être annulée."
 
 #: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
 msgid "Employer information"
@@ -493,15 +468,15 @@ msgstr ""
 #: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
 #: templates/CRM/Oapproviderlistapp/Form/EditListing.tpl
 msgid "Phone"
-msgstr "Téléphone"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
 msgid "Proof of Employment:"
-msgstr "Lettre de preuve d’emploi:"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
 msgid "Other Professional Credentials"
-msgstr "Qualifications professionnel(s)"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Confirm.tpl
 msgid "Employment History"
@@ -520,11 +495,11 @@ msgstr ""
 #: templates/CRM/Oapproviderlistapp/Form/EditListing.tpl
 #: templates/CRM/Oapproviderlistapp/Page/Details.tpl
 msgid "Credentials"
-msgstr "Titres de compétence"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/EditListing.tpl
 msgid "Title/Professional Credentials"
-msgstr "Qualifications professionnel(s)"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Experience.tpl
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
@@ -533,7 +508,7 @@ msgstr "Qualifications professionnel(s)"
 #: templates/CRM/Oapproviderlistapp/Form/SectorCheck.tpl
 #: templates/CRM/Oapproviderlistapp/Form/Signature.tpl
 msgid "An email will be sent to you"
-msgstr "Un courriel sera envoyé à"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Experience.tpl
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
@@ -545,17 +520,12 @@ msgid ""
 "It will contain a link that you can click to continue to review this request "
 "within the next seven days."
 msgstr ""
-"Il contiendra un lien sur lequel vous pouvez cliquer pour continuer à "
-"réviser cette demande au cours des sept prochains jours."
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid ""
 "Please read this form carefully to make sure that you meet the requirements "
 "to join the Ontario Autism Program (OAP) Provider List."
 msgstr ""
-"Veuillez lire attentivement le présent formulaire pour vous assurer que vous "
-"répondez aux critères d’admissibilité de l’inscription sur la Liste des "
-"fournisseurs du Programme ontarien des services en matière d'autisme (POSA)."
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid ""
@@ -563,10 +533,6 @@ msgid ""
 "you will be clinically supervising Ontario Autism Program behavioural "
 "services."
 msgstr ""
-"Veuillez fournir les renseignements sur votre ou vos employeurs principaux "
-"actuels par l'intermédiaire desquels vous superviserez sur le plan clinique "
-"les services comportementaux du Programme ontarien des services en matière "
-"d’autisme."
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid ""
@@ -575,11 +541,6 @@ msgid ""
 "role and credentials of the person signing. You do not need to submit proof "
 "of self-employment."
 msgstr ""
-"Vous devez fournir une lettre d’attestation d’emploi pour chacun des "
-"employeurs énumérés ci-dessous. Cette lettre doit être rédigée sur le papier "
-"à en-tête de l’organisation et indiquer le rôle et les titres de compétence "
-"de la personne qui la signe. Vous n'avez pas besoin de soumettre une preuve "
-"de travail indépendant."
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Your Contact Information"
@@ -587,7 +548,7 @@ msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Employer #1"
-msgstr "Employeur(s)"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid ""
@@ -599,8 +560,6 @@ msgstr ""
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "(if self-employed, write &#8220;self-employed&#8221; here)"
 msgstr ""
-"(si vous êtes travailleur autonome, écrivez &laquo; travailleur autonome "
-"&raquo; ici)"
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 #: templates/CRM/Oapproviderlistapp/Form/Insurance.tpl
@@ -611,32 +570,28 @@ msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Hide"
-msgstr "Masquer"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid "Add another employer"
-msgstr "Ajouter un autre employeur"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
 msgid "Complete the application online on the form below or"
 msgstr ""
-"Vous pouvez compléter votre demande en ligne en utilisant le formulaire ci-"
-"dessous ou"
 
 #: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
 msgid "click here to download a fillable PDF application form."
-msgstr "cliquer ici pour télécharger un formulaire version PDF à remplir."
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
 msgid "Please note"
-msgstr "Note"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
 msgid ""
 "If you download the application form, please email the completed form to"
 msgstr ""
-"Si vous téléchargez le formulaire de demande, veuillez le transmettre, une "
-"fois rempli, à l’adresse"
 
 #: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
 msgid "close"
@@ -655,7 +610,7 @@ msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/EmptyResults.tpl
 msgid "No providers found that match your criteria."
-msgstr "Aucun fournisseur ne correspond à vos critères."
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/EmptyResults.tpl
 msgid "Suggestion:"
@@ -663,49 +618,49 @@ msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/EmptyResults.tpl
 msgid "Use fewer criteria so you limit results less."
-msgstr "Définissez moins de critères afin d’obtenir plus de résultats."
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
 msgid "Currently accepting new clients"
-msgstr "N’accepte pas de nouveaux clients"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 msgid "Not accepting new clients"
-msgstr "N’accepte pas de nouveaux clients"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 msgid "Speaks"
-msgstr "Langue(s) parlée(s)"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 msgid "view details"
-msgstr "cliquer pour masquer les détails"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/Provider.tpl
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
 msgid "Click for more details"
-msgstr "Cliquer pour afficher d’autres détails"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
 msgid "Click for map of regions"
-msgstr "Cliquer pour afficher d’autres détails"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
 msgid "Expand all results"
-msgstr "Afficher tous les résultats"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
 msgid "Collapse all results"
-msgstr "Afficher tous les résultats"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/Search/ProviderList.tpl
 msgid "Click to hide details"
-msgstr "Cliquer pour masquer les détails"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Page/Details.tpl
 msgid "ext"
-msgstr "prochain"
+msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Page/Details.tpl
 msgid "Providers"
@@ -713,131 +668,24 @@ msgstr ""
 
 #: templates/CRM/ProviderList.tpl
 msgid "ADD ANOTHER DEGREE"
-msgstr "AJOUTER UN AUTRE DEGRÉ"
+msgstr ""
 
 #: templates/CRM/ProviderList.tpl
 msgid "Add Another Employer"
-msgstr "Ajouter un autre employeur"
+msgstr ""
 
-#~ msgid "Phone Number"
-#~ msgstr "Numéro de téléphone"
+#: templates/CRM/ProviderList.tpl
+msgid "East"
+msgstr "Est"
 
-#~ msgid "Work Address"
-#~ msgstr "Adresse du lieu de travail"
+#: templates/CRM/ProviderList.tpl
+msgid "Central"
+msgstr "Centre"
 
-#~ msgid "City/Town"
-#~ msgstr "Ville/village"
+#: templates/CRM/ProviderList.tpl
+msgid "North"
+msgstr "Nord"
 
-#~ msgid ""
-#~ "Please note any other relevant credentials you have achieved and the date "
-#~ "you obtained them."
-#~ msgstr ""
-#~ "Veuillez indiquer tout autre titre de compétence pertinent que vous avez "
-#~ "obtenu et la date à laquelle vous l'avez obtenu."
-
-#~ msgid "Signature"
-#~ msgstr "Signature"
-
-#~ msgid ""
-#~ "If you are a psychologist or psychological associate with Applied "
-#~ "Behaviour Analysis (ABA) expertise, you are eligible to join the OAP "
-#~ "Provider List. You do not need to obtain a BCBA® or BCBA-D™, however, you "
-#~ "will need to have your ABA expertise confirmed by a BCBA-D™. Upon "
-#~ "receiving your application package, the Provider List administrator will "
-#~ "contact you with more information about the equivalency process for "
-#~ "confirming ABA expertise."
-#~ msgstr ""
-#~ "Si vous êtes un(e) psychologue ou un(e) associé(e) en psychologie qui "
-#~ "possède des compétences en ACA, vous êtes admissible à l’inscription sur "
-#~ "la Liste des fournisseurs du POSA. Vous n’avez pas besoin d’obtenir le "
-#~ "titre de BCBA&#x1F16B; ou de BCBA-D&#x1F16A;. Cependant, vous devrez "
-#~ "faire confirmer vos compétences en ACA par un BCBA-D&#x1F16A;. Sur "
-#~ "réception de votre dossier de candidature, l’administrateur de la Liste "
-#~ "des fournisseurs communiquera avec vous pour vous fournir de plus amples "
-#~ "informations sur le processus d’équivalence pour la confirmation des "
-#~ "compétences en ACA."
-
-#~ msgid "Saved draft of OAP Provider List Application"
-#~ msgstr ""
-#~ "Sauvegarde de l’ébauche de la Demande d’inscription sur la liste des "
-#~ "fournisseurs du POSA"
-
-#~ msgid ""
-#~ "An application to the OAP Provider List containing this email was saved "
-#~ "in a draft form on"
-#~ msgstr ""
-#~ "Une Demande d’inscription sur la liste des fournisseurs du POSA contenant "
-#~ "ce courriel a été sauvegardée sous forme d’ébauche le"
-
-#~ msgid ""
-#~ "You can review and continuing editing the application for seven days by "
-#~ "clicking on"
-#~ msgstr ""
-#~ "Vous pouvez examiner et continuer de réviser la demande pendant sept "
-#~ "jours en cliquant sur"
-
-#~ msgid ""
-#~ "If you did not submit this draft application, you can safely ignore this "
-#~ "email"
-#~ msgstr ""
-#~ "Si vous n’avez pas soumis cette ébauche de demande, vous pouvez ignorer "
-#~ "ce courriel en toute sécurité"
-
-#~ msgid ""
-#~ "An email on the Individual Information tab is required if you want to "
-#~ "Save Draft."
-#~ msgstr ""
-#~ "Il faut ajouter un courriel sur l’onglet Renseignements personnels si "
-#~ "vous voulez sauvegarder l’ébauche."
-
-#~ msgid "This is a required field."
-#~ msgstr "C’est un champ obligatoire."
-
-#~ msgid "Please provide the Date Obtained for this other relevant credential."
-#~ msgstr ""
-#~ "Veuillez indiquer la date d’obtention pour cette autre qualification "
-#~ "pertinente."
-
-#~ msgid ""
-#~ "(please type in your First Name and Last Name exactly as they appear on "
-#~ "the first tab)"
-#~ msgstr ""
-#~ "(veuillez saisir votre prénom et votre nom exactement tels qu’ils "
-#~ "apparaissent au premier onglet.)"
-
-#~ msgid "Click"
-#~ msgstr "Cliquez"
-
-#~ msgid "application form here."
-#~ msgstr "ici pour présenter votre demande en ligne."
-
-#~ msgid "Or"
-#~ msgstr "Ou"
-
-#~ msgid "download application form here."
-#~ msgstr "téléchargez le formulaire de demande ici."
-
-#~ msgid "here to apply online."
-#~ msgstr "ici pour présenter votre demande en ligne."
-
-#~ msgid ""
-#~ "Please read the following statements and indicate agreement by clicking "
-#~ "Submit."
-#~ msgstr ""
-#~ "Veuillez lire les déclarations ci-dessous et indiquer votre accord avec "
-#~ "celles-ci en cliquant sur Envoyer."
-
-#~ msgid "East"
-#~ msgstr "Est"
-
-#~ msgid "Central"
-#~ msgstr "Centre"
-
-#~ msgid "North"
-#~ msgstr "Nord"
-
-#~ msgid "South"
-#~ msgstr "Sud"
-
-#~ msgid "Enter search term"
-#~ msgstr "Entrer un mot à rechercher"
+#: templates/CRM/ProviderList.tpl
+msgid "South"
+msgstr "Sud"

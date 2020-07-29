@@ -464,6 +464,9 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    }
    if (!empty($row[$region])) {
      $regions = array_unique(array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row[$region], 1, -1)), function($value) { return in_array($value, ['East', 'Central', 'Toronto', 'North', 'West', 'South']); }));
+     foreach ($regions as $k => $reg) {
+       $regions[$k] = E::ts($reg);
+     }
      $row[$region] = str_replace('South', 'West', implode(', ', $regions));
    }
   }

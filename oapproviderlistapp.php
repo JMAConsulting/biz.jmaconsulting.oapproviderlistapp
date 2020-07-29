@@ -195,13 +195,13 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
     $form->addButtons([
       [
         'type' => 'refresh',
-        'name' => ts('Search by Provider'),
+        'name' => E::ts('Search by Provider'),
         'isDefault' => TRUE,
       ],
       [
         'type' => 'refresh',
         'subName' => 'savenext',
-        'name' => ts('Search By Organization'),
+        'name' => E::ts('Search By Organization'),
       ],
     ]);
   }
