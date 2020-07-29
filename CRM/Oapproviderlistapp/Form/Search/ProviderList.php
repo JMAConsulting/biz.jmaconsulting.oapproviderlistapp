@@ -79,17 +79,9 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     ];
     $form->setDefaults($defaults);
 
-    $form->addEntityRef('language', E::ts('Language'), [
-      'entity' => 'OptionValue',
-      'placeholder' => E::ts('- any -'),
-      'multiple' => 1,
-      'api' => [
-        'params' => [
-          'check_permissions' => FALSE,
-          'option_group_id' => 'languages',
-        ],
-      ],
-    ]);
+    $form->add('select', 'language', ts('Language'), $this->_languages, FALSE,
+      ['id' => 'language', 'multiple' => 'multiple', 'class' => 'crm-select2', 'placeholder' => E::ts('- any -')]
+    );
     $form->addElement('checkbox', 'search_by_org',  '', NULL);
     $form->add('text',
       'provider_name',
@@ -387,9 +379,8 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
           }
         }
         elseif ($key == 'language') {
-          $languages = explode(',', $value);
           $c = [];
-          foreach ($languages as $lang) {
+          foreach ((array)$value as $lang) {
             $c[] = "$customElements[$key] LIKE '%$lang%'";
           }
           $clauses[] = '(' . implode(' OR ', $c) . ')';
