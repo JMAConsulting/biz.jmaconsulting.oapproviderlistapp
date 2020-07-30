@@ -48,7 +48,7 @@ $MYSQLDUMP  $PRODDBNAME > "$PRODDBNAME.mysql"
 sed -i 's/DEFINER=[^*]*\*/\*/g' "$PRODDBNAME.mysql"
 
 
-echo "Creating mysqldump of civicrm database and dumping at $PWD/$PRODCIVIDBNAME"
+echo "Creating mysqldump of civicrm database and dumping at $PWD/$PRODCIVIDBNAME.mysql"
 $MYSQLDUMP $PRODDBNAME > "$PRODCIVIDBNAME.mysql"
 sed -i 's/DEFINER=[^*]*\*/\*/g' "$PRODCIVIDBNAME.mysql"
 
