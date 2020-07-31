@@ -49,7 +49,7 @@ sed -i 's/DEFINER=[^*]*\*/\*/g' "$PRODDBNAME.mysql"
 
 
 echo "Creating mysqldump of civicrm database and dumping at $PWD/$PRODCIVIDBNAME.mysql"
-$MYSQLDUMP $PRODDBNAME > "$PRODCIVIDBNAME.mysql"
+$MYSQLDUMP $PRODCIVIDBNAME > "$PRODCIVIDBNAME.mysql"
 sed -i 's/DEFINER=[^*]*\*/\*/g' "$PRODCIVIDBNAME.mysql"
 
 echo "Dropping Drupal staging database"
