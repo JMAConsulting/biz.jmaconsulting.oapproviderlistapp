@@ -72,7 +72,8 @@ class CRM_Oapproviderlistapp_Upgrader extends CRM_Oapproviderlistapp_Upgrader_Ba
     $this->ctx->log->info('Applying update 1100');
     // Retrieve list of self-employed professionals.
     $orgs = CRM_Core_DAO::executeQuery("SELECT id, organization_name
-      FROM civicrm_contact WHERE organization_name LIKE '%employed by%'")->fetchAll();
+      FROM civicrm_contact WHERE organization_name LIKE '%employed by%'
+      AND contact_type LIKE '%organization'")->fetchAll();
     foreach ($orgs as $org) {
       $orgName = str_replace(' by ', ' ', $org['organization_name']);
       civicrm_api3('Contact', 'create', ['id' => $org['id'], 'contact_type' => 'Organization', 'organization_name' => $orgName]);
