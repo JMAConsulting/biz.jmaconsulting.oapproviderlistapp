@@ -4,6 +4,7 @@
 &nbsp;</p>{/crmScope}
 
 {include file="CRM/common/TabHeader.tpl"}
+{include file="CRM/common/TabSelected.tpl" defaultTab='individual'}
 
 {include file="CRM/common/footer.tpl"}
 <div id="crm-public-notification-container" role="alert" aria-live="assertive" aria-atomic=”true” style="display:none">
