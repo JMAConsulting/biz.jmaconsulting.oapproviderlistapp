@@ -183,7 +183,9 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
 
   function postProcess() {
     $values = $this->controller->exportValues($this->_name);
-    CRM_Contact_BAO_Contact::processImageParams($values);
+    if (!empty($values['image_URL'])) {
+      CRM_Contact_BAO_Contact::processImageParams($values);
+    }
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_LISTING, FALSE, CRM_Core_Action::VIEW);
 
     $fieldName = 'org_image';
