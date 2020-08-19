@@ -9,7 +9,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
   public $_searchByOrg;
   function __construct(&$formValues) {
     parent::__construct($formValues);
-    $this->_searchByOrg = (bool) $formValues['search_by_org'];
+    $this->_searchByOrg = (bool) $formValues['search_by_org'] ?? 0;
     $this->_searchByOrg = $this->_searchByOrg ?: CRM_Utils_Array::value('is_org', $_REQUEST);
     $this->_languages = CRM_Core_OptionGroup::values('languages');
     CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'css/style.css');
@@ -63,7 +63,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
       3 => E::ts('Registered Psychologist'),
       4 => E::ts('Registered Psychological Associate'),
     ] as $key => $label) {
-      $check[] = &$form->addElement('checkbox', $key, NULL, $label, 'ts_sel', array('checked' => 'checked'));
+      $check[] = &$form->addElement('checkbox', $key, NULL, $label, array('checked' => 'checked'));
     }
     $form->addGroup($check, 'credentials', E::ts('I am looking for'));
 
@@ -455,6 +455,9 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
    }
    if (!empty($row[$region])) {
      $regions = array_unique(array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row[$region], 1, -1)), function($value) { return in_array($value, ['East', 'Central', 'Toronto', 'North', 'West', 'South']); }));
+     foreach ($regions as $k => $r) {
+       $regions[$k] = E::ts($r);
+     }
      $row[$region] = str_replace('South', 'West', implode(', ', $regions));
    }
   }

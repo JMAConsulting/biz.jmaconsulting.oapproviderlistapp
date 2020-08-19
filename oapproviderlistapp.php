@@ -195,13 +195,13 @@ function oapproviderlistapp_civicrm_buildForm($formName, &$form) {
     $form->addButtons([
       [
         'type' => 'refresh',
-        'name' => ts('Search by Provider'),
+        'name' => E::ts('Search by Provider'),
         'isDefault' => TRUE,
       ],
       [
         'type' => 'refresh',
         'subName' => 'savenext',
-        'name' => ts('Search By Organization'),
+        'name' => E::ts('Search By Organization'),
       ],
     ]);
   }
@@ -312,11 +312,11 @@ function setMembership($cid, $submitValues, $defaultValues) {
         }
       }
     }
-    if ($oldStatus) {
+    if ($oldStatus != $newStatus) {
       $activityID = civicrm_api3('Activity', 'create', [
         'source_contact_id' => $cid,
         'activity_type_id' => "Provider Status Changed",
-        'subject' => sprintf("Application status changed to %s", $oldStatus),
+        'subject' => sprintf("Application status changed to %s", $newStatus),
         'activity_status_id' => 'Completed',
         'details' => '<a class="action-item crm-hover-button" href="https://oapproviderlist.ca/civicrm/application/confirm?cid=' . $cid . '&mode=embedded">View Applicant</a>',
         'target_id' => $cid,
