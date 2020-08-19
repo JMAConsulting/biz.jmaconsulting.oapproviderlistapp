@@ -26,7 +26,7 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
   }
 
   public function formRule($fields, $files, $self) {
-    if (!empty($fields['_qf_Experience_submit_done'])) {
+    if (!empty($fields['_qf_Experience_submit_done']) || !empty($fields['_qf_Experience_submit'])) {
       return TRUE;
     }
     $errors = [];
@@ -62,15 +62,15 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
         }
         $error = '';
         if (empty($fields[$fieldName])) {
-          if (strstr($fieldName, 'custom_36')) {
-            $error .= E::ts('Total number of hours') . ':<br />' . E::ts('Applicants are required to have at least 3,000 hours post-certification/registration experience.');
-          }
-          if (strstr($fieldName, 'custom_37')) {
-            $error = E::ts('Approximate number of hours that involved supervisory duties') . ':<br />' . E::ts('Applicants are required to have a minimum of 1,500 post-certification hours involving supervisory duties.');
-          }
           $error .= E::ts('All fields in Employment History are required.');
           $errors['_qf_default'] = $error;
           CRM_Core_Session::setStatus("", $error, "alert");
+        }
+        elseif (strstr($fieldName, 'custom_36') && $fields[$fieldName] < 3000) {
+          $errors['_qf_default'] .= sprintf('<strong>%s</strong>: <br /> %s', E::ts('Total number of hours'), E::ts('Applicants are required to have at least 3,000 hours post-certification/registration experience.'));
+        }
+        elseif (strstr($fieldName, 'custom_37') && $fields[$fieldName] < 1500) {
+          $errors['_qf_default'] .= sprintf('<strong>%s</strong>: <br /> %s', E::ts('Approximate number of hours that involved supervisory duties'), E::ts('Applicants are required to have a minimum of 1,500 post-certification hours involving supervisory duties.'));
         }
         elseif (strstr($fieldName, 'custom_47') && !empty($fields[$fieldName])) {
           $contact = civicrm_api3('Contact', 'get', [

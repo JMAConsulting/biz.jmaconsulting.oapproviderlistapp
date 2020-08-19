@@ -15,6 +15,7 @@ CRM.$(function($) {
   CRM.buildCustomData('Individual', 'Provider', 1);
   $('.crm-profile legend').hide();
   $('tr.custom_48_25-row-help-pre').insertAfter($('tr.custom_48_25-row'));
+  $('#editrow-custom_12 label').append("&nbsp;<span class='crm-marker' title='This field is required.'>*</span>");
   var empFields = [
     "custom_32",
     "custom_33",
