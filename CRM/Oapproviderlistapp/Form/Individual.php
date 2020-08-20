@@ -267,8 +267,11 @@ class CRM_Oapproviderlistapp_Form_Individual extends CRM_Oapproviderlistapp_Form
     $current_primary_email = civicrm_api3('Email', 'get', ['is_primary' => 1, 'contact_id' => $contactID]);
     civicrm_api3('Email', 'create', ['is_primary' => 0, 'id' => $current_primary_email['id']]);
     civicrm_api3('Email', 'create', ['is_primary' => 1, 'email' => trim($values['email-4']), 'location_type_id' => 'Other', 'contact_id' => $contactID]);
-    civicrm_api3('Phone', 'create', ['phone' => trim($values['phone-4-1']), 'location_type_id' => 'Other', 'contact_id' => $contactID, 'phone_type_id' => 'Phone']);
-    
+    // The phone number is not a required field, so we first check if it is present.
+    if (!empty($values['phone-4-1'])) {
+      civicrm_api3('Phone', 'create', ['phone' => trim($values['phone-4-1']), 'location_type_id' => 'Other', 'contact_id' => $contactID, 'phone_type_id' => 'Phone']);
+    }
+
 
     return $contactID;
   }
