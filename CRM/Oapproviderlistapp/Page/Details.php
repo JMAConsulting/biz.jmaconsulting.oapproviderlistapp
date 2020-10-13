@@ -41,6 +41,7 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
       LEFT JOIN civicrm_website w ON w.contact_id = o.id AND w.website_type_id = 1
       LEFT JOIN civicrm_value_track_changes_17 temp1 ON temp1.entity_id = r.contact_id_a
       WHERE r.contact_id_b = %1 AND r.relationship_type_id = %2 AND o.is_deleted <> 1 AND temp1.status_60 = 'Approved'
+      AND r.is_active = 1
       GROUP BY o.id
       ";
 
@@ -133,6 +134,7 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
       LEFT JOIN civicrm_phone p ON p.contact_id = o.id AND p.location_type_id = 2
       LEFT JOIN civicrm_website w ON w.contact_id = o.id AND w.website_type_id = 1
       WHERE r.contact_id_a = %1 AND r.relationship_type_id = %2 AND o.is_deleted <> 1
+      AND r.is_active = 1
       GROUP BY o.id
       ORDER BY o.organization_name
       ";
