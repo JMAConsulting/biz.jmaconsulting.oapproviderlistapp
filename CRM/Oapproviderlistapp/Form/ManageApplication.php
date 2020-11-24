@@ -118,13 +118,15 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
     $messageTemplates->id = 70;
     $messageTemplates->find(TRUE);
 
-    $body_subject = CRM_Core_Smarty::singleton()->fetch("string:$messageTemplates->msg_subject");
+    $contact = civicrm_api3('Contact', 'getsingle', ['id' => $contactID]);
+    $smarty = CRM_Core_Smarty::singleton();
+    $smarty->assign_by_ref('contact', $contact);
+
+    $body_subject = $smarty->fetch("string:$messageTemplates->msg_subject");
     $body_text    = $messageTemplates->msg_text;
     $body_html    = "{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}" . $messageTemplates->msg_html . "{/crmScope}";
-    $body_html = CRM_Core_Smarty::singleton()->fetch("string:{$body_html}");
-    $body_text = CRM_Core_Smarty::singleton()->fetch("string:{$body_text}");
-
-    $contact = civicrm_api3('Contact', 'getsingle', ['id' => $contactID]);
+    $body_html = $smarty->fetch("string:{$body_html}");
+    $body_text = $smarty->fetch("string:{$body_text}");
     $mailParams = array(
       'groupName' => 'OAP Application Confirmation',
       'from' => "<info@oapproviderlist.ca>",
