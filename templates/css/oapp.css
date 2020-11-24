@@ -119,3 +119,11 @@ h1 {
   right : 10% !important;
   z-index: 999999 !important;
 }
+
+.crm-container span.btn-slide {
+  background: unset !important;
+  display: inline !important;
+  padding-right: 5px !important;
+  text-indent: none !important;
+  width: auto !important;
+}
