@@ -9,7 +9,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
   public $_searchByOrg;
   function __construct(&$formValues) {
     parent::__construct($formValues);
-    $this->_searchByOrg = (bool) $formValues['search_by_org'] ?? 0;
+    $this->_searchByOrg = (bool) !empty($formValues['search_by_org']) ? $formValues['search_by_org'] : 0;
     $this->_searchByOrg = $this->_searchByOrg ?: CRM_Utils_Array::value('is_org', $_REQUEST);
     $this->_languages = CRM_Core_OptionGroup::values('languages');
     CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'css/style.css');
@@ -145,11 +145,11 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
         'accepting_new_clients',
         'travels_to_remote_areas',
         'offers_supervision',
-        'offer_video_conferencing_service',
+        'offer_remote_services',
         'region',
         'language',
-        'bacb_r_disciplinary_action_71',
-        'cpo_discipline_and_other_proceed_72',
+        'bacb_r_disciplinary_action_69',
+        'cpo_discipline_and_other_proceed_70',
       );
     }
     else {
@@ -165,22 +165,11 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
         'offer_remote_services__66',
         'region_63',
         'language_64',
-        'bacb_r_disciplinary_action_71',
-        'cpo_discipline_and_other_proceed_72',
+        'bacb_r_disciplinary_action_69',
+        'cpo_discipline_and_other_proceed_70',
       );
     }
     return $columns;
-  }
-  /**
-   * @param int $offset
-   * @param int $rowcount
-   * @param null $sort
-   * @param bool $returnSQL
-   *
-   * @return string
-   */
-  public function contactIDs($offset = 0, $rowcount = 0, $sort = NULL, $returnSQL = FALSE) {
-    return $this->all($offset, $rowcount, $sort, FALSE, TRUE);
   }
 
   /**
@@ -201,7 +190,6 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $includeContactIDs = FALSE,
     $groupBy = NULL
   ) {
-
     $sql = "SELECT $selectClause " . $this->from();
     $where = $this->where();
     if (!empty($where)) {
