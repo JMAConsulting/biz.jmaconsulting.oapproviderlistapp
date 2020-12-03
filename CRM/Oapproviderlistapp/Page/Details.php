@@ -62,7 +62,7 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
 
       $providers = explode(',', $employer['provider_ids']);
       $details['providers'] = [];
-      if (!empty($providers)) {
+      if (!empty($providers) && $providers[0] !== '') {
         $sql = "
         SELECT display_name, cc.id, GROUP_CONCAT(DISTINCT c.which_of_the_following_credentia_7) as credentials
          FROM civicrm_contact cc
