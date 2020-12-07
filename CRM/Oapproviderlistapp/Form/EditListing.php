@@ -144,7 +144,7 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
   }
 
   function imageRule($fields, $files = array(), $self = NULL) {
-    if (empty($files['image_URL']['name']) && empty($files['org_image']['name'])) {
+    if (empty($files['image_URL']['name']) && empty($files['org_image']['name'] && $files['org_image']['name'][0] != '')) {
       return TRUE;
     }
     $errors = [];
