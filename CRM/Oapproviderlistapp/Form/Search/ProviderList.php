@@ -28,7 +28,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $defaults = [];
     if ($form->getVar('_force')) {
       if ($cid = CRM_Utils_Request::retrieve('cid', 'Integer')) {
-        if ($form->_searchByOrg) {
+        if ($this->_searchByOrg) {
           $defaults['organization_name'] = CRM_Contact_BAO_Contact::displayName($cid);
         }
         else {
