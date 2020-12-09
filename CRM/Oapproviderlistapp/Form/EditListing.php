@@ -12,14 +12,10 @@ class CRM_Oapproviderlistapp_Form_EditListing extends CRM_Oapproviderlistapp_For
 
   public $_contactId;
 
-  function __construct(&$formValues) {
-    parent::__construct($formValues);
+  function preProcess() {
     CRM_Core_Resources::singleton()->addStyleFile('biz.jmaconsulting.oapproviderlistapp', 'css/style.css');
     CRM_Core_Resources::singleton()->addStyleFile('org.civicrm.shoreditch', 'css/custom-civicrm.css',1, 'html-header');
     $this->_contactId = CRM_Core_Session::getLoggedInContactID();
-  }
-
-  function preProcess() {
     if (!CRM_Core_Permission::check('edit my listing')) {
       return CRM_Utils_System::permissionDenied();
     }
