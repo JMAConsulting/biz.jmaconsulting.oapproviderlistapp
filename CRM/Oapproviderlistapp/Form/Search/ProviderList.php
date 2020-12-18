@@ -393,7 +393,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
         elseif ($key == 'city') {
           $clauses[] = "$customElements[$key] LIKE '%$value%'";
         }
-        else {
+        elseif ($key !== 'provider_name') {
           $clauses[] = sprintf("%s = %d", $customElements[$key], $value);
         }
       }
