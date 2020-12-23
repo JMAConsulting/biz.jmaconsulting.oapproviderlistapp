@@ -101,7 +101,7 @@ class CRM_Oapproviderlistapp_Form_ManageApplication extends CRM_Core_Form {
         }
         else {
           foreach ($value as $k => $v) {
-            if (trim($value) === '') {
+            if (trim($v) === '') {
               unset($values[$key][$k]);
             }
           }
