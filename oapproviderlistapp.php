@@ -110,6 +110,21 @@ function oapproviderlistapp_civicrm_alterSettingsFolders(&$metaDataFolders = NUL
 }
 
 /**
+ * Implements hook_civicrm_container().
+ */
+function oapproviderlistapp_civicrm_container(\Symfony\Component\DependencyInjection\ContainerBuilder $container) {
+  $container->setDefinition("cache.oapCustomParams", new Symfony\Component\DependencyInjection\Definition(
+    'CRM_Utils_Cache_Interface',
+    [
+      [
+        'name' => 'oap-custom-params',
+        'type' => ['*memory*', 'SqlGroup', 'ArrayCache'],
+      ],
+    ]
+  ))->setFactory('CRM_Utils_Cache::create');
+}
+
+/**
  * Implementation of hook_civicrm_permission
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_permission

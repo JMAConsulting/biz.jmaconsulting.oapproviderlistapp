@@ -39,10 +39,10 @@ class CRM_Oapproviderlistapp_Form_CustomDataByType extends CRM_Core_Form {
   public function setDefaultValues() {
     $defaults = array();
     CRM_Core_BAO_CustomGroup::setDefaults($this->_groupTree, $defaults, FALSE, FALSE, $this->get('action'));
-    $values = CRM_Core_BAO_Cache::getItem("custom params", CRM_Utils_Array::value('qf', $_GET));
+    $values = Civi::cache('oapCustomParams')->get(CRM_Utils_Array::value('qf', $_GET, ''));
     if (!empty($values)) {
       $defaults = array_merge($defaults, $values);
-      CRM_Core_BAO_Cache::deleteGroup("custom params", CRM_Utils_Array::value('qf', $_GET));
+      Civi::cache('oapCustomParams')->delete(CRM_Utils_Array::value('qf', $_GET, ''));
     }
    return $defaults;
   }

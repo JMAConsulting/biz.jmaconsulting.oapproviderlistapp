@@ -100,7 +100,7 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
     }
     elseif (!empty($errors)) {
       $_SESSION[$self->get('qfKey')] = $errors;
-      CRM_Core_BAO_Cache::setItem($fields, 'custom params', $self->get('qfKey'));
+      Civi::cache('oapCustomParams')->set($self->get('qfKey') ?? '', $fields);
     }
 
     if (count($errors) > 0) {
@@ -122,7 +122,7 @@ class CRM_Oapproviderlistapp_Form_Experience extends CRM_Oapproviderlistapp_Form
 
       if (CRM_Utils_Array::value('_qf_Experience_submit', $this->exportValues())) {
         //$sql = sprintf("DELETE FROM %s WHERE entity_id = %d ", OAP_EMP_HIS, $this->_contactID);
-        CRM_Core_DAO::executeQuery($sql);
+        //CRM_Core_DAO::executeQuery($sql);
       }
       $customValues = CRM_Core_BAO_CustomField::postProcess($this->_submitValues, $this->_contactID, 'Individual');
       if (!empty($customValues) && is_array($customValues)) {
