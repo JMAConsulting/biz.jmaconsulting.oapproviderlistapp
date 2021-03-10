@@ -36,7 +36,7 @@ class CRM_Oapproviderlistapp_Form_Signature extends CRM_Oapproviderlistapp_Form_
       $activity = civicrm_api3('Activity', 'get', [
         'source_contact_id' => $this->_contactID,
         'activity_type_id' => "Provider List Application Submission",
-        'sequential' => 0,
+        'sequential' => 1,
       ])['values'][0];
       $actParams = [
         'source_contact_id' => $this->_contactID,
