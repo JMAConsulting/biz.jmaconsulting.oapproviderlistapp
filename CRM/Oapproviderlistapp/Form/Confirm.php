@@ -31,7 +31,14 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
     CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactID, $fields, $defaults, TRUE);
     $fields = CRM_Core_BAO_UFGroup::getFields(OAP_SIGNATURE, FALSE);
     CRM_Core_BAO_UFGroup::setProfileDefaults($this->_contactID, $fields, $defaults, TRUE);
-    foreach (['custom_46', 'custom_57', 'custom_58'] as $name) {
+    $activity = civicrm_api3('Activity', 'get', [
+      'source_contact_id' => $this->_contactID,
+      'activity_type_id' => "Provider List Application Submission",
+      'sequential' => 1,
+      'return' => ['custom_58'],
+    ])['values'][0];
+    $defaults['custom_58'] = CRM_Core_BAO_CustomField::displayValue($activity['custom_58']['fid'], 'custom_58', $activity['id']);
+    foreach (['custom_46', 'custom_57'] as $name) {
       if (!empty($defaults[$name])) {
         $defaults[$name] = CRM_Core_BAO_CustomField::displayValue($defaults[$name], $name, $this->_contactID);
       }
