@@ -151,7 +151,7 @@ class CRM_Oapproviderlistapp_Form_Confirm extends CRM_Oapproviderlistapp_Form_Ma
       $activity = civicrm_api3('Activity', 'get', [
         'source_contact_id' => $this->_contactID,
         'activity_type_id' => "Provider List Application Submission",
-        'sequential' => 0,
+        'sequential' => 1,
       ])['values'][0];
       if (!empty($activity['id'])) {
         civicrm_api3('Activity', 'create', [
