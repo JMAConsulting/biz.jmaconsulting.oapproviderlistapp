@@ -57,6 +57,9 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
           list($width, $height) = getimagesize(CRM_Utils_String::unstupifyUrl($url));
           list($thumbWidth, $thumbHeight) = CRM_Contact_BAO_Contact::getThumbSize($width, $height);
           $details['image'] = '<img src="' . $url . '" height= ' . $thumbHeight . ' width= ' . $thumbWidth . '  />';
+	}
+	if (strpos($employer['url'], 'http') === false) {
+          $employers[$key]['url'] = 'http://' . $employer['url'];
         }
       }
 
@@ -149,6 +152,9 @@ class CRM_Oapproviderlistapp_Page_Details extends CRM_Core_Page {
           CRM_Utils_System::url('civicrm/contact/search/custom', "reset=1&csid=16&force=1&is_org=1&cid=" . $employer['id']),
           $employer['organization_name']
         );
+	if (strpos($employer['url'], 'http') === false) {
+		$employers[$k]['url'] = 'http://' . $employer['url'];
+	}
       }
       $details['employers'] = $employers;
     }
