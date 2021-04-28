@@ -29,7 +29,7 @@
   $( document ).ajaxComplete(function() {
     $.each(empFields, function(key, value) {
       if (value == 'custom_36') {
-        $("label[for^='"+value+"']").closest('td').find('a').text(ts('How to calculate my hours'));
+        $("label[for^='"+value+"']").closest('td').find('a').text({/literal}"{crmScope extensionKey='biz.jmaconsulting.oapproviderlistapp'}{ts}How to calculate my hours{/ts}{/crmScope}"{literal})
       }
       if ($("label[for^='"+value+"'] .crm-marker").length == 0) {
         $("label[for^='"+value+"']").append("&nbsp;<span class='crm-marker' title='This field is required.'>*</span>");
