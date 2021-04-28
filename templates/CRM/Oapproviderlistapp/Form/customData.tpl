@@ -27,13 +27,7 @@
 <script type="text/javascript">
   (function($) {
     CRM.buildCustomData = function (type, subType, subName, cgCount, groupID, isMultiple, onlySubtype) {
-      if (CRM.config.locale == "fr_CA") {
-        url = 'fr/civicrm/custom';
-      }
-      else {
-        url = 'civicrm/custom';
-      }
-      var dataUrl = CRM.url(url, {type: type}),
+      var dataUrl = CRM.url('civicrm/custom', {type: type}),
         prevCount = 1,
         fname = '#customData',
         storage = {};
