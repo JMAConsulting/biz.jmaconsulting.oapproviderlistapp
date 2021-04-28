@@ -143,11 +143,20 @@ msgstr "Adresse courriel est un champ requis."
 msgid "Employer #%1"
 msgstr "Employeur(s)"
 
-msgid "Employer #%1 - Main Address"
-msgstr "Adresse courriel"
+msgid "Employer #%1 - Main Phone Number"
+msgstr ""
 
 msgid "Employer #%1 - Main Postal code"
-msgstr "Code postal"
+msgstr "Employeur(s) Code Postal"
+
+msgid "Employer #%1 - Main Email or Intake Email"
+msgstr ""
+
+msgid "Employer #%1 - Website"
+msgstr ""
+
+msgid "Employer #%1 - Main Address"
+msgstr "Adresse courriel"
 
 msgid "Employer #1"
 msgstr "Employeur(s)"
@@ -494,3 +503,6 @@ msgstr "cliquer pour masquer les détails"
 
 msgid "How to calculate my hours"
 msgstr "Comment calculer les heures"
+
+msgid "(if self-employed, write “self-employed” here)"
+msgstr "(si vous êtes travailleur autonome, écrivez « travailleur autonome » ici)"
