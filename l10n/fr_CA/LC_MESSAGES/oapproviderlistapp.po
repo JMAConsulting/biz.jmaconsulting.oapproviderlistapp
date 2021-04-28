@@ -144,19 +144,19 @@ msgid "Employer #%1"
 msgstr "Employeur(s)"
 
 msgid "Employer #%1 - Main Phone Number"
-msgstr ""
+msgstr "Numéro de téléphone"
 
 msgid "Employer #%1 - Main Postal code"
-msgstr "Employeur(s) Code Postal"
+msgstr "Code Postal"
 
 msgid "Employer #%1 - Main Email or Intake Email"
-msgstr ""
+msgstr "Adresse courriel"
 
 msgid "Employer #%1 - Website"
-msgstr ""
+msgstr "Site Internet"
 
 msgid "Employer #%1 - Main Address"
-msgstr "Adresse courriel"
+msgstr "Adresse du lieu de travail"
 
 msgid "Employer #1"
 msgstr "Employeur(s)"
@@ -323,13 +323,13 @@ msgstr "Veuillez indiquer un numéro de certificat pour cette qualification."
 
 msgid ""
 "Please provide information on your primary current employer(s) through which "
-"you will be clinically supervising Ontario Autism Program behavioural "
-"services."
+"you will be clinically supervising Ontario Autism Program behavioural (OAP)"
+"services. Please note: This information will be shared publicly"
 msgstr ""
 "Veuillez fournir les renseignements sur votre ou vos employeurs principaux "
 "actuels par l'intermédiaire desquels vous superviserez sur le plan clinique "
 "les services comportementaux du Programme ontarien des services en matière "
-"d’autisme."
+"d’autisme. Remarque: ces informations seront partagées publiquement"
 
 msgid "Please provide the Date Obtained for this other relevant credential."
 msgstr ""
