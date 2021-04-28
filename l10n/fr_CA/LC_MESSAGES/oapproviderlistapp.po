@@ -323,7 +323,7 @@ msgstr "Veuillez indiquer un numéro de certificat pour cette qualification."
 
 msgid ""
 "Please provide information on your primary current employer(s) through which "
-"you will be clinically supervising Ontario Autism Program behavioural (OAP)"
+"you will be clinically supervising Ontario Autism Program (OAP) behavioural "
 "services. Please note: This information will be shared publicly"
 msgstr ""
 "Veuillez fournir les renseignements sur votre ou vos employeurs principaux "
