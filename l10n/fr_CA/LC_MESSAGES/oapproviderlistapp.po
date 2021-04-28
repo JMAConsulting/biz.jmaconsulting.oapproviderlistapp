@@ -521,6 +521,10 @@ msgid ""
 "within the next seven days."
 msgstr ""
 
+#: templates/CRM/Oapproviderlistapp/Form/Experience.tpl
+msgid "How to calculate my hours"
+msgstr "Comment calculer mes heures"
+
 #: templates/CRM/Oapproviderlistapp/Form/Individual.tpl
 msgid ""
 "Please read this form carefully to make sure that you meet the requirements "
