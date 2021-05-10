@@ -42,8 +42,15 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     $form->addElement('checkbox', 'supervision_filter', E::ts('Offers supervision') . '?', NULL);
     $form->addElement('checkbox', 'videoconferencing_filter', E::ts('Offers remote services') . '?', NULL);
     $check = [];
+    $labels = [
+      'East' => E::ts('East'),
+      'Central' => E::ts('Central'),
+      'Toronto' => E::ts('Toronto'),
+      'North' => E::ts('North'),
+      'West' => E::ts('West'),
+    ];
     foreach (['East', 'Central', 'Toronto', 'North', 'West'] as $key) {
-      $check[] = $form->createElement('radio', NULL, '', E::ts($key), $key, ['allowClear' => TRUE]);
+      $check[] = $form->createElement('radio', NULL, '', $labels[$key], $key, ['allowClear' => TRUE]);
     }
     $group = $form->addGroup($check, 'region', E::ts('Region'));
     $group->setAttribute('allowClear', TRUE);
@@ -441,10 +448,18 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
      }
      $row[$l] = implode(', ', array_unique($row[$l]));
    }
+   $translationMap = [
+     'East' => E::ts('East'),
+     'Central' => E::ts('Central'),
+     'Toronto' => E::ts('Toronto'),
+     'North' => E::ts('North'),
+     'West' => E::ts('West'),
+     'South' => E::ts('South'),
+   ];
    if (!empty($row[$region])) {
      $regions = array_unique(array_filter(explode(CRM_Core_DAO::VALUE_SEPARATOR, substr($row[$region], 1, -1)), function($value) { return in_array($value, ['East', 'Central', 'Toronto', 'North', 'West', 'South']); }));
      foreach ($regions as $k => $r) {
-       $regions[$k] = E::ts($r);
+       $regions[$k] = $translationMap[$r];
      }
      $row[$region] = str_replace('South', 'West', implode(', ', $regions));
    }
