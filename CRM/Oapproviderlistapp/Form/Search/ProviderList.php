@@ -278,7 +278,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     if ($this->_searchByOrg) {
       return "
         FROM      civicrm_contact contact_a
-        LEFT JOIN civicrm_relationship r ON r.contact_id_b = contact_a.id AND r.relationship_type_id = 5 AND r.is_active = 1
+        LEFT JOIN civicrm_relationship r ON ( r.contact_id_b = contact_a.id AND r.relationship_type_id = 5 AND r.is_active = 1 )
         LEFT JOIN civicrm_contact contact_b ON r.contact_id_a = contact_b.id
         LEFT JOIN civicrm_address address ON ( address.contact_id       = contact_a.id AND
                                                address.is_primary       = 1 )
@@ -294,7 +294,7 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     else {
       return "
         FROM  civicrm_contact contact_a
-        LEFT JOIN civicrm_relationship r ON r.contact_id_a = contact_a.id AND r.relationship_type_id = 5
+        LEFT JOIN civicrm_relationship r ON ( r.contact_id_a = contact_a.id AND r.relationship_type_id = 5 AND r.is_active = 1 )
         LEFT JOIN civicrm_contact contact_b ON r.contact_id_b = contact_b.id
         LEFT JOIN civicrm_address address ON ( address.contact_id       = contact_a.id AND
                                                address.is_primary       = 1 )
