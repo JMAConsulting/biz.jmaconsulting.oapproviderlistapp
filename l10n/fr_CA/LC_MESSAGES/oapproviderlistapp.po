@@ -396,7 +396,7 @@ msgstr "Ce que je cherche"
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 #: CRM/Oapproviderlistapp/Form/Search/ProviderList.php
 msgid "- any -"
