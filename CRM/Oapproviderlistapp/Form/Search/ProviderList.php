@@ -351,14 +351,16 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
     foreach ($submittedValues as $key => $value) {
       if (array_key_exists($key, $customElements) && !empty($value)) {
         if ($key == 'provider_name') {
+          $value = CRM_Utils_Type::escape($value, 'String');
           if ($this->_searchByOrg) {
             $clauses[] = "(contact_b.first_name LIKE '%$value%' OR contact_b.last_name LIKE '%$value%' OR contact_b.sort_name LIKE '%$value%' OR contact_b.display_name LIKE '%$value%' )";
           }
-          else  {
+          else {
             $clauses[] = "(contact_a.first_name LIKE '%$value%' OR contact_a.last_name LIKE '%$value%' OR contact_a.sort_name LIKE '%$value%' OR contact_a.display_name LIKE '%$value%' )";
           }
         }
         if ($key == 'organization_name') {
+          $value = CRM_Utils_Type::escape($value, 'String');
           if (!$this->_searchByOrg) {
             $clauses[] = "(contact_b.organization_name LIKE '%$value%')";
           }
@@ -391,9 +393,11 @@ class CRM_Oapproviderlistapp_Form_Search_ProviderList extends CRM_Contact_Form_S
           }
         }
         elseif ($key == 'city') {
+          $value = CRM_Utils_Type::escape($value, 'String');
           $clauses[] = "$customElements[$key] LIKE '%$value%'";
         }
         elseif ($key !== 'provider_name') {
+          $value = CRM_Utils_Type::escape($value, 'String');
           $clauses[] = sprintf("%s = %d", $customElements[$key], $value);
         }
       }
