@@ -519,21 +519,12 @@ msgid "Add another employer"
 msgstr ""
 
 #: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
-msgid "Complete the application online on the form below or"
-msgstr ""
-
-#: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
-msgid "click here to download a fillable PDF application form."
-msgstr ""
-
-#: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
-msgid "Please note"
-msgstr ""
-
-#: templates/CRM/Oapproviderlistapp/Form/ManageApplication.tpl
 msgid ""
-"If you download the application form, please email the completed form to"
+"Complete the application online on the form below."
+"If you are having any issues completing it or have questions about it, please email"
 msgstr ""
+"Vous pouvez compléter votre demande en ligne en utilisant le formulaire ci-dessous."
+"Si vous rencontrez des défis ou vous avez des questions en lien avec la demande en ligne, veuillez envoyer un courriel à"
 
 #: templates/CRM/Oapproviderlistapp/Form/Professional.tpl
 msgid ""
